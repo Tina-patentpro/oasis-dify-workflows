@@ -1,0 +1,3703 @@
+app:
+  description: 0.1.2版本：修复 TRIZ 报告 escaped markdown 解析，确保优先使用 TRIZ hints 生成检索词。
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: flow-1-3-专利检索-pro
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openrouter:0.0.30@5b8912ffd2b9b26fe5e12e1dd9891f9a8626b2309b0a88e1f5420b6b359cdfc7
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: bowenliang123/md_exporter:3.2.0@b3075f474341eaf9f98ff773d684dc779c0b228f5da09b55eb773dcb5421d947
+    version: null
+kind: app
+version: 0.1.2
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: Jina API Key for content extraction - 请在Dify平台环境变量中配置 JINA_API_KEY
+    id: d80ae93a-9692-4f05-9d00-47313344e261
+    name: Jina
+    selector:
+    - env
+    - Jina
+    value: ''
+    value_type: secret
+  - description: Internal patent fetch pool fixed at 30; final delivered PDF target remains 15.
+    id: 0d450c03-4929-4ea9-9b60-c03c72d92b89
+    name: top_n
+    selector:
+    - env
+    - top_n
+    value: 30
+    value_type: integer
+  - description: Serpapi Patents API Key - 请在Dify平台环境变量中配置 SERPAPI_PATENTS_KEY
+    id: 085042c8-13ee-4fc7-9e4c-4e341b7436eb
+    name: Serpapi_patents
+    selector:
+    - env
+    - Serpapi_patents
+    value: ''
+    value_type: secret
+  - description: Scrapeless API Key - 请在Dify平台环境变量中配置 SCRAPELESS_API_KEY
+    id: 9396a4b8-f2a9-405e-904a-5587f8c290b8
+    name: Scrapeless
+    selector:
+    - env
+    - Scrapeless
+    value: ''
+    value_type: secret
+  - description: SERPER API Key - 请在Dify平台环境变量中配置 SERPER_API_KEY
+    id: f96f8193-edc7-4f3a-9965-62d5db595d42
+    name: SERPER_API_KEY
+    selector:
+    - env
+    - SERPER_API_KEY
+    value: ''
+    value_type: secret
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 15
+        file_size_limit: 50
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1757469385659-source-1757469392657-target
+      selected: false
+      source: '1757469385659'
+      sourceHandle: source
+      target: '1757469392657'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: iteration
+      id: 1757469392657-source-1757471137309-target
+      selected: false
+      source: '1757469392657'
+      sourceHandle: source
+      target: '1757471137309'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 1757329567814-source-1757631142757-target
+      selected: false
+      source: '1757329567814'
+      sourceHandle: source
+      target: '1757631142757'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1757631142757-source-1757469385659-target
+      selected: false
+      source: '1757631142757'
+      sourceHandle: source
+      target: '1757469385659'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1757471137309'
+        sourceType: http-request
+        targetType: code
+      id: 1757677025619-source-1757680568850-target
+      selected: false
+      source: '1757677025619'
+      sourceHandle: source
+      target: '1757680568850'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1757471137309'
+        sourceType: iteration-start
+        targetType: code
+      id: 1757471137309start-source-1757683542923-target
+      selected: false
+      source: 1757471137309start
+      sourceHandle: source
+      target: '1757683542923'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1757471137309'
+        sourceType: code
+        targetType: http-request
+      id: 1757683542923-source-1757677025619-target
+      selected: false
+      source: '1757683542923'
+      sourceHandle: source
+      target: '1757677025619'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: iteration
+        targetType: code
+      id: 1757471137309-source-1757726301598-target
+      selected: false
+      source: '1757471137309'
+      sourceHandle: source
+      target: '1757726301598'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1757726301598-source-1757476245832-target
+      selected: false
+      source: '1757726301598'
+      sourceHandle: source
+      target: '1757476245832'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1757476245832-source-1757728365268-target
+      selected: false
+      source: '1757476245832'
+      sourceHandle: source
+      target: '1757728365268'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1757327716872-source-1757753111097-target
+      selected: false
+      source: '1757327716872'
+      sourceHandle: source
+      target: '1757753111097'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: http-request
+      id: 1757753111097-source-1757329567814-target
+      selected: false
+      source: '1757753111097'
+      sourceHandle: source
+      target: '1757329567814'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1757935375807-source-1757327716872-target
+      selected: false
+      source: '1757935375807'
+      sourceHandle: source
+      target: '1757327716872'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1733320319477-source-1768984339370-target
+      selected: false
+      source: '1733320319477'
+      sourceHandle: source
+      target: '1768984339370'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: document-extractor
+      id: 1768984339370-true-1768976243526-target
+      selected: false
+      source: '1768984339370'
+      sourceHandle: 'true'
+      target: '1768976243526'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1768984339370-false-1768984375226-target
+      selected: false
+      source: '1768984339370'
+      sourceHandle: 'false'
+      target: '1768984375226'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: template-transform
+      id: 1768976243526-source-1768984375226-target
+      selected: false
+      source: '1768976243526'
+      sourceHandle: source
+      target: '1768984375226'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1733320319477-source-1768984480660-target
+      selected: false
+      source: '1733320319477'
+      sourceHandle: source
+      target: '1768984480660'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: llm
+      id: 1768984375226-source-1757935375807-target
+      selected: false
+      source: '1768984375226'
+      sourceHandle: source
+      target: '1757935375807'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: code
+      id: 1768985613684-source-1769301001001-target
+      selected: false
+      source: '1768985613684'
+      sourceHandle: source
+      target: '1769301001001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: code
+      id: 1769301001001-source-1757753111097-target
+      selected: false
+      source: '1769301001001'
+      sourceHandle: source
+      target: '1757753111097'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1769301001001-source-1775401001001-target
+      selected: false
+      source: '1769301001001'
+      sourceHandle: source
+      target: '1775401001001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1775401001001-source-1757753111097-target
+      selected: false
+      source: '1775401001001'
+      sourceHandle: source
+      target: '1757753111097'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: code
+      id: 1757728365268-source-1769301001002-target
+      selected: false
+      source: '1757728365268'
+      sourceHandle: source
+      target: '1769301001002'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: llm
+      id: 1757327864008-source-1769064503421-target
+      selected: false
+      source: '1757327864008'
+      sourceHandle: source
+      target: '1769064503421'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: end
+      id: 1769064776479-source-1733320509176-target
+      selected: false
+      source: '1769064776479'
+      sourceHandle: source
+      target: '1733320509176'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: tool
+      id: 1769064503421-source-1769064978010-target
+      selected: false
+      source: '1769064503421'
+      sourceHandle: source
+      target: '1769064978010'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: tool
+      id: 1769064978010-source-1769064776479-target
+      selected: false
+      source: '1769064978010'
+      sourceHandle: source
+      target: '1769064776479'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+        isInIteration: false
+      id: 1733320319477-source-1775300100001-target
+      selected: false
+      source: '1733320319477'
+      sourceHandle: source
+      target: '1775300100001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: document-extractor
+        isInIteration: false
+      id: 1775300100001-true-1775300100002-target
+      selected: false
+      source: '1775300100001'
+      sourceHandle: 'true'
+      target: '1775300100002'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+        isInIteration: false
+      id: 1775300100001-false-1775300100003-target
+      selected: false
+      source: '1775300100001'
+      sourceHandle: 'false'
+      target: '1775300100003'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: code
+        isInIteration: false
+      id: 1775300100002-source-1775300100003-target
+      selected: false
+      source: '1775300100002'
+      sourceHandle: source
+      target: '1775300100003'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: document-extractor
+        isInIteration: false
+      id: 1768984480660-true-1768985613684-target
+      selected: false
+      source: '1768984480660'
+      sourceHandle: 'true'
+      target: '1768985613684'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+        isInIteration: false
+      id: 1768984480660-false-1769301001001-target
+      selected: false
+      source: '1768984480660'
+      sourceHandle: 'false'
+      target: '1769301001001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: code
+        isInIteration: false
+      id: 1775300100003-source-1768984375226-target
+      selected: false
+      source: '1775300100003'
+      sourceHandle: source
+      target: '1768984375226'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: code
+        isInIteration: false
+      id: 1769301001001-source-1768984375226-target
+      selected: false
+      source: '1769301001001'
+      sourceHandle: source
+      target: '1768984375226'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: template-transform
+        isInIteration: false
+      id: 1769301001002-source-1757327864008-target
+      selected: false
+      source: '1769301001002'
+      sourceHandle: source
+      target: '1757327864008'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: iteration
+        isInIteration: false
+      id: 1769301001002-source-1775300200001-target
+      selected: false
+      source: '1769301001002'
+      sourceHandle: source
+      target: '1775300200001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: iteration-start
+        targetType: code
+        isInIteration: true
+        iteration_id: '1775300200001'
+      id: 1775300200001start-source-1775300200002-target
+      selected: false
+      source: 1775300200001start
+      sourceHandle: source
+      target: '1775300200002'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: http-request
+        isInIteration: true
+        iteration_id: '1775300200001'
+      id: 1775300200002-source-1775300200003-target
+      selected: false
+      source: '1775300200002'
+      sourceHandle: source
+      target: '1775300200003'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInLoop: false
+        sourceType: iteration
+        targetType: end
+        isInIteration: false
+      id: 1775300200001-source-1733320509176-target
+      selected: false
+      source: '1775300200001'
+      sourceHandle: source
+      target: '1733320509176'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: iteration
+        targetType: document-extractor
+        isInIteration: false
+      id: 1775300200001-source-1775300200004-target
+      selected: false
+      source: '1775300200001'
+      sourceHandle: source
+      target: '1775300200004'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: code
+        isInIteration: false
+      id: 1769301001002-source-1775300200005-target
+      selected: false
+      source: '1769301001002'
+      sourceHandle: source
+      target: '1775300200005'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: code
+        isInIteration: false
+      id: 1775300200004-source-1775300200005-target
+      selected: false
+      source: '1775300200004'
+      sourceHandle: source
+      target: '1775300200005'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: template-transform
+        isInIteration: false
+      id: 1775300200005-source-1757327864008-target
+      selected: false
+      source: '1775300200005'
+      sourceHandle: source
+      target: '1757327864008'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - default: ''
+          hint: ''
+          label: 用户指令
+          max_length: 128000
+          options: []
+          placeholder: ''
+          required: false
+          type: paragraph
+          variable: User_input
+        - default: ''
+          hint: ''
+          label: 技术方向/技术方案
+          max_length: 128000
+          options: []
+          placeholder: ''
+          required: false
+          type: paragraph
+          variable: technical_solutions
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: ''
+          hint: ''
+          label: 技术交底书文件（来自 Flow-1-5）
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: false
+          type: file
+          variable: Technical_Disclosure_File
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: ''
+          hint: ''
+          label: TRIZ分析报告（专利版）文件（来自 Flow-1-2）
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: false
+          type: file
+          variable: triz_analysis_report_patent_file
+        - label: 技术背景研究报告文本
+          max_length: 100000
+          options: []
+          required: false
+          type: paragraph
+          variable: tech_landscape
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: ''
+          hint: ''
+          label: 技术背景研究报告文件（来自 Flow-1-1）
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: false
+          type: file
+          variable: tech_landscape_file
+      height: 212
+      id: '1733320319477'
+      position:
+        x: -676.7651742594255
+        y: -194.54430410956127
+      positionAbsolute:
+        x: -676.7651742594255
+        y: -194.54430410956127
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1769064503421'
+          - structured_output
+          - user_search_report
+          value_type: string
+          variable: user_search_report
+        - value_selector:
+          - '1769064776479'
+          - files
+          value_type: array[file]
+          variable: user_search_report_docx_file
+        - value_selector:
+          - '1775300200001'
+          - output
+          value_type: array[file]
+          variable: top15_pdf_files
+        selected: false
+        title: 结束
+        type: end
+      height: 167
+      id: '1733320509176'
+      position:
+        x: 5697.588072073106
+        y: 214.4263949633609
+      positionAbsolute:
+        x: 5697.588072073106
+        y: 214.4263949633609
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1768984375226'
+          - output
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.3
+            response_format: json_object
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: 011-query-system
+          role: system
+          text: 你是 disclosure 路径的专利检索词设计专家。你的输出仅作为后备查询来源：只有在未提供可用的 TRIZ 报告，或 TRIZ 报告既未直接产出可执行 hints、也未能通过 TRIZ 全文补生得到查询时，才基于用户指令、技术方向、技术交底文本与技术背景补全查询。不要覆盖已存在的 TRIZ 直接 hints，也不要覆盖基于 TRIZ 报告全文补生得到的查询。输出必须满足既有 structured_output schema。
+        - id: 011-query-user
+          role: user
+          text: |-
+            # 归一化检索上下文
+            {{#1768984375226.output#}}
+
+            # 检索意图
+            {{#1757935375807.structured_output#}}
+
+            # TRIZ 报告检索线索
+            {{#1769301001001.search_context_text#}}
+
+            请输出候选检索词、最终选择、Serper 批量请求体与质量指标。
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              analysis:
+                type: string
+              candidates:
+                items:
+                  additionalProperties: false
+                  properties:
+                    keywords:
+                      minItems: 1
+                      items:
+                        minLength: 1
+                        type: string
+                      type: array
+                    phase:
+                      enum:
+                      - A
+                      - B
+                      - C
+                      - D
+                      type: string
+                    phase_name:
+                      type: string
+                    priority:
+                      maximum: 5
+                      minimum: 1
+                      type: number
+                    query:
+                      type: string
+                    rationale:
+                      type: string
+                  required:
+                  - query
+                  - phase
+                  - phase_name
+                  - priority
+                  - rationale
+                  - keywords
+                  type: object
+                maxItems: 12
+                minItems: 8
+                type: array
+              final_selection:
+                additionalProperties: false
+                properties:
+                  phase_a:
+                    items:
+                      type: string
+                    minItems: 2
+                    type: array
+                  phase_b:
+                    items:
+                      type: string
+                    minItems: 2
+                    type: array
+                  phase_c:
+                    items:
+                      type: string
+                    minItems: 2
+                    type: array
+                  phase_d:
+                    items:
+                      type: string
+                    minItems: 1
+                    type: array
+                required:
+                - phase_a
+                - phase_b
+                - phase_c
+                - phase_d
+                type: object
+              quality_metrics:
+                additionalProperties: false
+                required:
+                - total_candidates
+                - phase_distribution
+                - coverage_score
+                - diversity_score
+                properties:
+                  coverage_score:
+                    maximum: 1
+                    minimum: 0
+                    type: number
+                  diversity_score:
+                    maximum: 1
+                    minimum: 0
+                    type: number
+                  phase_distribution:
+                    additionalProperties: false
+                    required:
+                    - phase_a
+                    - phase_b
+                    - phase_c
+                    - phase_d
+                    properties:
+                      phase_a:
+                        minimum: 2
+                        type: integer
+                      phase_b:
+                        minimum: 2
+                        type: integer
+                      phase_c:
+                        minimum: 2
+                        type: integer
+                      phase_d:
+                        minimum: 1
+                        type: integer
+                    type: object
+                  total_candidates:
+                    maximum: 12
+                    minimum: 8
+                    type: integer
+                type: object
+              serper_batch_body:
+                type: string
+            required:
+            - analysis
+            - candidates
+            - final_selection
+            - serper_batch_body
+            - quality_metrics
+            type: object
+        structured_output_enabled: true
+        title: 检索词生成
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 93
+      id: '1757327716872'
+      position:
+        x: 468.1586052395819
+        y: 57.62441098483694
+      positionAbsolute:
+        x: 468.1586052395819
+        y: 57.62441098483694
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        selected: false
+        template: |
+          # 归一化检索上下文
+          {{ context }}
+
+          # TRIZ 检索线索
+          {{ triz_context }}
+
+          # 检索式来源状态
+          query_source={{ query_source }}
+          triz_parse_status={{ triz_parse_status }}
+          triz_query_fallback_status={{ triz_query_fallback_status }}
+          triz_regeneration_reason={{ triz_regeneration_reason }}
+
+          # 原始二次重排前15结果
+          {{ analysis_top15 }}
+
+          # 实际交付PDF文件说明
+          {{ pdf_selection_note }}
+          {{ pdf_shortfall_note }}
+
+          # 实际交付PDF分析结果
+          {{ pdf_analysis_docs }}
+
+          # PDF分析统计
+          {{ pdf_analysis_note }}
+        title: 用户报告上下文整理
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1768984375226'
+          - output
+          value_type: string
+          variable: context
+        - value_selector:
+          - '1769301001001'
+          - search_context_text
+          value_type: string
+          variable: triz_context
+        - value_selector:
+          - '1757753111097'
+          - query_source
+          value_type: string
+          variable: query_source
+        - value_selector:
+          - '1769301001001'
+          - report_parse_status
+          value_type: string
+          variable: triz_parse_status
+        - value_selector:
+          - '1757753111097'
+          - triz_query_fallback_status
+          value_type: string
+          variable: triz_query_fallback_status
+        - value_selector:
+          - '1757753111097'
+          - triz_regeneration_reason
+          value_type: string
+          variable: triz_regeneration_reason
+        - value_selector:
+          - '1769301001002'
+          - analysis_top15_docs_json
+          value_type: string
+          variable: analysis_top15
+        - value_selector:
+          - '1769301001002'
+          - pdf_selection_note
+          value_type: string
+          variable: pdf_selection_note
+        - value_selector:
+          - '1769301001002'
+          - pdf_shortfall_note
+          value_type: string
+          variable: pdf_shortfall_note
+        - value_selector:
+          - '1775300200005'
+          - pdf_analysis_docs_json
+          value_type: string
+          variable: pdf_analysis_docs
+        - value_selector:
+          - '1775300200005'
+          - pdf_analysis_note
+          value_type: string
+          variable: pdf_analysis_note
+      height: 51
+      id: '1757327864008'
+      position:
+        x: 2882.223886866693
+        y: 362.5524408826356
+      positionAbsolute:
+        x: 2882.223886866693
+        y: 362.5524408826356
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-312
+            key: ''
+            type: text
+            value: '{{#1757753111097.serper_batch_body#}}'
+          type: json
+        desc: ''
+        headers: |-
+          X-API-KEY:{{#env.SERPER_API_KEY#}}
+          Content-Type:application/json
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          connect: 60
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+          read: 60
+          write: 60
+        title: serper
+        type: http-request
+        url: https://google.serper.dev/patents
+        variables: []
+      height: 137
+      id: '1757329567814'
+      position:
+        x: 468.1586052395819
+        y: 414.4315112814854
+      positionAbsolute:
+        x: 468.1586052395819
+        y: 414.4315112814854
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1757631142757'
+          - clean_patents_json
+        desc: ''
+        model:
+          completion_params:
+            enable_thinking: dynamic
+            exclude_reasoning_tokens: true
+            response_format: json_object
+            temperature: 0.3
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: 011-rank1-system
+          role: system
+          text: 你是专利相关性初筛专家。请基于用户指令、技术方向、TRIZ 报告线索和候选专利 JSON，筛掉弱相关结果并输出可供后续抓取的高相关专利列表。保持既有 structured_output schema，不要臆造字段。
+        - id: 011-rank1-user
+          role: user
+          text: |-
+            # 用户检索上下文
+            {{#1768984375226.output#}}
+
+            # TRIZ 检索线索
+            {{#1769301001001.search_context_text#}}
+
+            # 候选专利 JSON
+            {{#1757631142757.clean_patents_json#}}
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              reranked_docs:
+                items:
+                  additionalProperties: false
+                  properties:
+                    assignee:
+                      type: string
+                    filingDate:
+                      type: string
+                    grantDate:
+                      type: string
+                    inventor:
+                      type: string
+                    link:
+                      type: string
+                    pdfUrl:
+                      type: string
+                    priorityDate:
+                      type: string
+                    publicationDate:
+                      type: string
+                    publicationNumber:
+                      type: string
+                    reason:
+                      type: string
+                    relevance:
+                      maximum: 1
+                      minimum: 0
+                      type: number
+                    snippet:
+                      type: string
+                    title:
+                      type: string
+                  required:
+                  - title
+                  - link
+                  - relevance
+                  - reason
+                  type: object
+                maxItems: 30
+                type: array
+            required:
+            - reranked_docs
+            type: object
+        structured_output_enabled: true
+        title: 候选专利初筛与排序
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 93
+      id: '1757469385659'
+      position:
+        x: 468.1586052395819
+        y: 792.8842510240848
+      positionAbsolute:
+        x: 468.1586052395819
+        y: 792.8842510240848
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: |
+          import json
+
+          def _as_obj(payload):
+              if isinstance(payload, str):
+                  text = payload.strip()
+                  if text.startswith("{") or text.startswith("["):
+                      try:
+                          return json.loads(text)
+                      except Exception:
+                          return payload
+              return payload
+
+          def _append_query(out, value):
+              if isinstance(value, str):
+                  text = " ".join(value.split()).strip()
+                  if text:
+                      out.append({"q": text})
+
+          def _extract_queries(payload):
+              payload = _as_obj(payload)
+              if payload is None:
+                  return []
+
+              if isinstance(payload, list):
+                  out = []
+                  for item in payload:
+                      out.extend(_extract_queries(item))
+                  return out
+
+              if isinstance(payload, dict):
+                  out = []
+                  if isinstance(payload.get("q"), str):
+                      _append_query(out, payload.get("q"))
+                  if isinstance(payload.get("query"), str):
+                      _append_query(out, payload.get("query"))
+                  if out:
+                      return out
+
+                  candidates = payload.get("candidates")
+                  if isinstance(candidates, list):
+                      out = []
+                      for item in candidates:
+                          if isinstance(item, dict):
+                              if isinstance(item.get("q"), str):
+                                  _append_query(out, item.get("q"))
+                              elif isinstance(item.get("query"), str):
+                                  _append_query(out, item.get("query"))
+                      if out:
+                          return out
+
+                  final_selection = payload.get("final_selection")
+                  if isinstance(final_selection, dict):
+                      out = []
+                      for value in final_selection.values():
+                          out.extend(_extract_queries(value))
+                      if out:
+                          return out
+
+                  for key in ("queries", "structured_output", "payload", "text", "data", "result"):
+                      if key in payload:
+                          out = _extract_queries(payload.get(key))
+                          if out:
+                              return out
+
+              return []
+
+          def _extract_string_field(payload, keys):
+              payload = _as_obj(payload)
+              if payload is None:
+                  return ""
+              if isinstance(payload, dict):
+                  for key in keys:
+                      value = payload.get(key)
+                      if isinstance(value, str):
+                          text = " ".join(value.split()).strip()
+                          if text:
+                              return text
+                  for nested in ("structured_output", "payload", "text", "data", "result"):
+                      if nested in payload:
+                          text = _extract_string_field(payload.get(nested), keys)
+                          if text:
+                              return text
+              return ""
+
+          def _dedup_keep_order(items):
+              seen = set()
+              deduped = []
+              for item in items:
+                  if not isinstance(item, dict):
+                      continue
+                  query = item.get("q")
+                  if not isinstance(query, str):
+                      continue
+                  query = " ".join(query.split()).strip()
+                  if not query or query in seen:
+                      continue
+                  seen.add(query)
+                  deduped.append({"q": query})
+              return deduped
+
+          def main(structured_output=None, queries=None, regenerated_queries=None, report_parse_status=None, triz_report_text=None, text=None, payload=None, **kwargs):
+              parser_candidates = _dedup_keep_order(_extract_queries(queries))
+              regenerated_candidates = _dedup_keep_order(_extract_queries(regenerated_queries))
+              regenerated_status = _extract_string_field(regenerated_queries, ("triz_query_fallback_status",))
+              regenerated_reason = _extract_string_field(regenerated_queries, ("regeneration_reason",))
+              report_status = " ".join(str(report_parse_status or "").split()).strip()
+              triz_report_text = " ".join(str(triz_report_text or "").split()).strip()
+              triz_report_available = bool(triz_report_text) or regenerated_status not in ("", "not_available")
+
+              candidates = []
+              query_source = "generated_from_disclosure"
+              final_triz_status = "not_available"
+              final_reason = "no_triz_report_available"
+
+              if parser_candidates:
+                  candidates = parser_candidates
+                  query_source = "triz_report_hints"
+                  final_triz_status = "not_needed"
+                  final_reason = "used_original_triz_hints"
+              elif regenerated_candidates:
+                  candidates = regenerated_candidates
+                  query_source = "triz_report_regenerated"
+                  final_triz_status = regenerated_status or "regenerated_from_triz_report"
+                  final_reason = regenerated_reason or "regenerated_queries_from_triz_report"
+              else:
+                  if triz_report_available and report_status in ("partial_context_only", "no_valid_hints", "ok"):
+                      raise ValueError("TRIZ report was provided, but no usable queries could be derived from hints or regenerated analysis.")
+
+                  for source_name, source_value in (
+                      ("generated_from_disclosure", structured_output),
+                      ("generated_from_disclosure", text),
+                      ("generated_from_disclosure", payload),
+                  ):
+                      if source_value is None:
+                          continue
+                      candidates = _extract_queries(source_value)
+                      if candidates:
+                          query_source = source_name
+                          break
+
+                  if not candidates:
+                      fallback_kwargs = {
+                          key: value
+                          for key, value in kwargs.items()
+                          if key not in {"queries", "regenerated_queries", "report_parse_status", "triz_report_text"}
+                      }
+                      candidates = _extract_queries(fallback_kwargs)
+                      if candidates:
+                          query_source = "generated_from_disclosure"
+
+                  if not candidates:
+                      candidates = _extract_queries(
+                          {
+                              "structured_output": structured_output,
+                              "text": text,
+                              "payload": payload,
+                              **{
+                                  key: value
+                                  for key, value in kwargs.items()
+                                  if key not in {"queries", "regenerated_queries", "report_parse_status", "triz_report_text"}
+                              },
+                          }
+                      )
+                      if candidates:
+                          query_source = "generated_from_disclosure"
+
+              if not candidates:
+                  raise ValueError("No valid queries found in inputs.")
+
+              candidates = _dedup_keep_order(candidates)
+              top_queries = candidates[:12]
+
+              body_list = [
+                  {"q": item["q"], "num": 100, "gl": "cn", "hl": "zh-cn"}
+                  for item in top_queries
+                  if isinstance(item, dict) and isinstance(item.get("q"), str) and item["q"].strip()
+              ]
+              if not body_list:
+                  raise ValueError("Extracted queries are empty after cleaning.")
+
+              return {
+                  "serper_batch_body": json.dumps(body_list, ensure_ascii=False),
+                  "query_source": query_source,
+                  "triz_query_fallback_status": final_triz_status,
+                  "triz_regeneration_reason": final_reason,
+              }
+        code_language: python3
+        desc: ''
+        outputs:
+          query_source:
+            children: null
+            type: string
+          serper_batch_body:
+            children: null
+            type: string
+          triz_query_fallback_status:
+            children: null
+            type: string
+          triz_regeneration_reason:
+            children: null
+            type: string
+        selected: false
+        title: 检索词清洗
+        type: code
+        variables:
+        - value_selector:
+          - '1757327716872'
+          - structured_output
+          value_type: object
+          variable: structured_output
+        - value_selector:
+          - '1769301001001'
+          - queries
+          value_type: array[object]
+          variable: queries
+        - value_selector:
+          - '1775401001001'
+          - structured_output
+          value_type: object
+          variable: regenerated_queries
+        - value_selector:
+          - '1769301001001'
+          - report_parse_status
+          value_type: string
+          variable: report_parse_status
+        - value_selector:
+          - '1768985613684'
+          - text
+          value_type: string
+          variable: triz_report_text
+      height: 51
+      id: '1757753111097'
+      position:
+        x: 468.1586052395819
+        y: 244.19864409666116
+      positionAbsolute:
+        x: 468.1586052395819
+        y: 244.19864409666116
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        author: Tina Dong
+        desc: ''
+        height: 498
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"生成检索词","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 453
+      height: 498
+      id: '1757935033901'
+      position:
+        x: 364.3856072310541
+        y: -179.29355278566945
+      positionAbsolute:
+        x: 364.3856072310541
+        y: -179.29355278566945
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 453
+    - data:
+        author: Tina Dong
+        desc: ''
+        height: 783
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"检索并返回结果","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 445
+      height: 783
+      id: '1757935086910'
+      position:
+        x: 364.3856072310541
+        y: 344.78582832552036
+      positionAbsolute:
+        x: 364.3856072310541
+        y: 344.78582832552036
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 445
+    - data:
+        author: Tina Dong
+        desc: ''
+        height: 513
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"抓取数据","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 1210
+      height: 513
+      id: '1757935224974'
+      position:
+        x: 1043.2246213242577
+        y: -219.80732919956537
+      positionAbsolute:
+        x: 1043.2246213242577
+        y: -219.80732919956537
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 1210
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1768984375226'
+          - output
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.3
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: 011-intent-system
+          role: system
+          text: 你是专利检索意图提取助手。严格基于提供的归一化上下文，提取用户真正关心的技术目标、必须要素、对比重点与排序偏好。不要臆造未出现的技术特征。
+        - id: 011-intent-user
+          role: user
+          text: |-
+            # 归一化检索上下文
+            {{#1768984375226.output#}}
+
+            请输出结构化意图。
+        selected: false
+        title: 检索意图提取
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+        structured_output:
+          schema:
+            type: object
+            additionalProperties: false
+            properties:
+              target:
+                type: string
+              must_have_elements:
+                type: array
+                items:
+                  type: string
+              comparison_focus:
+                type: array
+                items:
+                  type: string
+              ranking_focus:
+                type: string
+            required:
+            - target
+            - must_have_elements
+            - comparison_focus
+            - ranking_focus
+        structured_output_enabled: true
+      height: 87
+      id: '1757935375807'
+      position:
+        x: 468.1586052395819
+        y: -97.04424419232289
+      positionAbsolute:
+        x: 468.1586052395819
+        y: -97.04424419232289
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_array_file: false
+        selected: false
+        title: 技术交底书文档提取
+        type: document-extractor
+        variable_selector:
+        - '1733320319477'
+        - Technical_Disclosure_File
+      height: 104
+      id: '1768976243526'
+      position:
+        x: -243.8378381069545
+        y: -130.05610639195945
+      positionAbsolute:
+        x: -243.8378381069545
+        y: -130.05610639195945
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: exists
+            id: 011-disclosure-file-exists
+            value: ''
+            varType: file
+            variable_selector:
+            - '1733320319477'
+            - Technical_Disclosure_File
+          id: 'true'
+          logical_operator: and
+        selected: false
+        title: 技术交底书文件判断
+        type: if-else
+      height: 123
+      id: '1768984339370'
+      position:
+        x: -243.8378381069545
+        y: -324.6471546274324
+      positionAbsolute:
+        x: -243.8378381069545
+        y: -324.6471546274324
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        selected: false
+        template: |
+          User instruction:
+          {{ user_input }}
+
+          Technical disclosure summary:
+          {{ summary }}
+
+          Technical disclosure file text:
+          {{ file }}
+
+          Technology landscape:
+          {{ landscape }}
+        title: 检索上下文归一化
+        type: code
+        variables:
+        - value_selector:
+          - '1733320319477'
+          - User_input
+          value_type: string
+          variable: user_input
+        - value_selector:
+          - '1733320319477'
+          - technical_solutions
+          value_type: string
+          variable: technical_solutions
+        - value_selector:
+          - '1768976243526'
+          - text
+          value_type: string
+          variable: disclosure_text
+        - value_selector:
+          - '1769301001001'
+          - parsed_focus_text
+          value_type: string
+          variable: parsed_focus_text
+        - value_selector:
+          - '1733320319477'
+          - tech_landscape
+          value_type: string
+          variable: tech_landscape_text
+        - value_selector:
+          - '1775300100003'
+          - normalized_tech_landscape
+          value_type: string
+          variable: tech_landscape_file_text
+        code_language: python3
+        code: |
+          import json
+
+          def _normalize(value):
+              if value is None:
+                  return ""
+              return str(value).replace("\r\n", "\n").replace("\r", "\n").strip()
+
+          def main(
+              user_input=None,
+              technical_solutions=None,
+              disclosure_text=None,
+              parsed_focus_text=None,
+              tech_landscape_text=None,
+              tech_landscape_file_text=None,
+              **kwargs
+          ):
+              user_input = _normalize(user_input)
+              technical_solutions = _normalize(technical_solutions)
+              disclosure_text = _normalize(disclosure_text)
+              parsed_focus_text = _normalize(parsed_focus_text)
+              tech_landscape_text = _normalize(tech_landscape_text)
+              tech_landscape_file_text = _normalize(tech_landscape_file_text)
+
+              primary_candidates = [
+                  ("technical_solutions", technical_solutions),
+                  ("triz_analysis_report_patent_file", parsed_focus_text),
+                  ("tech_landscape", tech_landscape_text),
+                  ("tech_landscape_file", tech_landscape_file_text),
+                  ("Technical_Disclosure_File", disclosure_text),
+                  ("User_input", user_input),
+              ]
+
+              chosen_source = "missing"
+              chosen_text = ""
+              for source_name, value in primary_candidates:
+                  if value:
+                      chosen_source = source_name
+                      chosen_text = value
+                      break
+
+              output = []
+              output.append("# 用户指令（最高优先级）")
+              output.append(user_input or "未提供")
+              output.append("")
+              output.append("# 主技术检索语义")
+              output.append(chosen_text or "未提供")
+              output.append("")
+              output.append("# 交底书补充文本")
+              output.append(disclosure_text or "未提供")
+              output.append("")
+              output.append("# 技术背景补充")
+              output.append(tech_landscape_text or tech_landscape_file_text or "未提供")
+
+              priority_trace = {
+                  "chosen_primary_source": chosen_source,
+                  "has_user_input": bool(user_input),
+                  "has_technical_solutions": bool(technical_solutions),
+                  "has_disclosure_text": bool(disclosure_text),
+                  "has_triz_patent_focus": bool(parsed_focus_text),
+                  "has_tech_landscape_text": bool(tech_landscape_text),
+                  "has_tech_landscape_file_text": bool(tech_landscape_file_text),
+              }
+
+              return {
+                  "output": "\n".join(output).strip(),
+                  "priority_trace": priority_trace,
+              }
+        outputs:
+          output:
+            children: null
+            type: string
+          priority_trace:
+            children: null
+            type: object
+      height: 51
+      id: '1768984375226'
+      position:
+        x: -243.8378381069545
+        y: 36.70915139124371
+      positionAbsolute:
+        x: -243.8378381069545
+        y: 36.70915139124371
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: exists
+            id: 011-triz-file-exists
+            value: ''
+            varType: file
+            variable_selector:
+            - '1733320319477'
+            - triz_analysis_report_patent_file
+          id: 'true'
+          logical_operator: and
+        selected: false
+        title: TRIZ专利报告文件判断
+        type: if-else
+      height: 123
+      id: '1768984480660'
+      position:
+        x: -248.02378957682558
+        y: 382.2875211389953
+      positionAbsolute:
+        x: -248.02378957682558
+        y: 382.2875211389953
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        author: Tina Dong
+        desc: ''
+        height: 623
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size: 16px;","text":"归拢技术交底书数据","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size: 16px;","textFormat":0}],"direction":null,"format":"","indent":0,"type":"root","version":1,"textStyle":"font-size: 16px;"}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 399
+      height: 623
+      id: '1768985410315'
+      position:
+        x: -287.38159916245996
+        y: -439.8057166923008
+      positionAbsolute:
+        x: -287.38159916245996
+        y: -439.8057166923008
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 399
+    - data:
+        author: Tina Dong
+        desc: ''
+        height: 701
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size: 16px;","text":"转换flow-1-2的检索词","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size: 16px;","textFormat":0}],"direction":null,"format":"","indent":0,"type":"root","version":1,"textStyle":"font-size: 16px;"}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 396
+      height: 701
+      id: '1768985472497'
+      position:
+        x: -287.38159916245996
+        y: 252.09376253931902
+      positionAbsolute:
+        x: -287.38159916245996
+        y: 252.09376253931902
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 396
+    - data:
+        is_array_file: false
+        selected: false
+        title: TRIZ专利报告文档提取
+        type: document-extractor
+        variable_selector:
+        - '1733320319477'
+        - triz_analysis_report_patent_file
+      height: 104
+      id: '1768985613684'
+      position:
+        x: -248.02378957682558
+        y: 557.7984199669112
+      positionAbsolute:
+        x: -248.02378957682558
+        y: 557.7984199669112
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1757327864008'
+          - output
+        model:
+          completion_params:
+            temperature: 0.3
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: report-system-011b
+          role: system
+          text: 你是面向用户交付的专利检索分析顾问。只能使用工作流提供的事实，不得臆造专利、申请人、日期、权利要求、实施方式或结论。输出必须是严格结构化 JSON，仅包含 user_search_report。报告必须清楚区分：1）原始二次重排前15结果；2）实际交付并完成PDF分析的文件集合。逐篇分析必须优先基于实际交付PDF分析结果。若某条为回补项，必须标注原始排名；若某条 analysis_source=page_fallback，必须明确写出“PDF提取失败，以下分析基于页面抓取降级结果”。报告摘要必须明确说明本次 query_source、TRIZ 解析状态与是否发生 TRIZ 全文补生；若 triz_query_fallback_status=regenerated_from_triz_report，必须说明原始 M-06/M-07 hints 未形成可执行 queries，本次改由 TRIZ 报告全文补生检索式。
+        - id: report-user-011b
+          role: user
+          text: |
+            # 用户检索上下文
+            {{#context#}}
+
+            # 输出要求
+            - 只输出 JSON
+            - 字段名只能是 user_search_report
+            - Markdown 报告开头必须有“# 检索摘要”
+            - 必须包含“原始前15结果总览”和“实际交付PDF文件说明”两个部分
+            - 必须明确写出实际交付PDF数量、回补数量、是否存在不足15个的情况
+            - 必须在“# 检索摘要”中明确写出 query_source、triz_parse_status、triz_query_fallback_status 与 triz_regeneration_reason
+        selected: false
+        structured_output:
+          schema:
+            type: object
+            additionalProperties: false
+            properties:
+              user_search_report:
+                type: string
+            required:
+            - user_search_report
+        structured_output_enabled: true
+        title: 用户检索报告生成
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1769064503421'
+      position:
+        x: 3199.252639829323
+        y: 102.50252010805889
+      positionAbsolute:
+        x: 3199.252639829323
+        y: 102.50252010805889
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          label:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          llm_description: ''
+          max: null
+          min: null
+          name: md_text
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Optional docx template file for styling。Use "Home"-"Styles Pane" in Microsoft Word to edit styles of the docx file.
+            ja_JP: Optional docx template file for styling。Use "Home"-"Styles Pane" in Microsoft Word to edit styles of the docx file.
+            pt_BR: Optional docx template file for styling。Use "Home"-"Styles Pane" in Microsoft Word to edit styles of the docx file.
+            zh_Hans: 可选的docx模板文件，用于样式控制。使用Microsoft Word中“开始”-“样式窗格”对docx文件的样式进行编辑。
+          label:
+            en_US: DOCX Template File
+            ja_JP: DOCX Template File
+            pt_BR: DOCX Template File
+            zh_Hans: DOCX 模板文件
+          llm_description: An optional .pptx file that serves as a template for the generated presentation
+          max: null
+          min: null
+          name: docx_template_file
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: file
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Optional custom output file name, and the filename suffix is not required.
+            ja_JP: Optional custom output file name, and the filename suffix is not required.
+            pt_BR: Optional custom output file name, and the filename suffix is not required.
+            zh_Hans: 可选的自定义输出文件名，后缀名无需指定
+          label:
+            en_US: Output Filename
+            ja_JP: Output Filename
+            pt_BR: Output Filename
+            zh_Hans: 输出文件名
+          llm_description: ''
+          max: null
+          min: null
+          name: output_filename
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          docx_template_file: ''
+          md_text: ''
+          output_filename: ''
+        plugin_id: bowenliang123/md_exporter
+        plugin_unique_identifier: bowenliang123/md_exporter:3.2.0@b3075f474341eaf9f98ff773d684dc779c0b228f5da09b55eb773dcb5421d947
+        provider_icon: /console/api/workspaces/current/plugin/icon?tenant_id=2cf986dc-18a6-4926-b645-5a5b199da0b4&filename=f0bad95cda1671b4e49f0e05df6122ef9ec5d554e138f128795d11d3806c00ef.svg
+        provider_id: bowenliang123/md_exporter/md_exporter
+        provider_name: bowenliang123/md_exporter/md_exporter
+        provider_type: builtin
+        selected: false
+        title: 用户检索报告 Markdown ⮕ DOCX
+        tool_configurations: {}
+        tool_description: 将 Markdown 转换为 DOCX 文件的工具
+        tool_label: Markdown ⮕ DOCX
+        tool_name: md_to_docx
+        tool_node_version: '2'
+        tool_parameters:
+          docx_template_file:
+            type: constant
+            value: null
+          md_text:
+            type: mixed
+            value: '{{#1769064503421.structured_output.user_search_report#}}'
+          output_filename:
+            type: mixed
+            value: 专利检索用户报告_{{#1769064978010.text#}}
+        type: tool
+      height: 51
+      id: '1769064776479'
+      position:
+        x: 3885.7990568627915
+        y: 102.50252010805889
+      positionAbsolute:
+        x: 3885.7990568627915
+        y: 102.50252010805889
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: '%Y-%m-%d %H:%M:%S'
+          form: form
+          human_description:
+            en_US: Time format in strftime standard.
+            ja_JP: Time format in strftime standard.
+            pt_BR: Time format in strftime standard.
+            zh_Hans: strftime 标准的时间格式。
+          label:
+            en_US: Format
+            ja_JP: Format
+            pt_BR: Format
+            zh_Hans: 格式
+          llm_description: null
+          max: null
+          min: null
+          name: format
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: UTC
+          form: form
+          human_description:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          label:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          llm_description: null
+          max: null
+          min: null
+          name: timezone
+          options:
+          - icon: null
+            label:
+              en_US: UTC
+              ja_JP: UTC
+              pt_BR: UTC
+              zh_Hans: UTC
+            value: UTC
+          - icon: null
+            label:
+              en_US: America/New_York
+              ja_JP: America/New_York
+              pt_BR: America/New_York
+              zh_Hans: 美洲/纽约
+            value: America/New_York
+          - icon: null
+            label:
+              en_US: America/Los_Angeles
+              ja_JP: America/Los_Angeles
+              pt_BR: America/Los_Angeles
+              zh_Hans: 美洲/洛杉矶
+            value: America/Los_Angeles
+          - icon: null
+            label:
+              en_US: America/Chicago
+              ja_JP: America/Chicago
+              pt_BR: America/Chicago
+              zh_Hans: 美洲/芝加哥
+            value: America/Chicago
+          - icon: null
+            label:
+              en_US: America/Sao_Paulo
+              ja_JP: America/Sao_Paulo
+              pt_BR: América/São Paulo
+              zh_Hans: 美洲/圣保罗
+            value: America/Sao_Paulo
+          - icon: null
+            label:
+              en_US: Asia/Shanghai
+              ja_JP: Asia/Shanghai
+              pt_BR: Asia/Shanghai
+              zh_Hans: 亚洲/上海
+            value: Asia/Shanghai
+          - icon: null
+            label:
+              en_US: Asia/Ho_Chi_Minh
+              ja_JP: Asia/Ho_Chi_Minh
+              pt_BR: Ásia/Ho Chi Minh
+              zh_Hans: 亚洲/胡志明市
+            value: Asia/Ho_Chi_Minh
+          - icon: null
+            label:
+              en_US: Asia/Tokyo
+              ja_JP: Asia/Tokyo
+              pt_BR: Asia/Tokyo
+              zh_Hans: 亚洲/东京
+            value: Asia/Tokyo
+          - icon: null
+            label:
+              en_US: Asia/Dubai
+              ja_JP: Asia/Dubai
+              pt_BR: Asia/Dubai
+              zh_Hans: 亚洲/迪拜
+            value: Asia/Dubai
+          - icon: null
+            label:
+              en_US: Asia/Kolkata
+              ja_JP: Asia/Kolkata
+              pt_BR: Asia/Kolkata
+              zh_Hans: 亚洲/加尔各答
+            value: Asia/Kolkata
+          - icon: null
+            label:
+              en_US: Asia/Seoul
+              ja_JP: Asia/Seoul
+              pt_BR: Asia/Seoul
+              zh_Hans: 亚洲/首尔
+            value: Asia/Seoul
+          - icon: null
+            label:
+              en_US: Asia/Singapore
+              ja_JP: Asia/Singapore
+              pt_BR: Asia/Singapore
+              zh_Hans: 亚洲/新加坡
+            value: Asia/Singapore
+          - icon: null
+            label:
+              en_US: Europe/London
+              ja_JP: Europe/London
+              pt_BR: Europe/London
+              zh_Hans: 欧洲/伦敦
+            value: Europe/London
+          - icon: null
+            label:
+              en_US: Europe/Berlin
+              ja_JP: Europe/Berlin
+              pt_BR: Europe/Berlin
+              zh_Hans: 欧洲/柏林
+            value: Europe/Berlin
+          - icon: null
+            label:
+              en_US: Europe/Moscow
+              ja_JP: Europe/Moscow
+              pt_BR: Europe/Moscow
+              zh_Hans: 欧洲/莫斯科
+            value: Europe/Moscow
+          - icon: null
+            label:
+              en_US: Australia/Sydney
+              ja_JP: Australia/Sydney
+              pt_BR: Australia/Sydney
+              zh_Hans: 澳大利亚/悉尼
+            value: Australia/Sydney
+          - icon: null
+            label:
+              en_US: Pacific/Auckland
+              ja_JP: Pacific/Auckland
+              pt_BR: Pacific/Auckland
+              zh_Hans: 太平洋/奥克兰
+            value: Pacific/Auckland
+          - icon: null
+            label:
+              en_US: Africa/Cairo
+              ja_JP: Africa/Cairo
+              pt_BR: Africa/Cairo
+              zh_Hans: 非洲/开罗
+            value: Africa/Cairo
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          format: ''
+          timezone: ''
+        plugin_id: null
+        plugin_unique_identifier: ''
+        provider_icon: /console/api/workspaces/current/tool-provider/builtin/time/icon
+        provider_id: time
+        provider_name: time
+        provider_type: builtin
+        selected: false
+        title: 获取报告时间
+        tool_configurations:
+          format:
+            type: mixed
+            value: '%Y-%m-%d %H:%M:%S'
+          timezone:
+            type: constant
+            value: Asia/Shanghai
+        tool_description: 一个用于获取当前时间的工具。
+        tool_label: 获取当前时间
+        tool_name: current_time
+        tool_node_version: '2'
+        tool_parameters: {}
+        type: tool
+      height: 113
+      id: '1769064978010'
+      position:
+        x: 3546.964126142646
+        y: 102.50252010805889
+      positionAbsolute:
+        x: 3546.964126142646
+        y: 102.50252010805889
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: '%Y-%m-%d %H:%M:%S'
+          form: form
+          human_description:
+            en_US: Time format in strftime standard.
+            ja_JP: Time format in strftime standard.
+            pt_BR: Time format in strftime standard.
+            zh_Hans: strftime 标准的时间格式。
+          label:
+            en_US: Format
+            ja_JP: Format
+            pt_BR: Format
+            zh_Hans: 格式
+          llm_description: null
+          max: null
+          min: null
+          name: format
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: UTC
+          form: form
+          human_description:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          label:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          llm_description: null
+          max: null
+          min: null
+          name: timezone
+          options:
+          - icon: null
+            label:
+              en_US: UTC
+              ja_JP: UTC
+              pt_BR: UTC
+              zh_Hans: UTC
+            value: UTC
+          - icon: null
+            label:
+              en_US: America/New_York
+              ja_JP: America/New_York
+              pt_BR: America/New_York
+              zh_Hans: 美洲/纽约
+            value: America/New_York
+          - icon: null
+            label:
+              en_US: America/Los_Angeles
+              ja_JP: America/Los_Angeles
+              pt_BR: America/Los_Angeles
+              zh_Hans: 美洲/洛杉矶
+            value: America/Los_Angeles
+          - icon: null
+            label:
+              en_US: America/Chicago
+              ja_JP: America/Chicago
+              pt_BR: America/Chicago
+              zh_Hans: 美洲/芝加哥
+            value: America/Chicago
+          - icon: null
+            label:
+              en_US: America/Sao_Paulo
+              ja_JP: America/Sao_Paulo
+              pt_BR: América/São Paulo
+              zh_Hans: 美洲/圣保罗
+            value: America/Sao_Paulo
+          - icon: null
+            label:
+              en_US: Asia/Shanghai
+              ja_JP: Asia/Shanghai
+              pt_BR: Asia/Shanghai
+              zh_Hans: 亚洲/上海
+            value: Asia/Shanghai
+          - icon: null
+            label:
+              en_US: Asia/Ho_Chi_Minh
+              ja_JP: Asia/Ho_Chi_Minh
+              pt_BR: Ásia/Ho Chi Minh
+              zh_Hans: 亚洲/胡志明市
+            value: Asia/Ho_Chi_Minh
+          - icon: null
+            label:
+              en_US: Asia/Tokyo
+              ja_JP: Asia/Tokyo
+              pt_BR: Asia/Tokyo
+              zh_Hans: 亚洲/东京
+            value: Asia/Tokyo
+          - icon: null
+            label:
+              en_US: Asia/Dubai
+              ja_JP: Asia/Dubai
+              pt_BR: Asia/Dubai
+              zh_Hans: 亚洲/迪拜
+            value: Asia/Dubai
+          - icon: null
+            label:
+              en_US: Asia/Kolkata
+              ja_JP: Asia/Kolkata
+              pt_BR: Asia/Kolkata
+              zh_Hans: 亚洲/加尔各答
+            value: Asia/Kolkata
+          - icon: null
+            label:
+              en_US: Asia/Seoul
+              ja_JP: Asia/Seoul
+              pt_BR: Asia/Seoul
+              zh_Hans: 亚洲/首尔
+            value: Asia/Seoul
+          - icon: null
+            label:
+              en_US: Asia/Singapore
+              ja_JP: Asia/Singapore
+              pt_BR: Asia/Singapore
+              zh_Hans: 亚洲/新加坡
+            value: Asia/Singapore
+          - icon: null
+            label:
+              en_US: Europe/London
+              ja_JP: Europe/London
+              pt_BR: Europe/London
+              zh_Hans: 欧洲/伦敦
+            value: Europe/London
+          - icon: null
+            label:
+              en_US: Europe/Berlin
+              ja_JP: Europe/Berlin
+              pt_BR: Europe/Berlin
+              zh_Hans: 欧洲/柏林
+            value: Europe/Berlin
+          - icon: null
+            label:
+              en_US: Europe/Moscow
+              ja_JP: Europe/Moscow
+              pt_BR: Europe/Moscow
+              zh_Hans: 欧洲/莫斯科
+            value: Europe/Moscow
+          - icon: null
+            label:
+              en_US: Australia/Sydney
+              ja_JP: Australia/Sydney
+              pt_BR: Australia/Sydney
+              zh_Hans: 澳大利亚/悉尼
+            value: Australia/Sydney
+          - icon: null
+            label:
+              en_US: Pacific/Auckland
+              ja_JP: Pacific/Auckland
+              pt_BR: Pacific/Auckland
+              zh_Hans: 太平洋/奥克兰
+            value: Pacific/Auckland
+          - icon: null
+            label:
+              en_US: Africa/Cairo
+              ja_JP: Africa/Cairo
+              pt_BR: Africa/Cairo
+              zh_Hans: 非洲/开罗
+            value: Africa/Cairo
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          format: ''
+          timezone: ''
+        plugin_id: null
+        plugin_unique_identifier: ''
+        provider_icon: /console/api/workspaces/current/tool-provider/builtin/time/icon
+        provider_id: time
+        provider_name: time
+        provider_type: builtin
+        selected: false
+        title: 获取当前时间
+        tool_configurations:
+          format:
+            type: mixed
+            value: '%Y-%m-%d %H:%M:%S'
+          timezone:
+            type: constant
+            value: Asia/Shanghai
+        tool_description: 一个用于获取当前时间的工具。
+        tool_label: 获取当前时间
+        tool_name: current_time
+        tool_node_version: '2'
+        tool_parameters: {}
+        type: tool
+      height: 113
+      id: '1769065959077'
+      position:
+        x: 3415.6519312357495
+        y: 266.7682484665124
+      positionAbsolute:
+        x: 3415.6519312357495
+        y: 266.7682484665124
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: '%Y-%m-%d %H:%M:%S'
+          form: form
+          human_description:
+            en_US: Time format in strftime standard.
+            ja_JP: Time format in strftime standard.
+            pt_BR: Time format in strftime standard.
+            zh_Hans: strftime 标准的时间格式。
+          label:
+            en_US: Format
+            ja_JP: Format
+            pt_BR: Format
+            zh_Hans: 格式
+          llm_description: null
+          max: null
+          min: null
+          name: format
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: UTC
+          form: form
+          human_description:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          label:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          llm_description: null
+          max: null
+          min: null
+          name: timezone
+          options:
+          - icon: null
+            label:
+              en_US: UTC
+              ja_JP: UTC
+              pt_BR: UTC
+              zh_Hans: UTC
+            value: UTC
+          - icon: null
+            label:
+              en_US: America/New_York
+              ja_JP: America/New_York
+              pt_BR: America/New_York
+              zh_Hans: 美洲/纽约
+            value: America/New_York
+          - icon: null
+            label:
+              en_US: America/Los_Angeles
+              ja_JP: America/Los_Angeles
+              pt_BR: America/Los_Angeles
+              zh_Hans: 美洲/洛杉矶
+            value: America/Los_Angeles
+          - icon: null
+            label:
+              en_US: America/Chicago
+              ja_JP: America/Chicago
+              pt_BR: America/Chicago
+              zh_Hans: 美洲/芝加哥
+            value: America/Chicago
+          - icon: null
+            label:
+              en_US: America/Sao_Paulo
+              ja_JP: America/Sao_Paulo
+              pt_BR: América/São Paulo
+              zh_Hans: 美洲/圣保罗
+            value: America/Sao_Paulo
+          - icon: null
+            label:
+              en_US: Asia/Shanghai
+              ja_JP: Asia/Shanghai
+              pt_BR: Asia/Shanghai
+              zh_Hans: 亚洲/上海
+            value: Asia/Shanghai
+          - icon: null
+            label:
+              en_US: Asia/Ho_Chi_Minh
+              ja_JP: Asia/Ho_Chi_Minh
+              pt_BR: Ásia/Ho Chi Minh
+              zh_Hans: 亚洲/胡志明市
+            value: Asia/Ho_Chi_Minh
+          - icon: null
+            label:
+              en_US: Asia/Tokyo
+              ja_JP: Asia/Tokyo
+              pt_BR: Asia/Tokyo
+              zh_Hans: 亚洲/东京
+            value: Asia/Tokyo
+          - icon: null
+            label:
+              en_US: Asia/Dubai
+              ja_JP: Asia/Dubai
+              pt_BR: Asia/Dubai
+              zh_Hans: 亚洲/迪拜
+            value: Asia/Dubai
+          - icon: null
+            label:
+              en_US: Asia/Kolkata
+              ja_JP: Asia/Kolkata
+              pt_BR: Asia/Kolkata
+              zh_Hans: 亚洲/加尔各答
+            value: Asia/Kolkata
+          - icon: null
+            label:
+              en_US: Asia/Seoul
+              ja_JP: Asia/Seoul
+              pt_BR: Asia/Seoul
+              zh_Hans: 亚洲/首尔
+            value: Asia/Seoul
+          - icon: null
+            label:
+              en_US: Asia/Singapore
+              ja_JP: Asia/Singapore
+              pt_BR: Asia/Singapore
+              zh_Hans: 亚洲/新加坡
+            value: Asia/Singapore
+          - icon: null
+            label:
+              en_US: Europe/London
+              ja_JP: Europe/London
+              pt_BR: Europe/London
+              zh_Hans: 欧洲/伦敦
+            value: Europe/London
+          - icon: null
+            label:
+              en_US: Europe/Berlin
+              ja_JP: Europe/Berlin
+              pt_BR: Europe/Berlin
+              zh_Hans: 欧洲/柏林
+            value: Europe/Berlin
+          - icon: null
+            label:
+              en_US: Europe/Moscow
+              ja_JP: Europe/Moscow
+              pt_BR: Europe/Moscow
+              zh_Hans: 欧洲/莫斯科
+            value: Europe/Moscow
+          - icon: null
+            label:
+              en_US: Australia/Sydney
+              ja_JP: Australia/Sydney
+              pt_BR: Australia/Sydney
+              zh_Hans: 澳大利亚/悉尼
+            value: Australia/Sydney
+          - icon: null
+            label:
+              en_US: Pacific/Auckland
+              ja_JP: Pacific/Auckland
+              pt_BR: Pacific/Auckland
+              zh_Hans: 太平洋/奥克兰
+            value: Pacific/Auckland
+          - icon: null
+            label:
+              en_US: Africa/Cairo
+              ja_JP: Africa/Cairo
+              pt_BR: Africa/Cairo
+              zh_Hans: 非洲/开罗
+            value: Africa/Cairo
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          format: ''
+          timezone: ''
+        plugin_id: null
+        plugin_unique_identifier: ''
+        provider_icon: /console/api/workspaces/current/tool-provider/builtin/time/icon
+        provider_id: time
+        provider_name: time
+        provider_type: builtin
+        selected: false
+        title: 获取当前时间
+        tool_configurations:
+          format:
+            type: mixed
+            value: '%Y-%m-%d %H:%M:%S'
+          timezone:
+            type: constant
+            value: Asia/Shanghai
+        tool_description: 一个用于获取当前时间的工具。
+        tool_label: 获取当前时间
+        tool_name: current_time
+        tool_node_version: '2'
+        tool_parameters: {}
+        type: tool
+      height: 113
+      id: '1769065978921'
+      position:
+        x: 3525.1107686186165
+        y: 455.8963359839463
+      positionAbsolute:
+        x: 3525.1107686186165
+        y: 455.8963359839463
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: |
+          import json
+          import re
+          from typing import Any, Dict, List, Tuple
+
+          HEADING_RE = re.compile(
+              r'^\s*(?:#{1,6}\s*)?(?:\*{0,2}\s*)?M[\s\-]?(\d{2})(?:\s*[:\uff1a]\s*(.*))?\s*(?:\*{0,2})?\s*$',
+              re.I,
+          )
+
+
+          def _strip_fences(text: str) -> str:
+              s = (text or '').strip()
+              s = re.sub(r'^```(?:json|JSON|markdown|md)?\s*', '', s)
+              s = re.sub(r'\s*```$', '', s)
+              return s.strip()
+
+
+          def _clean_inline(text: str) -> str:
+              text = text or ''
+              text = re.sub(r'\*\*', '', text)
+              text = re.sub(r'__+', '', text)
+              return text.strip()
+
+
+          def _collapse_escaped_quotes(text: str) -> str:
+              prev = None
+              while prev != text:
+                  prev = text
+                  text = text.replace('\\"', '"').replace("\\'", "'")
+              return text
+
+
+          def _restore_escaped_markdown(value: Any) -> Tuple[str, str]:
+              raw = '' if value is None else str(value)
+              raw = _strip_fences(raw)
+              decode_status = 'as_is'
+
+              stripped = raw.strip()
+              if stripped.startswith('"') and stripped.endswith('"'):
+                  try:
+                      decoded = json.loads(stripped)
+                      if isinstance(decoded, str):
+                          raw = decoded
+                          decode_status = 'json_string'
+                  except Exception:
+                      pass
+
+              escaped_breaks = raw.count('\\r\\n') + raw.count('\\n') + raw.count('\\r')
+              real_breaks = raw.count('\n') + raw.count('\r')
+              looks_escaped = escaped_breaks >= 2 and escaped_breaks >= max(2, real_breaks)
+              if looks_escaped:
+                  raw = raw.replace('\\r\\n', '\n')
+                  raw = raw.replace('\\n', '\n')
+                  raw = raw.replace('\\r', '\n')
+                  raw = raw.replace('\\t', '\t')
+                  decode_status = 'escaped_markdown' if decode_status == 'as_is' else f'{decode_status}+escaped_markdown'
+
+              raw = _collapse_escaped_quotes(raw)
+              raw = re.sub(r'\\+\n', '\n', raw)
+              raw = raw.replace('\r\n', '\n').replace('\r', '\n')
+              raw = re.sub(r'\n{3,}', '\n\n', raw)
+              return raw.strip(), decode_status
+
+
+          def _extract_sections_by_lines(text: str) -> Tuple[Dict[str, str], str]:
+              lines = text.splitlines()
+              hits = []
+              for idx, raw in enumerate(lines):
+                  line = _clean_inline(raw)
+                  m = HEADING_RE.match(line)
+                  if m:
+                      hits.append((m.group(1), idx, _clean_inline(m.group(2) or '')))
+              if not hits:
+                  return {}, 'none'
+
+              sections: Dict[str, str] = {}
+              for pos, (sec_id, line_idx, inline_rest) in enumerate(hits):
+                  next_idx = hits[pos + 1][1] if pos + 1 < len(hits) else len(lines)
+                  body_lines: List[str] = []
+                  if inline_rest:
+                      body_lines.append(inline_rest)
+                  body_lines.extend(lines[line_idx + 1:next_idx])
+                  sections[sec_id] = '\n'.join(body_lines).strip()
+              return sections, 'line_heading'
+
+
+          def _extract_block(text: str, sec_id: str, next_ids: List[str]) -> str:
+              next_pat = '|'.join([rf'M[\s\-]?{nid}\b' for nid in next_ids]) if next_ids else r'\Z'
+              pattern = re.compile(
+                  rf'(?is)(?:^|\n)\s*(?:#{{1,6}}\s*)?(?:\*{{0,2}}\s*)?M[\s\-]?{sec_id}\s*(?:[:\uff1a]\s*)?(.*?)(?=\n\s*(?:#{{1,6}}\s*)?(?:\*{{0,2}}\s*)?(?:{next_pat})|\Z)'
+              )
+              m = pattern.search(text)
+              if not m:
+                  return ''
+              return _clean_inline(m.group(1)).strip()
+
+
+          def _extract_sections(text: str) -> Tuple[Dict[str, str], str]:
+              sections, mode = _extract_sections_by_lines(text)
+              if sections:
+                  return sections, mode
+              fallback: Dict[str, str] = {}
+              m06 = _extract_block(text, '06', ['07', '08', '09', '10'])
+              m07 = _extract_block(text, '07', ['08', '09', '10'])
+              if m06:
+                  fallback['06'] = m06
+              if m07:
+                  fallback['07'] = m07
+              return fallback, 'regex_fallback' if fallback else 'none'
+
+
+          def _normalize_query_text(text: str) -> str:
+              text = _clean_inline(text)
+              text = re.sub(r'^\d+[.)\u3001]\s*', '', text)
+              text = text.replace('`', '')
+              text = _collapse_escaped_quotes(text)
+              text = text.replace('\\', '')
+              text = ' '.join(text.split())
+              return text.strip()
+
+
+          def _split_keywords(section: str) -> List[str]:
+              keywords: List[str] = []
+              for raw in section.splitlines():
+                  cleaned = _clean_inline(raw).strip(' -*\t')
+                  if not cleaned or '\u7c07' not in cleaned:
+                      continue
+                  if '\uff1a' in cleaned:
+                      cleaned = cleaned.split('\uff1a', 1)[1]
+                  elif ':' in cleaned:
+                      cleaned = cleaned.split(':', 1)[1]
+                  parts = re.split(r'[\u3001,\uff0c\uff1b;]+', cleaned)
+                  for part in parts:
+                      token = re.sub(r'^[A-Za-z]\s*[\uff1a:]', '', part).strip()
+                      token = re.sub(r'^\*+|\*+$', '', token).strip()
+                      token = _normalize_query_text(token)
+                      if token and len(token) >= 2:
+                          keywords.append(token)
+              out: List[str] = []
+              seen = set()
+              for token in keywords:
+                  key = token.lower()
+                  if key in seen:
+                      continue
+                  seen.add(key)
+                  out.append(token)
+              return out
+
+
+          def _build_keyword_queries(keywords: List[str], limit: int = 12) -> List[str]:
+              queries: List[str] = []
+              seen = set()
+              for i in range(0, len(keywords), 3):
+                  chunk = [item for item in keywords[i:i + 4] if item]
+                  if not chunk:
+                      continue
+                  q = ' '.join(chunk).strip()
+                  if q and q not in seen:
+                      seen.add(q)
+                      queries.append(q)
+                  if len(queries) >= limit:
+                      break
+              return queries
+
+
+          def _extract_boolean_queries(section: str) -> List[str]:
+              queries: List[str] = []
+              for raw in section.splitlines():
+                  cleaned = _normalize_query_text(raw)
+                  lowered = cleaned.lower()
+                  if not cleaned:
+                      continue
+                  if ('ti=' in lowered or 'ab=' in lowered or 'cl=' in lowered) and (' and ' in lowered or ' or ' in lowered or '(' in cleaned):
+                      queries.append(cleaned)
+              return queries
+
+
+          def _extract_codes(section: str) -> List[str]:
+              codes: List[str] = []
+              for code in re.findall(r'\b[A-HY][0-9]{2}[A-Z]?\d+(?:/\d+)?\b', section):
+                  if code not in codes:
+                      codes.append(code)
+              return codes
+
+
+          def _extract_bullets(section: str) -> List[str]:
+              bullets: List[str] = []
+              for raw in section.splitlines():
+                  cleaned = _normalize_query_text(raw)
+                  if not cleaned:
+                      continue
+                  if re.match(r'^(?:[-*\u2022]|\d+[.)\u3001])\s*', cleaned):
+                      cleaned = re.sub(r'^(?:[-*\u2022]|\d+[.)\u3001])\s*', '', cleaned).strip()
+                  bullets.append(cleaned)
+              return bullets[:12]
+
+
+          def _as_query_objects(items: List[str]) -> List[Dict[str, str]]:
+              out: List[Dict[str, str]] = []
+              seen = set()
+              for item in items:
+                  q = ' '.join((item or '').split()).strip()
+                  if not q or q in seen:
+                      continue
+                  seen.add(q)
+                  out.append({'q': q})
+              return out
+
+
+          def main(report_text=None, text=None, payload=None, **kwargs):
+              source_value = report_text if report_text is not None else text
+              if source_value is None:
+                  source_value = payload
+              if source_value is None and kwargs:
+                  source_value = kwargs
+
+              normalized_text, decode_status = _restore_escaped_markdown(source_value)
+              if not normalized_text:
+                  return {
+                      'queries': [],
+                      'search_context_text': json.dumps({}, ensure_ascii=False),
+                      'parsed_focus_text': '',
+                      'report_parse_status': 'no_valid_hints',
+                      'report_parse_meta': {
+                          'section_keys': [],
+                          'query_count': 0,
+                          'heading_mode': 'none',
+                          'section_found_m06': False,
+                          'section_found_m07': False,
+                          'decode_status': decode_status,
+                      },
+                  }
+
+              sections, heading_mode = _extract_sections(normalized_text)
+              m06 = sections.get('06', '')
+              m07 = sections.get('07', '')
+              intro_focus = '\n'.join(normalized_text.splitlines()[:20]).strip()
+
+              boolean_queries = _extract_boolean_queries(m06)
+              keyword_queries = _build_keyword_queries(_split_keywords(m06))
+              queries = _as_query_objects(boolean_queries + keyword_queries)
+
+              search_context = {
+                  'm06_keywords': _split_keywords(m06)[:24],
+                  'boolean_queries': boolean_queries[:12],
+                  'ipc_cpc_candidates': _extract_codes(m06)[:12],
+                  'divisional_focus': _extract_bullets(m07)[:8],
+              }
+              parsed_focus_text = '\n\n'.join(part for part in [intro_focus, m06[:1200], m07[:1200]] if part).strip()
+
+              if queries:
+                  status = 'ok'
+              elif any(search_context.values()):
+                  status = 'partial_context_only'
+              else:
+                  status = 'no_valid_hints'
+
+              return {
+                  'queries': queries,
+                  'search_context_text': json.dumps(search_context, ensure_ascii=False),
+                  'parsed_focus_text': parsed_focus_text,
+                  'report_parse_status': status,
+                  'report_parse_meta': {
+                      'section_keys': sorted(sections.keys()),
+                      'query_count': len(queries),
+                      'heading_mode': heading_mode,
+                      'section_found_m06': bool(m06.strip()),
+                      'section_found_m07': bool(m07.strip()),
+                      'decode_status': decode_status,
+                  },
+              }
+        code_language: python3
+        outputs:
+          queries:
+            children: null
+            type: array[object]
+          search_context_text:
+            children: null
+            type: string
+          parsed_focus_text:
+            children: null
+            type: string
+          report_parse_status:
+            children: null
+            type: string
+          report_parse_meta:
+            children: null
+            type: object
+        selected: false
+        title: TRIZ专利报告解析
+        type: code
+        variables:
+        - value_selector:
+          - '1768985613684'
+          - text
+          value_type: string
+          variable: report_text
+      height: 51
+      id: '1769301001001'
+      position:
+        x: 88.0
+        y: 696.3467505980648
+      positionAbsolute:
+        x: 88.0
+        y: 696.3467505980648
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+
+    - data:
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.2
+            response_format: json_object
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: triz-regen-system-012
+          role: system
+          text: 你是 TRIZ 专利报告检索式补生专家。仅在提供了 TRIZ 专利报告全文且上游未得到可执行 queries 时，才基于 TRIZ 报告全文重新生成适合 Serper 的自然语言/混合技术检索式。不要复刻专利数据库专用的 ti=/ab=/cl= 布尔语法；请改写为适合通用网页检索的自然语言或关键词组合检索式。输出必须是严格 JSON，字段只能为 queries、triz_query_fallback_status、regeneration_reason。若无需补生则返回空 queries，并给出准确状态。
+        - id: triz-regen-user-012
+          role: user
+          text: |-
+            # 上游 TRIZ 解析状态
+            report_parse_status={{#1769301001001.report_parse_status#}}
+
+            # 上游 TRIZ 解析上下文
+            {{#1769301001001.search_context_text#}}
+
+            # 上游 TRIZ 聚焦文本
+            {{#1769301001001.parsed_focus_text#}}
+
+            # TRIZ 专利报告全文
+            {{#1768985613684.text#}}
+
+            # 输出规则
+            - 如果未提供可用的 TRIZ 报告全文，返回 queries=[]，triz_query_fallback_status=not_available，regeneration_reason 说明未提供 TRIZ 报告文本。
+            - 如果 report_parse_status=ok，返回 queries=[]，triz_query_fallback_status=not_needed，regeneration_reason 说明原始 TRIZ hints 已可直接使用。
+            - 如果 report_parse_status=partial_context_only 或 no_valid_hints，且 TRIZ 报告全文存在，请重新生成 6-10 条适合 Serper 的检索式，尽量覆盖技术对象、关键结构/材料/控制方式、目的/效果与中英关键词。
+            - 若 TRIZ 报告全文存在但仍无法生成可用检索式，返回 queries=[]，triz_query_fallback_status=failed_to_regenerate，并说明原因。
+        selected: false
+        structured_output:
+          schema:
+            type: object
+            additionalProperties: false
+            properties:
+              queries:
+                type: array
+                maxItems: 10
+                items:
+                  type: object
+                  additionalProperties: false
+                  properties:
+                    q:
+                      type: string
+                  required:
+                  - q
+              triz_query_fallback_status:
+                type: string
+                enum:
+                - not_needed
+                - regenerated_from_triz_report
+                - not_available
+                - failed_to_regenerate
+              regeneration_reason:
+                type: string
+            required:
+            - queries
+            - triz_query_fallback_status
+            - regeneration_reason
+        structured_output_enabled: true
+        title: TRIZ全文检索式补生
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 87
+      id: '1775401001001'
+      position:
+        x: 468.1586052395819
+        y: 706.1986440966612
+      positionAbsolute:
+        x: 468.1586052395819
+        y: 706.1986440966612
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: |
+          import json
+          import re
+
+          DELIVERY_TARGET = 15
+
+          def _as_docs(value):
+              if isinstance(value, list):
+                  return [item for item in value if isinstance(item, dict)]
+              if isinstance(value, str):
+                  text = value.strip()
+                  if (text.startswith("{") and text.endswith("}")) or (text.startswith("[") and text.endswith("]")):
+                      try:
+                          return _as_docs(json.loads(text))
+                      except Exception:
+                          return []
+              if isinstance(value, dict):
+                  for key in ("merged_docs", "docs", "items", "results", "data"):
+                      maybe = value.get(key)
+                      if isinstance(maybe, list):
+                          return [item for item in maybe if isinstance(item, dict)]
+                  return [value]
+              return []
+
+          def _slug(text):
+              text = re.sub(r'[\\/:*?"<>|]+', "_", str(text or "").strip())
+              text = re.sub(r"\s+", "_", text)
+              return text[:80] or "patent"
+
+          def _clean(value):
+              return str(value).strip() if value is not None else ""
+
+          def _claims(value):
+              if isinstance(value, list):
+                  return [str(x).strip() for x in value if str(x).strip()]
+              text = _clean(value)
+              return [text] if text else []
+
+          def main(merged_docs=None, **kwargs):
+              docs = _as_docs(merged_docs)
+              analysis_top15 = docs[:DELIVERY_TARGET]
+              pdf_delivery_list = []
+              seen = set()
+
+              missing_or_duplicate_from_top15 = []
+              for idx, doc in enumerate(docs):
+                  pdf_url = _clean(doc.get("pdfUrl"))
+                  usable = bool(pdf_url) and pdf_url not in seen
+                  if idx < DELIVERY_TARGET and not usable:
+                      missing_or_duplicate_from_top15.append({
+                          "rank": doc.get("rank") or idx + 1,
+                          "title": _clean(doc.get("title")),
+                          "reason": "missing_pdf_url" if not pdf_url else "duplicate_pdf_url",
+                      })
+                  if not usable:
+                      continue
+                  seen.add(pdf_url)
+                  pdf_delivery_list.append({
+                      "delivery_rank": len(pdf_delivery_list) + 1,
+                      "source_rank": doc.get("rank") or idx + 1,
+                      "title": _clean(doc.get("title")),
+                      "link": _clean(doc.get("link")),
+                      "publicationNumber": _clean(doc.get("publicationNumber")),
+                      "abstract": _clean(doc.get("abstract")),
+                      "claims": _claims(doc.get("claims")),
+                      "implementation_text": _clean(doc.get("implementation_text")),
+                      "implementation_points": doc.get("implementation_points") if isinstance(doc.get("implementation_points"), list) else [],
+                      "pdf_url": pdf_url,
+                      "score": doc.get("score") if isinstance(doc.get("score"), (int, float)) else None,
+                      "is_backfill": bool((doc.get("rank") or idx + 1) > DELIVERY_TARGET),
+                      "filename_hint": f"{len(pdf_delivery_list)+1:02d}_{_slug(doc.get('title'))}.pdf",
+                  })
+                  if len(pdf_delivery_list) >= DELIVERY_TARGET:
+                      break
+
+              backfill_count = sum(1 for item in pdf_delivery_list if item.get("is_backfill"))
+              shortfall = max(0, DELIVERY_TARGET - len(pdf_delivery_list))
+              pdf_selection_note = (
+                  f"analysis_top15={len(analysis_top15)}, delivered_pdfs={len(pdf_delivery_list)}, "
+                  f"backfill_count={backfill_count}, missing_or_duplicate_in_top15={len(missing_or_duplicate_from_top15)}"
+              )
+              pdf_shortfall_note = (
+                  f"独立可下载PDF不足15个，当前仅交付{len(pdf_delivery_list)}个；短缺{shortfall}个。"
+                  if shortfall > 0 else
+                  "已成功交付15个独立PDF文件。"
+              )
+
+              return {
+                  "analysis_top15_docs_json": json.dumps(analysis_top15, ensure_ascii=False),
+                  "pdf_delivery_list": pdf_delivery_list,
+                  "pdf_delivery_docs_json": json.dumps(pdf_delivery_list, ensure_ascii=False),
+                  "pdf_selection_note": pdf_selection_note,
+                  "pdf_shortfall_note": pdf_shortfall_note,
+              }
+        code_language: python3
+        outputs:
+          analysis_top15_docs_json:
+            children: null
+            type: string
+          pdf_delivery_list:
+            children: null
+            type: array[object]
+          pdf_delivery_docs_json:
+            children: null
+            type: string
+          pdf_selection_note:
+            children: null
+            type: string
+          pdf_shortfall_note:
+            children: null
+            type: string
+        selected: false
+        title: PDF交付准备
+        type: code
+        variables:
+        - value_selector:
+          - '1757728365268'
+          - merged_docs
+          value_type: array[object]
+          variable: merged_docs
+      height: 51
+      id: '1769301001002'
+      position:
+        x: 3240.0
+        y: 484.1556461661402
+      positionAbsolute:
+        x: 3240.0
+        y: 484.1556461661402
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: exists
+            id: 011-tech-landscape-file-exists
+            value: ''
+            varType: file
+            variable_selector:
+            - '1733320319477'
+            - tech_landscape_file
+          id: 'true'
+          logical_operator: and
+        selected: false
+        title: 技术背景文件判断
+        type: if-else
+      height: 126
+      id: '1775300100001'
+      position:
+        x: -116.0
+        y: 220.0
+      positionAbsolute:
+        x: -116.0
+        y: 220.0
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_array_file: false
+        selected: false
+        title: 技术背景文档提取
+        type: document-extractor
+        variable_selector:
+        - '1733320319477'
+        - tech_landscape_file
+      height: 91
+      id: '1775300100002'
+      position:
+        x: 190.0
+        y: 220.0
+      positionAbsolute:
+        x: 190.0
+        y: 220.0
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: |
+          def main(text_input: str = "", file_text: str = "") -> dict:
+              def normalize(value):
+                  if value is None:
+                      return ""
+                  return str(value).replace("\r\n", "\n").replace("\r", "\n").strip()
+
+              normalized_text_input = normalize(text_input)
+              normalized_file_text = normalize(file_text)
+              warning = ""
+
+              if normalized_file_text and normalized_text_input:
+                  warning = "both_provided_file_used"
+
+              if normalized_file_text:
+                  return {
+                      "normalized_tech_landscape": normalized_file_text,
+                      "input_source": "file",
+                      "source_warning": warning,
+                  }
+              if normalized_text_input:
+                  return {
+                      "normalized_tech_landscape": normalized_text_input,
+                      "input_source": "text",
+                      "source_warning": warning,
+                  }
+              return {
+                  "normalized_tech_landscape": "",
+                  "input_source": "missing",
+                  "source_warning": "",
+              }
+        code_language: python3
+        desc: ''
+        outputs:
+          normalized_tech_landscape:
+            children: null
+            type: string
+          input_source:
+            children: null
+            type: string
+          source_warning:
+            children: null
+            type: string
+        selected: false
+        title: 技术背景归一化
+        type: code
+        variables:
+        - value_selector:
+          - '1733320319477'
+          - tech_landscape
+          value_type: string
+          variable: text_input
+        - value_selector:
+          - '1775300100002'
+          - text
+          value_type: string
+          variable: file_text
+      height: 53
+      id: '1775300100003'
+      position:
+        x: 500.0
+        y: 220.0
+      positionAbsolute:
+        x: 500.0
+        y: 220.0
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        error_handle_mode: terminated
+        height: 285
+        is_parallel: true
+        iterator_input_type: array[object]
+        iterator_selector:
+        - '1769301001002'
+        - pdf_delivery_list
+        output_selector:
+        - '1775300200003'
+        - files
+        output_type: array[file]
+        parallel_nums: 5
+        selected: false
+        start_node_id: 1775300200001start
+        title: Top15 PDF下载迭代
+        type: iteration
+        width: 1029
+      height: 285
+      id: '1775300200001'
+      position:
+        x: 3340.0
+        y: -300.0
+      positionAbsolute:
+        x: 3340.0
+        y: -300.0
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 1029
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1775300200001start
+      parentId: '1775300200001'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 3364.0
+        y: -232.0
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        code: |
+          def main(item=None, **kwargs):
+              if isinstance(item, dict):
+                  pdf_url = str(item.get("pdf_url") or "").strip()
+                  return {"pdf_url": pdf_url}
+              if item is None:
+                  return {"pdf_url": ""}
+              return {"pdf_url": str(item).strip()}
+        code_language: python3
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1775300200001'
+        outputs:
+          pdf_url:
+            children: null
+            type: string
+        selected: false
+        title: PDF URL规范化
+        type: code
+        variables:
+        - value_selector:
+          - '1775300200001'
+          - item
+          value_type: object
+          variable: item
+      height: 51
+      id: '1775300200002'
+      parentId: '1775300200001'
+      position:
+        x: 145.96321423804307
+        y: 66.74110112659224
+      positionAbsolute:
+        x: 3486.0
+        y: -233.0
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          type: raw-text
+          data: []
+        desc: ''
+        headers: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1775300200001'
+        method: get
+        params: ''
+        retry_config:
+          retry_enabled: true
+          max_retries: 2
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          connect: 20
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+          read: 20
+          write: 20
+        title: PDF下载
+        type: http-request
+        url: '{{#1775300200002.pdf_url#}}'
+        variables: []
+      height: 121
+      id: '1775300200003'
+      parentId: '1775300200001'
+      position:
+        x: 447.70431536463525
+        y: 65
+      positionAbsolute:
+        x: 3788.0
+        y: -235.0
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        is_array_file: true
+        selected: false
+        title: Top15 PDF文本提取
+        type: document-extractor
+        variable_selector:
+        - '1775300200001'
+        - output
+      height: 91
+      id: '1775300200004'
+      position:
+        x: 4480.0
+        y: -300.0
+      positionAbsolute:
+        x: 4480.0
+        y: -300.0
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: |
+          import json
+          import re
+          from typing import Any, List
+
+          def _as_text_list(value: Any) -> List[str]:
+              if isinstance(value, list):
+                  return [str(item) for item in value]
+              if isinstance(value, str):
+                  return [value]
+              return []
+
+          def _as_docs(value: Any):
+              if isinstance(value, list):
+                  return [item for item in value if isinstance(item, dict)]
+              if isinstance(value, str):
+                  text = value.strip()
+                  if (text.startswith("{") and text.endswith("}")) or (text.startswith("[") and text.endswith("]")):
+                      try:
+                          payload = json.loads(text)
+                          return _as_docs(payload)
+                      except Exception:
+                          return []
+              if isinstance(value, dict):
+                  for key in ("pdf_delivery_list", "docs", "items", "results", "data"):
+                      maybe = value.get(key)
+                      if isinstance(maybe, list):
+                          return [item for item in maybe if isinstance(item, dict)]
+                  return [value]
+              return []
+
+          def _normalize(text: Any) -> str:
+              if text is None:
+                  return ""
+              value = str(text).replace("\r\n", "\n").replace("\r", "\n")
+              value = re.sub(r"\n{3,}", "\n\n", value)
+              return value.strip()
+
+          def _extract_section(md: str, heads: List[str], stop_heads: List[str]) -> str:
+              if not md:
+                  return ""
+              head_pat = r"(?mi)^(?:\s*#{1,3}\s*)?(%s)\s*(?:\(\s*\d+\s*\))?\s*[:：]?\s*$" % "|".join(re.escape(h) for h in heads)
+              m = re.search(head_pat, md)
+              if not m:
+                  return ""
+              start = m.end()
+              stop_pat = r"(?mi)^(?:\s*#{1,3}\s*)?(%s)\s*(?:\(\s*\d+\s*\))?\s*[:：]?\s*$" % "|".join(re.escape(h) for h in stop_heads)
+              m2 = re.search(stop_pat, md[start:])
+              end = start + (m2.start() if m2 else len(md))
+              return md[start:end].strip()
+
+          def _split_claims(text: str) -> List[str]:
+              if not text:
+                  return []
+              claims = []
+              current = []
+              for raw in text.splitlines():
+                  line = raw.strip()
+                  if not line:
+                      continue
+                  if re.match(r"^(?:\(?\d+\)?[\.、)]|\d+[\.\)]|[一二三四五六七八九十]+、)\s*", line):
+                      if current:
+                          claims.append(" ".join(current).strip())
+                          current = []
+                      line = re.sub(r"^(?:\(?\d+\)?[\.、)]|\d+[\.\)]|[一二三四五六七八九十]+、)\s*", "", line)
+                  current.append(line)
+              if current:
+                  claims.append(" ".join(current).strip())
+              out = []
+              seen = set()
+              for claim in claims:
+                  key = claim.lower()
+                  if claim and key not in seen:
+                      seen.add(key)
+                      out.append(claim)
+              return out[:10]
+
+          def _implementation_points(text: str) -> List[str]:
+              points = []
+              for raw in text.splitlines():
+                  line = raw.strip(" -*\t")
+                  if line:
+                      points.append(line)
+                  if len(points) >= 10:
+                      break
+              return points
+
+          def main(pdf_texts=None, pdf_delivery_list=None, **kwargs):
+              texts = _as_text_list(pdf_texts)
+              delivery = _as_docs(pdf_delivery_list)
+              analyses = []
+              extracted_count = 0
+              fallback_count = 0
+
+              for idx, item in enumerate(delivery):
+                  raw_text = _normalize(texts[idx]) if idx < len(texts) else ""
+                  claims_block = _extract_section(raw_text, ["Claims", "权利要求", "权利要求书"], ["Description", "具体实施方式", "实施例", "实施方式", "Legal Events", "References"])
+                  implementation_block = _extract_section(raw_text, ["Description", "具体实施方式", "实施例", "实施方式"], ["Legal Events", "References", "Patent Citations", "Country Status"])
+                  claims = _split_claims(claims_block)
+                  implementation_text = implementation_block[:4000]
+                  if claims or len(implementation_text) >= 80:
+                      analysis_source = "pdf_extracted"
+                      extracted_count += 1
+                      info_limit_note = ""
+                  else:
+                      analysis_source = "page_fallback"
+                      fallback_count += 1
+                      claims = item.get("claims") if isinstance(item.get("claims"), list) else []
+                      implementation_text = str(item.get("implementation_text") or "")
+                      info_limit_note = "PDF提取失败，以下分析基于页面抓取降级结果。"
+
+                  analyses.append({
+                      "delivery_rank": item.get("delivery_rank"),
+                      "source_rank": item.get("source_rank"),
+                      "is_backfill": bool(item.get("is_backfill")),
+                      "title": item.get("title"),
+                      "link": item.get("link"),
+                      "publicationNumber": item.get("publicationNumber"),
+                      "pdf_url": item.get("pdf_url"),
+                      "abstract": item.get("abstract"),
+                      "claims": claims,
+                      "implementation_text": implementation_text,
+                      "implementation_points": _implementation_points(implementation_text),
+                      "score": item.get("score"),
+                      "analysis_source": analysis_source,
+                      "info_limit_note": info_limit_note,
+                  })
+
+              return {
+                  "pdf_analysis_docs_json": json.dumps(analyses, ensure_ascii=False),
+                  "pdf_analysis_note": f"delivery_count={len(analyses)}, pdf_extracted={extracted_count}, page_fallback={fallback_count}",
+              }
+        code_language: python3
+        desc: ''
+        outputs:
+          pdf_analysis_docs_json:
+            children: null
+            type: string
+          pdf_analysis_note:
+            children: null
+            type: string
+        selected: false
+        title: PDF分析结果整理
+        type: code
+        variables:
+        - value_selector:
+          - '1775300200004'
+          - text
+          value_type: array[string]
+          variable: pdf_texts
+        - value_selector:
+          - '1769301001002'
+          - pdf_delivery_list
+          value_type: array[object]
+          variable: pdf_delivery_list
+      height: 53
+      id: '1775300200005'
+      position:
+        x: 4785.0
+        y: -300.0
+      positionAbsolute:
+        x: 4785.0
+        y: -300.0
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: 448.2469699017878
+      y: 252.39725619117263
+      zoom: 0.3186401765766439
+  rag_pipeline_variables: []

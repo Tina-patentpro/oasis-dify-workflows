@@ -1,0 +1,4835 @@
+app:
+  description: Basic-1.1.3｜远程1.1.2审计补强版：清理客户可见内部来源残留，补充未进入终稿表技术要素说明，稳定布尔字段归一化，并增加发明人确认稿状态提示。
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: flow-1-5 技术交底书完善-Basic-1.1.3
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: bowenliang123/md_exporter:3.6.9@3f027d63e80b44d5d5a9f706871afaef37905b8f8a89a2d152dc530211a8acb1
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openrouter:0.0.41@99cd79bc154370c899547ce17cea8edc569e86c06c795d4f8577b5c42eb712c3
+    version: null
+kind: app
+version: 0.6.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 20
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1733318603098-source-1745495520531-target
+      source: '1733318603098'
+      sourceHandle: source
+      target: '1745495520531'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+      id: 1745495520531-false-1745495528138-target
+      source: '1745495520531'
+      sourceHandle: 'false'
+      target: '1745495528138'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        targetType: document-extractor
+        sourceType: if-else
+      id: 1745495520531-true-1754996149372-target
+      source: '1745495520531'
+      sourceHandle: 'true'
+      target: '1754996149372'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: code
+      id: 1754996149372-source-1745495528138-target
+      source: '1754996149372'
+      sourceHandle: source
+      target: '1745495528138'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1733318861874-source-1733319053290-target
+      source: '1733318861874'
+      sourceHandle: source
+      target: '1733319053290'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1733319005558-source-1733319053290-target
+      source: '1733319005558'
+      sourceHandle: source
+      target: '1733319053290'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1733319053290-source-1733319060832-target
+      source: '1733319053290'
+      sourceHandle: source
+      target: '1733319060832'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1733319060832-source-1742289562256-target
+      source: '1733319060832'
+      sourceHandle: source
+      target: '1742289562256'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1742289562256-source-1735695273362-target
+      source: '1742289562256'
+      sourceHandle: source
+      target: '1735695273362'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1733319060832-source-1745499059499-target
+      source: '1733319060832'
+      sourceHandle: source
+      target: '1745499059499'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: template-transform
+      id: 1735695273362-source-1769200000001-target
+      source: '1735695273362'
+      sourceHandle: source
+      target: '1769200000001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: template-transform
+      id: 1745499059499-source-1769200000001-target
+      source: '1745499059499'
+      sourceHandle: source
+      target: '1769200000001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: llm
+      id: 1769200000001-source-1745534966273-target
+      source: '1769200000001'
+      sourceHandle: source
+      target: '1745534966273'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1769200000002-source-1755917468361-target
+      source: '1769200000002'
+      sourceHandle: source
+      target: '1755917468361'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: tool
+      id: 1769200000001-source-1769140582678-target
+      source: '1769200000001'
+      sourceHandle: source
+      target: '1769140582678'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: tool
+      id: 1769140582678-source-1769140563914-target
+      source: '1769140582678'
+      sourceHandle: source
+      target: '1769140563914'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: tool
+      id: 1769140582678-source-1769140563915-target
+      source: '1769140582678'
+      sourceHandle: source
+      target: '1769140563915'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: tool
+      id: 1769140582678-source-1769140563916-target
+      source: '1769140582678'
+      sourceHandle: source
+      target: '1769140563916'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: end
+      id: 1769140563914-source-1733318855267-target
+      source: '1769140563914'
+      sourceHandle: source
+      target: '1733318855267'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: end
+      id: 1769140563915-source-1733318855267-target
+      source: '1769140563915'
+      sourceHandle: source
+      target: '1733318855267'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: end
+      id: 1769140563916-source-1733318855267-target
+      source: '1769140563916'
+      sourceHandle: source
+      target: '1733318855267'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1733319028330-source-1769400000001-target
+      source: '1733319028330'
+      sourceHandle: source
+      target: '1769400000001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: code
+      id: 1769200000001-source-1769400000001-target
+      source: '1769200000001'
+      sourceHandle: source
+      target: '1769400000001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: code
+      id: 1769300000001-source-1769400000001-target
+      source: '1769300000001'
+      sourceHandle: source
+      target: '1769400000001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: code
+      id: 1769300000002-source-1769400000001-target
+      source: '1769300000002'
+      sourceHandle: source
+      target: '1769400000001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: end
+      id: 1769400000001-source-1733318855267-target
+      source: '1769400000001'
+      sourceHandle: source
+      target: '1733318855267'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1745495528138-source-1769200000003-target
+      source: '1745495528138'
+      sourceHandle: source
+      target: '1769200000003'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1769200000003-source-1733318861874-target
+      source: '1769200000003'
+      sourceHandle: source
+      target: '1733318861874'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1769200000003-source-1733319005558-target
+      source: '1769200000003'
+      sourceHandle: source
+      target: '1733319005558'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1769200000002-source-1769200000004-target
+      source: '1769200000002'
+      sourceHandle: source
+      target: '1769200000004'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1769200000004-source-1733319028330-target
+      source: '1769200000004'
+      sourceHandle: source
+      target: '1733319028330'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1745534966273-source-1769300000001-target
+      source: '1745534966273'
+      sourceHandle: source
+      target: '1769300000001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1769300000001-source-1769140563915-target
+      source: '1769300000001'
+      sourceHandle: source
+      target: '1769140563915'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1745534966273-source-1769200000002-target
+      source: '1745534966273'
+      sourceHandle: source
+      target: '1769200000002'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1755917468361-source-1769300000002-target
+      source: '1755917468361'
+      sourceHandle: source
+      target: '1769300000002'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1769300000002-source-1769140563916-target
+      source: '1769300000002'
+      sourceHandle: source
+      target: '1769140563916'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 1-5-1-开始
+        type: start
+        variables:
+        - default: ''
+          hint: ''
+          label: 用户指令
+          max_length: 10000
+          options: []
+          placeholder: ''
+          required: false
+          type: paragraph
+          variable: User_input
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 技术资料文字
+          max_length: 128000
+          options: []
+          required: false
+          type: paragraph
+          variable: Technical_Disclosure_summary
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 技术资料文件
+          max_length: 10
+          options: []
+          required: false
+          type: file
+          variable: Technical_Disclosure_file
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          label: 附图
+          max_length: 10
+          options: []
+          required: false
+          type: file-list
+          variable: drawings_TD
+        - label: 附图说明
+          max_length: 128000
+          options: []
+          required: false
+          type: paragraph
+          variable: drawings_explain_TD
+      height: 212
+      id: '1733318603098'
+      position:
+        x: 0
+        y: 326
+      positionAbsolute:
+        x: 0
+        y: 326
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1769400000001'
+          - brief_summary
+          value_type: string
+          variable: brief_summary
+        - value_selector:
+          - '1769140563914'
+          - files
+          value_type: array[file]
+          variable: technical_disclosure_file
+        - value_selector:
+          - '1769140563915'
+          - files
+          value_type: array[file]
+          variable: improvement_report_file
+        - value_selector:
+          - '1769140563916'
+          - files
+          value_type: array[file]
+          variable: tech_elements_table_file
+        selected: false
+        title: 1-5-2-结束
+        type: end
+      height: 167
+      id: '1733318855267'
+      position:
+        x: 5350
+        y: 178
+      positionAbsolute:
+        x: 5350
+        y: 178
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1769200000003'
+          - structured_output
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            max_tokens: 10000
+            reasoning_effort: high
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3.1-flash-lite-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: flow15-v1000-a-system
+          role: system
+          text: '# Flow-1-5 1.0.0 System Prompt
+
+
+            ## Role
+
+            - 技术交底书第1-3部分结构化撰写专家
+
+
+            ## Mission
+
+            - 生成第1-3部分，并把第3部分拆成问题项与目标项，消除长段截断风险。
+
+
+            ## Node Responsibility
+
+            - 保持领域与背景事实稳定。
+
+            - 把第3部分拆成短项数组。
+
+            - 不提前进入方案章节。
+
+
+            ## Allowed Inputs
+
+            - 输入证据分层结果
+
+            - 综合资料正文
+
+
+            ## Output Contract
+
+            - 仅输出 `section_1_text`、`section_2_text`、`section_3_problem_items`、`section_3_goal_items`。
+
+
+            ## Evidence Boundary
+
+            - 只使用事实层与工程约束层。
+
+            - 候选层与禁入层不得进入第1-3部分事实。
+
+
+            ## Forbidden Behavior
+
+            - 禁止把第3部分写成长段。
+
+            - 禁止提前写技术方案、附图、实施方式或法律判断。
+
+
+            ## Writing Rules
+
+            - `section_3_problem_items` 和 `section_3_goal_items` 都必须是短句数组。
+
+            - 每项都要完整闭合，不得半句结束。
+
+
+            ## Self-check
+
+            - 四个字段都已输出。
+
+            - 第3部分已拆成短项而非长段。
+
+            - 无越界内容。'
+        - id: flow15-v1000-a-user
+          role: user
+          text: '## 示例隔离与零新增（强制）
+
+
+            - 输出内容只允许来自输入资料、上游节点结果和当前节点规则；禁止迁移模板示例中的领域词、数值、场景或专有名词。
+
+            - 若输入缺失，不得用常识补齐为既成事实；仅可做受控整理，且必须在允许的字段和语境内表达。
+
+            - 不得新增输入未出现的核心发明点、关键控制原理、实验结论、参数区间、法律判断或商业结论。
+
+            - 若上游节点、证据分层结果与原始资料冲突，优先保留原始资料和完整技术交底书中的明确信息。
+
+
+            # Node-1-5-3 技术交底书-基础部分生成（1-3）
+
+
+            > 版本：1.0.0 Prompt Upgrade
+
+
+            ## 任务边界
+
+
+            输出第1-3部分，其中第3部分必须显式拆成问题项与目标项，供最终成文稳定渲染。
+
+
+            ## 当前输入
+
+
+            输入证据分层（JSON）：{{#1769200000003.structured_output#}}
+
+
+            综合资料正文（Markdown）：{{#1745495528138.output#}}
+
+
+            ## 生成目标
+
+
+            - 保持领域与背景的事实稳定。
+
+            - 让第3部分从源头短块化。
+
+            - 保留关键工况、约束和问题背景。
+
+
+            ## 输出要求
+
+
+            - 只允许输出 `section_1_text`、`section_2_text`、`section_3_problem_items`、`section_3_goal_items`。
+
+            - `section_3_problem_items` 与 `section_3_goal_items` 都必须是字符串数组。
+
+
+            ## Rules
+
+
+            - `section_3_problem_items` 最多 3 项，`section_3_goal_items` 最多 3 项。
+
+            - 每项都必须是完整短句，不得跨句拼成长段。
+
+            - 若存在非已明确事实句，只能在句首显式标注 `【设计目标】`、`【仿真/估计】` 或 `【待确认】`。
+
+            - 不得把候选层或禁入层内容写入第1-3部分。
+
+
+            ## Workflow
+
+
+            1. 先写第1部分领域。
+
+            2. 再写第2部分背景与不足。
+
+            3. 最后把第3部分拆成问题项和目标项。
+
+
+            ## 最终自检
+
+
+            - 第3部分已拆成数组。
+
+            - 没有长段。
+
+            - 没有越界。
+
+
+            ## Basic-1.1.3 背景吸收规则（强制）
+
+
+            - 若输入资料出现“终端A可通过4G/5G连接互联网，终端B因安全要求不可直接连接互联网”等应用场景，应在背景技术或应用场景中保留。
+
+            - 该 4G/5G 安全隔离场景只能作为技术问题来源和应用背景，不得误写成线缆本体结构特征。
+
+            - 背景吸收应服务于“为何需要统一线缆、降低接口复杂度、保障安全隔离场景下的数据获取”的问题链条。'
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            $id: https://example.com/schemas/flow-1-5/1.0.0/node-a-sections-1-3.schema.json
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: false
+            properties:
+              section_1_text:
+                type: string
+              section_2_text:
+                type: string
+              section_3_goal_items:
+                items:
+                  type: string
+                maxItems: 3
+                type: array
+              section_3_problem_items:
+                items:
+                  type: string
+                maxItems: 3
+                type: array
+            required:
+            - section_1_text
+            - section_2_text
+            - section_3_problem_items
+            - section_3_goal_items
+            title: Flow-1-5::A::sections_1_3::v1.0.0
+            type: object
+        structured_output_enabled: true
+        title: 1-5-3-技术交底书-基础部分生成（1-3）
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 117
+      id: '1733318861874'
+      position:
+        x: 1770
+        y: 589
+      positionAbsolute:
+        x: 1770
+        y: 589
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1769200000003'
+          - structured_output
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            max_tokens: 7000
+            reasoning_effort: high
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3.1-flash-lite-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: flow15-v1000-h-system
+          role: system
+          text: '# Flow-1-5 1.0.0 System Prompt
+
+
+            ## Role
+
+            - 技术要素表初稿整理器
+
+
+            ## Mission
+
+            - 在成文前生成覆盖面较宽、来源可追溯、状态口径统一的《技术要素表初稿》。
+
+
+            ## Node Responsibility
+
+            - 保留原有覆盖范围，但所有内容必须回溯到输入。
+
+            - 引入统一的确认状态词汇。
+
+            - 把候选设想和禁入正文素材与事实层分开。
+
+
+            ## Allowed Inputs
+
+            - 综合资料正文
+
+            - 附图说明原文
+
+            - 输入证据分层结果
+
+
+            ## Output Contract
+
+            - 输出固定列顺序的 Markdown 表格。
+
+            - 固定列为：`技术问题 | 宏特征 | 元特征 | 元实体 | 元手段 | 元功能 | 元效果 | 技术效果 | 确认状态 | 来源依据`。
+
+
+            ## Evidence Boundary
+
+            - 每一行都必须能回溯到原始输入或证据分层结果。
+
+            - `forbidden_materials` 不得进入表格主行。
+
+
+            ## Forbidden Behavior
+
+            - 禁止自行补数值、补结构、补测试结论、补材料规格。
+
+            - 禁止把行业常识推断或候选设想写成输入事实。
+
+
+            ## Writing Rules
+
+            - 确认状态只允许使用统一词汇。
+
+            - 候选设想若保留到初稿，只能在确认状态中显式标注“候选设想-禁入正文”。
+
+
+            ## Self-check
+
+            - 是否所有行都可回溯。
+
+            - 是否使用了统一确认状态词汇。
+
+            - 是否没有让禁入正文素材进入主表。'
+        - id: flow15-v1000-h-user
+          role: user
+          text: '## 示例隔离与零新增（强制）
+
+
+            - 输出内容只允许来自输入资料、上游节点结果和当前节点规则；禁止迁移模板示例中的领域词、数值、场景或专有名词。
+
+            - 若输入缺失，不得用常识补齐为既成事实；仅可做受控整理，且必须在允许的字段和语境内表达。
+
+            - 不得新增输入未出现的核心发明点、关键控制原理、实验结论、参数区间、法律判断或商业结论。
+
+            - 若上游节点、证据分层结果与原始资料冲突，优先保留原始资料和完整技术交底书中的明确信息。
+
+
+            # Node-1-5-4 技术要素表初稿生成
+
+
+            > 版本：1.0.0 Prompt Upgrade
+
+
+            ## 任务边界
+
+
+            生成《技术要素表初稿》。要求保留原有覆盖范围，但必须比 0.2.2 更严格地执行证据分层和统一的确认状态治理。
+
+
+            ## 当前输入
+
+
+            综合资料正文（Markdown）：{{#1745495528138.output#}}
+
+
+            附图说明原文：{{#1733318603098.drawings_explain_TD#}}
+
+
+            输入证据分层（JSON）：{{#1769200000003.structured_output#}}
+
+
+            ## 生成目标
+
+
+            - 在不编造事实的前提下，尽量完整覆盖技术问题、对象、结构、手段、功能、效果和状态。
+
+            - 通过“来源依据”把每一行绑定到输入中的明确线索。
+
+            - 为后续正文统一术语和终稿表对齐打底。
+
+
+            ## 输出要求
+
+
+            - 最终答案必须是 Markdown 表格。
+
+            - 固定列顺序为：`技术问题 | 宏特征 | 元特征 | 元实体 | 元手段 | 元功能 | 元效果 | 技术效果 | 确认状态 | 来源依据`。
+
+
+            ## Rules
+
+
+            - 每一行都必须来自 `disclosure_fact_base`、`engineering_constraints_and_validation`、原始资料正文或附图说明原文中的明确线索。
+
+            - 确认状态只允许使用以下词汇之一：`输入事实-已明确`、`设计目标`、`仿真/估计`、`待确认-输入提及但未证实`、`缺失-输入未提供`、`候选设想-禁入正文`。
+
+            - 凡属于 `candidate_only_materials` 且确有保留价值的条目，只能以 `候选设想-禁入正文` 状态进入初稿，且来源依据必须标清其候选属性。
+
+            - 凡属于 `forbidden_materials` 的内容不得进入主表。
+
+            - 不得自行创造参数值、尺寸、材料、实验数据、流程细节和构件关系。
+
+
+            ## Workflow
+
+
+            1. 先用证据分层结果建立事实层、约束层、候选层边界。
+
+            2. 再从综合资料正文和附图说明中提取问题、对象、结构、手段和效果线索。
+
+            3. 按固定列顺序成表，并逐行给出统一确认状态和来源依据。
+
+            4. 最后逐行检查：无依据则降级状态，候选则明确标注，禁入则删除。
+
+
+            ## 最终自检
+
+
+            - 是否每一行都能回到输入。
+
+            - 是否使用了统一确认状态词汇。
+
+            - 是否没有自造参数、自造构件关系或自造效果。
+
+            - 是否把候选层和禁入层处理正确。'
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output_enabled: false
+        title: 1-5-4-技术要素表初稿生成
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 117
+      id: '1733319005558'
+      position:
+        x: 1770
+        y: 392
+      positionAbsolute:
+        x: 1770
+        y: 392
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1769200000004'
+          - structured_output
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            max_tokens: 1200
+            reasoning_effort: low
+            temperature: 0.15
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: flow15-v1000-j-system
+          role: system
+          text: '# Flow-1-5 1.0.0 System Prompt
+
+
+            ## Role
+
+            - 技术交底书摘要编制器
+
+
+            ## Mission
+
+            - 生成单段 `brief_summary`，同时保留核心方案主线和 Top 1 高优先级缺口，必要时补 Top 2。
+
+
+            ## Node Responsibility
+
+            - 输出稳定短摘要。
+
+            - 优先点名具体缺口。
+
+
+            ## Allowed Inputs
+
+            - 摘要素材包
+
+
+            ## Output Contract
+
+            - 仅输出 `brief_summary`。
+
+
+            ## Evidence Boundary
+
+            - 只能依据摘要素材包。
+
+            - 不得引入新事实。
+
+
+            ## Forbidden Behavior
+
+            - 禁止用“缺实验数据”作为唯一缺口。
+
+            - 禁止把设计目标写成既成事实。
+
+
+            ## Writing Rules
+
+            - 必须同时写核心方案主线和 Top 1 高优先级缺口。
+
+            - 若存在 Top 2，可补充但不得挤压 Top 1。
+
+
+            ## Self-check
+
+            - 单段完整。
+
+            - 缺口具体。
+
+            - 事实口径克制。'
+        - id: flow15-v1000-j-user
+          role: user
+          text: '## 示例隔离与零新增（强制）
+
+
+            - 输出内容只允许来自输入资料、上游节点结果和当前节点规则；禁止迁移模板示例中的领域词、数值、场景或专有名词。
+
+            - 若输入缺失，不得用常识补齐为既成事实；仅可做受控整理，且必须在允许的字段和语境内表达。
+
+            - 不得新增输入未出现的核心发明点、关键控制原理、实验结论、参数区间、法律判断或商业结论。
+
+            - 若上游节点、证据分层结果与原始资料冲突，优先保留原始资料和完整技术交底书中的明确信息。
+
+
+            # Node-1-5-5 最终简报生成
+
+
+            > 版本：1.0.0 Prompt Upgrade
+
+
+            ## 任务边界
+
+
+            输出单段简报，必须同时写清核心方案主线和 Top 1 高优先级缺口；若存在 Top 2，可补充但不能喧宾夺主。
+
+
+            ## 当前输入
+
+
+            摘要素材包（JSON）：{{#1769200000004.structured_output#}}
+
+
+            ## 生成目标
+
+
+            - 保持摘要稳定。
+
+            - 恢复到不弱于 0.2.3 的高优先级缺口聚焦。
+
+            - 保持事实口径克制。
+
+
+            ## 输出要求
+
+
+            - 只允许输出 `brief_summary`。
+
+            - `brief_summary` 必须是单段短文本。
+
+
+            ## Rules
+
+
+            - 若存在风洞、冷舱、HIL、失效链条逻辑映射等具象缺口，优先点名，不得泛化成“缺实验数据”。
+
+            - 必须包含 Top 1 缺口；若存在 `secondary_priority_gap`，可补充但不能超过 1 项。
+
+            - 不得把设计目标、预期效果或待确认项写成既成事实。
+
+
+            ## Workflow
+
+
+            1. 先写核心方案主线。
+
+            2. 再写主要效果。
+
+            3. 最后写 Top 1 缺口，并酌情补 Top 2。
+
+
+            ## 最终自检
+
+
+            - Top 1 缺口具体。
+
+            - 单段完整。
+
+            - 无既成事实化。'
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            $id: https://example.com/schemas/flow-1-5/1.0.0/node-j-brief-summary.schema.json
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: false
+            properties:
+              brief_summary:
+                description: 最终简报短文本。
+                type: string
+            required:
+            - brief_summary
+            title: Flow-1-5::J::brief_summary::v1.0.0
+            type: object
+        structured_output_enabled: true
+        title: 1-5-5-最终简报生成
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 117
+      id: '1733319028330'
+      position:
+        x: 4626
+        y: 0
+      positionAbsolute:
+        x: 4626
+        y: 0
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1733318861874'
+          - structured_output
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            max_tokens: 11000
+            reasoning_effort: high
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3.1-flash-lite-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: flow15-v1000-b1-system
+          role: system
+          text: '# Flow-1-5 1.0.0 System Prompt
+
+
+            ## Role
+
+            - 技术交底书第4和第6部分结构化撰写专家
+
+
+            ## Mission
+
+            - 输出第4部分文本与状态桶，以及第6部分短块化有益效果数组。
+
+
+            ## Node Responsibility
+
+            - 显式给出第4部分状态桶。
+
+            - 把第6部分拆成短块对象。
+
+            - 保持问题-效果对应关系。
+
+
+            ## Allowed Inputs
+
+            - A 结构化输出
+
+            - 技术要素表初稿
+
+            - 输入证据分层结果
+
+            - 综合资料正文
+
+
+            ## Output Contract
+
+            - 仅输出 `section_4_text`、`section_4_status_bucket`、`section_6_benefit_items`。
+
+
+            ## Evidence Boundary
+
+            - 只依据事实层、约束层和初稿。
+
+            - 不得把候选层内容写成效果事实。
+
+
+            ## Forbidden Behavior
+
+            - 禁止把多个效果塞进单个对象。
+
+            - 禁止把预期写成既成事实。
+
+
+            ## Writing Rules
+
+            - `section_6_benefit_items` 每项字段固定为 `benefit_title`、`benefit_mechanism`、`benefit_status_bucket`、`benefit_evidence_note`。
+
+            - `section_4_status_bucket` 只允许统一四类状态。
+
+
+            ## Self-check
+
+            - 字段齐全。
+
+            - 效果项短块化。
+
+            - 状态桶已输出。'
+        - id: flow15-v1000-b1-user
+          role: user
+          text: '## 示例隔离与零新增（强制）
+
+
+            - 输出内容只允许来自输入资料、上游节点结果和当前节点规则；禁止迁移模板示例中的领域词、数值、场景或专有名词。
+
+            - 若输入缺失，不得用常识补齐为既成事实；仅可做受控整理，且必须在允许的字段和语境内表达。
+
+            - 不得新增输入未出现的核心发明点、关键控制原理、实验结论、参数区间、法律判断或商业结论。
+
+            - 若上游节点、证据分层结果与原始资料冲突，优先保留原始资料和完整技术交底书中的明确信息。
+
+
+            # Node-1-5-6 技术交底书-问题目标与效果生成（4+6）
+
+
+            > 版本：1.0.0 Prompt Upgrade
+
+
+            ## 任务边界
+
+
+            输出第4部分文本与状态，以及第6部分可直接短块渲染的效果数组。
+
+
+            ## 当前输入
+
+
+            A 结构化输出（JSON）：{{#1733318861874.structured_output#}}
+
+
+            技术要素表初稿（Markdown）：{{#1733319005558.text#}}
+
+
+            输入证据分层（JSON）：{{#1769200000003.structured_output#}}
+
+
+            综合资料正文（Markdown）：{{#1745495528138.output#}}
+
+
+            ## 生成目标
+
+
+            - 让第4部分状态明确。
+
+            - 让第6部分适合 Word 分段渲染。
+
+            - 保持问题-手段-效果闭环。
+
+
+            ## 输出要求
+
+
+            - 只允许输出 `section_4_text`、`section_4_status_bucket`、`section_6_benefit_items`。
+
+            - `section_6_benefit_items` 必须是对象数组。
+
+
+            ## Rules
+
+
+            - `section_4_status_bucket` 只允许：`已明确事实`、`设计目标`、`仿真/估计`、`待确认`。
+
+            - `section_6_benefit_items` 最多 4 项。
+
+            - 每项 `benefit_title` 不超过 16 个字。
+
+            - 每项必须把机理与依据拆开，不得写成长段。
+
+
+            ## Workflow
+
+
+            1. 先归纳第4部分目标与边界。
+
+            2. 再逐项生成第6部分。
+
+            3. 最后校验状态桶和长句。
+
+
+            ## 最终自检
+
+
+            - 第4部分状态桶已填。
+
+            - 第6部分已短块化。
+
+            - 无长段。'
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            $id: https://example.com/schemas/flow-1-5/1.0.0/node-b1-sections-4-6.schema.json
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: false
+            properties:
+              section_4_status_bucket:
+                type: string
+              section_4_text:
+                type: string
+              section_6_benefit_items:
+                items:
+                  additionalProperties: false
+                  properties:
+                    benefit_evidence_note:
+                      type: string
+                    benefit_mechanism:
+                      type: string
+                    benefit_status_bucket:
+                      type: string
+                    benefit_title:
+                      type: string
+                  required:
+                  - benefit_title
+                  - benefit_mechanism
+                  - benefit_status_bucket
+                  - benefit_evidence_note
+                  type: object
+                maxItems: 4
+                type: array
+            required:
+            - section_4_text
+            - section_4_status_bucket
+            - section_6_benefit_items
+            title: Flow-1-5::B1::sections_4_6::v1.0.0
+            type: object
+        structured_output_enabled: true
+        title: 1-5-6-技术交底书-问题目标与效果生成（4+6）
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 117
+      id: '1733319053290'
+      position:
+        x: 2132
+        y: 412
+      positionAbsolute:
+        x: 2132
+        y: 412
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1733319053290'
+          - structured_output
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            max_tokens: 11000
+            reasoning_effort: low
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: flow15-v1000-b2-system
+          role: system
+          text: '# Flow-1-5 1.0.0 System Prompt
+
+
+            ## Role
+
+            - 技术交底书第5部分结构化撰写专家
+
+
+            ## Mission
+
+            - 将第5部分拆成带状态与正文准入字段的结构化对象，稳住关键创新点与可选方案边界。
+
+
+            ## Node Responsibility
+
+            - 为 5.1 和 5.2 提供显式状态桶。
+
+            - 为 5.3 和 5.4 提供显式准入范围。
+
+            - 阻断旧技术和候选项回渗正文主项。
+
+
+            ## Allowed Inputs
+
+            - A/B1/H/输入证据分层结果
+
+            - 综合资料正文
+
+
+            ## Output Contract
+
+            - 仅输出 `section_5_1_text`、`section_5_1_status_bucket`、`section_5_2_text`、`section_5_2_status_bucket`、`section_5_3_items`、`section_5_4_items`。
+
+
+            ## Evidence Boundary
+
+            - 主创新只能来自当前发明事实层。
+
+            - 旧技术、参考项和候选增强项不得进入 5.3 主项。
+
+
+            ## Forbidden Behavior
+
+            - 禁止把旧技术或参考项写入 5.3。
+
+            - 禁止把候选方案伪装成正文主方案。
+
+
+            ## Writing Rules
+
+            - `section_5_3_items` 每项字段固定为 `item_title`、`item_body`、`item_type`、`status_bucket`、`admission_scope`。
+
+            - `section_5_4_items` 每项字段固定为 `scheme_title`、`scheme_body`、`admission_scope`、`body_admission`、`status_bucket`。
+
+            - `body_admission` 只允许 `keep` 或 `exclude`。
+
+            - 只有 `admission_scope = 正文保留` 的项，`body_admission` 才允许为 `keep`。
+
+            - 凡属于 `CP-009`、`CP-010`、`CP-004`、`CP-006` 或其他仅候选/参考方案的项，必须输出为 `admission_scope = 候选参考-不入正文` 且 `body_admission = exclude`。
+
+            - 输出必须使用中文。
+
+
+            ## Self-check
+
+            - 5.1/5.2 状态字段齐全。
+
+            - 5.3 边界干净。
+
+            - 5.4 只保留允许进入正文的项。
+
+            - 每条 5.4 都已给出 `body_admission`。'
+        - id: flow15-v1000-b2-user
+          role: user
+          text: '## 示例隔离与零新增（强制）
+
+
+            - 输出内容只允许来自输入资料、上游节点结果和当前节点规则；禁止迁移模板示例中的领域词、数值、场景或专有名词。
+
+            - 若输入缺失，不得用常识补齐为既成事实；仅可做受控整理，且必须在允许的字段和语境内表达。
+
+            - 不得新增输入未出现的核心发明点、关键控制原理、实验结论、参数区间、法律判断或商业结论。
+
+            - 若上游节点、证据分层结果与原始资料冲突，优先保留原始资料和完整技术交底书中的明确信息。
+
+
+            # Node-1-5-7 技术交底书-技术方案生成（5）
+
+
+            > 版本：1.0.0 Prompt Upgrade
+
+
+            ## 任务边界
+
+
+            把第5部分输出成适合最终 code 成文节点稳定渲染的结构化对象，显式区分主创新、可选方案和状态边界。
+
+
+            ## 当前输入
+
+
+            A 结构化输出（JSON）：{{#1733318861874.structured_output#}}
+
+
+            B1 结构化输出（JSON）：{{#1733319053290.structured_output#}}
+
+
+            技术要素表初稿（Markdown）：{{#1733319005558.text#}}
+
+
+            输入证据分层（JSON）：{{#1769200000003.structured_output#}}
+
+
+            ## 生成目标
+
+
+            - 稳住 5.3 边界。
+
+            - 稳住 5.4 过滤后内容。
+
+            - 避免正文回渗旧技术或参考项。
+
+
+            ## 输出要求
+
+
+            - 只允许输出 `section_5_1_text`、`section_5_1_status_bucket`、`section_5_2_text`、`section_5_2_status_bucket`、`section_5_3_items`、`section_5_4_items`。
+
+
+            ## Rules
+
+
+            - `section_5_3_items` 只允许 `item_type = 主创新` 且 `admission_scope = 正文保留` 的内容进入最终正文主项。
+
+            - 旧技术、背景对比项、候选增强项不得进入 5.3。
+
+            - `section_5_4_items` 每项都必须输出 `body_admission`，且只允许 `keep | exclude`。
+
+            - 只有 `admission_scope = 正文保留` 的项，`body_admission` 才允许为 `keep`。
+
+            - `CP-009`、`CP-010`、`CP-004`、`CP-006` 以及其他仅来自候选/参考层的方案，一律输出为 `admission_scope = 候选参考-不入正文` 且 `body_admission = exclude`。
+
+            - `5.1 / 5.2` 必须显式给出 `status_bucket`。
+
+            - 输出必须使用中文，不得输出英文标题、英文分类或英文建议。
+
+
+            ## Workflow
+
+
+            1. 先写 5.1/5.2。
+
+            2. 再筛选 5.3 主创新项。
+
+            3. 最后逐条输出 5.4 可选方案，并同步填写 `admission_scope` 与 `body_admission`。
+
+
+            ## 最终自检
+
+
+            - 状态桶已输出。
+
+            - 5.3 无旧技术。
+
+            - 5.4 无越界候选项。
+
+            - `body_admission` 已逐条填写。'
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            $id: https://example.com/schemas/flow-1-5/1.0.0/node-b2-section-5.schema.json
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: false
+            properties:
+              section_5_1_status_bucket:
+                type: string
+              section_5_1_text:
+                type: string
+              section_5_2_status_bucket:
+                type: string
+              section_5_2_text:
+                type: string
+              section_5_3_items:
+                items:
+                  additionalProperties: false
+                  properties:
+                    admission_scope:
+                      type: string
+                    body_admission:
+                      type: string
+                    item_body:
+                      type: string
+                    item_title:
+                      type: string
+                    item_type:
+                      type: string
+                    status_bucket:
+                      type: string
+                  required:
+                  - item_title
+                  - item_body
+                  - item_type
+                  - status_bucket
+                  - admission_scope
+                  - body_admission
+                  type: object
+                type: array
+              section_5_4_items:
+                items:
+                  additionalProperties: false
+                  properties:
+                    admission_scope:
+                      type: string
+                    body_admission:
+                      type: string
+                    scheme_body:
+                      type: string
+                    scheme_title:
+                      type: string
+                    status_bucket:
+                      type: string
+                  required:
+                  - scheme_title
+                  - scheme_body
+                  - admission_scope
+                  - body_admission
+                  - status_bucket
+                  type: object
+                type: array
+            required:
+            - section_5_1_text
+            - section_5_1_status_bucket
+            - section_5_2_text
+            - section_5_2_status_bucket
+            - section_5_3_items
+            - section_5_4_items
+            title: Flow-1-5::B2::section_5::v1.0.0
+            type: object
+        structured_output_enabled: true
+        title: 1-5-7-技术交底书-技术方案生成（5）
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 117
+      id: '1733319060832'
+      position:
+        x: 2474
+        y: 412
+      positionAbsolute:
+        x: 2474
+        y: 412
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1742289562256'
+          - structured_output
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            max_tokens: 15000
+            reasoning_effort: high
+            temperature: 0.15
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: flow15-v1000-c-system
+          role: system
+          text: '# Flow-1-5 1.0.0 System Prompt
+
+
+            ## Role
+
+            - 技术交底书第7部分结构化撰写专家
+
+
+            ## Mission
+
+            - 生成第7部分的逐图说明和主构件编号清单，并显式区分主构件与候选/参考构件。
+
+
+            ## Node Responsibility
+
+            - 输出逐图对象数组。
+
+            - 输出主构件编号对象数组。
+
+            - 禁止候选/参考构件进入主披露 7.2。
+
+
+            ## Allowed Inputs
+
+            - 技术要素表初稿
+
+            - B2 结构化输出
+
+            - D 结构化输出
+
+            - 输入证据分层结果
+
+            - 综合资料正文
+
+            - 附图原文与图像
+
+
+            ## Output Contract
+
+            - 仅输出 `drawing_description_items`、`component_marker_items`。
+
+
+            ## Evidence Boundary
+
+            - 只有主构件才允许 `display_in_main_disclosure = true`。
+
+            - 旧技术/候选/参考构件只能作为排除项存在。
+
+
+            ## Forbidden Behavior
+
+            - 禁止把候选或参考构件写进 7.2 主披露。
+
+            - 禁止混入实施步骤和效果分析。
+
+
+            ## Writing Rules
+
+            - `drawing_description_items` 每项固定字段为 `drawing_title`、`caption_text`、`status_bucket`。
+
+            - `component_marker_items` 每项固定字段为 `component_code`、`component_name`、`component_role`、`component_scope`、`display_in_main_disclosure`、`status_bucket`。
+
+
+            ## Self-check
+
+            - 主构件与参考构件已区分。
+
+            - 7.2 只会渲染主构件。'
+        - id: flow15-v1000-c-user
+          role: user
+          text: '## 示例隔离与零新增（强制）
+
+
+            - 输出内容只允许来自输入资料、上游节点结果和当前节点规则；禁止迁移模板示例中的领域词、数值、场景或专有名词。
+
+            - 若输入缺失，不得用常识补齐为既成事实；仅可做受控整理，且必须在允许的字段和语境内表达。
+
+            - 不得新增输入未出现的核心发明点、关键控制原理、实验结论、参数区间、法律判断或商业结论。
+
+            - 若上游节点、证据分层结果与原始资料冲突，优先保留原始资料和完整技术交底书中的明确信息。
+
+
+            # Node-1-5-8 技术交底书-附图说明生成（7）
+
+
+            > 版本：1.0.0 Prompt Upgrade
+
+
+            ## 任务边界
+
+
+            输出第7部分的逐图说明和主构件编号清单，保证最终 7.2 不混入候选/参考构件。
+
+
+            ## 当前输入
+
+
+            技术要素表初稿（Markdown）：{{#1733319005558.text#}}
+
+
+            B2 结构化输出（JSON）：{{#1733319060832.structured_output#}}
+
+
+            D 结构化输出（JSON）：{{#1742289562256.structured_output#}}
+
+
+            输入证据分层（JSON）：{{#1769200000003.structured_output#}}
+
+
+            综合资料正文（Markdown）：{{#1745495528138.output#}}
+
+
+            附图说明原文：{{#1733318603098.drawings_explain_TD#}}
+
+
+            附图图像：{{#1733318603098.drawings_TD#}}
+
+
+            ## 生成目标
+
+
+            - 逐图说明稳定。
+
+            - 主构件编号稳定。
+
+            - 候选/参考构件不进入 7.2。
+
+
+            ## 输出要求
+
+
+            - 只允许输出 `drawing_description_items`、`component_marker_items`。
+
+
+            ## Rules
+
+
+            - `component_scope` 只能写短标签，如 `主构件`、`候选构件`、`参考构件`、`旧技术构件`。
+
+            - 只有 `component_scope = 主构件` 且来自 `main_disclosure_component_items` 的项，才允许 `display_in_main_disclosure = true`。
+
+            - `drawing_description_items` 与 `component_marker_items` 都必须是对象数组。
+
+
+            ## Workflow
+
+
+            1. 先整理图项。
+
+            2. 再按证据分层识别主构件。
+
+            3. 最后输出编号对象并标注显示资格。
+
+
+            ## 最终自检
+
+
+            - 7.2 主构件边界稳定。
+
+            - 无候选/参考构件回渗。
+
+
+            ## Basic-1.1.3 补全口径（强制）
+
+
+            - 若处于无附图输入状态（`附图说明原文` 为空且 `附图图像` 为空），不得伪称用户已提供附图。
+
+            - 可以根据综合资料正文和技术方案生成“建议性附图说明”，但每个 `drawing_description_items.status_bucket` 与相关 `component_marker_items.status_bucket` 必须写 `基于输入推导，待发明人确认`。
+
+            - 推导生成的图号、构件编号和附图标记不得标注为已明确事实，不得写成“已明确事实”。
+
+            - 若用户输入中完全不足以推导附图，应输出空数组，并让完善建议报告提出补图问题。'
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            $id: https://example.com/schemas/flow-1-5/1.0.0/node-c-section-7-lists.schema.json
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: false
+            properties:
+              component_marker_items:
+                items:
+                  additionalProperties: false
+                  properties:
+                    component_code:
+                      type: string
+                    component_name:
+                      type: string
+                    component_role:
+                      type: string
+                    component_scope:
+                      type: string
+                    display_in_main_disclosure:
+                      type: boolean
+                    status_bucket:
+                      type: string
+                  required:
+                  - component_code
+                  - component_name
+                  - component_role
+                  - component_scope
+                  - display_in_main_disclosure
+                  - status_bucket
+                  type: object
+                type: array
+              drawing_description_items:
+                items:
+                  additionalProperties: false
+                  properties:
+                    caption_text:
+                      type: string
+                    drawing_title:
+                      type: string
+                    status_bucket:
+                      type: string
+                  required:
+                  - drawing_title
+                  - caption_text
+                  - status_bucket
+                  type: object
+                type: array
+            required:
+            - drawing_description_items
+            - component_marker_items
+            title: Flow-1-5::C::section_7_lists::v1.0.0
+            type: object
+        structured_output_enabled: true
+        title: 1-5-8-技术交底书-附图说明生成（7）
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1733318603098'
+            - drawings_TD
+          enabled: true
+      height: 117
+      id: '1735695273362'
+      position:
+        x: 3178
+        y: 392
+      positionAbsolute:
+        x: 3178
+        y: 392
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1733319060832'
+          - structured_output
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            max_tokens: 12500
+            reasoning_effort: high
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: flow15-v1000-d-system
+          role: system
+          text: '# Flow-1-5 1.0.0 System Prompt
+
+
+            ## Role
+
+            - 技术交底书第8部分结构化撰写专家
+
+
+            ## Mission
+
+            - 将第8部分拆成状态明确、可短块渲染的结构化字段，提升 8.2 的可读性。
+
+
+            ## Node Responsibility
+
+            - 为 8.1/8.3 提供显式状态桶。
+
+            - 把 8.2 拆成场景、步骤、结果/状态。
+
+            - 保留验证线索。
+
+
+            ## Allowed Inputs
+
+            - B2 结构化输出
+
+            - 输入证据分层结果
+
+            - 综合资料正文
+
+            - 附图说明原文
+
+
+            ## Output Contract
+
+            - 仅输出 `section_8_1_text`、`section_8_1_status_bucket`、`section_8_2_items`、`section_8_3_text`、`section_8_3_status_bucket`。
+
+
+            ## Evidence Boundary
+
+            - 只用事实层和工程约束层。
+
+            - 候选设想不得写成实施方式。
+
+
+            ## Forbidden Behavior
+
+            - 禁止把 8.2 压成高密长段。
+
+            - 禁止越界到第9节。
+
+
+            ## Writing Rules
+
+            - `section_8_2_items` 每项固定字段为 `scenario_title`、`implementation_steps`、`expected_result_or_status`、`status_bucket`。
+
+            - 8.2 最多 4 项。
+
+
+            ## Self-check
+
+            - 8.2 已拆成短块。
+
+            - 8.1/8.3 状态字段齐全。'
+        - id: flow15-v1000-d-user
+          role: user
+          text: '## 示例隔离与零新增（强制）
+
+
+            - 输出内容只允许来自输入资料、上游节点结果和当前节点规则；禁止迁移模板示例中的领域词、数值、场景或专有名词。
+
+            - 若输入缺失，不得用常识补齐为既成事实；仅可做受控整理，且必须在允许的字段和语境内表达。
+
+            - 不得新增输入未出现的核心发明点、关键控制原理、实验结论、参数区间、法律判断或商业结论。
+
+            - 若上游节点、证据分层结果与原始资料冲突，优先保留原始资料和完整技术交底书中的明确信息。
+
+
+            # Node-1-5-9 技术交底书-具体实施方式生成（8）
+
+
+            > 版本：1.0.0 Prompt Upgrade
+
+
+            ## 任务边界
+
+
+            把第8部分变成可短块渲染的结构化数据，重点压缩 8.2 的长句密度。
+
+
+            ## 当前输入
+
+
+            B2 结构化输出（JSON）：{{#1733319060832.structured_output#}}
+
+
+            输入证据分层（JSON）：{{#1769200000003.structured_output#}}
+
+
+            综合资料正文（Markdown）：{{#1745495528138.output#}}
+
+
+            附图说明原文：{{#1733318603098.drawings_explain_TD#}}
+
+
+            ## 生成目标
+
+
+            - 8.2 可读性提升。
+
+            - 8.1/8.3 状态显式。
+
+            - 保留验证路径。
+
+
+            ## 输出要求
+
+
+            - 只允许输出 `section_8_1_text`、`section_8_1_status_bucket`、`section_8_2_items`、`section_8_3_text`、`section_8_3_status_bucket`。
+
+
+            ## Rules
+
+
+            - 8.2 每项都必须拆成场景、实施步骤、结果/状态。
+
+            - `section_8_2_items` 最多 4 项。
+
+            - `section_8_1_status_bucket` 与 `section_8_3_status_bucket` 只允许统一四类状态。
+
+
+            ## Workflow
+
+
+            1. 先写 8.1。
+
+            2. 再拆 8.2。
+
+            3. 最后写 8.3 并补状态桶。
+
+
+            ## 最终自检
+
+
+            - 8.2 没有高密长段。
+
+            - 8.1/8.3 状态桶齐全。'
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            $id: https://example.com/schemas/flow-1-5/1.0.0/node-d-section-8.schema.json
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: false
+            properties:
+              section_8_1_status_bucket:
+                type: string
+              section_8_1_text:
+                type: string
+              section_8_2_items:
+                items:
+                  additionalProperties: false
+                  properties:
+                    expected_result_or_status:
+                      type: string
+                    implementation_steps:
+                      type: string
+                    scenario_title:
+                      type: string
+                    status_bucket:
+                      type: string
+                  required:
+                  - scenario_title
+                  - implementation_steps
+                  - expected_result_or_status
+                  - status_bucket
+                  type: object
+                maxItems: 4
+                type: array
+              section_8_3_status_bucket:
+                type: string
+              section_8_3_text:
+                type: string
+            required:
+            - section_8_1_text
+            - section_8_1_status_bucket
+            - section_8_2_items
+            - section_8_3_text
+            - section_8_3_status_bucket
+            title: Flow-1-5::D::section_8::v1.0.0
+            type: object
+        structured_output_enabled: true
+        title: 1-5-9-技术交底书-具体实施方式生成（8）
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 117
+      id: '1742289562256'
+      position:
+        x: 2836
+        y: 392
+      positionAbsolute:
+        x: 2836
+        y: 392
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: exists
+            id: 27c7ac87-3d44-48dd-8a8d-4e451392be7a
+            value: ''
+            varType: file
+            variable_selector:
+            - '1733318603098'
+            - Technical_Disclosure_file
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 1-5-10-条件分支
+        type: if-else
+      height: 123
+      id: '1745495520531'
+      position:
+        x: 342
+        y: 370
+      positionAbsolute:
+        x: 342
+        y: 370
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "def clean_text(value):\n    if value is None:\n        return \"\"\n    text = str(value).strip()\n    if text.lower() in (\"none\", \"null\", \"undefined\"):\n        return \"\"\n    return text\n\ndef add_section(lines, title, value):\n    text = clean_text(value)\n    if not text:\n        return\n    lines.extend([f\"## {title}\", text, \"\"])\n\ndef main(user_input=None, technical_disclosure_summary=None, extracted_text=None, drawings_explain=None) -> dict:\n    lines = [\"# 技术资料正文汇总\", \"\"]\n    add_section(lines, \"用户直接输入（必须保留）\", user_input)\n    add_section(lines, \"技术资料文字\", technical_disclosure_summary)\n    add_section(lines, \"技术资料文件提取文本\", extracted_text)\n    add_section(lines, \"用户提供的附图说明\", drawings_explain)\n    if len(lines) <= 2:\n        lines.extend([\"## 输入缺口\", \"未收到可用于成文的技术资料；需补充技术方案、实施例、附图或权利要求文本。\", \"\"])\n    return {\"output\": \"\\n\".join(lines).strip()}\n"
+        code_language: python3
+        desc: Basic-1.1.3：合并用户直接输入、技术资料文字、文件提取文本和附图说明，过滤 None。
+        outputs:
+          output:
+            children: null
+            type: string
+        selected: false
+        title: 1-5-11-技术资料正文汇总
+        type: code
+        variables:
+        - value_selector:
+          - '1733318603098'
+          - User_input
+          variable: user_input
+        - value_selector:
+          - '1733318603098'
+          - Technical_Disclosure_summary
+          variable: technical_disclosure_summary
+        - value_selector:
+          - '1754996149372'
+          - text
+          variable: extracted_text
+        - value_selector:
+          - '1733318603098'
+          - drawings_explain_TD
+          variable: drawings_explain
+      height: 51
+      id: '1745495528138'
+      position:
+        x: 1408
+        y: 434
+      positionAbsolute:
+        x: 1408
+        y: 434
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1733319060832'
+          - structured_output
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            max_tokens: 10000
+            reasoning_effort: high
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3.1-flash-lite-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: flow15-v1000-e-system
+          role: system
+          text: '# Flow-1-5 1.0.0 System Prompt
+
+
+            ## Role
+
+            - 技术交底书第9部分结构化撰写专家
+
+
+            ## Mission
+
+            - 把第9节固定成三组结构化条目：现有方案、本方案区别、当前确认状态。
+
+
+            ## Node Responsibility
+
+            - 显式输出三组项目。
+
+            - 每项显式输出状态桶。
+
+            - 防止候选增强项回渗本方案区别主句。
+
+
+            ## Allowed Inputs
+
+            - A/B1/B2 结构化输出
+
+            - 输入证据分层结果
+
+            - 综合资料正文
+
+
+            ## Output Contract
+
+            - 仅输出 `section_9_current_solution_items`、`section_9_difference_items`、`section_9_confirmation_items`。
+
+
+            ## Evidence Boundary
+
+            - 只承载现有方案、区别和确认状态。
+
+            - 候选增强项不得进入本方案区别主句。
+
+
+            ## Forbidden Behavior
+
+            - 禁止写法律判断。
+
+            - 禁止写大段总述替代三组结构。
+
+
+            ## Writing Rules
+
+            - 三个字段都必须是对象数组，每项固定字段为 `item_text`、`status_bucket`。
+
+
+            ## Self-check
+
+            - 三组结构完整。
+
+            - 每项都有状态桶。'
+        - id: flow15-v1000-e-user
+          role: user
+          text: '## 示例隔离与零新增（强制）
+
+
+            - 输出内容只允许来自输入资料、上游节点结果和当前节点规则；禁止迁移模板示例中的领域词、数值、场景或专有名词。
+
+            - 若输入缺失，不得用常识补齐为既成事实；仅可做受控整理，且必须在允许的字段和语境内表达。
+
+            - 不得新增输入未出现的核心发明点、关键控制原理、实验结论、参数区间、法律判断或商业结论。
+
+            - 若上游节点、证据分层结果与原始资料冲突，优先保留原始资料和完整技术交底书中的明确信息。
+
+
+            # Node-1-5-13 技术交底书-现有技术对比生成（9）
+
+
+            > 版本：1.0.0 Prompt Upgrade
+
+
+            ## 任务边界
+
+
+            将第9节输出为三组结构化内容：现有方案、本方案区别、当前确认状态。
+
+
+            ## 当前输入
+
+
+            A 结构化输出（JSON）：{{#1733318861874.structured_output#}}
+
+
+            B1 结构化输出（JSON）：{{#1733319053290.structured_output#}}
+
+
+            B2 结构化输出（JSON）：{{#1733319060832.structured_output#}}
+
+
+            输入证据分层（JSON）：{{#1769200000003.structured_output#}}
+
+
+            综合资料正文（Markdown）：{{#1745495528138.output#}}
+
+
+            ## 生成目标
+
+
+            - 第9节不再是大段。
+
+            - 显式表达现有方案、区别和确认状态。
+
+            - 压住设计目标和待确认堆叠。
+
+
+            ## 输出要求
+
+
+            - 只允许输出 `section_9_current_solution_items`、`section_9_difference_items`、`section_9_confirmation_items`。
+
+
+            ## Rules
+
+
+            - 三个字段都必须是对象数组，每项只表达一个短句。
+
+            - 每项都必须显式给出 `status_bucket`。
+
+            - 候选增强项不得进入 `section_9_difference_items` 主句。
+
+
+            ## Workflow
+
+
+            1. 先整理现有方案。
+
+            2. 再整理区别。
+
+            3. 最后整理确认状态。
+
+
+            ## 最终自检
+
+
+            - 无大段。
+
+            - 每项有状态。
+
+            - 无回渗候选项。'
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            $id: https://example.com/schemas/flow-1-5/1.0.0/node-e-section-9.schema.json
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: false
+            properties:
+              section_9_confirmation_items:
+                items:
+                  additionalProperties: false
+                  properties:
+                    item_text:
+                      type: string
+                    status_bucket:
+                      type: string
+                  required:
+                  - item_text
+                  - status_bucket
+                  type: object
+                type: array
+              section_9_current_solution_items:
+                items:
+                  additionalProperties: false
+                  properties:
+                    item_text:
+                      type: string
+                    status_bucket:
+                      type: string
+                  required:
+                  - item_text
+                  - status_bucket
+                  type: object
+                type: array
+              section_9_difference_items:
+                items:
+                  additionalProperties: false
+                  properties:
+                    item_text:
+                      type: string
+                    status_bucket:
+                      type: string
+                  required:
+                  - item_text
+                  - status_bucket
+                  type: object
+                type: array
+            required:
+            - section_9_current_solution_items
+            - section_9_difference_items
+            - section_9_confirmation_items
+            title: Flow-1-5::E::section_9::v1.0.0
+            type: object
+        structured_output_enabled: true
+        title: 1-5-13-技术交底书-现有技术对比生成（9）
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 117
+      id: '1745499059499'
+      position:
+        x: 2946
+        y: 589
+      positionAbsolute:
+        x: 2946
+        y: 589
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1769200000001'
+          - output
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            max_tokens: 15000
+            reasoning_effort: low
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: flow15-v1000-g-system
+          role: system
+          text: '# Flow-1-5 1.0.0 System Prompt
+
+
+            ## Role
+
+            - 完善建议报告结构化诊断整理器
+
+
+            ## Mission
+
+            - 生成用户化的结构化报告数据，并补足 Top 缺口诊断字段，供最终报告、摘要和终稿表治理链复用。
+
+
+            ## Node Responsibility
+
+            - 保留用户化表达。
+
+            - 补足高优先级缺口字段。
+
+            - 不给最终 Markdown 带回内部方法论术语。
+
+
+            ## Allowed Inputs
+
+            - 完整技术交底书
+
+            - 技术要素表初稿
+
+            - 综合资料正文
+
+            - 输入证据分层结果
+
+
+            ## Output Contract
+
+            - 输出既有结构化报告字段，并新增 `critical_gap_items_ranked`、`validation_gap_items`、`interface_parameter_gap_items`、`failure_chain_gap_items`、`emc_gap_items`。
+
+
+            ## Evidence Boundary
+
+            - 只做成文后诊断。
+
+            - 不得创造新事实。
+
+
+            ## Forbidden Behavior
+
+            - 禁止输出 TRL、TT、三元超系统 等内部方法论术语到用户化报告正文。
+
+            - 禁止回写正文事实。
+
+
+            ## Writing Rules
+
+            - `critical_gap_items_ranked` 最多 3 项，每项字段为 `gap_title`、`gap_reason`、`gap_category`、`gap_priority`、`recommended_action`。
+
+            - 所有结构化字段、分类名、优先级和建议动作必须使用中文。
+
+            - 高优先级缺口优先覆盖风洞验证、冷舱/极寒验证、HIL/控制链验证、失效链条逻辑映射、EMC、接口参数缺口。
+
+
+            ## Self-check
+
+            - 结构字段完整。
+
+            - Top 缺口已显式列出。
+
+            - 用户化表达保持。
+
+            - 全字段中文。'
+        - id: flow15-v1000-g-user
+          role: user
+          text: '## 示例隔离与零新增（强制）
+
+
+            - 输出内容只允许来自输入资料、上游节点结果和当前节点规则；禁止迁移模板示例中的领域词、数值、场景或专有名词。
+
+            - 若输入缺失，不得用常识补齐为既成事实；仅可做受控整理，且必须在允许的字段和语境内表达。
+
+            - 不得新增输入未出现的核心发明点、关键控制原理、实验结论、参数区间、法律判断或商业结论。
+
+            - 若上游节点、证据分层结果与原始资料冲突，优先保留原始资料和完整技术交底书中的明确信息。
+
+
+            # Node-1-5-14 完善建议报告结构化生成
+
+
+            > 版本：1.0.0 Prompt Upgrade
+
+
+            ## 任务边界
+
+
+            在用户化表达前提下，补足高优先级缺口的结构化字段，供 1-5-15、1-5-25、1-5-5 复用。
+
+
+            ## 当前输入
+
+
+            完整技术交底书（Markdown）：{{#1769200000001.output#}}
+
+
+            技术要素表初稿（Markdown）：{{#1733319005558.text#}}
+
+
+            综合资料正文（Markdown）：{{#1745495528138.output#}}
+
+
+            输入证据分层（JSON）：{{#1769200000003.structured_output#}}
+
+
+            ## 生成目标
+
+
+            - 保留用户化报告。
+
+            - 显式提炼 Top 3 缺口。
+
+            - 把验证、接口、失效链条、EMC 缺口单独沉淀。
+
+
+            ## 输出要求
+
+
+            - 在既有字段基础上，新增 `critical_gap_items_ranked`、`validation_gap_items`、`interface_parameter_gap_items`、`failure_chain_gap_items`、`emc_gap_items`。
+
+
+            ## Rules
+
+
+            - `critical_gap_items_ranked` 最多 3 项，必须给出优先级和建议动作。
+
+            - 最终用户化正文不得出现 `TRL`、`TT`、`三元超系统`。
+
+            - 具体缺口不能退化成泛化表述。
+
+            - 所有结构化字段必须使用中文，不允许输出英文标题、英文建议、英文分类名或英文优先级。
+
+            - 若只存在 1 个最高优先级强缺口，可以只输出 1 项，不强行补第二项弱缺口。
+
+
+            ## Workflow
+
+
+            1. 先做原有差异诊断。
+
+            2. 再抽取最高优先级缺口及分类。
+
+            3. 最后检查用户化表达和全中文输出。
+
+
+            ## 最终自检
+
+
+            - 新增字段完整。
+
+            - Top 缺口具体。
+
+            - 无内部方法论术语。
+
+            - 全字段中文。
+
+
+            ## Basic-1.1.3 确认清单与阻断缺口（强制）
+
+
+            - 必须输出 `confirmation_required_items`。
+
+            - 对所有“基于输入推导，待发明人确认”的补全内容，必须进入确认清单。
+
+            - 若发现空壳独立权利要求、直接用户输入事实未被正文吸收、无附图输入但需要附图表达，应列为高优先级或阻断性补料项。
+
+            - 完善建议报告必须明确区分：已输入事实、基于输入推导、必须发明人确认、输入完全缺失。
+
+
+            ## Basic-1.1.3 失效链条与接口参数优先级（强制）
+
+
+            - 对速率协商超时、矩阵开关切换失败、探查/应答帧格式缺失、重试机制、错误反馈、瞬态保护等问题，必须至少列为中高优先级补料项。
+
+            - 不得把失效链条逻辑、切换失败保护和通信错误反馈降为低优先级泛化建议。
+
+            - 若输入未给出具体参数，应明确写成“必须发明人确认/补充”，不得用常识补齐为既成事实。'
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            $id: https://example.com/schemas/flow-1-5/1.1.0/node-g-report-structured.schema.json
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: false
+            properties:
+              already_input_but_not_absorbed_items:
+                items:
+                  additionalProperties: false
+                  properties:
+                    current_absorption_state:
+                      type: string
+                    evidence_source:
+                      type: string
+                    item_title:
+                      type: string
+                    recommendation:
+                      type: string
+                  required:
+                  - item_title
+                  - evidence_source
+                  - current_absorption_state
+                  - recommendation
+                  type: object
+                type: array
+              critical_gap_items_ranked:
+                items:
+                  additionalProperties: false
+                  properties:
+                    gap_category:
+                      type: string
+                    gap_priority:
+                      type: string
+                    gap_reason:
+                      type: string
+                    gap_title:
+                      type: string
+                    recommended_action:
+                      type: string
+                  required:
+                  - gap_title
+                  - gap_reason
+                  - gap_category
+                  - gap_priority
+                  - recommended_action
+                  type: object
+                maxItems: 3
+                type: array
+              emc_gap_items:
+                items:
+                  type: string
+                type: array
+              failure_chain_gap_items:
+                items:
+                  type: string
+                type: array
+              input_missing_items:
+                items:
+                  additionalProperties: false
+                  properties:
+                    current_absorption_state:
+                      type: string
+                    evidence_source:
+                      type: string
+                    item_title:
+                      type: string
+                    recommendation:
+                      type: string
+                  required:
+                  - item_title
+                  - evidence_source
+                  - current_absorption_state
+                  - recommendation
+                  type: object
+                type: array
+              interface_parameter_gap_items:
+                items:
+                  type: string
+                type: array
+              section_1_status_overview:
+                description: 第1节资料现状概览正文，不含标题。
+                type: string
+              section_2_pending_items:
+                description: 第2节待确认事项正文，不含标题。
+                type: string
+              section_3_supplementary_info:
+                description: 第3节建议补充信息正文，不含标题。
+                type: string
+              section_5_risk_alerts:
+                description: 第5节风险提醒正文，不含标题。
+                type: string
+              section_6_priorities_and_next_steps:
+                description: 第6节补料优先级与下一步建议正文，不含标题。
+                type: string
+              validation_gap_items:
+                items:
+                  type: string
+                type: array
+              confirmation_required_items:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: false
+                  properties:
+                    item_title:
+                      type: string
+                    reason:
+                      type: string
+                    confirmation_question:
+                      type: string
+                    priority:
+                      type: string
+                  required:
+                  - item_title
+                  - reason
+                  - confirmation_question
+                  - priority
+            required:
+            - section_1_status_overview
+            - section_2_pending_items
+            - section_3_supplementary_info
+            - already_input_but_not_absorbed_items
+            - input_missing_items
+            - section_5_risk_alerts
+            - section_6_priorities_and_next_steps
+            - critical_gap_items_ranked
+            - validation_gap_items
+            - interface_parameter_gap_items
+            - failure_chain_gap_items
+            - emc_gap_items
+            - confirmation_required_items
+            title: Flow-1-5::G::report_structured::v1.1.0
+            type: object
+        structured_output_enabled: true
+        title: 1-5-14-完善建议报告结构化生成
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 117
+      id: '1745534966273'
+      position:
+        x: 3902
+        y: 502
+      positionAbsolute:
+        x: 3902
+        y: 502
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 1-5-16-文档提取器
+        type: document-extractor
+        variable_selector:
+        - '1733318603098'
+        - Technical_Disclosure_file
+      height: 104
+      id: '1754996149372'
+      position:
+        x: 1046
+        y: 416
+      positionAbsolute:
+        x: 1046
+        y: 416
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1769200000001'
+          - output
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            max_tokens: 6000
+            reasoning_effort: low
+            temperature: 0.15
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: flow15-v1000-i-system
+          role: system
+          text: '# Flow-1-5 1.0.0 System Prompt
+
+
+            ## Role
+
+            - 技术要素表终稿结构化整理器
+
+
+            ## Mission
+
+            - 在保留双通道治理的前提下，把 accepted_rows 和 excluded_rows 同时压缩到适合终稿治理的体量，并保证 accepted_rows 的技术单元原子性。
+
+
+            ## Node Responsibility
+
+            - 保持 accepted/excluded 双通道。
+
+            - 把 accepted_rows 控制在 6 行。
+
+            - 把 excluded_rows 控制在 6 行并保留最高价值排除项。
+
+
+            ## Allowed Inputs
+
+            - 技术要素表初稿
+
+            - 完整技术交底书
+
+            - 报告信号抽取结果
+
+
+            ## Output Contract
+
+            - 只输出 `accepted_rows`、`excluded_rows`、`accepted_row_count`、`excluded_row_count`。
+
+
+            ## Evidence Boundary
+
+            - accepted_rows 只保留正文事实单元。
+
+            - 仅由补料优先级导出的缺失项不得进入 accepted_rows。
+
+
+            ## Forbidden Behavior
+
+            - 禁止一行混入多个技术单元。
+
+            - 禁止候选方案、参考构件、缺失项进入 accepted_rows。
+
+
+            ## Writing Rules
+
+            - accepted_rows 最多 6 行，excluded_rows 最多 6 行。
+
+            - 若 excluded_rows 超限，只保留缺失价值最高优先级项。
+
+
+            ## Self-check
+
+            - accepted/excluded 行数都已收缩。
+
+            - accepted_rows 原子性成立。'
+        - id: flow15-v1000-i-user
+          role: user
+          text: '## 示例隔离与零新增（强制）
+
+
+            - 输出内容只允许来自输入资料、上游节点结果和当前节点规则；禁止迁移模板示例中的领域词、数值、场景或专有名词。
+
+            - 若输入缺失，不得用常识补齐为既成事实；仅可做受控整理，且必须在允许的字段和语境内表达。
+
+            - 不得新增输入未出现的核心发明点、关键控制原理、实验结论、参数区间、法律判断或商业结论。
+
+            - 若上游节点、证据分层结果与原始资料冲突，优先保留原始资料和完整技术交底书中的明确信息。
+
+
+            # Node-1-5-18 技术要素表终稿结构化生成
+
+
+            > 版本：1.0.0 Prompt Upgrade
+
+
+            ## 任务边界
+
+
+            保留 1.0.0 的双通道治理，但把 accepted_rows 和 excluded_rows 都压缩到适合终稿治理的规模，并保证 accepted_rows 每行只表达一个技术单元。
+
+
+            ## 当前输入
+
+
+            技术要素表初稿（Markdown）：{{#1733319005558.text#}}
+
+
+            完整技术交底书（Markdown）：{{#1769200000001.output#}}
+
+
+            报告信号（JSON）：{{#1769200000002.structured_output#}}
+
+
+            ## 生成目标
+
+
+            - 稳定 accepted/excluded 双通道。
+
+            - 压缩 accepted_rows 与 excluded_rows。
+
+            - 避免候选/参考/缺失项进入 accepted_rows。
+
+
+            ## 输出要求
+
+
+            - 只允许输出 `accepted_rows`、`excluded_rows`、`accepted_row_count`、`excluded_row_count`。
+
+
+            ## Rules
+
+
+            - `accepted_rows` 最多 6 行，`excluded_rows` 最多 6 行。
+
+            - accepted_rows 每行只能表达一个清晰技术单元。
+
+            - 候选方案、参考构件、仅由补料优先级导出的缺失项不得进入 accepted_rows。
+
+
+            ## Workflow
+
+
+            1. 先按事实优先级生成候选终稿行。
+
+            2. 再做准入筛选，分流到 accepted/excluded。
+
+            3. 最后做压缩与去重。
+
+
+            ## 最终自检
+
+
+            - accepted_rows <= 6。
+
+            - excluded_rows <= 6。
+
+            - accepted_rows 无混合技术单元。
+
+
+            ## Basic-1.1.3 source_basis中文化（强制）
+
+
+            - `source_basis 必须使用中文可读来源`，不得输出内部 schema 字段或调试字段。
+
+            - 禁止在 source_basis 中输出 Numeric_claim_status_basis、Main_disclosure_component_items、Engineering_constraints。
+
+            - 若上游来源包含上述内部标签，必须分别改写为：发明简述中的数量与状态依据、主要构件与技术方案说明、工程约束与实施条件。'
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            $id: https://example.com/schemas/flow-1-5/1.0.0/node-i-final-table-rows.schema.json
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: false
+            properties:
+              accepted_row_count:
+                type: integer
+              accepted_rows:
+                description: 技术要素表终稿允许进入最终表格的行级结构化数组。
+                items:
+                  additionalProperties: false
+                  properties:
+                    macro_feature:
+                      type: string
+                    meta_effect:
+                      type: string
+                    meta_entity:
+                      type: string
+                    meta_feature:
+                      type: string
+                    meta_function:
+                      type: string
+                    meta_means:
+                      type: string
+                    source_basis:
+                      type: string
+                    status:
+                      type: string
+                    technical_effect:
+                      type: string
+                    technical_problem:
+                      type: string
+                  required:
+                  - technical_problem
+                  - macro_feature
+                  - meta_feature
+                  - meta_entity
+                  - meta_means
+                  - meta_function
+                  - meta_effect
+                  - technical_effect
+                  - status
+                  - source_basis
+                  type: object
+                maxItems: 6
+                type: array
+              excluded_row_count:
+                type: integer
+              excluded_rows:
+                description: 不满足终稿准入条件、仅用于诊断和留痕的排除条目数组。
+                items:
+                  additionalProperties: false
+                  properties:
+                    exclusion_reason:
+                      type: string
+                    original_title:
+                      type: string
+                    source_bucket:
+                      type: string
+                    suggested_destination:
+                      type: string
+                  required:
+                  - original_title
+                  - exclusion_reason
+                  - source_bucket
+                  - suggested_destination
+                  type: object
+                maxItems: 6
+                type: array
+            required:
+            - accepted_rows
+            - excluded_rows
+            - accepted_row_count
+            - excluded_row_count
+            title: Flow-1-5::I::final_table_rows::v1.0.0
+            type: object
+        structured_output_enabled: true
+        title: 1-5-18-技术要素表终稿结构化生成
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 117
+      id: '1755917468361'
+      position:
+        x: 4626
+        y: 197
+      positionAbsolute:
+        x: 4626
+        y: 197
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          label:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          llm_description: ''
+          max: null
+          min: null
+          name: md_text
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Optional docx template file for styling。Use "Home"-"Styles Pane" in Microsoft Word to edit styles of the docx file.
+            ja_JP: Optional docx template file for styling。Use "Home"-"Styles Pane" in Microsoft Word to edit styles of the docx file.
+            pt_BR: Optional docx template file for styling。Use "Home"-"Styles Pane" in Microsoft Word to edit styles of the docx file.
+            zh_Hans: 可选的docx模板文件，用于样式控制。使用Microsoft Word中“开始”-“样式窗格”对docx文件的样式进行编辑。
+          label:
+            en_US: DOCX Template File
+            ja_JP: DOCX Template File
+            pt_BR: DOCX Template File
+            zh_Hans: DOCX 模板文件
+          llm_description: An optional .pptx file that serves as a template for the generated presentation
+          max: null
+          min: null
+          name: docx_template_file
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: file
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Optional custom output file name, and the filename suffix is not required.
+            ja_JP: Optional custom output file name, and the filename suffix is not required.
+            pt_BR: Optional custom output file name, and the filename suffix is not required.
+            zh_Hans: 可选的自定义输出文件名，后缀名无需指定
+          label:
+            en_US: Output Filename
+            ja_JP: Output Filename
+            pt_BR: Output Filename
+            zh_Hans: 输出文件名
+          llm_description: ''
+          max: null
+          min: null
+          name: output_filename
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          docx_template_file: ''
+          md_text: ''
+          output_filename: ''
+        plugin_id: bowenliang123/md_exporter
+        plugin_unique_identifier: bowenliang123/md_exporter:3.6.9@3f027d63e80b44d5d5a9f706871afaef37905b8f8a89a2d152dc530211a8acb1
+        provider_icon: /console/api/workspaces/current/plugin/icon?tenant_id=2cf986dc-18a6-4926-b645-5a5b199da0b4&filename=f0bad95cda1671b4e49f0e05df6122ef9ec5d554e138f128795d11d3806c00ef.svg
+        provider_id: bowenliang123/md_exporter/md_exporter
+        provider_name: bowenliang123/md_exporter/md_exporter
+        provider_type: builtin
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: 1-5-20-技术交底书DOCX
+        tool_configurations: {}
+        tool_description: 将 Markdown 转换为 DOCX 文件的工具
+        tool_label: Markdown ⮕ DOCX
+        tool_name: md_to_docx
+        tool_node_version: '2'
+        tool_parameters:
+          docx_template_file:
+            type: constant
+            value: null
+          md_text:
+            type: mixed
+            value: '{{#1769200000001.output#}}'
+          output_filename:
+            type: mixed
+            value: Flow-1-5-标准化技术交底书-Basic-1.1.3-{{#1769140582678.text#}}
+        type: tool
+      height: 81
+      id: '1769140563914'
+      position:
+        x: 4988
+        y: 365
+      positionAbsolute:
+        x: 4988
+        y: 365
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          label:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          llm_description: ''
+          max: null
+          min: null
+          name: md_text
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Optional docx template file for styling。Use "Home"-"Styles Pane" in Microsoft Word to edit styles of the docx file.
+            ja_JP: Optional docx template file for styling。Use "Home"-"Styles Pane" in Microsoft Word to edit styles of the docx file.
+            pt_BR: Optional docx template file for styling。Use "Home"-"Styles Pane" in Microsoft Word to edit styles of the docx file.
+            zh_Hans: 可选的docx模板文件，用于样式控制。使用Microsoft Word中“开始”-“样式窗格”对docx文件的样式进行编辑。
+          label:
+            en_US: DOCX Template File
+            ja_JP: DOCX Template File
+            pt_BR: DOCX Template File
+            zh_Hans: DOCX 模板文件
+          llm_description: An optional .pptx file that serves as a template for the generated presentation
+          max: null
+          min: null
+          name: docx_template_file
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: file
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Optional custom output file name, and the filename suffix is not required.
+            ja_JP: Optional custom output file name, and the filename suffix is not required.
+            pt_BR: Optional custom output file name, and the filename suffix is not required.
+            zh_Hans: 可选的自定义输出文件名，后缀名无需指定
+          label:
+            en_US: Output Filename
+            ja_JP: Output Filename
+            pt_BR: Output Filename
+            zh_Hans: 输出文件名
+          llm_description: ''
+          max: null
+          min: null
+          name: output_filename
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          docx_template_file: ''
+          md_text: ''
+          output_filename: ''
+        plugin_id: bowenliang123/md_exporter
+        plugin_unique_identifier: bowenliang123/md_exporter:3.6.9@3f027d63e80b44d5d5a9f706871afaef37905b8f8a89a2d152dc530211a8acb1
+        provider_icon: /console/api/workspaces/current/plugin/icon?tenant_id=2cf986dc-18a6-4926-b645-5a5b199da0b4&filename=f0bad95cda1671b4e49f0e05df6122ef9ec5d554e138f128795d11d3806c00ef.svg
+        provider_id: bowenliang123/md_exporter/md_exporter
+        provider_name: bowenliang123/md_exporter/md_exporter
+        provider_type: builtin
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: 1-5-21-完善建议报告DOCX
+        tool_configurations: {}
+        tool_description: 将 Markdown 转换为 DOCX 文件的工具
+        tool_label: Markdown ⮕ DOCX
+        tool_name: md_to_docx
+        tool_node_version: '2'
+        tool_parameters:
+          docx_template_file:
+            type: constant
+            value: null
+          md_text:
+            type: mixed
+            value: '{{#1769300000001.output#}}'
+          output_filename:
+            type: mixed
+            value: Flow-1-5-技术交底书完善建议报告-Basic-1.1.3-{{#1769140582678.text#}}
+        type: tool
+      height: 81
+      id: '1769140563915'
+      position:
+        x: 4988
+        y: 526
+      positionAbsolute:
+        x: 4988
+        y: 526
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          label:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          llm_description: ''
+          max: null
+          min: null
+          name: md_text
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Optional docx template file for styling。Use "Home"-"Styles Pane" in Microsoft Word to edit styles of the docx file.
+            ja_JP: Optional docx template file for styling。Use "Home"-"Styles Pane" in Microsoft Word to edit styles of the docx file.
+            pt_BR: Optional docx template file for styling。Use "Home"-"Styles Pane" in Microsoft Word to edit styles of the docx file.
+            zh_Hans: 可选的docx模板文件，用于样式控制。使用Microsoft Word中“开始”-“样式窗格”对docx文件的样式进行编辑。
+          label:
+            en_US: DOCX Template File
+            ja_JP: DOCX Template File
+            pt_BR: DOCX Template File
+            zh_Hans: DOCX 模板文件
+          llm_description: An optional .pptx file that serves as a template for the generated presentation
+          max: null
+          min: null
+          name: docx_template_file
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: file
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Optional custom output file name, and the filename suffix is not required.
+            ja_JP: Optional custom output file name, and the filename suffix is not required.
+            pt_BR: Optional custom output file name, and the filename suffix is not required.
+            zh_Hans: 可选的自定义输出文件名，后缀名无需指定
+          label:
+            en_US: Output Filename
+            ja_JP: Output Filename
+            pt_BR: Output Filename
+            zh_Hans: 输出文件名
+          llm_description: ''
+          max: null
+          min: null
+          name: output_filename
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          docx_template_file: ''
+          md_text: ''
+          output_filename: ''
+        plugin_id: bowenliang123/md_exporter
+        plugin_unique_identifier: bowenliang123/md_exporter:3.6.9@3f027d63e80b44d5d5a9f706871afaef37905b8f8a89a2d152dc530211a8acb1
+        provider_icon: /console/api/workspaces/current/plugin/icon?tenant_id=2cf986dc-18a6-4926-b645-5a5b199da0b4&filename=f0bad95cda1671b4e49f0e05df6122ef9ec5d554e138f128795d11d3806c00ef.svg
+        provider_id: bowenliang123/md_exporter/md_exporter
+        provider_name: bowenliang123/md_exporter/md_exporter
+        provider_type: builtin
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: 1-5-22-技术要素表DOCX
+        tool_configurations: {}
+        tool_description: 将 Markdown 转换为 DOCX 文件的工具
+        tool_label: Markdown ⮕ DOCX
+        tool_name: md_to_docx
+        tool_node_version: '2'
+        tool_parameters:
+          docx_template_file:
+            type: constant
+            value: null
+          md_text:
+            type: mixed
+            value: '{{#1769300000002.table_markdown#}}'
+          output_filename:
+            type: mixed
+            value: Flow-1-5-技术要素表-Basic-1.1.3-{{#1769140582678.text#}}
+        type: tool
+      height: 81
+      id: '1769140563916'
+      position:
+        x: 4988
+        y: 204
+      positionAbsolute:
+        x: 4988
+        y: 204
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: '%Y-%m-%d %H:%M:%S'
+          form: form
+          human_description:
+            en_US: Time format in strftime standard.
+            ja_JP: Time format in strftime standard.
+            pt_BR: Time format in strftime standard.
+            zh_Hans: strftime 标准的时间格式。
+          label:
+            en_US: Format
+            ja_JP: Format
+            pt_BR: Format
+            zh_Hans: 格式
+          llm_description: null
+          max: null
+          min: null
+          name: format
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: UTC
+          form: form
+          human_description:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          label:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          llm_description: null
+          max: null
+          min: null
+          name: timezone
+          options:
+          - icon: null
+            label:
+              en_US: UTC
+              ja_JP: UTC
+              pt_BR: UTC
+              zh_Hans: UTC
+            value: UTC
+          - icon: null
+            label:
+              en_US: America/New_York
+              ja_JP: America/New_York
+              pt_BR: America/New_York
+              zh_Hans: 美洲/纽约
+            value: America/New_York
+          - icon: null
+            label:
+              en_US: America/Los_Angeles
+              ja_JP: America/Los_Angeles
+              pt_BR: America/Los_Angeles
+              zh_Hans: 美洲/洛杉矶
+            value: America/Los_Angeles
+          - icon: null
+            label:
+              en_US: America/Chicago
+              ja_JP: America/Chicago
+              pt_BR: America/Chicago
+              zh_Hans: 美洲/芝加哥
+            value: America/Chicago
+          - icon: null
+            label:
+              en_US: America/Sao_Paulo
+              ja_JP: America/Sao_Paulo
+              pt_BR: América/São Paulo
+              zh_Hans: 美洲/圣保罗
+            value: America/Sao_Paulo
+          - icon: null
+            label:
+              en_US: Asia/Shanghai
+              ja_JP: Asia/Shanghai
+              pt_BR: Asia/Shanghai
+              zh_Hans: 亚洲/上海
+            value: Asia/Shanghai
+          - icon: null
+            label:
+              en_US: Asia/Ho_Chi_Minh
+              ja_JP: Asia/Ho_Chi_Minh
+              pt_BR: Ásia/Ho Chi Minh
+              zh_Hans: 亚洲/胡志明市
+            value: Asia/Ho_Chi_Minh
+          - icon: null
+            label:
+              en_US: Asia/Tokyo
+              ja_JP: Asia/Tokyo
+              pt_BR: Asia/Tokyo
+              zh_Hans: 亚洲/东京
+            value: Asia/Tokyo
+          - icon: null
+            label:
+              en_US: Asia/Dubai
+              ja_JP: Asia/Dubai
+              pt_BR: Asia/Dubai
+              zh_Hans: 亚洲/迪拜
+            value: Asia/Dubai
+          - icon: null
+            label:
+              en_US: Asia/Kolkata
+              ja_JP: Asia/Kolkata
+              pt_BR: Asia/Kolkata
+              zh_Hans: 亚洲/加尔各答
+            value: Asia/Kolkata
+          - icon: null
+            label:
+              en_US: Asia/Seoul
+              ja_JP: Asia/Seoul
+              pt_BR: Asia/Seoul
+              zh_Hans: 亚洲/首尔
+            value: Asia/Seoul
+          - icon: null
+            label:
+              en_US: Asia/Singapore
+              ja_JP: Asia/Singapore
+              pt_BR: Asia/Singapore
+              zh_Hans: 亚洲/新加坡
+            value: Asia/Singapore
+          - icon: null
+            label:
+              en_US: Europe/London
+              ja_JP: Europe/London
+              pt_BR: Europe/London
+              zh_Hans: 欧洲/伦敦
+            value: Europe/London
+          - icon: null
+            label:
+              en_US: Europe/Berlin
+              ja_JP: Europe/Berlin
+              pt_BR: Europe/Berlin
+              zh_Hans: 欧洲/柏林
+            value: Europe/Berlin
+          - icon: null
+            label:
+              en_US: Europe/Moscow
+              ja_JP: Europe/Moscow
+              pt_BR: Europe/Moscow
+              zh_Hans: 欧洲/莫斯科
+            value: Europe/Moscow
+          - icon: null
+            label:
+              en_US: Australia/Sydney
+              ja_JP: Australia/Sydney
+              pt_BR: Australia/Sydney
+              zh_Hans: 澳大利亚/悉尼
+            value: Australia/Sydney
+          - icon: null
+            label:
+              en_US: Pacific/Auckland
+              ja_JP: Pacific/Auckland
+              pt_BR: Pacific/Auckland
+              zh_Hans: 太平洋/奥克兰
+            value: Pacific/Auckland
+          - icon: null
+            label:
+              en_US: Africa/Cairo
+              ja_JP: Africa/Cairo
+              pt_BR: Africa/Cairo
+              zh_Hans: 非洲/开罗
+            value: Africa/Cairo
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          format: ''
+          timezone: ''
+        plugin_id: null
+        plugin_unique_identifier: ''
+        provider_icon: /console/api/workspaces/current/tool-provider/builtin/time/icon
+        provider_id: time
+        provider_name: time
+        provider_type: builtin
+        selected: false
+        title: 1-5-23-获取当前时间
+        tool_configurations:
+          format:
+            type: mixed
+            value: '%Y-%m-%d %H:%M'
+          timezone:
+            type: constant
+            value: Asia/Shanghai
+        tool_description: 一个用于获取当前时间的工具。
+        tool_label: 获取当前时间
+        tool_name: current_time
+        tool_node_version: '2'
+        tool_parameters: {}
+        type: tool
+      height: 113
+      id: '1769140582678'
+      position:
+        x: 4626
+        y: 394
+      positionAbsolute:
+        x: 4626
+        y: 394
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "def text_or_empty(value):\n    if value is None:\n        return \"\"\n    return str(value).strip()\n\ndef normalize_bool(value):\n    if value is True:\n        return True\n    if value is False or value is None:\n        return False\n    normalized = str(value).strip().lower()\n    if normalized in (\"true\", \"1\", \"yes\", \"y\"):\n        return True\n    if normalized in (\"false\", \"0\", \"no\", \"n\", \"\"):\n        return False\n    return False\n\ndef is_true(value):\n    return normalize_bool(value)\n\ndef normalize_items(items):\n    if not items:\n        return []\n    return [item for item in items if isinstance(item, dict)]\n\ndef normalize_string_items(items):\n    if not items:\n        return []\n    result = []\n    for item in items:\n        text = text_or_empty(item)\n        if text:\n            result.append(text)\n    return result\n\ndef normalize_status(value):\n    status = text_or_empty(value)\n    allowed = {\"已明确事实\", \"输入事实-已明确\", \"设计目标\", \"仿真/估计\", \"待确认\", \"基于输入推导，待发明人确认\", \"待发明人确认\"}\n    return status if status in allowed else \"\"\n\ndef format_status_prefix(status):\n    normalized = normalize_status(status)\n    if not normalized or normalized == \"已明确事实\":\n        return \"\"\n    return f\"【{normalized}】\"\n\ndef render_string_with_status(text, status):\n    cleaned = text_or_empty(text)\n    if not cleaned:\n        return \"待补充。\"\n    prefix = format_status_prefix(status)\n    return f\"{prefix}{cleaned}\" if prefix else cleaned\n\ndef prefix_block(index, block):\n    lines = [line.strip() for line in text_or_empty(block).split(\"\\n\") if line.strip()]\n    if not lines:\n        return \"\"\n    lines[0] = f\"{index}. {lines[0]}\"\n    return \"\\n\".join(lines)\n\ndef render_numbered_blocks(items, builder, empty_text):\n    rendered = []\n    for item in items:\n        block = text_or_empty(builder(item))\n        if block:\n            rendered.append(block)\n    if not rendered:\n        return empty_text\n    return \"\\n\\n\".join(prefix_block(index, block) for index, block in enumerate(rendered, 1))\n\ndef render_string_list(items, empty_text):\n    normalized = normalize_string_items(items)\n    if not normalized:\n        return empty_text\n    return \"\\n\\n\".join(f\"{index}. {item}\" for index, item in enumerate(normalized, 1))\n\ndef build_innovation(item):\n    if text_or_empty(item.get(\"item_type\")) != \"主创新\":\n        return \"\"\n    if text_or_empty(item.get(\"admission_scope\")) != \"正文保留\":\n        return \"\"\n    if text_or_empty(item.get(\"body_admission\")) != \"keep\":\n        return \"\"\n    title = text_or_empty(item.get(\"item_title\"))\n    body = text_or_empty(item.get(\"item_body\"))\n    status = normalize_status(item.get(\"status_bucket\"))\n    if not title and not body:\n        return \"\"\n    lines = [title or \"关键创新点\"]\n    if body:\n        lines.append(f\"技术要点：{body}\")\n    if status:\n        lines.append(f\"状态：{status}\")\n    return \"\\n\".join(lines)\n\ndef build_optional_scheme(item):\n    if text_or_empty(item.get(\"admission_scope\")) != \"正文保留\":\n        return \"\"\n    if text_or_empty(item.get(\"body_admission\")) != \"keep\":\n        return \"\"\n    title = text_or_empty(item.get(\"scheme_title\"))\n    body = text_or_empty(item.get(\"scheme_body\"))\n    status = normalize_status(item.get(\"status_bucket\"))\n    if not title and not body:\n        return \"\"\n    lines = [title or \"可选方案\"]\n    if body:\n        lines.append(f\"方案要点：{body}\")\n    if status:\n        lines.append(f\"状态：{status}\")\n    return \"\\n\".join(lines)\n\ndef build_effect(item):\n    title = text_or_empty(item.get(\"benefit_title\"))\n    mechanism = text_or_empty(item.get(\"benefit_mechanism\"))\n    evidence = text_or_empty(item.get(\"benefit_evidence_note\"))\n    status = normalize_status(item.get(\"benefit_status_bucket\"))\n    if not title and not mechanism and not evidence:\n        return \"\"\n    lines = [title or \"有益效果\"]\n    if mechanism:\n        lines.append(f\"作用机理：{mechanism}\")\n    status_and_evidence = []\n    if status:\n        status_and_evidence.append(status)\n    if evidence:\n        status_and_evidence.append(evidence)\n    if status_and_evidence:\n        lines.append(f\"状态/依据：{'；'.join(status_and_evidence)}\")\n    return \"\\n\".join(lines)\n\ndef build_drawing(item):\n    title = text_or_empty(item.get(\"drawing_title\"))\n    caption = text_or_empty(item.get(\"caption_text\"))\n    status = normalize_status(item.get(\"status_bucket\"))\n    if not title and not caption:\n        return \"\"\n    lines = [title or \"附图\"]\n    if caption:\n        lines.append(caption)\n    if status:\n        lines.append(f\"状态：{status}\")\n    return \"\\n\".join(lines)\n\ndef build_component(item):\n    if not is_true(item.get(\"display_in_main_disclosure\")):\n        return \"\"\n    if text_or_empty(item.get(\"component_scope\")) not in (\"main\", \"主构件\"):\n        return \"\"\n    code = text_or_empty(item.get(\"component_code\"))\n    name = text_or_empty(item.get(\"component_name\"))\n    role = text_or_empty(item.get(\"component_role\"))\n    status = normalize_status(item.get(\"status_bucket\"))\n    if not code and not name and not role:\n        return \"\"\n    first_line = \" - \".join(part for part in [code, name] if part) or \"主构件\"\n    lines = [first_line]\n    if role:\n        lines.append(f\"作用：{role}\")\n    if status:\n        lines.append(f\"状态：{status}\")\n    return \"\\n\".join(lines)\n\ndef build_section_8_item(item):\n    title = text_or_empty(item.get(\"scenario_title\"))\n    steps = text_or_empty(item.get(\"implementation_steps\"))\n    result = text_or_empty(item.get(\"expected_result_or_status\"))\n    status = normalize_status(item.get(\"status_bucket\"))\n    if not title and not steps and not result:\n        return \"\"\n    lines = [title or \"工况\"]\n    if steps:\n        lines.append(f\"实施步骤：{steps}\")\n    if result:\n        lines.append(f\"结果/状态：{result}\")\n    if status:\n        lines.append(f\"确认口径：{status}\")\n    return \"\\n\".join(lines)\n\ndef build_section_9_item(item):\n    text = text_or_empty(item.get(\"item_text\"))\n    status = normalize_status(item.get(\"status_bucket\"))\n    if not text:\n        return \"\"\n    lines = [text]\n    if status:\n        lines.append(f\"状态：{status}\")\n    return \"\\n\".join(lines)\n\ndef main(section_1_text=None, section_2_text=None, section_3_problem_items=None, section_3_goal_items=None, section_4_text=None, section_4_status_bucket=None, section_5_1_text=None, section_5_1_status_bucket=None, section_5_2_text=None, section_5_2_status_bucket=None, section_5_3_items=None, section_5_4_items=None, section_6_benefit_items=None, section_7_drawings=None, section_7_components=None, section_8_1_text=None, section_8_1_status_bucket=None, section_8_2_items=None, section_8_3_text=None, section_8_3_status_bucket=None, section_9_current_solution_items=None, section_9_difference_items=None, section_9_confirmation_items=None) -> dict:\n    parts = [\n        \"# 标准化技术交底书\",\n        \"\",\n        \"## 1. 技术领域\",\n        \"\",\n        render_string_with_status(section_1_text, \"已明确事实\"),\n        \"\",\n        \"## 2. 背景技术\",\n        \"\",\n        render_string_with_status(section_2_text, \"已明确事实\"),\n        \"\",\n        \"## 3. 现有技术存在的问题\",\n        \"\",\n        \"### 3.1 现有问题\",\n        \"\",\n        render_string_list(section_3_problem_items, \"现有问题待补充。\"),\n        \"\",\n        \"### 3.2 改进目标\",\n        \"\",\n        render_string_list(section_3_goal_items, \"改进目标待补充。\"),\n        \"\",\n        \"## 4. 发明目的 / 要解决的技术问题\",\n        \"\",\n        render_string_with_status(section_4_text, section_4_status_bucket),\n        \"\",\n        \"## 5. 技术方案\",\n        \"\",\n        \"### 5.1 整体方案概述\",\n        \"\",\n        render_string_with_status(section_5_1_text, section_5_1_status_bucket),\n        \"\",\n        \"### 5.2 核心结构/步骤/逻辑\",\n        \"\",\n        render_string_with_status(section_5_2_text, section_5_2_status_bucket),\n        \"\",\n        \"### 5.3 关键创新点\",\n        \"\",\n        render_numbered_blocks(normalize_items(section_5_3_items), build_innovation, \"暂无允许进入正文的关键创新点条目。\"),\n        \"\",\n        \"### 5.4 可选方案\",\n        \"\",\n        render_numbered_blocks(normalize_items(section_5_4_items), build_optional_scheme, \"暂无允许进入正文的可选方案条目。\"),\n        \"\",\n        \"## 6. 有益效果\",\n        \"\",\n        render_numbered_blocks(normalize_items(section_6_benefit_items), build_effect, \"暂无明确有益效果条目（待补充）。\"),\n        \"\",\n        \"## 7. 附图说明\",\n        \"\",\n        \"### 7.1 附图说明\",\n        \"\",\n        render_numbered_blocks(normalize_items(section_7_drawings), build_drawing, \"图项待补充。\"),\n        \"\",\n        \"### 7.2 附图标记说明\",\n        \"\",\n        render_numbered_blocks(normalize_items(section_7_components), build_component, \"主构件编号清单待补充。\"),\n        \"\",\n        \"## 8. 具体实施方式\",\n        \"\",\n        \"### 8.1 典型实施流程或装配过程\",\n        \"\",\n        render_string_with_status(section_8_1_text, section_8_1_status_bucket),\n        \"\",\n        \"### 8.2 关键参数与配合关系\",\n        \"\",\n        render_numbered_blocks(normalize_items(section_8_2_items), build_section_8_item, \"关键工况与验证路径待补充。\"),\n        \"\",\n        \"### 8.3 可替代实施方式\",\n        \"\",\n        render_string_with_status(section_8_3_text, section_8_3_status_bucket),\n        \"\",\n        \"## 9. 现有技术对比说明\",\n        \"\",\n        \"### 9.1 现有方案\",\n        \"\",\n        render_numbered_blocks(normalize_items(section_9_current_solution_items), build_section_9_item, \"现有方案待补充。\"),\n        \"\",\n        \"### 9.2 本方案区别\",\n        \"\",\n        render_numbered_blocks(normalize_items(section_9_difference_items), build_section_9_item, \"本方案区别待补充。\"),\n        \"\",\n        \"### 9.3 当前确认状态\",\n        \"\",\n        render_numbered_blocks(normalize_items(section_9_confirmation_items), build_section_9_item, \"当前确认状态待补充。\"),\n    ]\n    return {\"output\": \"\\n\".join(parts)}"
+        code_language: python3
+        desc: ''
+        outputs:
+          output:
+            children: null
+            type: string
+        selected: false
+        title: 1-5-24-技术交底书合并成文
+        type: code
+        variables:
+        - value_selector:
+          - '1733318861874'
+          - structured_output
+          - section_1_text
+          variable: section_1_text
+        - value_selector:
+          - '1733318861874'
+          - structured_output
+          - section_2_text
+          variable: section_2_text
+        - value_selector:
+          - '1733318861874'
+          - structured_output
+          - section_3_problem_items
+          variable: section_3_problem_items
+        - value_selector:
+          - '1733318861874'
+          - structured_output
+          - section_3_goal_items
+          variable: section_3_goal_items
+        - value_selector:
+          - '1733319053290'
+          - structured_output
+          - section_4_text
+          variable: section_4_text
+        - value_selector:
+          - '1733319053290'
+          - structured_output
+          - section_4_status_bucket
+          variable: section_4_status_bucket
+        - value_selector:
+          - '1733319060832'
+          - structured_output
+          - section_5_1_text
+          variable: section_5_1_text
+        - value_selector:
+          - '1733319060832'
+          - structured_output
+          - section_5_1_status_bucket
+          variable: section_5_1_status_bucket
+        - value_selector:
+          - '1733319060832'
+          - structured_output
+          - section_5_2_text
+          variable: section_5_2_text
+        - value_selector:
+          - '1733319060832'
+          - structured_output
+          - section_5_2_status_bucket
+          variable: section_5_2_status_bucket
+        - value_selector:
+          - '1733319060832'
+          - structured_output
+          - section_5_3_items
+          variable: section_5_3_items
+        - value_selector:
+          - '1733319060832'
+          - structured_output
+          - section_5_4_items
+          variable: section_5_4_items
+        - value_selector:
+          - '1733319053290'
+          - structured_output
+          - section_6_benefit_items
+          variable: section_6_benefit_items
+        - value_selector:
+          - '1735695273362'
+          - structured_output
+          - drawing_description_items
+          variable: section_7_drawings
+        - value_selector:
+          - '1735695273362'
+          - structured_output
+          - component_marker_items
+          variable: section_7_components
+        - value_selector:
+          - '1742289562256'
+          - structured_output
+          - section_8_1_text
+          variable: section_8_1_text
+        - value_selector:
+          - '1742289562256'
+          - structured_output
+          - section_8_1_status_bucket
+          variable: section_8_1_status_bucket
+        - value_selector:
+          - '1742289562256'
+          - structured_output
+          - section_8_2_items
+          variable: section_8_2_items
+        - value_selector:
+          - '1742289562256'
+          - structured_output
+          - section_8_3_text
+          variable: section_8_3_text
+        - value_selector:
+          - '1742289562256'
+          - structured_output
+          - section_8_3_status_bucket
+          variable: section_8_3_status_bucket
+        - value_selector:
+          - '1745499059499'
+          - structured_output
+          - section_9_current_solution_items
+          variable: section_9_current_solution_items
+        - value_selector:
+          - '1745499059499'
+          - structured_output
+          - section_9_difference_items
+          variable: section_9_difference_items
+        - value_selector:
+          - '1745499059499'
+          - structured_output
+          - section_9_confirmation_items
+          variable: section_9_confirmation_items
+      height: 53
+      id: '1769200000001'
+      position:
+        x: 3540
+        y: 434
+      positionAbsolute:
+        x: 3540
+        y: 434
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1745534966273'
+          - structured_output
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            max_tokens: 1800
+            reasoning_effort: low
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3.1-flash-lite-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: flow15-v1000-k-system
+          role: system
+          text: '# Flow-1-5 1.0.0 System Prompt
+
+
+            ## Role
+
+            - 报告治理信号抽取器
+
+
+            ## Mission
+
+            - 直接从 1-5-14 的结构化报告结果中抽取供终稿表与摘要使用的两组信号，不读取最终 Markdown。
+
+
+            ## Node Responsibility
+
+            - 为 1-5-18 提供表治理信号。
+
+            - 为 1-5-5 提供 Top 缺口信号。
+
+
+            ## Allowed Inputs
+
+            - 完善建议报告结构化输出
+
+
+            ## Output Contract
+
+            - 仅输出 `table_governance_signals`、`summary_priority_gaps`。
+
+
+            ## Evidence Boundary
+
+            - 只基于 1-5-14 的结构化字段。
+
+            - 不得读取 1-5-15 Markdown。
+
+
+            ## Forbidden Behavior
+
+            - 禁止输出内部方法论术语。
+
+            - 禁止输出新事实。
+
+
+            ## Writing Rules
+
+            - `summary_priority_gaps` 最多 2 项，并优先风洞/冷舱/HIL/失效链条/接口参数/EMC。
+
+
+            ## Self-check
+
+            - 字段齐全。
+
+            - 只读取结构化报告。'
+        - id: flow15-v1000-k-user
+          role: user
+          text: '## 示例隔离与零新增（强制）
+
+
+            - 输出内容只允许来自输入资料、上游节点结果和当前节点规则；禁止迁移模板示例中的领域词、数值、场景或专有名词。
+
+            - 若输入缺失，不得用常识补齐为既成事实；仅可做受控整理，且必须在允许的字段和语境内表达。
+
+            - 不得新增输入未出现的核心发明点、关键控制原理、实验结论、参数区间、法律判断或商业结论。
+
+            - 若上游节点、证据分层结果与原始资料冲突，优先保留原始资料和完整技术交底书中的明确信息。
+
+
+            # Node-1-5-25 报告信号抽取（供终稿表与摘要使用）
+
+
+            > 版本：1.0.0 Prompt Upgrade
+
+
+            ## 任务边界
+
+
+            从 1-5-14 结构化输出中抽取终稿表治理信号和摘要优先级缺口信号，不读取用户可见 Markdown 报告。
+
+
+            ## 当前输入
+
+
+            完善建议报告结构化输出（JSON）：{{#1745534966273.structured_output#}}
+
+
+            ## 生成目标
+
+
+            - 为 1-5-18 提供治理信号。
+
+            - 为 1-5-5 提供 Top 缺口。
+
+
+            ## 输出要求
+
+
+            - 只允许输出 `table_governance_signals`、`summary_priority_gaps`。
+
+            - 两个字段都必须是字符串数组。
+
+
+            ## Rules
+
+
+            - `summary_priority_gaps` 最多 2 项。
+
+            - 优先保留风洞、冷舱、HIL、失效链条、接口参数、EMC/环境边界类缺口。
+
+            - 不得输出 TRL、TT、三元超系统等内部术语。
+
+
+            ## Workflow
+
+
+            1. 先读取 1-5-14 结构化输出。
+
+            2. 再分流终稿表信号和摘要信号。
+
+            3. 最后压缩成 2 个数组字段。
+
+
+            ## 最终自检
+
+
+            - 没有读取 Markdown 报告。
+
+            - Top 缺口足够具体。'
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            $id: https://example.com/schemas/flow-1-5/1.0.0/node-k-report-signals.schema.json
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: false
+            properties:
+              summary_priority_gaps:
+                items:
+                  additionalProperties: false
+                  properties:
+                    gap_category:
+                      enum:
+                      - 验证体系
+                      - 工况验证
+                      - 失效链条逻辑映射
+                      - 接口/参数
+                      - EMC/环境适应性
+                      - 其他高优先级缺口
+                      type: string
+                    gap_text:
+                      type: string
+                    specificity_level:
+                      enum:
+                      - 高
+                      - 中
+                      - 低
+                      type: string
+                  required:
+                  - gap_text
+                  - gap_category
+                  - specificity_level
+                  type: object
+                maxItems: 2
+                type: array
+              table_governance_signals:
+                items:
+                  type: string
+                type: array
+            required:
+            - table_governance_signals
+            - summary_priority_gaps
+            title: Flow-1-5::K::report_signals::v1.0.0
+            type: object
+        structured_output_enabled: true
+        title: 1-5-25-报告信号抽取（供终稿表使用）
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 117
+      id: '1769200000002'
+      position:
+        x: 4264
+        y: 178
+      positionAbsolute:
+        x: 4264
+        y: 178
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1745495528138'
+          - output
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            max_tokens: 14000
+            reasoning_effort: high
+            temperature: 0.1
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: flow15-v1000-l-system
+          role: system
+          text: '# Flow-1-5 1.0.0 System Prompt
+
+
+            ## Role
+
+            - 输入证据分层与主构件边界整理器
+
+
+            ## Mission
+
+            - 在中文证据分层结果中新增主构件/候选构件边界，为正文第7.2节和成文主链提供稳定准入依据。
+
+
+            ## Node Responsibility
+
+            - 继续输出事实层、工程约束层、数值状态层、报告缺口层、候选层和禁入层。
+
+            - 额外输出主构件清单与候选/参考构件清单。
+
+            - 明确哪些构件属于当前发明主构件，哪些仅是候选、旧技术或参考构件。
+
+
+            ## Allowed Inputs
+
+            - 综合资料正文
+
+
+            ## Output Contract
+
+            - 仅输出 structured_output schema 定义的 9 个字段。
+
+            - 主构件与候选/参考构件字段必须是对象数组，不得写成长段字符串。
+
+
+            ## Evidence Boundary
+
+            - 所有构件都必须来自输入已有名称、关系或图示线索。
+
+            - 不得为了完善编号清单而新增输入中不存在的构件。
+
+
+            ## Forbidden Behavior
+
+            - 禁止把旧技术、候选方案、比较对象或推理构件误记为当前发明主构件。
+
+            - 禁止新增输入中不存在的部件作用或结构关系。
+
+
+            ## Writing Rules
+
+            - 主构件数组中的 `is_main_invention_component` 必须为 true。
+
+            - 候选/参考构件数组中的 `is_main_invention_component` 必须为 false。
+
+            - `component_role_scope` 应短、稳、可直接复用到后续节点。
+
+
+            ## Self-check
+
+            - 是否保留了原有 6 个证据分层字段。
+
+            - 是否新增了主构件与候选/参考构件两个数组字段。
+
+            - 是否输出了 input_completeness_diagnostics。
+
+            - 是否没有把旧技术或候选构件误放进主构件数组。'
+        - id: flow15-v1000-l-user
+          role: user
+          text: '## 示例隔离与零新增（强制）
+
+
+            - 输出内容只允许来自输入资料、上游节点结果和当前节点规则；禁止迁移模板示例中的领域词、数值、场景或专有名词。
+
+            - 若输入缺失，不得用常识补齐为既成事实；仅可做受控整理，且必须在允许的字段和语境内表达。
+
+            - 不得新增输入未出现的核心发明点、关键控制原理、实验结论、参数区间、法律判断或商业结论。
+
+            - 若上游节点、证据分层结果与原始资料冲突，优先保留原始资料和完整技术交底书中的明确信息。
+
+
+            # Node-1-5-12 输入证据分层
+
+
+            > 版本：1.0.0 Prompt Upgrade
+
+
+            ## 任务边界
+
+
+            在原有中文证据分层基础上，额外输出主构件与候选/参考构件边界，供第7节和最终成文节点稳定判断哪些构件可以进入正文。
+
+
+            ## 当前输入
+
+
+            综合资料正文（Markdown）：{{#1745495528138.output#}}
+
+
+            ## 生成目标
+
+
+            - 保留 0.2.9 的证据治理能力。
+
+            - 为第7.2节提供主构件准入边界。
+
+            - 避免旧技术构件、候选构件和参考构件混入主披露正文。
+
+
+            ## 输出要求
+
+
+            - 最终答案必须是严格符合 structured_output schema 的单个 JSON 对象。
+
+            - 只允许输出字段：`disclosure_fact_base`、`engineering_constraints_and_validation`、`numeric_claim_status_basis`、`report_gap_materials`、`candidate_only_materials`、`forbidden_materials`、`main_disclosure_component_items`、`candidate_or_reference_component_items`、`input_completeness_diagnostics`。
+
+            - `main_disclosure_component_items` 与 `candidate_or_reference_component_items` 必须是对象数组，每项固定字段为：`component_name`、`component_role_scope`、`is_main_invention_component`。
+
+
+            ## Rules
+
+
+            - 只有输入中已被描述为当前发明核心构件、并与主技术方案直接对应的部件，才能进入 `main_disclosure_component_items`。
+
+            - 凡属于旧技术构件、候选方案构件、对比对象构件、参考构件或正文未吸收构件，一律进入 `candidate_or_reference_component_items`。
+
+            - `main_disclosure_component_items` 中每项 `is_main_invention_component` 必须为 true；`candidate_or_reference_component_items` 中必须为 false。
+
+            - 不得新增输入中不存在的构件、作用或层级。
+
+
+            ## Workflow
+
+
+            1. 先完成原有 6 个证据分层字段。
+
+            2. 再从方案事实层、图示线索和对象关系中识别主构件。
+
+            3. 最后把旧技术/候选/参考构件隔离到候选或参考构件数组。
+
+
+            ## 最终自检
+
+
+            - 是否保留了原 6 字段、新增 2 个构件数组字段，并输出 input_completeness_diagnostics。
+
+            - 是否主构件与候选/参考构件没有混淆。
+
+            - 是否没有创造新构件。
+
+
+            ## Basic-1.1.3 输入完整性诊断（强制）
+
+
+            - 必须输出 `input_completeness_diagnostics`。
+
+            - 若权利要求文本出现“包括以下步骤：”但后续没有实质步骤，应诊断为空壳独立权利要求，并标为高优先级缺口。
+
+            - 若综合资料中存在用户直接输入事实（例如搅拌器对比、离心、上清液、沉淀物），不得被摘要覆盖或丢弃。
+
+            - 若附图或附图说明缺失，应诊断为“附图待补/可推导但待确认”，不得视为已明确事实。
+
+
+            ## Basic-1.1.3 字段合同一致性（强制）
+
+
+            - 当前 structured_output 共 9 个字段，必须包含 `input_completeness_diagnostics`。
+
+            - 输出字段数量、字段名和 required 列表必须以当前 structured_output schema 为准。
+
+            - 不得因历史提示词口径遗漏输入完整性诊断字段。
+
+            '
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            $id: https://example.com/schemas/flow-1-5/1.1.0/node-l-evidence-layers.schema.json
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: false
+            properties:
+              candidate_only_materials:
+                type: string
+              candidate_or_reference_component_items:
+                items:
+                  additionalProperties: false
+                  properties:
+                    component_name:
+                      type: string
+                    component_role_scope:
+                      type: string
+                    is_main_invention_component:
+                      type: boolean
+                  required:
+                  - component_name
+                  - component_role_scope
+                  - is_main_invention_component
+                  type: object
+                type: array
+              disclosure_fact_base:
+                type: string
+              engineering_constraints_and_validation:
+                type: string
+              forbidden_materials:
+                type: string
+              main_disclosure_component_items:
+                items:
+                  additionalProperties: false
+                  properties:
+                    component_name:
+                      type: string
+                    component_role_scope:
+                      type: string
+                    is_main_invention_component:
+                      type: boolean
+                  required:
+                  - component_name
+                  - component_role_scope
+                  - is_main_invention_component
+                  type: object
+                type: array
+              numeric_claim_status_basis:
+                type: string
+              report_gap_materials:
+                type: string
+              input_completeness_diagnostics:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: false
+                  properties:
+                    diagnostic_title:
+                      type: string
+                    diagnostic_reason:
+                      type: string
+                    severity:
+                      type: string
+                    recommended_action:
+                      type: string
+                  required:
+                  - diagnostic_title
+                  - diagnostic_reason
+                  - severity
+                  - recommended_action
+            required:
+            - disclosure_fact_base
+            - engineering_constraints_and_validation
+            - numeric_claim_status_basis
+            - report_gap_materials
+            - candidate_only_materials
+            - forbidden_materials
+            - main_disclosure_component_items
+            - candidate_or_reference_component_items
+            - input_completeness_diagnostics
+            title: Flow-1-5::L::evidence_layers::v1.1.0
+            type: object
+        structured_output_enabled: true
+        title: 1-5-12-输入证据分层
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 117
+      id: '1769200000003'
+      position:
+        x: 1470
+        y: 392
+      positionAbsolute:
+        x: 1470
+        y: 392
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1769200000002'
+          - structured_output
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            max_tokens: 2500
+            reasoning_effort: low
+            temperature: 0.1
+          mode: chat
+          name: google/gemini-3.1-flash-lite-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: flow15-v1000-m-system
+          role: system
+          text: '# Flow-1-5 1.0.0 System Prompt
+
+
+            ## Role
+
+            - 摘要素材包整理器
+
+
+            ## Mission
+
+            - 整理最小摘要素材包，并优先保留最具体、最影响交付的高优先级缺口。
+
+
+            ## Node Responsibility
+
+            - 提取主题、方案点、效果点。
+
+            - 优先保留 Top 1/Top 2 高优先级缺口。
+
+
+            ## Allowed Inputs
+
+            - A 结构化输出
+
+            - B1 结构化输出
+
+            - B2 结构化输出
+
+            - E 结构化输出
+
+            - 1-5-25 信号输出
+
+
+            ## Output Contract
+
+            - 输出摘要素材包 schema 中定义的字段。
+
+
+            ## Evidence Boundary
+
+            - 仅依据上游明确事实和缺口信号。
+
+            - 不得引入新事实。
+
+
+            ## Forbidden Behavior
+
+            - 禁止泛化缺口。
+
+            - 禁止把设计目标写成既成事实。
+
+
+            ## Writing Rules
+
+            - 高优先级缺口优先顺序：风洞/冷舱/HIL/失效链条 > 接口参数 > EMC/环境边界。
+
+
+            ## Self-check
+
+            - 缺口足够具体。
+
+            - 素材包最小且完整。'
+        - id: flow15-v1000-m-user
+          role: user
+          text: '## 示例隔离与零新增（强制）
+
+
+            - 输出内容只允许来自输入资料、上游节点结果和当前节点规则；禁止迁移模板示例中的领域词、数值、场景或专有名词。
+
+            - 若输入缺失，不得用常识补齐为既成事实；仅可做受控整理，且必须在允许的字段和语境内表达。
+
+            - 不得新增输入未出现的核心发明点、关键控制原理、实验结论、参数区间、法律判断或商业结论。
+
+            - 若上游节点、证据分层结果与原始资料冲突，优先保留原始资料和完整技术交底书中的明确信息。
+
+
+            # Node-1-5-26 摘要素材包生成
+
+
+            > 版本：1.0.0 Prompt Upgrade
+
+
+            ## 任务边界
+
+
+            生成极简摘要素材包，重点把最具体、最高优先级的缺口保留下来，供最终简报使用。
+
+
+            ## 当前输入
+
+
+            A 结构化输出（JSON）：{{#1733318861874.structured_output#}}
+
+
+            B1 结构化输出（JSON）：{{#1733319053290.structured_output#}}
+
+
+            B2 结构化输出（JSON）：{{#1733319060832.structured_output#}}
+
+
+            E 结构化输出（JSON）：{{#1745499059499.structured_output#}}
+
+
+            报告信号（JSON）：{{#1769200000002.structured_output#}}
+
+
+            ## 生成目标
+
+
+            - 保留主题、方案点、效果点。
+
+            - 保留 Top 1 和可选 Top 2 缺口。
+
+
+            ## 输出要求
+
+
+            - 只允许输出 `technical_theme`、`core_solution_point_1`、`core_solution_point_2`、`core_solution_point_3`、`main_effect_point_1`、`main_effect_point_2`、`top_priority_gap`，以及可选的 `secondary_priority_gap`。
+
+
+            ## Rules
+
+
+            - 若存在风洞、冷舱、HIL、失效链条类缺口，优先进入 `top_priority_gap` 或 `secondary_priority_gap`。
+
+            - 不得把 `top_priority_gap` 写成“缺实验数据支撑”。
+
+            - 不得把设计目标或待确认项压成既成事实。
+
+
+            ## Workflow
+
+
+            1. 先取主题和方案点。
+
+            2. 再取效果点。
+
+            3. 最后从 1-5-25 中选 Top 1/Top 2 缺口。
+
+
+            ## 最终自检
+
+
+            - 缺口具体。
+
+            - 无泛化。
+
+            - 无新事实。'
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            $id: https://example.com/schemas/flow-1-5/1.0.0/node-m-summary-pack.schema.json
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: false
+            properties:
+              core_solution_point_1:
+                type: string
+              core_solution_point_2:
+                type: string
+              core_solution_point_3:
+                type: string
+              main_effect_point_1:
+                type: string
+              main_effect_point_2:
+                type: string
+              secondary_priority_gap:
+                type: string
+              secondary_priority_gap_category:
+                type: string
+              technical_theme:
+                type: string
+              top_priority_gap:
+                type: string
+              top_priority_gap_category:
+                type: string
+            required:
+            - technical_theme
+            - core_solution_point_1
+            - core_solution_point_2
+            - core_solution_point_3
+            - main_effect_point_1
+            - main_effect_point_2
+            - top_priority_gap
+            - top_priority_gap_category
+            title: Flow-1-5::M::summary_pack::v1.0.0
+            type: object
+        structured_output_enabled: true
+        title: 1-5-26-摘要素材包生成
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 117
+      id: '1769200000004'
+      position:
+        x: 4300
+        y: 0
+      positionAbsolute:
+        x: 4300
+        y: 0
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import re\n\nFORBIDDEN_TERMS = (\n    \"top 3\",\n    \"trl\",\n    \"tt-\",\n    \"三元超系统\",\n    \"core fault chain\",\n    \"fault chain\",\n)\n\nALLOWED_ASCII_TOKENS = (\n    \"HIL\",\n    \"EMC\",\n    \"PCT\",\n    \"IPC\",\n    \"CP\",\n    \"SC\",\n    \"MCU\",\n    \"GPIO\",\n    \"RS\",\n)\n\ndef text_or_empty(value):\n    if value is None:\n        return \"\"\n    return str(value).strip()\n\nSOURCE_REPLACEMENTS = (\n    (\"node 1 5 14 任务要求\", \"完善建议生成规则\"),\n    (\"node 1 5 14\", \"完善建议生成规则\"),\n    (\"report gap materials\", \"输入资料缺口诊断\"),\n    (\"report gap source\", \"补料诊断依据\"),\n    (\"gap materials\", \"输入资料缺口诊断\"),\n    (\"input missing items\", \"输入完全缺失项\"),\n    (\"critical gap items ranked\", \"高优先级缺口清单\"),\n    (\"source bucket\", \"来源类别\"),\n    (\"medium\", \"中\"),\n    (\"low\", \"低\"),\n    (\"report signal\", \"报告信号\"),\n    (\"summary pack\", \"摘要素材包\"),\n    (\"evidence source\", \"证据来源\"),\n    (\"evidence\", \"证据\"),\n    (\"input package\", \"输入材料\"),\n    (\"input\", \"输入\"),\n    (\"source\", \"来源\"),\n    (\"main body\", \"正文\"),\n    (\"body\", \"正文\"),\n    (\"draft disclosure\", \"交底书草稿\"),\n    (\"draft\", \"草稿\"),\n    (\"section\", \"第\"),\n    (\"node output\", \"节点输出\"),\n    (\"output\", \"输出\"),\n    (\"report\", \"报告\"),\n    (\"table\", \"表格\"),\n    (\"cross-check\", \"交叉核对\"),\n    (\"cross check\", \"交叉核对\"),\n    (\"comparison\", \"比对\"),\n)\n\ndef normalize_items(items):\n    if not items:\n        return []\n    return [item for item in items if isinstance(item, dict)]\n\ndef strip_allowed_ascii_tokens(text):\n    cleaned = text_or_empty(text)\n    for token in ALLOWED_ASCII_TOKENS:\n        cleaned = re.sub(rf\"\\b{re.escape(token)}\\b\", \"\", cleaned, flags=re.IGNORECASE)\n    cleaned = re.sub(r\"S\\d+\", \"\", cleaned)\n    return cleaned\n\ndef is_english_heavy(text):\n    cleaned = strip_allowed_ascii_tokens(text)\n    english_words = re.findall(r\"[A-Za-z]{3,}\", cleaned)\n    chinese_chars = re.findall(r\"[\\u4e00-\\u9fff]\", cleaned)\n    return len(english_words) >= 3 and len(chinese_chars) < max(8, len(english_words) * 2)\n\ndef assert_user_facing_chinese(label, text):\n    cleaned = text_or_empty(text)\n    if not cleaned:\n        return\n    lower = cleaned.lower()\n    for term in FORBIDDEN_TERMS:\n        if term in lower:\n            raise ValueError(f\"{label} contains forbidden internal or English term: {term}\")\n    if is_english_heavy(cleaned):\n        raise ValueError(f\"{label} is not Chinese-dominant enough for user-facing report output\")\n\ndef normalize_evidence_source(text):\n    cleaned = text_or_empty(text)\n    if not cleaned:\n        return \"\"\n    normalized = cleaned.replace(\"_\", \" \").replace(\"-\", \" \")\n    lower = normalized.lower()\n    for english, chinese in SOURCE_REPLACEMENTS:\n        lower = lower.replace(english, chinese)\n    lower = re.sub(r\"\\bsection\\s*(\\d+(?:\\.\\d+)*)\\b\", r\"第\\1节\", lower, flags=re.IGNORECASE)\n    lower = re.sub(r\"\\s+\", \" \", lower).strip()\n    if is_english_heavy(lower):\n        return \"输入材料与节点输出交叉核对结果\"\n    return lower\n\ndef render_core_section(text):\n    cleaned = text_or_empty(text)\n    return cleaned or \"待补充。\"\n\ndef render_critical_gaps(items):\n    normalized = normalize_items(items)\n    if not normalized:\n        return \"暂无已排序的最高优先级缺口条目。\"\n    blocks = []\n    for index, item in enumerate(normalized, 1):\n        gap_title = text_or_empty(item.get(\"gap_title\"))\n        gap_reason = text_or_empty(item.get(\"gap_reason\"))\n        gap_category = text_or_empty(item.get(\"gap_category\"))\n        gap_priority = text_or_empty(item.get(\"gap_priority\"))\n        recommended_action = text_or_empty(item.get(\"recommended_action\"))\n        assert_user_facing_chinese(f\"critical_gaps[{index}].gap_title\", gap_title)\n        assert_user_facing_chinese(f\"critical_gaps[{index}].gap_reason\", gap_reason)\n        assert_user_facing_chinese(f\"critical_gaps[{index}].gap_category\", gap_category)\n        assert_user_facing_chinese(f\"critical_gaps[{index}].gap_priority\", gap_priority)\n        assert_user_facing_chinese(f\"critical_gaps[{index}].recommended_action\", recommended_action)\n        lines = [\n            f\"{index}. {gap_title or '最高优先级缺口'}\",\n            \"\",\n            f\"原因：{gap_reason or '待补充。'}\",\n            \"\",\n            f\"类别：{gap_category or '待补充'}｜优先级：{gap_priority or '待补充'}\",\n            \"\",\n            f\"建议：{recommended_action or '待补充。'}\",\n        ]\n        blocks.append(\"\\n\".join(lines))\n    return \"\\n\\n\".join(blocks)\n\ndef render_diagnostic_items(items, empty_text, label_prefix):\n    normalized = normalize_items(items)\n    if not normalized:\n        return empty_text\n    blocks = []\n    for index, item in enumerate(normalized, 1):\n        item_title = text_or_empty(item.get(\"item_title\"))\n        evidence_source = normalize_evidence_source(item.get(\"evidence_source\"))\n        current_absorption_state = text_or_empty(item.get(\"current_absorption_state\"))\n        recommendation = text_or_empty(item.get(\"recommendation\"))\n        assert_user_facing_chinese(f\"{label_prefix}[{index}].item_title\", item_title)\n        assert_user_facing_chinese(f\"{label_prefix}[{index}].current_absorption_state\", current_absorption_state)\n        assert_user_facing_chinese(f\"{label_prefix}[{index}].recommendation\", recommendation)\n        lines = [\n            f\"{index}. {item_title or '待补充条目'}\",\n            \"\",\n            f\"证据来源：{evidence_source or '待补充。'}\",\n            \"\",\n            f\"当前吸收状态：{current_absorption_state or '待补充。'}\",\n            \"\",\n            f\"建议：{recommendation or '待补充。'}\",\n        ]\n        blocks.append(\"\\n\".join(lines))\n    return \"\\n\\n\".join(blocks)\n\n\ndef render_confirmation_required_items(items):\n    normalized = normalize_items(items)\n    if not normalized:\n        return \"暂无待发明人确认清单。\"\n    blocks = []\n    for index, item in enumerate(normalized, 1):\n        item_title = text_or_empty(item.get(\"item_title\"))\n        reason = text_or_empty(item.get(\"reason\"))\n        confirmation_question = text_or_empty(item.get(\"confirmation_question\"))\n        priority = text_or_empty(item.get(\"priority\"))\n        assert_user_facing_chinese(f\"confirmation_required_items[{index}].item_title\", item_title)\n        assert_user_facing_chinese(f\"confirmation_required_items[{index}].reason\", reason)\n        assert_user_facing_chinese(f\"confirmation_required_items[{index}].confirmation_question\", confirmation_question)\n        assert_user_facing_chinese(f\"confirmation_required_items[{index}].priority\", priority)\n        lines = [\n            f\"{index}. {item_title or '待确认事项'}\",\n            \"\",\n            f\"确认原因：{reason or '待补充。'}\",\n            \"\",\n            f\"需确认问题：{confirmation_question or '待发明人确认。'}\",\n            \"\",\n            f\"优先级：{priority or '待补充'}\",\n        ]\n        blocks.append(\"\\n\".join(lines))\n    return \"\\n\\n\".join(blocks)\n\ndef render_claim_layout_guidance():\n    return \"\\n\".join([\n        \"以下仅为代理师撰写前的保护主题规划，不替代正式权利要求文本：\",\n        \"\",\n        \"1. 线缆结构权利要求：围绕5芯线缆、插头A/插头B、MCU、矩阵开关切换芯片及线芯复用关系建立主保护对象。\",\n        \"2. MCU控制矩阵开关的装置权利要求：围绕GPIO电平组合、矩阵开关线序映射和多接口物理层适配形成从属或并列保护层。\",\n        \"3. 通信速率自适应方法权利要求：围绕默认速率探查、应答解析、速率调整和协商完成条件形成方法保护主题。\",\n        \"4. 终端间透明传输方法权利要求：围绕终端A、线缆内部MCU、终端B/C/D/E之间的数据转发链路形成应用场景保护。\",\n        \"5. 从属特征补强项：建议补充芯片型号、引脚连接、GPIO映射表、探查/应答帧格式、超时重试、错误反馈和瞬态保护机制。\",\n    ])\n\ndef main(section_1=None, critical_gaps=None, absorbed_gaps=None, missing_gaps=None, confirmation_required_items=None, section_6=None) -> dict:\n    assert_user_facing_chinese(\"section_1\", text_or_empty(section_1))\n    assert_user_facing_chinese(\"section_6\", text_or_empty(section_6))\n    parts = [\n        \"# 技术交底书完善建议报告\",\n        \"\",\n        \"## 1. 核心结论\",\n        \"\",\n        render_core_section(section_1),\n        \"\",\n        \"## 2. 最高优先级缺口\",\n        \"\",\n        render_critical_gaps(critical_gaps),\n        \"\",\n        \"## 3. 已输入但正文未充分吸收的信息\",\n        \"\",\n        render_diagnostic_items(absorbed_gaps, \"暂无“已输入但正文未充分吸收”的条目。\", \"absorbed_gaps\"),\n        \"\",\n        \"## 4. 输入完全缺失且必须补齐的信息\",\n        \"\",\n        render_diagnostic_items(missing_gaps, \"暂无“输入完全缺失且必须补齐”的条目。\", \"missing_gaps\"),\n        \"\",\n        \"## 5. 待发明人确认清单\",\n        \"\",\n        render_confirmation_required_items(confirmation_required_items),\n        \"\",\n        \"## 6. 建议权利要求保护布局\",\n        \"\",\n        render_claim_layout_guidance(),\n        \"\",\n        \"## 7. 下一步补料建议\",\n        \"\",\n        render_core_section(section_6),\n    ]\n    return {\"output\": \"\\n\".join(parts)}\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          output:
+            children: null
+            type: string
+        selected: false
+        title: 1-5-15-完善建议报告Markdown组装
+        type: code
+        variables:
+        - value_selector:
+          - '1745534966273'
+          - structured_output
+          - section_1_status_overview
+          variable: section_1
+        - value_selector:
+          - '1745534966273'
+          - structured_output
+          - critical_gap_items_ranked
+          variable: critical_gaps
+        - value_selector:
+          - '1745534966273'
+          - structured_output
+          - already_input_but_not_absorbed_items
+          variable: absorbed_gaps
+        - value_selector:
+          - '1745534966273'
+          - structured_output
+          - input_missing_items
+          variable: missing_gaps
+        - value_selector:
+          - '1745534966273'
+          - structured_output
+          - confirmation_required_items
+          variable: confirmation_required_items
+        - value_selector:
+          - '1745534966273'
+          - structured_output
+          - section_6_priorities_and_next_steps
+          variable: section_6
+      height: 53
+      id: '1769300000001'
+      position:
+        x: 4050
+        y: 520
+      positionAbsolute:
+        x: 4050
+        y: 520
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import re\n\nFORBIDDEN_CLIENT_TOKENS = (\n    \"Basic-1.0.2\",\n    \"...\",\n    \"Numeric_claim_status_basis\",\n    \"Main_disclosure_component_items\",\n    \"Engineering_constraints\",\n    \"disclosure_fact_base\",\n    \"input_completeness_diagnostics\",\n    \"gap materials\",\n    \"node 1 5 14\",\n    \"structured_output\",\n    \"schema\",\n    \"accepted_rows\",\n    \"excluded_rows\",\n    \"reasoning_content\",\n    chr(8230),\n)\n\nEMAIL_RE = re.compile(r\"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\")\nPHONE_RE = re.compile(r\"(?<!\\d)1[3-9]\\d{9}(?!\\d)\")\n\ndef normalize_text(value):\n    if value is None:\n        return \"\"\n    return str(value).replace(\"\\r\\n\", \"\\n\").strip()\n\ndef strip_first_heading(text, expected_heading):\n    cleaned = normalize_text(text)\n    if not cleaned:\n        return \"\"\n    lines = cleaned.split(\"\\n\")\n    first_non_empty = 0\n    while first_non_empty < len(lines) and not lines[first_non_empty].strip():\n        first_non_empty += 1\n    if first_non_empty >= len(lines):\n        return \"\"\n    if lines[first_non_empty].strip() == expected_heading:\n        lines = lines[first_non_empty + 1 :]\n        while lines and not lines[0].strip():\n            lines.pop(0)\n        return \"\\n\".join(lines).strip()\n    return cleaned\n\n\ndef render_delivery_status():\n    return \"\\n\".join([\n        \"## 当前交付状态\",\n        \"\",\n        \"当前交付状态：发明人确认稿，尚不能作为最终专利撰写定稿。\",\n        \"\",\n        \"主要原因：芯片型号、引脚映射、指令帧格式、超时重试、切换失败保护和错误反馈机制仍需发明人确认或补充。\",\n    ])\n\ndef render_section(title, body, placeholder):\n    cleaned = normalize_text(body) or placeholder\n    return f\"## {title}\\n\\n{cleaned}\"\n\ndef validate_delivery_quality(text):\n    problems = []\n    for token in FORBIDDEN_CLIENT_TOKENS:\n        if token in text:\n            problems.append(f\"禁止出现在客户可见文本中的标记：{token}\")\n    if EMAIL_RE.search(text):\n        problems.append(\"客户可见文本中疑似包含邮箱地址\")\n    if PHONE_RE.search(text):\n        problems.append(\"客户可见文本中疑似包含手机号\")\n    if problems:\n        raise ValueError(\"客户可见交付质量门禁未通过：\" + \"；\".join(problems))\n\ndef main(brief_summary=None, technical_disclosure_markdown=None, improvement_report_markdown=None, tech_elements_table_markdown=None) -> dict:\n    parts = [\n        \"# 技术交底书完善交付阅读版\",\n        \"\",\n        render_delivery_status(),\n        \"\",\n        \"---\",\n        \"\",\n        render_section(\"最终简报\", brief_summary, \"暂无最终简报。\"),\n        \"\",\n        \"---\",\n        \"\",\n        render_section(\n            \"标准化技术交底书\",\n            strip_first_heading(technical_disclosure_markdown, \"# 标准化技术交底书\"),\n            \"技术交底书正文暂未生成。\",\n        ),\n        \"\",\n        \"---\",\n        \"\",\n        render_section(\n            \"技术交底书完善建议报告\",\n            strip_first_heading(improvement_report_markdown, \"# 技术交底书完善建议报告\"),\n            \"完善建议报告正文暂未生成。\",\n        ),\n        \"\",\n        \"---\",\n        \"\",\n        render_section(\n            \"技术要素表终稿\",\n            strip_first_heading(tech_elements_table_markdown, \"# 技术要素表终稿\"),\n            \"技术要素表正文暂未生成。\",\n        ),\n    ]\n    output = \"\\n\".join(parts)\n    validate_delivery_quality(output)\n    return {\"brief_summary\": output}\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          brief_summary:
+            children: null
+            type: string
+        selected: false
+        title: 1-5-27-交付阅读版Markdown组装
+        type: code
+        variables:
+        - value_selector:
+          - '1733319028330'
+          - structured_output
+          - brief_summary
+          variable: brief_summary
+        - value_selector:
+          - '1769200000001'
+          - output
+          variable: technical_disclosure_markdown
+        - value_selector:
+          - '1769300000001'
+          - output
+          variable: improvement_report_markdown
+        - value_selector:
+          - '1769300000002'
+          - table_markdown
+          variable: tech_elements_table_markdown
+      height: 53
+      id: '1769400000001'
+      position:
+        x: 4988
+        y: 40
+      positionAbsolute:
+        x: 4988
+        y: 40
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import re\n\nINTERNAL_SOURCE_MAP = {\n    \"Numeric_claim_status_basis\": \"发明简述中的数量与状态依据\",\n    \"Main_disclosure_component_items\": \"主要构件与技术方案说明\",\n    \"Engineering_constraints\": \"工程约束与实施条件\",\n}\n\nSOURCE_BUCKET_MAP = {\n    \"input_missing_items\": \"输入完全缺失项\",\n    \"report_gap_materials\": \"补料诊断依据\",\n    \"critical_gap_items_ranked\": \"高优先级缺口清单\",\n    \"already_input_but_not_absorbed_items\": \"已输入但正文未充分吸收项\",\n}\n\nFORBIDDEN_CLIENT_TOKENS = (\n    \"Numeric_claim_status_basis\",\n    \"Main_disclosure_component_items\",\n    \"Engineering_constraints\",\n    \"disclosure_fact_base\",\n    \"input_completeness_diagnostics\",\n    \"input_missing_items\",\n    \"report_gap_materials\",\n    \"source_bucket\",\n    \"excluded_rows\",\n    \"...\",\n    chr(8230),\n)\n\ndef text_or_empty(value):\n    if value is None:\n        return \"\"\n    return str(value).strip()\n\ndef remove_ellipsis(text):\n    return text_or_empty(text).replace(\"...\", \"\").replace(chr(8230), \"\").strip()\n\ndef normalize_cell(value):\n    text = remove_ellipsis(value)\n    text = text.replace(\"\\r\\n\", \"<br>\").replace(\"\\n\", \"<br>\")\n    text = text.replace(\"|\", \"\\\\|\")\n    return text\n\ndef normalize_phrase(value):\n    text = remove_ellipsis(value)\n    text = text.replace(\"\\r\\n\", \"；\").replace(\"\\n\", \"；\")\n    text = text.replace(\"|\", \"/\")\n    text = re.sub(r\"\\s+\", \" \", text)\n    text = re.sub(r\"；+\", \"；\", text)\n    return text.strip(\"； \")\n\ndef join_parts(parts):\n    cleaned = []\n    for part in parts:\n        text = normalize_phrase(part)\n        if text and text not in cleaned:\n            cleaned.append(text)\n    return \"；\".join(cleaned)\n\ndef map_source_basis(value):\n    source = normalize_phrase(value)\n    if not source:\n        return \"综合技术资料正文\"\n    for internal, readable in INTERNAL_SOURCE_MAP.items():\n        source = source.replace(internal, readable)\n    if re.search(r\"[A-Za-z]+_[A-Za-z0-9_]+\", source):\n        return \"综合技术资料正文\"\n    return source\n\ndef validate_no_client_leak(markdown):\n    for token in FORBIDDEN_CLIENT_TOKENS:\n        if token in markdown:\n            raise ValueError(f\"final technical-elements table contains client-visible forbidden token: {token}\")\n\ndef row_to_delivery_markdown(row):\n    columns = [\n        row.get(\"technical_problem\", \"\"),\n        join_parts([row.get(\"macro_feature\"), row.get(\"meta_feature\"), row.get(\"meta_entity\")]),\n        join_parts([row.get(\"meta_means\"), row.get(\"meta_function\")]),\n        join_parts([row.get(\"meta_effect\"), row.get(\"technical_effect\")]),\n        row.get(\"status\", \"\"),\n        row.get(\"source_tag\", \"\"),\n    ]\n    return \"| \" + \" | \".join(normalize_cell(value) for value in columns) + \" |\"\n\ndef validate_row(row):\n    required_columns = [\n        \"technical_problem\",\n        \"macro_feature\",\n        \"meta_feature\",\n        \"meta_entity\",\n        \"meta_means\",\n        \"meta_function\",\n        \"meta_effect\",\n        \"technical_effect\",\n        \"status\",\n        \"source_basis\",\n    ]\n    for column in required_columns:\n        if column not in row:\n            return False\n    return True\n\ndef assign_source_tags(rows):\n    mapping = {}\n    ordered_tags = []\n    for row in rows:\n        source_basis = map_source_basis(row.get(\"source_basis\"))\n        if source_basis not in mapping:\n            tag = f\"S{len(mapping) + 1}\"\n            mapping[source_basis] = tag\n            ordered_tags.append((tag, source_basis))\n    return mapping, ordered_tags\n\n\ndef map_source_bucket(value):\n    source = normalize_phrase(value)\n    if not source:\n        return \"补料诊断\"\n    for internal, readable in SOURCE_BUCKET_MAP.items():\n        source = source.replace(internal, readable)\n    if re.search(r\"[A-Za-z]+_[A-Za-z0-9_]+\", source):\n        return \"补料诊断\"\n    return source\n\ndef validate_excluded_row(row):\n    required_columns = [\n        \"original_title\",\n        \"exclusion_reason\",\n        \"source_bucket\",\n        \"suggested_destination\",\n    ]\n    return all(column in row for column in required_columns)\n\ndef render_excluded_rows_summary(excluded_rows):\n    rows = excluded_rows or []\n    if not rows:\n        return []\n    if any(not isinstance(row, dict) for row in rows):\n        raise ValueError(\"excluded rows summary contains non-object row; cannot render supplement summary\")\n    if any(not validate_excluded_row(row) for row in rows):\n        raise ValueError(\"excluded rows summary contains incomplete row; cannot render supplement summary\")\n    lines = [\"\", \"## 未进入终稿表但建议补充的技术要素\", \"\"]\n    for index, row in enumerate(rows, 1):\n        title = normalize_phrase(row.get(\"original_title\")) or \"待补充事项\"\n        reason = normalize_phrase(row.get(\"exclusion_reason\")) or \"未满足终稿准入条件。\"\n        source = map_source_bucket(row.get(\"source_bucket\"))\n        destination = normalize_phrase(row.get(\"suggested_destination\")) or \"发明人补料清单\"\n        lines.extend([\n            f\"{index}. {title}\",\n            \"\",\n            f\"未进入原因：{reason}\",\n            \"\",\n            f\"建议去向：{destination}\",\n            \"\",\n            f\"来源说明：{source}\",\n            \"\",\n        ])\n    return lines\n\ndef render_empty_table(excluded_row_count=0, excluded_rows=None):\n    count = int(excluded_row_count or 0)\n    lines = [\n        \"# 技术要素表终稿\",\n        \"\",\n        \"本次未形成可采纳技术要素。\",\n        \"\",\n        \"## 诊断说明\",\n        \"\",\n        \"终稿采纳条目：0\",\n        f\"未进入终稿表的补充事项数量：{count}\",\n        \"可能原因：输入资料缺少可直接进入技术要素表的技术问题、关键特征、手段、功能、效果或来源依据。\",\n        \"建议补充：独立权利要求完整步骤、实施例参数、可验证技术效果、替代方案和来源证据。\",\n    ]\n    lines.extend(render_excluded_rows_summary(excluded_rows))\n    markdown = \"\\n\".join(lines)\n    validate_no_client_leak(markdown)\n    return markdown, f\"accepted=0; excluded={count}; fallback_rendered=true\"\n\ndef main(accepted_rows: list, accepted_row_count: int = 0, excluded_rows: list = None, excluded_row_count: int = 0) -> dict:\n    raw_rows = accepted_rows or []\n    if any(not isinstance(row, dict) for row in raw_rows):\n        raise ValueError(\"accepted_rows contains non-object row; cannot render final table markdown\")\n    expected_row_count = int(accepted_row_count or 0)\n    if expected_row_count != len(raw_rows):\n        raise ValueError(\"accepted_row_count does not match accepted_rows length\")\n    valid_rows = raw_rows\n    if not valid_rows:\n        markdown, warning = render_empty_table(excluded_row_count, excluded_rows)\n        return {\"table_markdown\": markdown, \"row_count\": 0, \"warning_summary\": warning}\n    if len(valid_rows) > 6:\n        raise ValueError(\"accepted_rows exceeds max allowed 6; cannot render final table markdown\")\n    if any(not validate_row(row) for row in valid_rows):\n        raise ValueError(\"accepted_rows contains incomplete row; cannot render final table markdown\")\n    raw_excluded_rows = excluded_rows or []\n    if excluded_row_count and int(excluded_row_count or 0) != len(raw_excluded_rows):\n        raise ValueError(\"excluded row count does not match supplement rows length\")\n    source_mapping, ordered_tags = assign_source_tags(valid_rows)\n    delivery_rows = []\n    for row in valid_rows:\n        cloned = dict(row)\n        source_basis = map_source_basis(cloned.get(\"source_basis\"))\n        cloned[\"source_tag\"] = source_mapping[source_basis]\n        delivery_rows.append(cloned)\n    header = \"| 技术问题 | 关键技术特征 | 关键手段与功能 | 关键效果 | 确认状态 | 来源标签 |\"\n    divider = \"| :--- | :--- | :--- | :--- | :--- | :--- |\"\n    lines = [\"# 技术要素表终稿\", \"\", header, divider]\n    for row in delivery_rows:\n        lines.append(row_to_delivery_markdown(row))\n    if ordered_tags:\n        lines.extend([\"\", \"来源依据对照说明\", \"\"])\n        for index, (tag, source_basis) in enumerate(ordered_tags, 1):\n            lines.append(f\"{index}. {tag}：{source_basis}\")\n    warning_summary = \"\"\n    if excluded_row_count and excluded_row_count > 0:\n        warning_summary = f\"excluded={excluded_row_count}\"\n    lines.extend(render_excluded_rows_summary(raw_excluded_rows))\n    markdown = \"\\n\".join(lines)\n    validate_no_client_leak(markdown)\n    return {\"table_markdown\": markdown, \"row_count\": len(valid_rows), \"warning_summary\": warning_summary}\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          table_markdown:
+            children: null
+            type: string
+          row_count:
+            children: null
+            type: number
+          warning_summary:
+            children: null
+            type: string
+        selected: false
+        title: 1-5-19-技术要素表Markdown组装
+        type: code
+        variables:
+        - value_selector:
+          - '1755917468361'
+          - structured_output
+          - accepted_rows
+          variable: accepted_rows
+        - value_selector:
+          - '1755917468361'
+          - structured_output
+          - accepted_row_count
+          variable: accepted_row_count
+        - value_selector:
+          - '1755917468361'
+          - structured_output
+          - excluded_rows
+          variable: excluded_rows
+        - value_selector:
+          - '1755917468361'
+          - structured_output
+          - excluded_row_count
+          variable: excluded_row_count
+      height: 53
+      id: '1769300000002'
+      position:
+        x: 4890
+        y: 200
+      positionAbsolute:
+        x: 4890
+        y: 200
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -2102
+      y: 112
+      zoom: 0.7
+  rag_pipeline_variables: []

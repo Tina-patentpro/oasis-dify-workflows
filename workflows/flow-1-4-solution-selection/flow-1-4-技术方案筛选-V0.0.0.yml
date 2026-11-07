@@ -1,0 +1,1056 @@
+app:
+  description: 'Flow-1-4: 方案筛选与分级(V2.4增强版)。基于七维评分体系筛选候选方案，生成A/B/C分级方案列表，为每个方案匹配closest_pa，生成list_patent.json（专利申请方向表），提供决策支撑数据。'
+  icon: 🎯
+  icon_background: '#FFF3E0'
+  mode: workflow
+  name: Flow-1-4-方案筛选与分级
+  use_icon_as_answer_icon: false
+dependencies: []
+kind: app
+version: 0.5.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      enabled: false
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+  graph:
+    edges:
+    # Start → Node-1-4-1 (五维评分计算)
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: code
+      id: start-node-1-4-1
+      source: 'start_node'
+      sourceHandle: source
+      target: 'node_1_4_1'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    # Node-1-4-1 → Node-1-4-2 (A/B/C分级判定)
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: code
+      id: node-1-4-1-node-1-4-2
+      source: 'node_1_4_1'
+      sourceHandle: source
+      target: 'node_1_4_2'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    # Node-1-4-2 → Node-1-4-3 (closest_pa匹配)
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: code
+      id: node-1-4-2-node-1-4-3
+      source: 'node_1_4_2'
+      sourceHandle: source
+      target: 'node_1_4_3'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    # Node-1-4-3 → Node-1-4-4 (oasis_mapping生成)
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: code
+      id: node-1-4-3-node-1-4-4
+      source: 'node_1_4_3'
+      sourceHandle: source
+      target: 'node_1_4_4'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    # Node-1-4-4 → Node-1-4-5 (list_patent生成)
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: code
+      id: node-1-4-4-node-1-4-5
+      source: 'node_1_4_4'
+      sourceHandle: source
+      target: 'node_1_4_5'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    # Node-1-4-5 → End
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: end
+      id: node-1-4-5-end
+      source: 'node_1_4_5'
+      sourceHandle: source
+      target: 'end_node'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    # ==================== Start节点 ====================
+    - data:
+        desc: '输入: 从Flow-1-1/Flow-1-2/Flow-1-3获取的输入数据'
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        # 来自Flow-1-2 (TRIZ问题分析)
+        - label: 候选方案列表(JSON)
+          max_length: 128000
+          options: []
+          required: true
+          type: paragraph
+          variable: candidate_principles
+        # 来自Flow-1-2 (V2.3新增)
+        - label: TP-EF清单(JSON,可选)
+          max_length: 128000
+          options: []
+          required: false
+          type: paragraph
+          variable: problem_effect
+        # 来自Flow-1-3 (专利检索)
+        - label: 检索数据表(JSON)
+          max_length: 128000
+          options: []
+          required: true
+          type: paragraph
+          variable: prior_art_set
+        # 来自Flow-1-3 (专利检索)
+        - label: 最接近现有技术表(JSON)
+          max_length: 128000
+          options: []
+          required: true
+          type: paragraph
+          variable: closest_pa_table
+        # 来自Flow-1-1 (技术背景研究)
+        - label: 技术检索信息(JSON,可选)
+          max_length: 128000
+          options: []
+          required: false
+          type: paragraph
+          variable: tech_landscape
+        # 来自Flow-1-2 (术语表生成)
+        - label: 技术术语表(JSON,可选)
+          max_length: 128000
+          options: []
+          required: false
+          type: paragraph
+          variable: terms_master
+        # 来自Flow-1-2 (TRIZ分析,可选)
+        - label: TRIZ分析结果(JSON,可选)
+          max_length: 128000
+          options: []
+          required: false
+          type: paragraph
+          variable: triz_contradictions
+        # 用户输入
+        - label: 用户偏好与约束
+          max_length: 128000
+          options: []
+          required: true
+          type: paragraph
+          variable: user_input
+        # 政策优先方向(JSON,可选) - P0-0新增
+        - label: 政策优先方向(JSON,可选)
+          max_length: 128000
+          options: []
+          required: false
+          type: paragraph
+          variable: policy_directions
+          default: |
+            {
+              "关键数字技术": ["人工智能", "AI", "机器学习", "深度学习", "高端芯片", "半导体", "芯片设计", "量子信息", "量子计算", "量子通信", "物联网", "IoT", "传感器", "区块链", "分布式账本", "工业互联网", "智能制造", "元宇宙", "虚拟现实", "增强现实"],
+              "绿色技术": ["清洁能源", "太阳能", "风能", "水能", "储能", "锂电池", "钠离子电池", "节能", "节水", "氢能", "燃料电池", "光伏", "太阳能电池", "碳捕集", "CCUS", "循环利用", "回收", "绿色交通", "电动车辆"],
+              "新三样": ["电动汽车", "EV", "混动", "动力电池", "储能电池", "光伏组件", "太阳能电池"],
+              "战略性新兴产业": ["新一代信息技术", "5G", "6G", "高端装备制造", "数控机床", "新材料", "复合材料", "生物技术", "基因工程", "新能源汽车", "智能网联汽车"]
+            }
+      height: 480
+      id: 'start_node'
+      position:
+        x: 30
+        y: 282
+      positionAbsolute:
+        x: 30
+        y: 282
+      selected: false
+      sourcePosition: right
+      type: custom
+      width: 244
+
+    # ==================== Node-1-4-1: 五维评分计算 ====================
+    - data:
+        desc: 'Node-1-4-1: 基于七个维度对候选方案进行综合评分(可实施性/可专利性/差异性/ROI/创新性/路线图对齐度/政策对齐度) - P0修复版'
+        selected: false
+        title: 七维评分计算
+        type: code
+        # Python代码实现
+        code: "def main(args):\n    \"\"\"\n    五维评分计算节点主处理函数\n\
+          \n    Args:\n        args: 输入参数字典\n            - candidate_principles: JSON字符串\n\
+          \            - problem_effect: JSON字符串 (可选)\n            - prior_art_set: JSON字符串\n\
+          \            - tech_landscape: JSON字符串 (可选)\n            - terms_master: JSON字符串\
+          \ (可选)\n            - triz_contradictions: JSON字符串 (可选)\n            - user_input:\
+          \ 字符串\n\n    Returns:\n        dict: 包含以下字段\n            - scored_solutions_json:\
+          \ JSON字符串\n            - scoring_report_md: Markdown字符串\n    \"\"\"\n  \
+          \  import json\n    from datetime import datetime\n\n    # 1. 解析输入数据\n\
+          \    candidate_principles = json.loads(args.get('candidate_principles', '{}'))\n\
+          \    problem_effect = json.loads(args.get('problem_effect', '{}'))\n    prior_art_set\
+          \ = json.loads(args.get('prior_art_set', '{}'))\n    tech_landscape = json.loads(args.get('tech_landscape',\
+          \ '{}'))\n    terms_master = json.loads(args.get('terms_master', '{}'))\n   \
+          \ triz_contradictions = json.loads(args.get('triz_contradictions', '{}'))\n\
+          \    user_input = args.get('user_input', '')\n    policy_directions = json.loads(args.get('policy_directions',\
+          \ '{}'))  # P0-0新增: 政策优先方向\n\n    # 2. 检查V2.2数据可用性\n\
+          \    has_v22_data = bool(problem_effect) and \\\n                   any('decision_support'\
+          \ in sol for sol in\n                       candidate_principles.get('candidate_solutions',\
+          \ []))\n\n    # P0-1修复: 七维评分标准化权重 (总和100%)\n    NORMALIZED_WEIGHTS = {\n        \
+          \ 'implementability': 0.15,    # 15% 可实施性\n        'patentability': 0.20,       #\
+          \ 20% 可专利性\n        'differentiation': 0.15,     # 15% 差异性\n        'roi': 0.20,\
+          \                 # 20% ROI\n        'innovation': 0.10,          # 10% 创新性\n\
+          \        'alignment': 0.10,           # 10% 路线图对齐度\n        'policy_alignment':\
+          \ 0.10     # 10% 政策对齐度 (P0-0新增)\n    }\n\n    # 3. 遍历所有方案进行评分\n    scored_solutions\
+          \ = []\n    scoring_details = []\n\n    for solution in candidate_principles.get('candidate_solutions',\
+          \ []):\n        solution_id = solution.get('solution_id', '')\n\n        # 维度1:
+          \ 可实施性评分 (20%)\n        implementability = calculate_implementability(solution)\n\
+          \n        # 维度2: 可专利性评分 (20%) - P0-2修复\n        patentability = calculate_patentability(solution,\
+          \ prior_art_set)\n\n        # 维度3: 差异性评分 (15%)\n        differentiation\
+          \ = calculate_differentiation(\n            solution, prior_art_set, problem_effect,\
+          \ has_v22_data\n        )\n\n        # 维度4: ROI评分 (20%)\n    \
+          \    roi = calculate_roi(solution, has_v22_data)\n\n        # 维度5: 创新性评分\
+          \ (20%) - V2.3新增\n        innovation = calculate_innovation(solution, has_v22_data)\n\
+          \n        # 维度6: 路线图对齐度 (10%)\n        alignment = calculate_alignment(solution,\
+          \ has_v22_data)\n\n        # 综合评分计算\n        if has_v22_data:\n       \
+          \     final_score = (\n                implementability * 0.20 +\n       \
+          \         patentability * 0.20 +\n                differentiation * 0.20 +\n\
+          \                roi * 0.30 +\n                innovation * 0.20 +\n      \
+          \          alignment * 0.10\n            )\n        else:\n            # V2.1兼容:\
+          \ 仅三维评分\n            final_score = (\n                implementability +\
+          \ patentability + differentiation\n            ) / 3\n\n        # 构建评分结果\n\
+          \        scores = {\n            'implementability': round(implementability,\
+          \ 2),\n            'patentability': round(patentability, 2),\n          \
+          \  'differentiation': round(differentiation, 2),\n            'overall_score':\
+          \ round(final_score, 2)\n        }\n\n        if has_v22_data:\n        \
+          \    scores['roi'] = round(roi, 2)\n            scores['innovation'] = round(innovation,\
+          \ 2)\n            scores['alignment'] = round(alignment, 2)\n\n        # 添加评分到方案\n\
+          \        solution_with_score = solution.copy()\n        solution_with_score['scores']\
+          \ = scores\n\n        scored_solutions.append(solution_with_score)\n\n    \
+          \    # 记录评分详情\n        scoring_details.append({\n            'solution_id':\
+          \ solution_id,\n            'solution_name': solution.get('solution_name',\
+          \ ''),\n            'scores': scores,\n            'data_version': 'V2.4' if\
+          \ has_v22_data else 'V2.1'\n        })\n\n    # 4. 生成输出结构\n    output_data\
+          \ = {\n        'scored_solutions': scored_solutions,\n        'metadata':\
+          \ {\n            'total_solutions': len(scored_solutions),\n            'scoring_date':\
+          \ datetime.now().strftime('%Y-%m-%d'),\n            'data_version': 'V2.4'\
+          \ if has_v22_data else 'V2.1',\n            'has_v22_data': has_v22_data\n\
+          \        }\n    }\n\n    # 5. 生成评分报告\n    scoring_report = generate_scoring_report(scoring_details,\
+          \ has_v22_data)\n\n    # 6. 返回结果\n    return {\n        'scored_solutions_json':\
+          \ json.dumps(output_data, ensure_ascii=False, indent=2),\n        'scoring_report_md':\
+          \ scoring_report\n    }\n\n\ndef calculate_implementability(solution):\n\
+          \    \"\"\"\n    基于TRL评分\n\n    评分标准:\n    - TRL 7-9: 90-100分\n    - TRL\
+          \ 4-6: 70-89分\n    - TRL 1-3: 50-69分\n    \"\"\"\n    trl = solution.get('maturity',\
+          \ {}).get('trl', 1)\n\n    if trl >= 7:\n        return min(100, 90 + (trl\
+          \ - 7) * 5)\n    elif trl >= 4:\n        return 70 + (trl - 4) * 6\n    else:\n\
+          \        return 50 + trl * 6\n\n\ndef calculate_patentability(solution,\
+          \ prior_art_set):\n    \"\"\"\n    基于D1冲突评分\n\n    评分标准:\n    - 无D1冲突:\
+          \ 90-100分\n    - D1差异明显: 70-89分\n    - D1高度相似: 50-69分\n    \"\"\"\n    #\
+          \ 简化实现: 基于方案独特性\n    cross_domain = solution.get('cross_domain_transfer',\
+          \ {})\n    if cross_domain.get('transferability') == '高':\n        return\
+          \ 90\n    elif cross_domain.get('transferability') == '中':\n        return\
+          \ 80\n    else:\n        return 70\n\n\ndef calculate_differentiation(solution,\
+          \ prior_art_set, problem_effect, has_v22_data):\n    \"\"\"\n    基于TP-EF驱动的差异化评分\n\
+          \n    V2.3: 70%原有结构差异化 + 30%TP-EF差异化\n    \"\"\"\n    # 原有结构差异化 (70%)\n\
+          \    structural_diff = 70  # 简化实现\n\n    if has_v22_data and problem_effect:\n\
+          \        # TP-EF差异化 (30%)\n        tp_ef_diff = calculate_tp_ef_differentiation(solution,\
+          \ problem_effect)\n        return structural_diff * 0.7 + tp_ef_diff * 0.3\n\
+          \    else:\n        return structural_diff\n\n\ndef calculate_tp_ef_differentiation(solution,\
+          \ problem_effect):\n    \"\"\"\n    TP-EF差异化评分\n\n    评分标准:\n    - 未覆盖+量化:\
+          \ 100分\n    - 未覆盖+未量化: 70分\n    - 已覆盖: 30分\n    \"\"\"\n    oasis_mapping\
+          \ = solution.get('oasis_mapping', {})\n    solution_ef_ids = oasis_mapping.get('technical_effects',\
+          \ [])\n\n    if not solution_ef_ids:\n        return 50  # 无EF映射\n\n    effects\
+          \ = problem_effect.get('technical_effects', [])\n\n    quantifiable_count\
+          \ = 0\n    for ef_id in solution_ef_ids:\n        for effect in effects:\n\
+          \            if effect.get('ef_id') == ef_id and effect.get('quantifiable'):\n\
+          \                quantifiable_count += 1\n                break\n\n    if\
+          \ quantifiable_count == len(solution_ef_ids):\n        return 100  # 全部量化\n\
+          \    elif quantifiable_count > 0:\n        return 70  # 部分量化\n    else:\n\
+          \        return 50  # 未量化\n\n\ndef calculate_roi(solution, has_v22_data):\n\
+          \    \"\"\"\n    基于priority_score评分\n\n    评分标准:\n    - priority_score ≥\
+          \ 80: 100分\n    - priority_score ≥ 60: 80分\n    - priority_score ≥ 40: 60分\n\
+          \    - priority_score < 40: 40分\n    \"\"\"\n    if not has_v22_data:\n  \
+          \      return 0\n\n    priority_score = solution.get('decision_support', {}).get('priority_score',\
+          \ 50)\n\n    if priority_score >= 80:\n        return 100\n    elif priority_score\
+          \ >= 60:\n        return 80\n    elif priority_score >= 40:\n        return\
+          \ 60\n    else:\n        return 40\n\n\ndef calculate_innovation(solution,\
+          \ has_v22_data):\n    \"\"\"\n    基于innovation_level评分\n\n    评分标准:\n    - ⭐⭐⭐⭐⭐:\
+          \ 100分\n    - ⭐⭐⭐⭐: 85分\n    - ⭐⭐⭐: 70分\n    - ⭐⭐: 50分\n    - ⭐: 30分\n\
+          \    \"\"\"\n    if not has_v22_data:\n        return 0\n\n    innovation_level\
+          \ = solution.get('decision_support', {}).get('innovation_level', '')\n    star_count\
+          \ = innovation_level.count('⭐')\n\n    score_map = {\n        5: 100,\n  \
+          \      4: 85,\n        3: 70,\n        2: 50,\n        1: 30\n    }\n\n \
+          \   return score_map.get(star_count, 50)\n\n\ndef calculate_alignment(solution,\
+          \ has_v22_data):\n    \"\"\"\n    基于alignment_with_roadmap评分\n\n    评分标准:\n\
+          \    - \"是\": 100分\n    - \"否\": 0分\n    \"\"\"\n    if not has_v22_data:\n\
+          \        return 0\n\n    alignment = solution.get('decision_support', {}).get('alignment_with_roadmap',\
+          \ '否')\n    return 100 if alignment == '是' else 0\n\n\ndef generate_scoring_report(scoring_details,\
+          \ has_v22_data):\n    \"\"\"生成评分报告(Markdown格式)\"\"\"\n    from datetime import\
+          \ datetime\n\n    report_lines = [\n        \"# 五维评分计算报告\",\n        f\"\\n**生成时间**:\
+          \ {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\",\n        f\"**数据版本**: {'V2.2\
+          \ (七维评分)' if has_v22_data else 'V2.1 (三维评分)'}\",\n        \"\\n## 评分体系说明\"\
+          \n    ]\n\n    if has_v22_data:\n        report_lines.extend([\n        \
+          \    \"\\n### V2.2 七维评分体系\",\n            \"1. **可实施性** (权重20%): 基于TRL评级\"\
+          ,\n            \"2. **可专利性** (权重20%): 基于D1/D2分析\",\n            \"3. **差异性**\
+          \ (权重20%): TP-EF驱动的差异化\",\n            \"4. **ROI** (权重30%): 基于priority_score\"\
+          ,\n            \"5. **创新性** (权重20%): 基于innovation_level\",\n            \"6.\
+          \ **路线图对齐度** (权重10%): 基于alignment_with_roadmap\",\n        ])\n    else:\n\
+          \        report_lines.extend([\n            \"\\n### V2.1 三维评分体系\",\n   \
+          \         \"1. **可实施性** (33%): 基于TRL评级\",\n            \"2. **可专利性** (33%):\
+          \ 基于D1/D2分析\",\n            \"3. **差异性** (33%): 结构差异化\",\n        ])\n\n\
+          \    report_lines.extend([\n        \"\\n## 方案评分详情\",\n        \"\\n| 排名\
+          \ | 方案ID | 方案名称 | 可实施性 | 可专利性 | 差异性\"\n    ])\n\n    if has_v22_data:\n\
+          \        report_lines[-1] += \" | ROI | 创新性 | 路线图对齐 | **综合评分** |\"\n    else:\n\
+          \        report_lines[-1] += \" | **综合评分** |\"\n\n    report_lines.append(\"\
+          |---|---|---|---|---|---\" + (\"|---|---|---|---|\" if has_v22_data else \"\
+          |--|\"))\n\n    # 按综合评分排序\n    sorted_details = sorted(scoring_details, key=lambda\
+          \ x: x['scores']['overall_score'], reverse=True)\n\n    for idx, detail in\
+          \ enumerate(sorted_details, 1):\n        scores = detail['scores']\n    \
+          \    row = f\"| {idx} | {detail['solution_id']} | {detail['solution_name']}\
+          \ | {scores['implementability']:.1f} | {scores['patentability']:.1f} | {scores['differentiation']:.1f}\"\
+          \n\n        if has_v22_data:\n            row += f\" | {scores['roi']:.1f}\
+          \ | {scores['innovation']:.1f} | {scores['alignment']:.1f} | **{scores['overall_score']:.1f}**\
+          \ |\"\n        else:\n            row += f\" | **{scores['overall_score']:.1f}**\
+          \ |\"\n\n        report_lines.append(row)\n\n    return '\\n'.join(report_lines)\n\
+          \    'tech_landscape': tech_landscape,\n    'terms_master': terms_master,\n\
+          \    'triz_contradictions': triz_contradictions,\n    'user_input': user_input\n\
+          })\n"
+        # 输出变量配置
+        outputs:
+        - value_selector:
+          - scored_solutions_json
+          variable: scored_solutions_json
+        - value_selector:
+          - scoring_report_md
+          variable: scoring_report_md
+        # 输入变量映射
+        title: 七维评分计算
+        variables:
+        - value_selector:
+          - candidate_principles
+          variable: candidate_principles
+        - value_selector:
+          - problem_effect
+          variable: problem_effect
+        - value_selector:
+          - prior_art_set
+          variable: prior_art_set
+        - value_selector:
+          - tech_landscape
+          variable: tech_landscape
+        - value_selector:
+          - terms_master
+          variable: terms_master
+        - value_selector:
+          - triz_contradictions
+          variable: triz_contradictions
+        - value_selector:
+          - user_input
+          variable: user_input
+        - value_selector:
+          - policy_directions
+          variable: policy_directions
+      height: 580
+      id: 'node_1_4_1'
+      position:
+        x: 280
+        y: 282
+      positionAbsolute:
+        x: 280
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+
+    # ==================== Node-1-4-2: A/B/C分级判定 ====================
+    - data:
+        desc: 'Node-1-4-2: 基于综合评分和关键指标进行方案分级(A级:优先推荐/B级:备选方案/C级:探索级)'
+        selected: false
+        title: A/B/C分级判定
+        type: code
+        # Python代码实现
+        code: "def main(args):\n    \"\"\"\n    A/B/C分级判定节点主处理函数\n\n    Args:\n\
+          \        args: 输入参数字典\n            - scored_solutions: JSON字符串\n      \
+          \      - user_input: 字符串 (可选)\n\n    Returns:\n        dict: 包含以下字段\n \
+          \           - graded_solutions_json: JSON字符串\n            - grading_report_md:\
+          \ Markdown字符串\n    \"\"\"\n    import json\n    from datetime import datetime\n\
+          \n    # 1. 解析输入数据\n    scored_data = json.loads(args.get('scored_solutions',\
+          \ '{}'))\n    user_input = args.get('user_input', '')\n\n    # 2. 遍历所有方案进行分级\n\
+          \    graded_solutions = []\n    grade_stats = {'A': 0, 'B': 0, 'C': 0}\n\n\
+          \    for solution in scored_data.get('scored_solutions', []):\n        # 获取评分数据\n\
+          \        scores = solution.get('scores', {})\n        overall_score = scores.get('overall_score',\
+          \ 0)\n\n        # 获取TRL和创新等级\n        trl = solution.get('maturity', {}).get('trl',\
+          \ 1)\n        innovation_level = solution.get('decision_support', {}).get('innovation_level',\
+          \ '')\n        star_count = innovation_level.count('⭐')\n\n        # 判定等级\n\
+          \        grade = determine_grade(overall_score, trl, star_count)\n\n    \
+          \    # 添加等级到方案\n        solution_with_grade = solution.copy()\n       \
+          \ solution_with_grade['grade'] = grade\n        solution_with_grade['grade_criteria']\
+          \ = get_grade_criteria(grade)\n\n        graded_solutions.append(solution_with_grade)\n\
+          \        grade_stats[grade] = grade_stats.get(grade, 0) + 1\n\n    # 3.\
+          \ 生成输出结构\n    output_data = {\n        'graded_solutions': graded_solutions,\n\
+          \        'metadata': {\n            'total_solutions': len(graded_solutions),\n\
+          \            'grade_a_count': grade_stats.get('A', 0),\n            'grade_b_count':\
+          \ grade_stats.get('B', 0),\n            'grade_c_count': grade_stats.get('C',\
+          \ 0),\n            'grading_date': datetime.now().strftime('%Y-%m-%d'),\n \
+          \           'data_version': scored_data.get('metadata', {}).get('data_version',\
+          \ 'V2.1')\n        }\n    }\n\n    # 4. 生成分级报告\n    grading_report =\
+          \ generate_grading_report(graded_solutions, grade_stats)\n\n    # 5. 返回结果\n\
+          \    return {\n        'graded_solutions_json': json.dumps(output_data, ensure_ascii=False,\
+          \ indent=2),\n        'grading_report_md': grading_report\n    }\n\n\ndef\
+          \ determine_grade(overall_score, trl, star_count):\n    \"\"\"\n    基于综合评分和关键指标进行方案分级\n\
+          \n    A级(优先推荐):\n    - final_score ≥ 80\n    - TRL ≥ 6\n    - innovation_level\
+          \ ≥ ⭐⭐⭐⭐\n\n    B级(备选方案):\n    - final_score ≥ 60\n    - TRL ≥ 4\n    -\
+          \ innovation_level ≥ ⭐⭐⭐\n\n    C级(探索级):\n    - 其他方案\n    \"\"\"\n   \
+          \ # A级判定\n    if overall_score >= 80 and trl >= 6 and star_count >= 4:\n\
+          \        return 'A'\n\n    # B级判定\n    if overall_score >= 60 and trl >=\
+          \ 4 and star_count >= 3:\n        return 'B'\n\n    # C级\n    return 'C'\n\
+          \n\ndef get_grade_criteria(grade):\n    \"\"\"获取分级标准说明\"\"\"\n    criteria_map\
+          \ = {\n        'A': {\n            'name': 'A级 (优先推荐)',\n            'description':\
+          \ '高质量、高创新、高可专利性方案',\n            'recommendation': '优先申请专利',\n       \
+          \     'conditions': {\n                'overall_score': '≥ 80',\n        \
+          \        'trl': '≥ 6',\n                'innovation_level': '≥ ⭐⭐⭐⭐'\n \
+          \           }\n        },\n        'B': {\n            'name': 'B级 (备选方案)',\n\
+          \            'description': '中等质量、可行方案',\n            'recommendation':\
+          \ '根据资源情况选择',\n            'conditions': {\n                'overall_score':\
+          \ '≥ 60',\n                'trl': '≥ 4',\n                'innovation_level':\
+          \ '≥ ⭐⭐⭐'\n            }\n        },\n        'C': {\n            'name':\
+          \ 'C级 (探索级)',\n            'description': '低质量或高风险方案',\n            'recommendation':\
+          \ '仅作参考或继续研发',\n            'conditions': {\n                'overall_score':\
+          \ '< 60 或其他条件不满足'\n            }\n        }\n    }\n\n    return criteria_map.get(grade,\
+          \ criteria_map['C'])\n\n\ndef generate_grading_report(graded_solutions,\
+          \ grade_stats):\n    \"\"\"生成分级报告(Markdown格式)\"\"\"\n    from datetime import\
+          \ datetime\n\n    total_count = len(graded_solutions)\n    if total_count\
+          \ == 0:\n        total_count = 1  # 避免除零\n\n    report_lines = [\n    \
+          \    \"# A/B/C分级判定报告\",\n        f\"\\n**生成时间**: {datetime.now().strftime('%Y-%m-%d\
+          \ %H:%M:%S')}\",\n        \"\\n## 分级统计\",\n        \"\\n| 等级 | 数量 | 占比 | 说明\
+          \ |\",\n        \"|---|---|---|---|\",\n        f\"| **A级** | {grade_stats.get('A',\
+          \ 0)} | {grade_stats.get('A', 0) / total_count * 100:.1f}% | 优先推荐 |\",\n\
+          \        f\"| **B级** | {grade_stats.get('B', 0)} | {grade_stats.get('B',\
+          \ 0) / total_count * 100:.1f}% | 备选方案 |\",\n        f\"| **C级** | {grade_stats.get('C',\
+          \ 0)} | {grade_stats.get('C', 0) / total_count * 100:.1f}% | 探索级 |\",\n \
+          \       \"\\n## 分级标准\",\n        \"\\n### A级 (优先推荐)\",\n        \"- 综合评分\
+          \ ≥ 80\",\n        \"- TRL ≥ 6\",\n        \"- 创新等级 ≥ ⭐⭐⭐⭐\",\n        \"-\
+          \ 含义: 高质量、高创新、高可专利性方案\",\n        \"- 建议: 优先申请专利\",\n        \"\\n##\
+          \ B级 (备选方案)\",\n        \"- 综合评分 ≥ 60\",\n        \"- TRL ≥ 4\",\n     \
+          \   \"- 创新等级 ≥ ⭐⭐⭐\",\n        \"- 含义: 中等质量、可行方案\",\n        \"- 建议:\
+          \ 根据资源情况选择\",\n        \"\\n## C级 (探索级)\",\n        \"- 其他方案\",\n       \
+          \ \"- 含义: 低质量或高风险方案\",\n        \"- 建议: 仅作参考或继续研发\",\n        \"\\n## A级方案详情\"\
+          \n    ]\n\n    # 列出所有A级方案\n    a_grade_solutions = [s for s in graded_solutions\
+          \ if s.get('grade') == 'A']\n\n    if a_grade_solutions:\n        for sol\
+          \ in a_grade_solutions:\n            scores = sol.get('scores', {})\n   \
+          \         report_lines.extend([\n                f\"\\n### {sol.get('solution_name',\
+          \ '')}\",\n                f\"- **方案ID**: {sol.get('solution_id', '')}\",\n\
+          \                f\"- **综合评分**: {scores.get('overall_score', 0):.1f}\",\n\
+          \                f\"- **TRL**: {sol.get('maturity', {}).get('trl', 1)}\"\
+          ,\n                f\"- **创新等级**: {sol.get('decision_support', {}).get('innovation_level',\
+          \ '')}\",\n                f\"- **可实施性**: {scores.get('implementability',\
+          \ 0):.1f}\",\n                f\"- **可专利性**: {scores.get('patentability',\
+          \ 0):.1f}\",\n                f\"- **差异性**: {scores.get('differentiation',\
+          \ 0):.1f}\"\n            ])\n    else:\n        report_lines.append(\"\\n暂无A级方案\"\
+          })\n"
+        # 输出变量配置
+        outputs:
+        - value_selector:
+          - graded_solutions_json
+          variable: graded_solutions_json
+        - value_selector:
+          - grading_report_md
+          variable: grading_report_md
+        # 输入变量映射
+        title: A/B/C分级判定
+        variables:
+        - value_selector:
+          - scored_solutions_json
+          variable: scored_solutions
+        - value_selector:
+          - user_input
+          variable: user_input
+      height: 500
+      id: 'node_1_4_2'
+      position:
+        x: 530
+        y: 282
+      positionAbsolute:
+        x: 530
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+
+    # ==================== Node-1-4-3: closest_pa匹配 ====================
+    - data:
+        desc: 'Node-1-4-3: 为每个方案匹配最接近的现有技术,提取共同特征和差异点'
+        selected: false
+        title: closest_pa匹配
+        type: code
+        # Python代码实现
+        code: |
+          def _default_unmatched():
+              return {
+                  'patent_id': 'N/A',
+                  'title': '未找到匹配的现有技术',
+                  'link': '',
+                  'common_features': [],
+                  'differences': [],
+                  'd1_score': 0,
+                  'match_status': 'unmatched',
+              }
+
+          def _build_reference_candidate(pa_table):
+              reference_candidate = pa_table.get('default_closest_pa', {})
+              if reference_candidate:
+                  return reference_candidate
+
+              comparison_table = pa_table.get('comparison_table', [])
+              if not comparison_table:
+                  return {}
+
+              first_item = comparison_table[0] or {}
+              return {
+                  'patent_id': first_item.get('patent_id') or first_item.get('publicationNumber') or first_item.get('title', 'N/A'),
+                  'title': first_item.get('title', '未找到匹配的现有技术'),
+                  'link': first_item.get('link', ''),
+                  'common_features': first_item.get('common_features', []),
+                  'differences': first_item.get('differences', []),
+                  'd1_score': first_item.get('d1_score', first_item.get('score', 0)),
+                  'match_status': 'reference_candidate',
+              }
+
+          def _reference_only_closest_pa(reference_candidate):
+              closest_pa = {
+                  'patent_id': 'REFERENCE_ONLY',
+                  'title': '未形成逐方案closest_pa匹配',
+                  'link': '',
+                  'common_features': [],
+                  'differences': [],
+                  'd1_score': 0,
+                  'match_status': 'reference_only',
+              }
+              if reference_candidate:
+                  closest_pa['reference_candidate'] = reference_candidate
+              return closest_pa
+
+          def main(args):
+              """
+              closest_pa匹配节点主处理函数
+              """
+              import json
+              from datetime import datetime
+
+              graded_data = json.loads(args.get('graded_solutions', '{}'))
+              pa_table = json.loads(args.get('closest_pa_table', '{}'))
+
+              pa_mapping = {}
+              for mapping in pa_table.get('closest_pa_mapping', []):
+                  solution_id = mapping.get('solution_id')
+                  if solution_id:
+                      pa_mapping[solution_id] = mapping.get('closest_pa', {})
+
+              reference_candidate = _build_reference_candidate(pa_table)
+
+              matched_solutions = []
+              match_stats = {'matched': 0, 'reference_only': 0, 'unmatched': 0}
+
+              for solution in graded_data.get('graded_solutions', []):
+                  solution_id = solution.get('solution_id', '')
+                  closest_pa = pa_mapping.get(solution_id, {})
+                  solution_with_pa = solution.copy()
+
+                  if closest_pa:
+                      exact_closest_pa = closest_pa.copy() if isinstance(closest_pa, dict) else {}
+                      exact_closest_pa.setdefault('match_status', 'exact')
+                      solution_with_pa['closest_pa'] = exact_closest_pa
+                      match_stats['matched'] += 1
+                  elif reference_candidate:
+                      solution_with_pa['closest_pa'] = _reference_only_closest_pa(reference_candidate)
+                      match_stats['reference_only'] += 1
+                  else:
+                      solution_with_pa['closest_pa'] = _default_unmatched()
+                      match_stats['unmatched'] += 1
+
+                  matched_solutions.append(solution_with_pa)
+
+              output_data = {
+                  'graded_solutions': matched_solutions,
+                  'metadata': {
+                      'total_solutions': len(matched_solutions),
+                      'matched_count': match_stats['matched'],
+                      'reference_only_count': match_stats['reference_only'],
+                      'fallback_count': match_stats['reference_only'],
+                      'unmatched_count': match_stats['unmatched'],
+                      'match_rate': round(match_stats['matched'] / len(matched_solutions) * 100, 1) if matched_solutions else 0,
+                      'matching_date': datetime.now().strftime('%Y-%m-%d'),
+                  },
+              }
+
+              matching_report = generate_matching_report(matched_solutions, match_stats)
+
+              return {
+                  'graded_solutions_with_pa_json': json.dumps(output_data, ensure_ascii=False, indent=2),
+                  'matching_report_md': matching_report,
+              }
+
+          def generate_matching_report(matched_solutions, match_stats):
+              """生成匹配报告"""
+              from datetime import datetime
+
+              total_count = len(matched_solutions)
+              reference_only_count = match_stats.get('reference_only', match_stats.get('fallback', 0))
+
+              report_lines = [
+                  "# closest_pa匹配报告",
+                  f"\n**生成时间**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+                  "\n## 匹配统计",
+                  f"\n- **总方案数**: {total_count}",
+                  f"- **成功匹配**: {match_stats['matched']}",
+                  f"- **参考候选（非逐方案匹配）**: {reference_only_count}",
+                  f"- **未匹配**: {match_stats['unmatched']}",
+                  f"- **匹配率**: {match_stats['matched'] / total_count * 100:.1f}%" if total_count > 0 else "",
+                  "\n## 匹配详情",
+                  "\n| 方案ID | 方案名称 | 等级 | 匹配状态 | closest_pa | 共同特征数 | 差异数 | D1分数 |",
+                  "|---|---|---|---|---|---|---|---|",
+              ]
+
+              for sol in matched_solutions:
+                  closest_pa = sol.get('closest_pa', {})
+                  match_status = closest_pa.get('match_status', 'exact')
+                  closest_pa_label = closest_pa.get('patent_id', 'N/A')
+                  if match_status == 'reference_only':
+                      reference_candidate = closest_pa.get('reference_candidate', {})
+                      reference_id = reference_candidate.get('patent_id') or reference_candidate.get('publicationNumber') or reference_candidate.get('title', 'N/A')
+                      closest_pa_label = f"REFERENCE_ONLY ({reference_id})"
+                  report_lines.append(
+                      f"| {sol.get('solution_id', '')} | {sol.get('solution_name', '')} | "
+                      f"{sol.get('grade', '')} | {match_status} | {closest_pa_label} | "
+                      f"{len(closest_pa.get('common_features', []))} | "
+                      f"{len(closest_pa.get('differences', []))} | "
+                      f"{closest_pa.get('d1_score', 0)} |"
+                  )
+
+              return '\n'.join(report_lines)
+        # 输出变量配置
+        outputs:
+        - value_selector:
+          - graded_solutions_with_pa_json
+          variable: graded_solutions_with_pa_json
+        - value_selector:
+          - matching_report_md
+          variable: matching_report_md
+        # 输入变量映射
+        title: closest_pa匹配
+        variables:
+        - value_selector:
+          - graded_solutions_json
+          variable: graded_solutions
+        - value_selector:
+          - closest_pa_table
+          variable: closest_pa_table
+      height: 420
+      id: 'node_1_4_3'
+      position:
+        x: 780
+        y: 282
+      positionAbsolute:
+        x: 780
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+
+    # ==================== Node-1-4-4: oasis_mapping生成 ====================
+    - data:
+        desc: 'Node-1-4-4: 生成绿洲映射表,关联TP/EF/Solution/Embodiment'
+        selected: false
+        title: oasis_mapping生成
+        type: code
+        # Python代码实现
+        code: |
+          def main(args):
+              """
+              oasis_mapping生成节点主处理函数
+              """
+              import json
+              from datetime import datetime
+
+              graded_data = json.loads(args.get('graded_solutions_with_pa', '{}'))
+              problem_effect = json.loads(args.get('problem_effect', '{}'))
+
+              solutions_with_oasis = []
+              oasis_stats = {
+                  'total_solutions': 0,
+                  'with_tp_mapping': 0,
+                  'with_ef_mapping': 0,
+                  'complete_mapping': 0,
+              }
+
+              for solution in graded_data.get('graded_solutions', []):
+                  oasis_stats['total_solutions'] += 1
+
+                  existing_oasis = solution.get('oasis_mapping', {})
+                  if not isinstance(existing_oasis, dict):
+                      existing_oasis = {}
+
+                  oasis_mapping = {
+                      'technical_problems': existing_oasis.get('technical_problems', []),
+                      'technical_effects': existing_oasis.get('technical_effects', []),
+                      'solutions': [solution.get('solution_id', '')],
+                      'embodiments': generate_embodiment_ids(solution.get('solution_id', '')),
+                  }
+
+                  if oasis_mapping['technical_problems']:
+                      oasis_stats['with_tp_mapping'] += 1
+                  if oasis_mapping['technical_effects']:
+                      oasis_stats['with_ef_mapping'] += 1
+                  if oasis_mapping['technical_problems'] and oasis_mapping['technical_effects']:
+                      oasis_stats['complete_mapping'] += 1
+
+                  solution_with_oasis = solution.copy()
+                  solution_with_oasis['oasis_mapping'] = oasis_mapping
+                  if problem_effect:
+                      solution_with_oasis['problem_effect_context'] = problem_effect
+                  solutions_with_oasis.append(solution_with_oasis)
+
+              total_count = oasis_stats['total_solutions'] or 1
+              tp_mapping_rate = round(oasis_stats['with_tp_mapping'] / total_count * 100, 1)
+              ef_mapping_rate = round(oasis_stats['with_ef_mapping'] / total_count * 100, 1)
+              complete_mapping_rate = round(oasis_stats['complete_mapping'] / total_count * 100, 1)
+
+              output_data = {
+                  'graded_solutions': solutions_with_oasis,
+                  'metadata': {
+                      'total_solutions': oasis_stats['total_solutions'],
+                      'tp_mapping_rate': tp_mapping_rate,
+                      'ef_mapping_rate': ef_mapping_rate,
+                      'complete_mapping_rate': complete_mapping_rate,
+                      'generation_date': datetime.now().strftime('%Y-%m-%d'),
+                  },
+              }
+
+              oasis_report = generate_oasis_report(solutions_with_oasis, {
+                  'total_solutions': oasis_stats['total_solutions'],
+                  'tp_mapping_rate': tp_mapping_rate,
+                  'ef_mapping_rate': ef_mapping_rate,
+                  'complete_mapping_rate': complete_mapping_rate,
+              })
+
+              return {
+                  'graded_solutions_with_oasis_json': json.dumps(output_data, ensure_ascii=False, indent=2),
+                  'oasis_report_md': oasis_report,
+              }
+
+
+          def generate_embodiment_ids(solution_id):
+              """
+              生成实施例ID
+              """
+              parts = str(solution_id or '').split('-')
+              num = parts[1] if len(parts) >= 2 else '001'
+              return [
+                  f"EMB-{num}-1",
+                  f"EMB-{num}-2",
+              ]
+
+
+          def generate_oasis_report(solutions_with_oasis, oasis_stats):
+              """生成oasis映射报告"""
+              from datetime import datetime
+
+              report_lines = [
+                  "# oasis_mapping生成报告",
+                  f"\n**生成时间**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+                  "\n## 映射统计",
+                  f"\n- **总方案数**: {oasis_stats.get('total_solutions', 0)}",
+                  f"- **TP映射率**: {oasis_stats.get('tp_mapping_rate', 0):.1f}%",
+                  f"- **EF映射率**: {oasis_stats.get('ef_mapping_rate', 0):.1f}%",
+                  f"- **完整映射率**: {oasis_stats.get('complete_mapping_rate', 0):.1f}%",
+                  "\n## oasis_mapping详情",
+                  "\n| 方案ID | 方案名称 | TP数量 | EF数量 | 实施例数量 |",
+                  "|---|---|---|---|---|",
+              ]
+
+              for sol in solutions_with_oasis:
+                  oasis = sol.get('oasis_mapping', {})
+                  report_lines.append(
+                      f"| {sol.get('solution_id', '')} | {sol.get('solution_name', '')} | "
+                      f"{len(oasis.get('technical_problems', []))} | "
+                      f"{len(oasis.get('technical_effects', []))} | "
+                      f"{len(oasis.get('embodiments', []))} |"
+                  )
+
+              return '\n'.join(report_lines)
+        # 输出变量配置
+        outputs:
+        - value_selector:
+          - graded_solutions_with_oasis_json
+          variable: graded_solutions_with_oasis_json
+        - value_selector:
+          - oasis_report_md
+          variable: oasis_report_md
+        # 输入变量映射
+        title: oasis_mapping生成
+        variables:
+        - value_selector:
+          - graded_solutions_with_pa_json
+          variable: graded_solutions_with_pa
+        - value_selector:
+          - problem_effect
+          variable: problem_effect
+      height: 460
+      id: 'node_1_4_4'
+      position:
+        x: 1030
+        y: 282
+      positionAbsolute:
+        x: 1030
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+
+    # ==================== Node-1-4-5: list_patent生成 ====================
+    - data:
+        desc: 'Node-1-4-5: 整合所有评分和分析结果,生成list_patent.json(专利申请方向表)'
+        selected: false
+        title: list_patent生成
+        type: code
+        # Python代码实现
+        code: |
+          def main(args):
+              """
+              list_patent生成节点主处理函数
+              """
+              import json
+              from datetime import datetime
+
+              graded_data = json.loads(args.get('graded_solutions_with_oasis', '{}'))
+              user_input = args.get('user_input', '')
+
+              patent_applications = []
+              grade_counts = {'A': 0, 'B': 0, 'C': 0}
+
+              for solution in graded_data.get('graded_solutions', []):
+                  grade = solution.get('grade', 'C')
+                  grade_counts[grade] = grade_counts.get(grade, 0) + 1
+
+                  patent_app = {
+                      'solution_id': solution.get('solution_id', ''),
+                      'solution_name': solution.get('solution_name', ''),
+                      'grade': grade,
+                      'overall_score': solution.get('scores', {}).get('overall_score', 0),
+                      'scores': solution.get('scores', {}),
+                      'closest_pa': solution.get('closest_pa', {}),
+                      'oasis_mapping': solution.get('oasis_mapping', {}),
+                      'innovation_level': solution.get('decision_support', {}).get('innovation_level', ''),
+                      'trl': solution.get('maturity', {}).get('trl', 1),
+                      'priority_score': solution.get('decision_support', {}).get('priority_score', 0),
+                  }
+
+                  if 'cross_domain_transfer' in solution:
+                      patent_app['cross_domain_transfer'] = solution.get('cross_domain_transfer', {})
+
+                  patent_applications.append(patent_app)
+
+              list_patent = {
+                  'patent_applications': patent_applications,
+                  'metadata': {
+                      'total_solutions': len(patent_applications),
+                      'grade_a_count': grade_counts.get('A', 0),
+                      'grade_b_count': grade_counts.get('B', 0),
+                      'grade_c_count': grade_counts.get('C', 0),
+                      'selection_date': datetime.now().strftime('%Y-%m-%d'),
+                      'version': 'V2.4',
+                  },
+              }
+
+              selection_report = generate_selection_report(patent_applications, grade_counts)
+              decision_report = generate_decision_report(patent_applications)
+
+              return {
+                  'list_patent_json': json.dumps(list_patent, ensure_ascii=False, indent=2),
+                  'selection_report_md': selection_report,
+                  'decision_report_md': decision_report,
+              }
+
+          def generate_selection_report(patent_applications, grade_counts):
+              """生成方案筛选报告"""
+              from datetime import datetime
+
+              total = len(patent_applications) or 1
+              report_lines = [
+                  "# 方案筛选报告",
+                  f"\n**生成时间**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+                  "\n## 筛选结果总览",
+                  "\n### 分级统计",
+                  f"\n- **A级方案**: {grade_counts.get('A', 0)}个 (优先推荐) - {grade_counts.get('A', 0) / total * 100:.1f}%",
+                  f"- **B级方案**: {grade_counts.get('B', 0)}个 (备选方案) - {grade_counts.get('B', 0) / total * 100:.1f}%",
+                  f"- **C级方案**: {grade_counts.get('C', 0)}个 (探索级) - {grade_counts.get('C', 0) / total * 100:.1f}%",
+                  "\n## A级方案详情",
+              ]
+
+              a_grade_apps = [app for app in patent_applications if app.get('grade') == 'A']
+              if a_grade_apps:
+                  for app in a_grade_apps:
+                      scores = app.get('scores', {})
+                      report_lines.extend([
+                          f"\n### {app.get('solution_name', '')}",
+                          f"- **方案ID**: {app.get('solution_id', '')}",
+                          f"- **综合评分**: {scores.get('overall_score', 0):.1f}",
+                          f"- **TRL**: {app.get('trl', 1)}",
+                          f"- **创新等级**: {app.get('innovation_level', '')}",
+                          f"- **可实施性**: {scores.get('implementability', 0):.1f}",
+                          f"- **可专利性**: {scores.get('patentability', 0):.1f}",
+                          f"- **差异性**: {scores.get('differentiation', 0):.1f}",
+                          f"- **ROI**: {scores.get('roi', 0):.1f}" if 'roi' in scores else "",
+                          f"- **创新性**: {scores.get('innovation', 0):.1f}" if 'innovation' in scores else "",
+                          f"- **路线图对齐**: {scores.get('alignment', 0):.1f}" if 'alignment' in scores else "",
+                      ])
+              else:
+                  report_lines.append("\n暂无A级方案")
+
+              return '\n'.join(report_lines)
+
+          def generate_decision_report(patent_applications):
+              """生成决策支撑报告"""
+              from datetime import datetime
+
+              report_lines = [
+                  "# 决策支撑报告",
+                  f"\n**生成时间**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+                  "\n## 评分维度说明",
+                  "\n### V2.2七维评分体系",
+                  "1. **可实施性** (权重20%): 基于TRL评级",
+                  "2. **可专利性** (权重20%): 基于D1/D2分析",
+                  "3. **差异性** (权重20%): TP-EF驱动的差异化",
+                  "4. **ROI** (权重30%): 基于priority_score",
+                  "5. **创新性** (权重20%): 基于innovation_level",
+                  "6. **路线图对齐度** (权重10%): 基于alignment_with_roadmap",
+                  "\n## 分级标准",
+                  "\n### A级(优先推荐)",
+                  "- 综合评分 ≥ 80",
+                  "- TRL ≥ 6",
+                  "- 创新等级 ≥ ⭐⭐⭐⭐",
+                  "- **建议**: 优先申请专利",
+                  "\n### B级(备选方案)",
+                  "- 综合评分 ≥ 60",
+                  "- TRL ≥ 4",
+                  "- 创新等级 ≥ ⭐⭐⭐",
+                  "- **建议**: 根据资源情况选择",
+                  "\n### C级(探索级)",
+                  "- 其他方案",
+                  "- **建议**: 仅作参考或继续研发",
+              ]
+
+              return '\n'.join(report_lines)
+        # 输出变量配置
+        outputs:
+        - value_selector:
+          - list_patent_json
+          variable: list_patent_json
+        - value_selector:
+          - selection_report_md
+          variable: selection_report_md
+        - value_selector:
+          - decision_report_md
+          variable: decision_report_md
+        # 输入变量映射
+        title: list_patent生成
+        variables:
+        - value_selector:
+          - graded_solutions_with_oasis_json
+          variable: graded_solutions_with_oasis
+        - value_selector:
+          - user_input
+          variable: user_input
+      height: 520
+      id: 'node_1_4_5'
+      position:
+        x: 1280
+        y: 282
+      positionAbsolute:
+        x: 1280
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+
+    # ==================== End节点 ====================
+    - data:
+        desc: '输出: list_patent.json及多份报告'
+        outputs:
+        - value_selector:
+          - list_patent_json
+          variable: list_patent_json
+        - value_selector:
+          - selection_report_md
+          variable: selection_report_md
+        - value_selector:
+          - decision_report_md
+          variable: decision_report_md
+        # 可选: 输出中间报告
+        - value_selector:
+          - scoring_report_md
+          variable: scoring_report_md
+        - value_selector:
+          - grading_report_md
+          variable: grading_report_md
+        - value_selector:
+          - matching_report_md
+          variable: matching_report_md
+        - value_selector:
+          - oasis_report_md
+          variable: oasis_report_md
+        selected: false
+        title: 结束
+        type: end
+      height: 400
+      id: 'end_node'
+      position:
+        x: 1530
+        y: 282
+      positionAbsolute:
+        x: 1530
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 0
+      y: 0
+      zoom: 0.5

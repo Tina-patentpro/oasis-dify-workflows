@@ -1,0 +1,2865 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: flow-6-14-审查意见答复-basic-0.0.15
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: bowenliang123/md_exporter:3.6.9@3f027d63e80b44d5d5a9f706871afaef37905b8f8a89a2d152dc530211a8acb1
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openrouter:0.0.43@241af6052a82fa08c0d7c3756d7f2a57cc16d8b3c05d7fd58088ece28cae9e34
+    version: null
+kind: app
+version: 0.6.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 20
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - default: ''
+          hint: ''
+          label: 用户指令
+          max_length: 10000
+          options: []
+          placeholder: ''
+          required: false
+          type: paragraph
+          variable: User_input
+        - default: ''
+          hint: ''
+          label: 审查意见
+          max_length: 128000
+          options: []
+          placeholder: ''
+          required: false
+          type: paragraph
+          variable: office_action
+        - default: ''
+          hint: ''
+          label: 权利要求书
+          max_length: 128000
+          options: []
+          placeholder: ''
+          required: false
+          type: paragraph
+          variable: Claims
+        - default: ''
+          hint: ''
+          label: 说明书
+          max_length: 128000
+          options: []
+          placeholder: ''
+          required: false
+          type: paragraph
+          variable: Specification
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: null
+          label: 对比文件1
+          max_length: 5
+          options: []
+          required: false
+          type: file
+          variable: comparative_documents_1
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: null
+          label: 对比文件2
+          max_length: 48
+          options: []
+          required: false
+          type: file
+          variable: comparative_documents_2
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: null
+          label: 对比文件3
+          max_length: 48
+          options: []
+          required: false
+          type: file
+          variable: comparative_documents_3
+        - default: ''
+          hint: ''
+          label: server_key
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: server_key
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: null
+          label: 审查意见文件
+          max_length: 5
+          options: []
+          required: false
+          type: file
+          variable: office_action_file
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: null
+          label: 权利要求书文件
+          max_length: 5
+          options: []
+          required: false
+          type: file
+          variable: claims_file
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: null
+          label: 说明书文件
+          max_length: 5
+          options: []
+          required: false
+          type: file
+          variable: specification_file
+      height: 290
+      id: '1733319647245'
+      position:
+        x: -40
+        y: 320
+      positionAbsolute:
+        x: -40
+        y: 320
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: exists
+            id: cond-oa-v004
+            value: ''
+            varType: file
+            variable_selector:
+            - '1733319647245'
+            - office_action_file
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件-OA文件
+        type: if-else
+      height: 126
+      id: '1760002001001'
+      position:
+        x: 260
+        y: 40
+      positionAbsolute:
+        x: 260
+        y: 40
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 文档提取-OA
+        type: document-extractor
+        variable_selector:
+        - '1733319647245'
+        - office_action_file
+      height: 104
+      id: '1760002001002'
+      position:
+        x: 560
+        y: 40
+      positionAbsolute:
+        x: 560
+        y: 40
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: exists
+            id: cond-claims-v004
+            value: ''
+            varType: file
+            variable_selector:
+            - '1733319647245'
+            - claims_file
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件-Claims文件
+        type: if-else
+      height: 126
+      id: '1760002001003'
+      position:
+        x: 260
+        y: 180
+      positionAbsolute:
+        x: 260
+        y: 180
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 文档提取-Claims
+        type: document-extractor
+        variable_selector:
+        - '1733319647245'
+        - claims_file
+      height: 104
+      id: '1760002001004'
+      position:
+        x: 560
+        y: 180
+      positionAbsolute:
+        x: 560
+        y: 180
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: exists
+            id: cond-spec-v004
+            value: ''
+            varType: file
+            variable_selector:
+            - '1733319647245'
+            - specification_file
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件-Spec文件
+        type: if-else
+      height: 126
+      id: '1760002001005'
+      position:
+        x: 260
+        y: 320
+      positionAbsolute:
+        x: 260
+        y: 320
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 文档提取-Spec
+        type: document-extractor
+        variable_selector:
+        - '1733319647245'
+        - specification_file
+      height: 104
+      id: '1760002001006'
+      position:
+        x: 560
+        y: 320
+      positionAbsolute:
+        x: 560
+        y: 320
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: exists
+            id: cond-d1-v004
+            value: ''
+            varType: file
+            variable_selector:
+            - '1733319647245'
+            - comparative_documents_1
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件-D1文件
+        type: if-else
+      height: 126
+      id: '1740018444780'
+      position:
+        x: 260
+        y: 460
+      positionAbsolute:
+        x: 260
+        y: 460
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 文档提取-D1
+        type: document-extractor
+        variable_selector:
+        - '1733319647245'
+        - comparative_documents_1
+      height: 104
+      id: '1733320109628'
+      position:
+        x: 560
+        y: 460
+      positionAbsolute:
+        x: 560
+        y: 460
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: exists
+            id: cond-d2-v004
+            value: ''
+            varType: file
+            variable_selector:
+            - '1733319647245'
+            - comparative_documents_2
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件-D2文件
+        type: if-else
+      height: 126
+      id: '1760002001011'
+      position:
+        x: 260
+        y: 600
+      positionAbsolute:
+        x: 260
+        y: 600
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 文档提取-D2
+        type: document-extractor
+        variable_selector:
+        - '1733319647245'
+        - comparative_documents_2
+      height: 104
+      id: '1755002408932'
+      position:
+        x: 560
+        y: 600
+      positionAbsolute:
+        x: 560
+        y: 600
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: exists
+            id: cond-d3-v004
+            value: ''
+            varType: file
+            variable_selector:
+            - '1733319647245'
+            - comparative_documents_3
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件-D3文件
+        type: if-else
+      height: 126
+      id: '1760002001013'
+      position:
+        x: 260
+        y: 740
+      positionAbsolute:
+        x: 260
+        y: 740
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 文档提取-D3
+        type: document-extractor
+        variable_selector:
+        - '1733319647245'
+        - comparative_documents_3
+      height: 104
+      id: '1755002452156'
+      position:
+        x: 560
+        y: 740
+      positionAbsolute:
+        x: 560
+        y: 740
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "from typing import Optional\nimport re\n\n\ndef _clean(text: Optional[str]) -> str:\n    value = \"\" if text is None else str(text)\n    value = value.replace(\"\\r\\n\", \"\\n\").replace(\"\\r\", \"\\n\").replace(\"\\ufeff\", \"\")\n    value = re.sub(r\"[\\u200B-\\u200D\\uFEFF]\", \"\", value)\n    value = re.sub(r\"\\n{3,}\", \"\\n\\n\", value)\n    return value.strip()\n\n\ndef _prefer(primary: Optional[str], secondary: Optional[str]) -> str:\n    second = _clean(secondary)\n    return second if second else _clean(primary)\n\n\ndef main(\n    user_instruction: Optional[str] = None,\n    office_action_text: Optional[str] = None,\n    office_action_file_text: Optional[str] = None,\n    claims_text: Optional[str] = None,\n    claims_file_text: Optional[str] = None,\n    specification_text: Optional[str] = None,\n    specification_file_text: Optional[str] = None,\n    d1_text: Optional[str] = None,\n    d2_text: Optional[str] = None,\n    d3_text: Optional[str] = None,\n\
+          ) -> dict:\n    ui = _clean(user_instruction)\n    oa = _prefer(office_action_text, office_action_file_text)\n    claims = _prefer(claims_text, claims_file_text)\n    spec = _prefer(specification_text, specification_file_text)\n    d1 = _clean(d1_text)\n    d2 = _clean(d2_text)\n    d3 = _clean(d3_text)\n\n    parts = []\n    if ui:\n        parts.append(\"## 用户重点说明\\n\" + ui)\n    parts.append(\"## 审查意见\\n\" + (oa or \"未提供审查意见文本。\"))\n    parts.append(\"## 权利要求书\\n\" + (claims or \"未提供权利要求书。\"))\n    parts.append(\"## 说明书\\n\" + (spec or \"未提供说明书。\"))\n    parts.append(\"## D1\\n\" + (d1 or \"未提供 D1。\"))\n    parts.append(\"## D2\\n\" + (d2 or \"未提供 D2。\"))\n    parts.append(\"## D3\\n\" + (d3 or \"未提供 D3。\"))\n\n    return {\n        \"normalized_context\": \"\\n\\n---\\n\\n\".join(parts),\n        \"oa_text\": oa,\n        \"claims_text\": claims,\n        \"spec_text\": spec,\n        \"d1_text\": d1,\n        \"d2_text\": d2,\n        \"d3_text\": d3,\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          normalized_context:
+            children: null
+            type: string
+          oa_text:
+            children: null
+            type: string
+          claims_text:
+            children: null
+            type: string
+          spec_text:
+            children: null
+            type: string
+          d1_text:
+            children: null
+            type: string
+          d2_text:
+            children: null
+            type: string
+          d3_text:
+            children: null
+            type: string
+        selected: false
+        title: 输入归一化
+        type: code
+        variables:
+        - value_selector:
+          - '1733319647245'
+          - User_input
+          value_type: string
+          variable: user_instruction
+        - value_selector:
+          - '1733319647245'
+          - office_action
+          value_type: string
+          variable: office_action_text
+        - value_selector:
+          - '1760002001002'
+          - text
+          value_type: string
+          variable: office_action_file_text
+        - value_selector:
+          - '1733319647245'
+          - Claims
+          value_type: string
+          variable: claims_text
+        - value_selector:
+          - '1760002001004'
+          - text
+          value_type: string
+          variable: claims_file_text
+        - value_selector:
+          - '1733319647245'
+          - Specification
+          value_type: string
+          variable: specification_text
+        - value_selector:
+          - '1760002001006'
+          - text
+          value_type: string
+          variable: specification_file_text
+        - value_selector:
+          - '1733320109628'
+          - text
+          value_type: string
+          variable: d1_text
+        - value_selector:
+          - '1755002408932'
+          - text
+          value_type: string
+          variable: d2_text
+        - value_selector:
+          - '1755002452156'
+          - text
+          value_type: string
+          variable: d3_text
+      height: 51
+      id: '1760002001007'
+      position:
+        x: 900
+        y: 380
+      positionAbsolute:
+        x: 900
+        y: 380
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "def main() -> dict:\n    return {\n        \"output\": \"目前缺少可供生成正式答复的审查意见文本，请补充后重新运行。\"\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          output:
+            children: null
+            type: string
+        selected: false
+        title: 阻断输出生成
+        type: code
+        variables: []
+      height: 51
+      id: '1760002001017'
+      position:
+        x: 1820
+        y: 140
+      positionAbsolute:
+        x: 1820
+        y: 140
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector:
+          - '1760002001007'
+          - normalized_context
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: false
+            max_tokens: 4800
+            reasoning_effort: high
+            temperature: 0.15
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: 1733320129208-system
+          role: system
+          text: '# 角色
+
+            你是中国发明专利 OA 忠实解析节点。
+
+
+            ## 任务
+
+            仅忠实提取审查意见中的问题分组，不提前生成正式答复，也不强行写成 JSON。
+
+
+            ## 输出格式
+
+            请只输出 Markdown，且必须包含一张标题为“## issue_groups”的表格。
+
+            固定列顺序如下：
+
+            | issue_group_id | claim_scope | claim_display | cited_ref | rejection_type | examiner_position | oa_anchor |
+
+
+            ## 强制规则
+
+            1. claim_scope 写成逗号分隔形式，例如 `2,3,4`。
+
+            2. claim_display 保留 OA 中的自然写法，例如 `2-4`。
+
+            3. 不做 claim-specific 拆分，不写 rebuttal，不评价对错。
+
+            4. 信息不明确时写“未明确记载”。
+
+            5. 除该表格外，不输出其他 JSON 或代码块。
+
+            '
+        - id: 1733320129208-user
+          role: user
+          text: '请解析以下 OA 文本并输出 issue_groups 表格：
+
+
+            {{#1760002001007.oa_text#}}
+
+            '
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: '2000'
+        selected: false
+        title: LLM-OA忠实解析
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+        structured_output_enabled: false
+      height: 116
+      id: '1733320129208'
+      position:
+        x: 1820
+        y: 420
+      positionAbsolute:
+        x: 1820
+        y: 420
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector:
+          - '1760002001007'
+          - normalized_context
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: false
+            max_tokens: 5200
+            reasoning_effort: high
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: 1760002001020-system
+          role: system
+          text: '# 角色
+
+            你是 Claims/Spec 支撑抽取节点。
+
+
+            ## 任务
+
+            围绕 issue_rows，为每个 row_key 提取区别特征、技术效果和原始依据。
+
+
+            ## 输出格式
+
+            仅输出 Markdown，且必须包含一张标题为“## support_rows”的表格。
+
+            固定列顺序如下：
+
+            | row_key | claim_no | point_id | point_label | distinguishing_feature | technical_effect | support_source | support_level |
+
+
+            ## 强制规则
+
+            1. support_level 仅可写 high / medium / low。
+
+            2. 每个 row_key 只能对应一行。
+
+            3. 不写创造性结论，只写支撑和效果。
+
+            '
+        - id: 1760002001020-user
+          role: user
+          text: 'issue_rows：
+
+            {{#1760002001025.text#}}
+
+
+            权利要求书：
+
+            {{#1760002001007.claims_text#}}
+
+
+            说明书：
+
+            {{#1760002001007.spec_text#}}
+
+            '
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: '2000'
+        selected: false
+        title: LLM-Claims/Spec支撑抽取
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+        structured_output_enabled: false
+      height: 116
+      id: '1760002001020'
+      position:
+        x: 2140
+        y: 420
+      positionAbsolute:
+        x: 2140
+        y: 420
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector:
+          - '1760002001007'
+          - normalized_context
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: false
+            max_tokens: 5000
+            reasoning_effort: high
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: 1760002001021-system
+          role: system
+          text: '# 角色
+
+            你是 D1 证据分析节点。
+
+
+            ## 任务
+
+            围绕 issue_rows，判断 D1 对各 row_key 的公开缺口和可援引依据。
+
+
+            ## 输出格式
+
+            仅输出 Markdown，且必须包含一张标题为“## evidence_rows”的表格。
+
+            固定列顺序如下：
+
+            | row_key | claim_no | point_id | cited_ref | gap_note | evidence_source | support_level |
+
+
+            ## 强制规则
+
+            1. cited_ref 固定写 D1。
+
+            2. support_level 仅可写 high / medium / low。
+
+            3. 不写最终 rebuttal，只写公开缺口与依据位置。
+
+            '
+        - id: 1760002001021-user
+          role: user
+          text: 'issue_rows：
+
+            {{#1760002001025.text#}}
+
+
+            D1 文本：
+
+            {{#1760002001007.d1_text#}}
+
+            '
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: '2000'
+        selected: false
+        title: LLM-D1证据分析
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+        structured_output_enabled: false
+      height: 116
+      id: '1760002001021'
+      position:
+        x: 2460
+        y: 200
+      positionAbsolute:
+        x: 2460
+        y: 200
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector:
+          - '1760002001007'
+          - normalized_context
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: false
+            max_tokens: 5000
+            reasoning_effort: high
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: 1760002001022-system
+          role: system
+          text: '# 角色
+
+            你是 D2 证据分析节点。
+
+
+            ## 任务
+
+            围绕 issue_rows，判断 D2 对各 row_key 的公开缺口和可援引依据。
+
+
+            ## 输出格式
+
+            仅输出 Markdown，且必须包含一张标题为“## evidence_rows”的表格。
+
+            固定列顺序如下：
+
+            | row_key | claim_no | point_id | cited_ref | gap_note | evidence_source | support_level |
+
+
+            ## 强制规则
+
+            1. cited_ref 固定写 D2。
+
+            2. support_level 仅可写 high / medium / low。
+
+            3. 不写最终 rebuttal，只写公开缺口与依据位置。
+
+            '
+        - id: 1760002001022-user
+          role: user
+          text: 'issue_rows：
+
+            {{#1760002001025.text#}}
+
+
+            D2 文本：
+
+            {{#1760002001007.d2_text#}}
+
+            '
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: '2000'
+        selected: false
+        title: LLM-D2证据分析
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+        structured_output_enabled: false
+      height: 116
+      id: '1760002001022'
+      position:
+        x: 2460
+        y: 420
+      positionAbsolute:
+        x: 2460
+        y: 420
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector:
+          - '1760002001007'
+          - normalized_context
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: false
+            max_tokens: 5000
+            reasoning_effort: high
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: 1760002001023-system
+          role: system
+          text: '# 角色
+
+            你是 D3 证据分析节点。
+
+
+            ## 任务
+
+            围绕 issue_rows，判断 D3 对各 row_key 的公开缺口和可援引依据。
+
+
+            ## 输出格式
+
+            仅输出 Markdown，且必须包含一张标题为“## evidence_rows”的表格。
+
+            固定列顺序如下：
+
+            | row_key | claim_no | point_id | cited_ref | gap_note | evidence_source | support_level |
+
+
+            ## 强制规则
+
+            1. cited_ref 固定写 D3。
+
+            2. support_level 仅可写 high / medium / low。
+
+            3. 不写最终 rebuttal，只写公开缺口与依据位置。
+
+            '
+        - id: 1760002001023-user
+          role: user
+          text: 'issue_rows：
+
+            {{#1760002001025.text#}}
+
+
+            D3 文本：
+
+            {{#1760002001007.d3_text#}}
+
+            '
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: '2000'
+        selected: false
+        title: LLM-D3证据分析
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+        structured_output_enabled: false
+      height: 116
+      id: '1760002001023'
+      position:
+        x: 2460
+        y: 640
+      positionAbsolute:
+        x: 2460
+        y: 640
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "from typing import Any\n\n\ndef _clean(value: Any) -> str:\n    if value is None:\n        return \"\"\n    text = str(value).replace(\"\\r\\n\", \"\\n\").replace(\"\\r\", \"\\n\").strip()\n    return text\n\n\ndef main(\n    issue_groups_text: str = \"\",\n    issue_rows_text: str = \"\",\n    support_rows_text: str = \"\",\n    d1_text: str = \"\",\n    d2_text: str = \"\",\n    d3_text: str = \"\",\n) -> dict:\n    sections = [\n        (\"OA忠实解析\", issue_groups_text),\n        (\"逐项争点展开\", issue_rows_text),\n        (\"Claims和说明书支撑\", support_rows_text),\n        (\"D1证据分析\", d1_text),\n        (\"D2证据分析\", d2_text),\n        (\"D3证据分析\", d3_text),\n    ]\n    parts = [\"# 分析总包\"]\n    for title, content in sections:\n        text = _clean(content)\n        if text:\n            parts.append(f\"## {title}\\n{text}\")\n    return {\"analysis_bundle_markdown\": \"\\n\\n\".join(parts).strip()}\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          analysis_bundle_markdown:
+            children: null
+            type: string
+        selected: false
+        title: 分析文本装配
+        type: code
+        variables:
+        - variable: issue_groups_text
+          value_selector:
+          - '1733320129208'
+          - text
+          value_type: string
+        - variable: issue_rows_text
+          value_selector:
+          - '1760002001025'
+          - text
+          value_type: string
+        - variable: support_rows_text
+          value_selector:
+          - '1760002001020'
+          - text
+          value_type: string
+        - variable: d1_text
+          value_selector:
+          - '1760002001021'
+          - text
+          value_type: string
+        - variable: d2_text
+          value_selector:
+          - '1760002001022'
+          - text
+          value_type: string
+        - variable: d3_text
+          value_selector:
+          - '1760002001023'
+          - text
+          value_type: string
+      height: 51
+      id: '1760002001024'
+      position:
+        x: 2780
+        y: 420
+      positionAbsolute:
+        x: 2780
+        y: 420
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector:
+          - '1760002001007'
+          - normalized_context
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: false
+            max_tokens: 5200
+            reasoning_effort: high
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: 1760002001025-system
+          role: system
+          text: '# 角色
+
+            你是从属项差异化展开节点。
+
+
+            ## 任务
+
+            根据 issue_groups、权利要求书和说明书，把 grouped issue 展开为 claim-specific、point-level 的 issue_rows。
+
+
+            ## 输出格式
+
+            仅输出 Markdown，且必须包含一张标题为“## issue_rows”的表格。
+
+            固定列顺序如下：
+
+            | row_key | claim_no | point_id | point_label | claim_focus | cited_ref | oa_anchor |
+
+
+            ## 强制规则
+
+            1. 不得输出 `2-4` 或 `2-4-A` 这种聚合行。
+
+            2. row_key 固定为 `claim_no:point_id`。
+
+            3. claim 1 如存在两个独立核心点，优先拆成 1-A / 1-B。
+
+            4. 所有 issue_groups 中涉及的 claim 都必须被展开，不得静默漏项。
+
+            5. 不生成 rebuttal，只定义逐项争点。
+
+            '
+        - id: 1760002001025-user
+          role: user
+          text: 'issue_groups：
+
+            {{#1733320129208.text#}}
+
+
+            权利要求书：
+
+            {{#1760002001007.claims_text#}}
+
+
+            说明书：
+
+            {{#1760002001007.spec_text#}}
+
+            '
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: '2000'
+        selected: false
+        title: LLM-从属项差异化展开
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+        structured_output_enabled: false
+      height: 116
+      id: '1760002001025'
+      position:
+        x: 3100
+        y: 420
+      positionAbsolute:
+        x: 3100
+        y: 420
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector:
+          - '1760002001007'
+          - normalized_context
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: false
+            max_tokens: 5600
+            reasoning_effort: high
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: 1760002001027-system
+          role: system
+          text: '# 角色
+
+            你是资深专利代理师终审底稿生成节点。
+
+
+            ## 任务
+
+            基于分析总包，输出一份“权威终审底稿”，作为后续正文、表格和摘要的唯一事实基础。
+
+
+            ## 输出格式
+
+            仅输出 Markdown，且必须包含一张标题为“## reviewed_rows”的表格。
+
+            固定列顺序如下：
+
+            | row_key | claim_no | point_id | presentation_role | point_label | distinguishing_feature | rebuttal_text | technical_effect | basis_text | support_level |
+
+
+            ## 强制规则
+
+            1. 不得遗漏任何已展开的 claim/point；所有 row_key 都必须在表中出现一次。
+
+            2. presentation_role 仅可写 core / supplement / caution。
+
+            3. support_level 为 low 的条目必须写成 caution，且不得出现“具备创造性”“应当授予专利权”“已充分证明”等强结论。
+
+            4. support_level 为 medium 的条目可以展开论证，但必须保持审慎语气。
+
+            5. caution 条目不得静默弱化或合并到别的 row。
+
+            6. rebuttal_text、technical_effect、basis_text 都必须是完整自然中文句子。
+
+            7. 不得引入分析总包之外的新事实或新证据。
+
+            8. 仅输出本节点要求的终审底稿正文，不输出旧前台包装字段或多余状态词。
+
+            '
+        - id: 1760002001027-user
+          role: user
+          text: '分析总包：
+
+            {{#1760002001024.analysis_bundle_markdown#}}
+
+            '
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: '2000'
+        selected: false
+        title: LLM-权威终审底稿生成
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+        structured_output_enabled: false
+      height: 116
+      id: '1760002001027'
+      position:
+        x: 3440
+        y: 420
+      positionAbsolute:
+        x: 3440
+        y: 420
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector:
+          - '1760002001007'
+          - normalized_context
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: false
+            max_tokens: 5200
+            reasoning_effort: high
+            temperature: 0.25
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: 1760002001028-system
+          role: system
+          text: '# 角色
+
+            你是交付语义拆分器。
+
+
+            ## 任务
+
+            把权威终审底稿拆成不同用途的材料，分别供正文A、正文B、正文C和增强表格使用。
+
+
+            ## 输出字段说明
+
+            - body_a_material：案件信息、总体说明、修改说明、修改合法性、文件一致性材料
+
+            - body_b_material：权利要求1主答复、从属权利要求贡献、区别技术特征、技术效果、无启示/无动机材料
+
+            - body_c_material：清楚性、支持性、第三十三条、结论与请求，以及所有 caution/weak 条目的审慎陈述
+
+            - table_material：用于生成修改对照表、区别技术特征对照表、创造性四步分析表的材料
+
+
+            ## 强制规则
+
+            1. 不直接写最终正式正文，只做语义拆分。
+
+            2. reviewed_rows 中的所有 row_key 都必须被覆盖到至少一个输出字段中；尤其 caution 条目必须进入 body_c_material 和 table_material。
+
+            3. 不得因为条目弱而静默省略。
+
+            4. 各字段之间避免大段重复，但允许为完整性进行必要交叉提及。
+
+            5. 仅输出结构化结果。
+
+            '
+        - id: 1760002001028-user
+          role: user
+          text: '权威终审底稿：
+
+            {{#1760002001027.text#}}
+
+            '
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: '2000'
+        selected: false
+        title: LLM-交付语义拆分器
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+        structured_output_enabled: true
+        structured_output:
+          schema:
+            type: object
+            additionalProperties: false
+            properties:
+              body_a_material:
+                type: string
+              body_b_material:
+                type: string
+              body_c_material:
+                type: string
+              table_material:
+                type: string
+            required:
+            - body_a_material
+            - body_b_material
+            - body_c_material
+            - table_material
+      height: 116
+      id: '1760002001028'
+      position:
+        x: 3760
+        y: 420
+      positionAbsolute:
+        x: 3760
+        y: 420
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "from typing import Any\n\n\ndef _clean(value: Any) -> str:\n    if value is None:\n        return \"\"\n    return str(value).replace(\"\\r\\n\", \"\\n\").replace(\"\\r\", \"\\n\").strip()\n\n\ndef _join_texts(*parts: Any) -> str:\n    cleaned = [_clean(part) for part in parts if _clean(part)]\n    return \"\\n\\n\".join(cleaned).strip()\n\n\ndef main(\n    blocked_output: str = \"\",\n    summary_text: str = \"\",\n    body_a_markdown: str = \"\",\n    body_b_markdown: str = \"\",\n    body_c_markdown: str = \"\",\n    enhanced_tables_markdown: str = \"\",\n) -> dict:\n    blocked = _clean(blocked_output)\n    if blocked:\n        final = \"\\n\\n\".join(\n            [\n                \"## 摘要\",\n                blocked,\n                \"## OA答复正文\",\n                blocked,\n                \"## 增强表格\",\n                blocked,\n            ]\n        ).strip()\n        docx_markdown = \"# 审查意见答复草案\\n\\n\" + final\n        return {\"output\": final, \"docx_markdown\"\
+          : docx_markdown}\n\n    summary = _clean(summary_text)\n    oa_body = _join_texts(body_a_markdown, body_b_markdown, body_c_markdown)\n    tables = _clean(enhanced_tables_markdown)\n    final = \"\\n\\n\".join(\n        [\n            \"## 摘要\",\n            summary,\n            \"## OA答复正文\",\n            oa_body,\n            \"## 增强表格\",\n            tables,\n        ]\n    ).strip()\n    docx_markdown = \"# 审查意见答复草案\\n\\n\" + final\n    return {\"output\": final, \"docx_markdown\": docx_markdown}\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          output:
+            children: null
+            type: string
+          docx_markdown:
+            children: null
+            type: string
+        selected: false
+        title: Thin Renderer + Markdown输出
+        type: code
+        variables:
+        - variable: blocked_output
+          value_selector:
+          - '1760002001017'
+          - output
+          value_type: string
+        - variable: summary_text
+          value_selector:
+          - '1760002001030'
+          - text
+          value_type: string
+        - variable: body_a_markdown
+          value_selector:
+          - '1760002001015'
+          - text
+          value_type: string
+        - variable: body_b_markdown
+          value_selector:
+          - '1760002001016'
+          - text
+          value_type: string
+        - variable: body_c_markdown
+          value_selector:
+          - '1760002001026'
+          - text
+          value_type: string
+        - variable: enhanced_tables_markdown
+          value_selector:
+          - '1760002001029'
+          - text
+          value_type: string
+      height: 51
+      id: '1758715635324'
+      position:
+        x: 4700
+        y: 420
+      positionAbsolute:
+        x: 4700
+        y: 420
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: '%Y-%m-%d %H:%M:%S'
+          form: form
+          human_description:
+            en_US: Time format in strftime standard.
+            ja_JP: Time format in strftime standard.
+            pt_BR: Time format in strftime standard.
+            zh_Hans: strftime 标准的时间格式。
+          label:
+            en_US: Format
+            ja_JP: Format
+            pt_BR: Format
+            zh_Hans: 格式
+          llm_description: null
+          max: null
+          min: null
+          name: format
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: UTC
+          form: form
+          human_description:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          label:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          llm_description: null
+          max: null
+          min: null
+          name: timezone
+          options:
+          - icon: null
+            label:
+              en_US: UTC
+              ja_JP: UTC
+              pt_BR: UTC
+              zh_Hans: UTC
+            value: UTC
+          - icon: null
+            label:
+              en_US: America/New_York
+              ja_JP: America/New_York
+              pt_BR: America/New_York
+              zh_Hans: 美洲/纽约
+            value: America/New_York
+          - icon: null
+            label:
+              en_US: America/Los_Angeles
+              ja_JP: America/Los_Angeles
+              pt_BR: America/Los_Angeles
+              zh_Hans: 美洲/洛杉矶
+            value: America/Los_Angeles
+          - icon: null
+            label:
+              en_US: America/Chicago
+              ja_JP: America/Chicago
+              pt_BR: America/Chicago
+              zh_Hans: 美洲/芝加哥
+            value: America/Chicago
+          - icon: null
+            label:
+              en_US: America/Sao_Paulo
+              ja_JP: America/Sao_Paulo
+              pt_BR: América/São Paulo
+              zh_Hans: 美洲/圣保罗
+            value: America/Sao_Paulo
+          - icon: null
+            label:
+              en_US: Asia/Shanghai
+              ja_JP: Asia/Shanghai
+              pt_BR: Asia/Shanghai
+              zh_Hans: 亚洲/上海
+            value: Asia/Shanghai
+          - icon: null
+            label:
+              en_US: Asia/Ho_Chi_Minh
+              ja_JP: Asia/Ho_Chi_Minh
+              pt_BR: Ásia/Ho Chi Minh
+              zh_Hans: 亚洲/胡志明市
+            value: Asia/Ho_Chi_Minh
+          - icon: null
+            label:
+              en_US: Asia/Tokyo
+              ja_JP: Asia/Tokyo
+              pt_BR: Asia/Tokyo
+              zh_Hans: 亚洲/东京
+            value: Asia/Tokyo
+          - icon: null
+            label:
+              en_US: Asia/Dubai
+              ja_JP: Asia/Dubai
+              pt_BR: Asia/Dubai
+              zh_Hans: 亚洲/迪拜
+            value: Asia/Dubai
+          - icon: null
+            label:
+              en_US: Asia/Kolkata
+              ja_JP: Asia/Kolkata
+              pt_BR: Asia/Kolkata
+              zh_Hans: 亚洲/加尔各答
+            value: Asia/Kolkata
+          - icon: null
+            label:
+              en_US: Asia/Seoul
+              ja_JP: Asia/Seoul
+              pt_BR: Asia/Seoul
+              zh_Hans: 亚洲/首尔
+            value: Asia/Seoul
+          - icon: null
+            label:
+              en_US: Asia/Singapore
+              ja_JP: Asia/Singapore
+              pt_BR: Asia/Singapore
+              zh_Hans: 亚洲/新加坡
+            value: Asia/Singapore
+          - icon: null
+            label:
+              en_US: Europe/London
+              ja_JP: Europe/London
+              pt_BR: Europe/London
+              zh_Hans: 欧洲/伦敦
+            value: Europe/London
+          - icon: null
+            label:
+              en_US: Europe/Berlin
+              ja_JP: Europe/Berlin
+              pt_BR: Europe/Berlin
+              zh_Hans: 欧洲/柏林
+            value: Europe/Berlin
+          - icon: null
+            label:
+              en_US: Europe/Moscow
+              ja_JP: Europe/Moscow
+              pt_BR: Europe/Moscow
+              zh_Hans: 欧洲/莫斯科
+            value: Europe/Moscow
+          - icon: null
+            label:
+              en_US: Australia/Sydney
+              ja_JP: Australia/Sydney
+              pt_BR: Australia/Sydney
+              zh_Hans: 澳大利亚/悉尼
+            value: Australia/Sydney
+          - icon: null
+            label:
+              en_US: Pacific/Auckland
+              ja_JP: Pacific/Auckland
+              pt_BR: Pacific/Auckland
+              zh_Hans: 太平洋/奥克兰
+            value: Pacific/Auckland
+          - icon: null
+            label:
+              en_US: Africa/Cairo
+              ja_JP: Africa/Cairo
+              pt_BR: Africa/Cairo
+              zh_Hans: 非洲/开罗
+            value: Africa/Cairo
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          format: ''
+          timezone: ''
+        plugin_id: null
+        plugin_unique_identifier: ''
+        provider_icon: /console/api/workspaces/current/tool-provider/builtin/time/icon
+        provider_id: time
+        provider_name: time
+        provider_type: builtin
+        selected: false
+        title: 获取当前时间
+        tool_configurations:
+          format:
+            type: mixed
+            value: '%Y-%m-%d %H:%M'
+          timezone:
+            type: constant
+            value: Asia/Shanghai
+        tool_description: 一个用于获取当前时间的工具。
+        tool_label: 获取当前时间
+        tool_name: current_time
+        tool_node_version: '2'
+        tool_parameters: {}
+        type: tool
+      height: 51
+      id: '1769143491855'
+      position:
+        x: 5020
+        y: 420
+      positionAbsolute:
+        x: 5020
+        y: 420
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          label:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          llm_description: ''
+          max: null
+          min: null
+          name: md_text
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Optional docx template file for styling。Use "Home"-"Styles Pane" in Microsoft Word to edit styles of the docx file.
+            ja_JP: Optional docx template file for styling。Use "Home"-"Styles Pane" in Microsoft Word to edit styles of the docx file.
+            pt_BR: Optional docx template file for styling。Use "Home"-"Styles Pane" in Microsoft Word to edit styles of the docx file.
+            zh_Hans: 可选的docx模板文件，用于样式控制。使用Microsoft Word中“开始”-“样式窗格”对docx文件的样式进行编辑。
+          label:
+            en_US: DOCX Template File
+            ja_JP: DOCX Template File
+            pt_BR: DOCX Template File
+            zh_Hans: DOCX 模板文件
+          llm_description: An optional .pptx file that serves as a template for the generated presentation
+          max: null
+          min: null
+          name: docx_template_file
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: file
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Optional custom output file name, and the filename suffix is not required.
+            ja_JP: Optional custom output file name, and the filename suffix is not required.
+            pt_BR: Optional custom output file name, and the filename suffix is not required.
+            zh_Hans: 可选的自定义输出文件名，后缀名无需指定
+          label:
+            en_US: Output Filename
+            ja_JP: Output Filename
+            pt_BR: Output Filename
+            zh_Hans: 输出文件名
+          llm_description: ''
+          max: null
+          min: null
+          name: output_filename
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          docx_template_file: ''
+          md_text: ''
+          output_filename: ''
+        plugin_id: bowenliang123/md_exporter
+        plugin_unique_identifier: bowenliang123/md_exporter:3.6.9@3f027d63e80b44d5d5a9f706871afaef37905b8f8a89a2d152dc530211a8acb1
+        provider_icon: /console/api/workspaces/current/plugin/icon?tenant_id=2cf986dc-18a6-4926-b645-5a5b199da0b4&filename=f0bad95cda1671b4e49f0e05df6122ef9ec5d554e138f128795d11d3806c00ef.svg
+        provider_id: bowenliang123/md_exporter/md_exporter
+        provider_name: bowenliang123/md_exporter/md_exporter
+        provider_type: builtin
+        selected: false
+        title: Markdown ⮕ DOCX
+        tool_configurations: {}
+        tool_description: 将 Markdown 转换为 DOCX 文件的工具
+        tool_label: Markdown ⮕ DOCX
+        tool_name: md_to_docx
+        tool_node_version: '2'
+        tool_parameters:
+          docx_template_file:
+            type: constant
+            value: null
+          md_text:
+            type: mixed
+            value: '{{#1758715635324.docx_markdown#}}'
+          output_filename:
+            type: mixed
+            value: 审查意见答复草案{{#1769143491855.text#}}
+        type: tool
+      height: 51
+      id: '1769143523408'
+      position:
+        x: 5020
+        y: 420
+      positionAbsolute:
+        x: 5020
+        y: 420
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1758715635324'
+          - output
+          value_type: string
+          variable: output
+        - value_selector:
+          - '1769143523408'
+          - files
+          value_type: array[file]
+          variable: file_output
+        selected: false
+        title: 结束
+        type: end
+      height: 114
+      id: '1733320136150'
+      position:
+        x: 5340
+        y: 420
+      positionAbsolute:
+        x: 5340
+        y: 420
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: false
+            max_tokens: 5200
+            reasoning_effort: high
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: 1760002001015-system
+          role: system
+          text: '# 角色
+
+            你是中国发明专利 OA 答复正文作者-A。
+
+
+            ## 任务
+
+            根据 body_a_material，撰写正式答复正文的前半部分。
+
+
+            ## 必须覆盖的章节
+
+            1. 意见陈述书
+
+            2. 案件信息
+
+            3. 收到通知书后的礼貌开场
+
+            4. 第一部分 本次答复范围与总体说明
+
+            5. 第二部分 修改说明（含2.1、2.2、2.3）
+
+            6. 第八部分 关于说明书、摘要及附图一致性的说明（如材料涉及）
+
+
+            ## 写作要求
+
+            1. 正式、完整、可提交。
+
+            2. 不输出摘要，不输出表格，不输出 JSON。
+
+            3. 若材料涉及修改适应性、原始依据、第三十三条基础，应完整落入本部分。
+
+            '
+        - id: 1760002001015-user
+          role: user
+          text: 'body_a_material：
+
+            {{#1760002001028.structured_output.body_a_material#}}
+
+            '
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: '2000'
+        selected: false
+        title: LLM-OA答复正文A
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+        structured_output_enabled: false
+      height: 116
+      id: '1760002001015'
+      position:
+        x: 4080
+        y: 120
+      positionAbsolute:
+        x: 4080
+        y: 120
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: false
+            max_tokens: 5200
+            reasoning_effort: high
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: 1760002001016-system
+          role: system
+          text: '# 角色
+
+            你是中国发明专利 OA 答复正文作者-B。
+
+
+            ## 任务
+
+            根据 body_b_material，撰写创造性/新颖性主答复正文。
+
+
+            ## 必须覆盖的章节
+
+            1. 第三部分 关于权利要求1的创造性/新颖性意见的答复
+
+            2. 第四部分 关于从属权利要求的答复
+
+
+            ## 写作要求
+
+            1. 充分体现区别技术特征、技术问题、技术效果、无启示、无动机、即使结合仍不能得到。
+
+            2. 从属权利要求不得被概括性吞并；若 claim 2/3/4/5 有材料，应分别体现其技术贡献或审慎地位。
+
+            3. 不输出摘要，不输出表格，不输出 JSON。
+
+            '
+        - id: 1760002001016-user
+          role: user
+          text: 'body_b_material：
+
+            {{#1760002001028.structured_output.body_b_material#}}
+
+            '
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: '2000'
+        selected: false
+        title: LLM-OA答复正文B
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+        structured_output_enabled: false
+      height: 116
+      id: '1760002001016'
+      position:
+        x: 4080
+        y: 340
+      positionAbsolute:
+        x: 4080
+        y: 340
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: false
+            max_tokens: 5200
+            reasoning_effort: high
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: 1760002001026-system
+          role: system
+          text: '# 角色
+
+            你是中国发明专利 OA 答复正文作者-C。
+
+
+            ## 任务
+
+            根据 body_c_material，撰写形式问题与结论收口部分。
+
+
+            ## 必须覆盖的章节
+
+            1. 第五部分 关于清楚性问题的答复（如适用）
+
+            2. 第六部分 关于说明书支持性问题的答复（如适用）
+
+            3. 第七部分 关于专利法第三十三条的答复（如适用）
+
+            4. 第九部分 结论与请求
+
+
+            ## 强制规则
+
+            1. 所有 caution/weak 条目都必须在正文中有显式承接，不得静默消失。
+
+            2. caution/weak 条目必须保持审慎表述，不得写成已充分证明的强结论。
+
+            3. 不输出摘要，不输出表格，不输出 JSON。
+
+            '
+        - id: 1760002001026-user
+          role: user
+          text: 'body_c_material：
+
+            {{#1760002001028.structured_output.body_c_material#}}
+
+            '
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: '2000'
+        selected: false
+        title: LLM-OA答复正文C
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+        structured_output_enabled: false
+      height: 116
+      id: '1760002001026'
+      position:
+        x: 4080
+        y: 560
+      positionAbsolute:
+        x: 4080
+        y: 560
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: false
+            max_tokens: 5200
+            reasoning_effort: high
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: 1760002001029-system
+          role: system
+          text: '# 角色
+
+            你是增强表格作者。
+
+
+            ## 任务
+
+            根据 table_material，输出三张 Markdown 表格：
+
+            1. 修改对照表
+
+            2. 区别技术特征对照表
+
+            3. 创造性四步分析表
+
+
+            ## 写作要求
+
+            1. 每张表前必须有三级标题。
+
+            2. 表格内容必须是完整短句，不得使用 JSON。
+
+            3. reviewed_rows 中的 caution/weak 条目不得静默消失，必须在相关表格中以审慎方式体现。
+
+            4. 不得用残句或“...”硬截断。
+
+            '
+        - id: 1760002001029-user
+          role: user
+          text: 'table_material：
+
+            {{#1760002001028.structured_output.table_material#}}
+
+            '
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: '2000'
+        selected: false
+        title: LLM-增强表格作者
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+        structured_output_enabled: false
+      height: 116
+      id: '1760002001029'
+      position:
+        x: 4080
+        y: 780
+      positionAbsolute:
+        x: 4080
+        y: 780
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            exclude_reasoning_tokens: false
+            max_tokens: 5200
+            reasoning_effort: high
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: 1760002001030-system
+          role: system
+          text: '# 角色
+
+            你是摘要作者。
+
+
+            ## 任务
+
+            仅根据 OA答复正文和增强表格，生成供用户快速了解核心内容的摘要。
+
+
+            ## 强制规则
+
+            1. 摘要总长度不得超过500个中文字符。
+
+            2. 摘要只能压缩正文和表格中已有内容，不得新增事实。
+
+            3. 必须概括：本次答复主线、修改策略、核心创造性主张、从属项或 caution 项的总体处理方式。
+
+            4. 不得假装案件只剩强项；若正文和表格存在 caution/weak 条目，应以审慎方式概括其处理状态。
+
+            5. 只输出摘要正文，不要标题，不要表格，不要 JSON。
+
+            '
+        - id: 1760002001030-user
+          role: user
+          text: 'OA答复正文A：
+
+            {{#1760002001015.text#}}
+
+
+            OA答复正文B：
+
+            {{#1760002001016.text#}}
+
+
+            OA答复正文C：
+
+            {{#1760002001026.text#}}
+
+
+            增强表格：
+
+            {{#1760002001029.text#}}
+
+            '
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: '2000'
+        selected: false
+        title: LLM-摘要作者
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+        structured_output_enabled: false
+      height: 116
+      id: '1760002001030'
+      position:
+        x: 4380
+        y: 420
+      positionAbsolute:
+        x: 4380
+        y: 420
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    edges:
+    - data:
+        sourceType: start
+        targetType: if-else
+      id: 1733319647245-source-1760002001001-target
+      selected: false
+      source: '1733319647245'
+      sourceHandle: source
+      target: '1760002001001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: if-else
+        targetType: document-extractor
+      id: 1760002001001-true-1760002001002-target
+      selected: false
+      source: '1760002001001'
+      sourceHandle: 'true'
+      target: '1760002001002'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: if-else
+        targetType: code
+      id: 1760002001001-false-1760002001017-target
+      selected: false
+      source: '1760002001001'
+      sourceHandle: 'false'
+      target: '1760002001017'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: if-else
+        targetType: document-extractor
+      id: 1760002001003-true-1760002001004-target
+      selected: false
+      source: '1760002001003'
+      sourceHandle: 'true'
+      target: '1760002001004'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: if-else
+        targetType: code
+      id: 1760002001003-false-1760002001007-target
+      selected: false
+      source: '1760002001003'
+      sourceHandle: 'false'
+      target: '1760002001007'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: if-else
+        targetType: document-extractor
+      id: 1760002001005-true-1760002001006-target
+      selected: false
+      source: '1760002001005'
+      sourceHandle: 'true'
+      target: '1760002001006'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: if-else
+        targetType: code
+      id: 1760002001005-false-1760002001007-target
+      selected: false
+      source: '1760002001005'
+      sourceHandle: 'false'
+      target: '1760002001007'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: if-else
+        targetType: document-extractor
+      id: 1740018444780-true-1733320109628-target
+      selected: false
+      source: '1740018444780'
+      sourceHandle: 'true'
+      target: '1733320109628'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: if-else
+        targetType: code
+      id: 1740018444780-false-1760002001007-target
+      selected: false
+      source: '1740018444780'
+      sourceHandle: 'false'
+      target: '1760002001007'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: if-else
+        targetType: document-extractor
+      id: 1760002001011-true-1755002408932-target
+      selected: false
+      source: '1760002001011'
+      sourceHandle: 'true'
+      target: '1755002408932'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: if-else
+        targetType: code
+      id: 1760002001011-false-1760002001007-target
+      selected: false
+      source: '1760002001011'
+      sourceHandle: 'false'
+      target: '1760002001007'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: if-else
+        targetType: document-extractor
+      id: 1760002001013-true-1755002452156-target
+      selected: false
+      source: '1760002001013'
+      sourceHandle: 'true'
+      target: '1755002452156'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: if-else
+        targetType: code
+      id: 1760002001013-false-1760002001007-target
+      selected: false
+      source: '1760002001013'
+      sourceHandle: 'false'
+      target: '1760002001007'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: document-extractor
+        targetType: code
+      id: 1760002001002-source-1760002001007-target
+      selected: false
+      source: '1760002001002'
+      sourceHandle: source
+      target: '1760002001007'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: document-extractor
+        targetType: code
+      id: 1760002001004-source-1760002001007-target
+      selected: false
+      source: '1760002001004'
+      sourceHandle: source
+      target: '1760002001007'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: document-extractor
+        targetType: code
+      id: 1760002001006-source-1760002001007-target
+      selected: false
+      source: '1760002001006'
+      sourceHandle: source
+      target: '1760002001007'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: document-extractor
+        targetType: code
+      id: 1733320109628-source-1760002001007-target
+      selected: false
+      source: '1733320109628'
+      sourceHandle: source
+      target: '1760002001007'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: document-extractor
+        targetType: code
+      id: 1755002408932-source-1760002001007-target
+      selected: false
+      source: '1755002408932'
+      sourceHandle: source
+      target: '1760002001007'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: document-extractor
+        targetType: code
+      id: 1755002452156-source-1760002001007-target
+      selected: false
+      source: '1755002452156'
+      sourceHandle: source
+      target: '1760002001007'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: code
+        targetType: llm
+      id: 1760002001007-source-1733320129208-target
+      selected: false
+      source: '1760002001007'
+      sourceHandle: source
+      target: '1733320129208'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: llm
+        targetType: llm
+      id: 1733320129208-source-1760002001025-target
+      selected: false
+      source: '1733320129208'
+      sourceHandle: source
+      target: '1760002001025'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: llm
+        targetType: llm
+      id: 1760002001025-source-1760002001020-target
+      selected: false
+      source: '1760002001025'
+      sourceHandle: source
+      target: '1760002001020'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: llm
+        targetType: llm
+      id: 1760002001025-source-1760002001021-target
+      selected: false
+      source: '1760002001025'
+      sourceHandle: source
+      target: '1760002001021'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: llm
+        targetType: llm
+      id: 1760002001025-source-1760002001022-target
+      selected: false
+      source: '1760002001025'
+      sourceHandle: source
+      target: '1760002001022'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: llm
+        targetType: llm
+      id: 1760002001025-source-1760002001023-target
+      selected: false
+      source: '1760002001025'
+      sourceHandle: source
+      target: '1760002001023'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: llm
+        targetType: code
+      id: 1760002001025-source-1760002001024-target
+      selected: false
+      source: '1760002001025'
+      sourceHandle: source
+      target: '1760002001024'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: llm
+        targetType: llm
+      id: 1760002001020-source-1760002001021-target
+      selected: false
+      source: '1760002001020'
+      sourceHandle: source
+      target: '1760002001021'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: llm
+        targetType: llm
+      id: 1760002001020-source-1760002001022-target
+      selected: false
+      source: '1760002001020'
+      sourceHandle: source
+      target: '1760002001022'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: llm
+        targetType: llm
+      id: 1760002001020-source-1760002001023-target
+      selected: false
+      source: '1760002001020'
+      sourceHandle: source
+      target: '1760002001023'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: llm
+        targetType: code
+      id: 1760002001020-source-1760002001024-target
+      selected: false
+      source: '1760002001020'
+      sourceHandle: source
+      target: '1760002001024'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: llm
+        targetType: code
+      id: 1760002001021-source-1760002001024-target
+      selected: false
+      source: '1760002001021'
+      sourceHandle: source
+      target: '1760002001024'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: llm
+        targetType: code
+      id: 1760002001022-source-1760002001024-target
+      selected: false
+      source: '1760002001022'
+      sourceHandle: source
+      target: '1760002001024'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: llm
+        targetType: code
+      id: 1760002001023-source-1760002001024-target
+      selected: false
+      source: '1760002001023'
+      sourceHandle: source
+      target: '1760002001024'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: code
+        targetType: llm
+      id: 1760002001024-source-1760002001027-target
+      selected: false
+      source: '1760002001024'
+      sourceHandle: source
+      target: '1760002001027'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: code
+        targetType: code
+      id: 1760002001017-source-1758715635324-target
+      selected: false
+      source: '1760002001017'
+      sourceHandle: source
+      target: '1758715635324'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: code
+        targetType: tool
+      id: 1758715635324-source-1769143491855-target
+      selected: false
+      source: '1758715635324'
+      sourceHandle: source
+      target: '1769143491855'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: tool
+        targetType: tool
+      id: 1769143491855-source-1769143523408-target
+      selected: false
+      source: '1769143491855'
+      sourceHandle: source
+      target: '1769143523408'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        sourceType: tool
+        targetType: end
+      id: 1769143523408-source-1733320136150-target
+      selected: false
+      source: '1769143523408'
+      sourceHandle: source
+      target: '1733320136150'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - id: 1760002001027-source-1760002001028-target
+      source: '1760002001027'
+      target: '1760002001028'
+      type: custom
+      sourceHandle: source
+      targetHandle: target
+      data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      zIndex: 0
+      selected: false
+    - id: 1760002001028-source-1760002001015-target
+      source: '1760002001028'
+      target: '1760002001015'
+      type: custom
+      sourceHandle: source
+      targetHandle: target
+      data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      zIndex: 0
+      selected: false
+    - id: 1760002001028-source-1760002001016-target
+      source: '1760002001028'
+      target: '1760002001016'
+      type: custom
+      sourceHandle: source
+      targetHandle: target
+      data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      zIndex: 0
+      selected: false
+    - id: 1760002001028-source-1760002001026-target
+      source: '1760002001028'
+      target: '1760002001026'
+      type: custom
+      sourceHandle: source
+      targetHandle: target
+      data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      zIndex: 0
+      selected: false
+    - id: 1760002001028-source-1760002001029-target
+      source: '1760002001028'
+      target: '1760002001029'
+      type: custom
+      sourceHandle: source
+      targetHandle: target
+      data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      zIndex: 0
+      selected: false
+    - id: 1760002001015-source-1760002001030-target
+      source: '1760002001015'
+      target: '1760002001030'
+      type: custom
+      sourceHandle: source
+      targetHandle: target
+      data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      zIndex: 0
+      selected: false
+    - id: 1760002001016-source-1760002001030-target
+      source: '1760002001016'
+      target: '1760002001030'
+      type: custom
+      sourceHandle: source
+      targetHandle: target
+      data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      zIndex: 0
+      selected: false
+    - id: 1760002001026-source-1760002001030-target
+      source: '1760002001026'
+      target: '1760002001030'
+      type: custom
+      sourceHandle: source
+      targetHandle: target
+      data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      zIndex: 0
+      selected: false
+    - id: 1760002001029-source-1760002001030-target
+      source: '1760002001029'
+      target: '1760002001030'
+      type: custom
+      sourceHandle: source
+      targetHandle: target
+      data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      zIndex: 0
+      selected: false
+    - id: 1760002001030-source-1758715635324-target
+      source: '1760002001030'
+      target: '1758715635324'
+      type: custom
+      sourceHandle: source
+      targetHandle: target
+      data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      zIndex: 0
+      selected: false
+    - id: 1760002001015-source-1758715635324-target
+      source: '1760002001015'
+      target: '1758715635324'
+      type: custom
+      sourceHandle: source
+      targetHandle: target
+      data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      zIndex: 0
+      selected: false
+    - id: 1760002001016-source-1758715635324-target
+      source: '1760002001016'
+      target: '1758715635324'
+      type: custom
+      sourceHandle: source
+      targetHandle: target
+      data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      zIndex: 0
+      selected: false
+    - id: 1760002001026-source-1758715635324-target
+      source: '1760002001026'
+      target: '1758715635324'
+      type: custom
+      sourceHandle: source
+      targetHandle: target
+      data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      zIndex: 0
+      selected: false
+    - id: 1760002001029-source-1758715635324-target
+      source: '1760002001029'
+      target: '1758715635324'
+      type: custom
+      sourceHandle: source
+      targetHandle: target
+      data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      zIndex: 0
+      selected: false
+    - id: 1733319647245-source-1760002001003-target
+      source: '1733319647245'
+      target: '1760002001003'
+      type: custom
+      sourceHandle: source
+      targetHandle: target
+      data:
+        isInIteration: false
+        sourceType: start
+        targetType: if-else
+      zIndex: 0
+      selected: false
+    - id: 1733319647245-source-1760002001005-target
+      source: '1733319647245'
+      target: '1760002001005'
+      type: custom
+      sourceHandle: source
+      targetHandle: target
+      data:
+        isInIteration: false
+        sourceType: start
+        targetType: if-else
+      zIndex: 0
+      selected: false
+    - id: 1733319647245-source-1740018444780-target
+      source: '1733319647245'
+      target: '1740018444780'
+      type: custom
+      sourceHandle: source
+      targetHandle: target
+      data:
+        isInIteration: false
+        sourceType: start
+        targetType: if-else
+      zIndex: 0
+      selected: false
+    - id: 1733319647245-source-1760002001011-target
+      source: '1733319647245'
+      target: '1760002001011'
+      type: custom
+      sourceHandle: source
+      targetHandle: target
+      data:
+        isInIteration: false
+        sourceType: start
+        targetType: if-else
+      zIndex: 0
+      selected: false
+    - id: 1733319647245-source-1760002001013-target
+      source: '1733319647245'
+      target: '1760002001013'
+      type: custom
+      sourceHandle: source
+      targetHandle: target
+      data:
+        isInIteration: false
+        sourceType: start
+        targetType: if-else
+      zIndex: 0
+      selected: false
+    viewport:
+      x: 56.0
+      y: -12.0
+      zoom: 0.45
+  rag_pipeline_variables: []

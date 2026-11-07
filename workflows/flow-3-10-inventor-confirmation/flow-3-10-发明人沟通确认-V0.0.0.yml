@@ -1,0 +1,272 @@
+app:
+  description: Flow-3-10 发明人沟通
+  icon: "\U0001F4AC"
+  icon_background: '#F0F7FF'
+  mode: workflow
+  name: Flow-3-10 发明人沟通
+
+kind: app
+version: 0.1.4
+
+workflow:
+  features:
+    file_upload:
+      image:
+        enabled: false
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+
+  graph:
+    edges:
+      - data:
+          source_type: variable
+          variable: [['start_node', 'drafting_plan'], ['start_node', 'full_comparison_report']]
+        id: edge-start-3-10-1
+        source: start_node
+        target: node_3_10_1
+        type: custom
+      - data:
+          source_type: variable
+          variable: [['node_3_10_1', 'communication_materials']]
+        id: edge-3-10-1-2
+        source: node_3_10_1
+        target: node_3_10_2
+        type: custom
+      - data:
+          source_type: variable
+          variable: [['node_3_10_2', 'feedback_form']]
+        id: edge-3-10-2-end
+        source: node_3_10_2
+        target: end_node
+        type: custom
+      - data:
+          source_type: variable
+          variable: [['node_3_10_2', 'inventor_feedback']]
+        id: edge-feedback-3-10-3
+        source: node_3_10_2
+        target: node_3_10_3
+        type: custom
+      - data:
+          source_type: variable
+          variable: [['node_3_10_3', 'feedback_analysis']]
+        id: edge-3-10-3-4
+        source: node_3_10_3
+        target: node_3_10_4
+        type: custom
+      - data:
+          source_type: variable
+          variable: [['node_3_10_4', 'communication_record']]
+        id: edge-3-10-4-end2
+        source: node_3_10_4
+        target: end_node
+        type: custom
+
+    nodes:
+      - data:
+          desc: '接收撰写计划和对比报告'
+          selected: false
+          title: Start
+          type: start
+          variables:
+            - value_selector: ['input']
+              variable: drafting_plan
+            - value_selector: ['input']
+              variable: full_comparison_report
+        id: start_node
+        position:
+          x: 100
+          y: 200
+        type: custom
+
+      - data:
+          desc: '准备沟通材料'
+          model:
+            completion_params:
+              temperature: 0.5
+              max_tokens: 4096
+            mode: chat
+            name: claude-sonnet-4-5
+            provider: anthropic
+          prompt_template:
+            - role: system
+              text: |
+                你是专利沟通专家,准备与发明人沟通的材料。
+            - role: user
+              text: |
+                # 任务: 准备沟通材料
+                - drafting_plan: {{drafting_plan}}
+                - full_comparison_report: {{full_comparison_report}}
+                返回沟通材料JSON,包含议程、关键问题、建议等。
+          title: Node-3-10-1 沟通材料准备
+          type: llm
+          variables:
+            - value_selector: ['start_node', 'drafting_plan']
+              variable: drafting_plan
+            - value_selector: ['start_node', 'full_comparison_report']
+              variable: full_comparison_report
+        id: node_3_10_1
+        position:
+          x: 300
+          y: 200
+        type: custom
+
+      - data:
+          code: |
+            # -*- coding: utf-8 -*-
+            """Node-3-10-2 发明人反馈收集"""
+            import json
+            from datetime import datetime
+            from typing import Dict, List, Any
+
+            def main(input_data: Dict[str, Any]) -> Dict[str, Any]:
+                """生成反馈表单"""
+                communication_materials = input_data.get("communication_materials", {})
+
+                feedback_form = {
+                    "form_version": "1.0",
+                    "created_at": datetime.now().isoformat(),
+                    "form_type": "inventor_feedback",
+                    "questions": [
+                        {
+                            "question_id": "Q1",
+                            "question_type": "choice",
+                            "question": "请确认本次沟通的议程是否合适?",
+                            "options": ["完全同意", "部分同意", "不同意"],
+                            "required": True
+                        },
+                        {
+                            "question_id": "Q2",
+                            "question_type": "text",
+                            "question": "对权利要求优化建议有何意见?",
+                            "required": True
+                        },
+                        {
+                            "question_id": "Q3",
+                            "question_type": "text",
+                            "question": "对说明书补充内容有何建议?",
+                            "required": False
+                        }
+                    ],
+                    "communication_context": communication_materials
+                }
+
+                return {"feedback_form": feedback_form}
+          desc: '生成反馈表单'
+          outputs:
+            - value_selector: ['output', 'feedback_form']
+              variable: feedback_form
+          title: Node-3-10-2 发明人反馈收集
+          type: code
+          variables:
+            - value_selector: ['node_3_10_1', 'communication_materials']
+              variable: communication_materials
+        id: node_3_10_2
+        position:
+          x: 500
+          y: 200
+        type: custom
+
+      - data:
+          desc: '分析发明人反馈'
+          model:
+            completion_params:
+              temperature: 0.5
+              max_tokens: 4096
+            mode: chat
+            name: claude-sonnet-4-5
+            provider: anthropic
+          prompt_template:
+            - role: system
+              text: |
+                你是专利分析专家,分析发明人反馈,提取关键信息。
+            - role: user
+              text: |
+                # 任务: 分析发明人反馈
+                - inventor_feedback: {{inventor_feedback}}
+                返回反馈分析结果JSON。
+          title: Node-3-10-3 发明人反馈分析
+          type: llm
+          variables:
+            - value_selector: ['node_3_10_2', 'inventor_feedback']
+              variable: inventor_feedback
+        id: node_3_10_3
+        position:
+          x: 700
+          y: 200
+        type: custom
+
+      - data:
+          code: |
+            # -*- coding: utf-8 -*-
+            """Node-3-10-4 沟通记录生成"""
+            import json
+            from datetime import datetime
+            from typing import Dict, List, Any
+
+            def main(input_data: Dict[str, Any]) -> Dict[str, Any]:
+                """生成沟通记录"""
+                feedback_analysis = input_data.get("feedback_analysis", {})
+                communication_materials = input_data.get("communication_materials", {})
+
+                communication_record = {
+                    "record_version": "1.0",
+                    "created_at": datetime.now().isoformat(),
+                    "communication_type": "inventor_feedback",
+                    "participants": ["发明人", "专利代理师"],
+                    "agenda": communication_materials.get("agenda", []),
+                    "discussion_summary": feedback_analysis.get("summary", ""),
+                    "key_decisions": feedback_analysis.get("decisions", []),
+                    "action_items": feedback_analysis.get("action_items", []),
+                    "next_steps": feedback_analysis.get("next_steps", [])
+                }
+
+                return {"communication_record": communication_record}
+          desc: '生成沟通记录'
+          outputs:
+            - value_selector: ['output', 'communication_record']
+              variable: communication_record
+          title: Node-3-10-4 沟通记录生成
+          type: code
+          variables:
+            - value_selector: ['node_3_10_3', 'feedback_analysis']
+              variable: feedback_analysis
+            - value_selector: ['node_3_10_1', 'communication_materials']
+              variable: communication_materials
+        id: node_3_10_4
+        position:
+          x: 900
+          y: 200
+        type: custom
+
+      - data:
+          desc: '输出反馈表单或沟通记录'
+          selected: false
+          title: End
+          type: end
+          variables:
+            - value_selector: ['node_3_10_2', 'feedback_form']
+              variable: feedback_form
+            - value_selector: ['node_3_10_4', 'communication_record']
+              variable: communication_record
+        id: end_node
+        position:
+          x: 1100
+          y: 200
+        type: custom
+
+    environment_variables: []
+
+    conversation_variables: []
+
+  vision:
+    enabled: false

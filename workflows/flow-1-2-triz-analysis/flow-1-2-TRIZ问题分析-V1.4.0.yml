@@ -1,0 +1,4037 @@
+app:
+  description: Flow-1-2 TRIZ分析
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: Flow-1-2-TRIZ分析-pro-1.4.0
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: bowenliang123/md_exporter:3.6.9@3f027d63e80b44d5d5a9f706871afaef37905b8f8a89a2d152dc530211a8acb1
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openrouter:0.0.46@f547176a98228c882f25d4241dfa9307cdd2baa34493e3fb6a9c12985dd8ba9a
+    version: null
+kind: app
+version: 0.6.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      - .PDF
+      - .DOCX
+      - .DOC
+      - .TXT
+      - .MD
+      allowed_file_types:
+      - image
+      - document
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: true
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 20
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: start-source-1775100100001-target
+      selected: false
+      source: start
+      sourceHandle: source
+      target: '1775100100001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: document-extractor
+      id: 1775100100001-true-1775100100002-target
+      selected: false
+      source: '1775100100001'
+      sourceHandle: 'true'
+      target: '1775100100002'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+      id: 1775100100001-false-1775100100003-target
+      selected: false
+      source: '1775100100001'
+      sourceHandle: 'false'
+      target: '1775100100003'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: code
+      id: 1775100100002-source-1775100100003-target
+      selected: false
+      source: '1775100100002'
+      sourceHandle: source
+      target: '1775100100003'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1775100100003-source-node_1_2_1-target
+      selected: false
+      source: '1775100100003'
+      sourceHandle: source
+      target: node_1_2_1
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: node_1_2_1-source-node_1_2_2-target
+      selected: false
+      source: node_1_2_1
+      sourceHandle: source
+      target: node_1_2_2
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: node_1_2_2-source-node_1_2_3-target
+      selected: false
+      source: node_1_2_2
+      sourceHandle: source
+      target: node_1_2_3
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: node_1_2_3-source-node_1_2_4-target
+      selected: false
+      source: node_1_2_3
+      sourceHandle: source
+      target: node_1_2_4
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: node_1_2_4-source-node_1_2_5-target
+      selected: false
+      source: node_1_2_4
+      sourceHandle: source
+      target: node_1_2_5
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: node_1_2_5-source-node_1_2_6-target
+      selected: false
+      source: node_1_2_5
+      sourceHandle: source
+      target: node_1_2_6
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: node_1_2_6-source-node_1_2_7-target
+      selected: false
+      source: node_1_2_6
+      sourceHandle: source
+      target: node_1_2_7
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: node_1_2_6-source-node_1_2_9-target
+      selected: false
+      source: node_1_2_6
+      sourceHandle: source
+      target: node_1_2_9
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: node_1_2_7-source-node_1_2_12-target
+      selected: false
+      source: node_1_2_7
+      sourceHandle: source
+      target: node_1_2_12
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: node_1_2_9-source-node_1_2_12-target
+      selected: false
+      source: node_1_2_9
+      sourceHandle: source
+      target: node_1_2_12
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: node_1_2_12-source-node_1_2_13-target
+      selected: false
+      source: node_1_2_12
+      sourceHandle: source
+      target: node_1_2_13
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: node_1_2_13-source-1775101302001-target
+      source: node_1_2_13
+      sourceHandle: source
+      target: '1775101302001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1775101302001-source-1770105429723-target
+      source: '1775101302001'
+      sourceHandle: source
+      target: '1770105429723'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1770105429723-source-1770105447954-target
+      source: '1770105429723'
+      sourceHandle: source
+      target: '1770105447954'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1770105447954-source-1770105488807-target
+      source: '1770105447954'
+      sourceHandle: source
+      target: '1770105488807'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1770105488807-source-1770105503949-target
+      source: '1770105488807'
+      sourceHandle: source
+      target: '1770105503949'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1770105503949-source-1770105577001-target
+      source: '1770105503949'
+      sourceHandle: source
+      target: '1770105577001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 1770105577001-source-1770105539919-target
+      source: '1770105577001'
+      sourceHandle: source
+      target: '1770105539919'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: tool
+      id: 1770105539919-source-1769263949895-target
+      source: '1770105539919'
+      sourceHandle: source
+      target: '1769263949895'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: tool
+      id: 1769263949895-source-1769264025839-target
+      source: '1769263949895'
+      sourceHandle: source
+      target: '1769264025839'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: end
+      id: 1769264025839-source-end-target
+      source: '1769264025839'
+      sourceHandle: source
+      target: end
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: 至少提供 tech_landscape 或 tech_landscape_file 其中之一；若两者同时提供，文件内容优先。Dify 表单不做二选一预校验，运行时由“技术背景来源统一”节点强制校验。
+        selected: false
+        title: N-1-2-00 开始
+        type: start
+        variables:
+        - label: 用户指令
+          max_length: 10000
+          options: []
+          required: false
+          type: paragraph
+          variable: user_input
+        - label: 技术背景研究报告(Markdown，若不上传文件则必填)
+          max_length: 128000
+          options: []
+          required: false
+          type: paragraph
+          variable: tech_landscape
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 技术背景研究报告文件(单文件，若不填写文本则必传)
+          max_length: 1
+          options: []
+          required: false
+          type: file
+          variable: tech_landscape_file
+      height: 252
+      id: start
+      position:
+        x: 0
+        y: 0
+      positionAbsolute:
+        x: 0
+        y: 0
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: exists
+            id: tech-landscape-file-exists
+            value: ''
+            varType: file
+            variable_selector:
+            - start
+            - tech_landscape_file
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: N-1-2-1 技术背景文件存在判断
+        type: if-else
+      height: 123
+      id: '1775100100001'
+      position:
+        x: 342
+        y: 64
+      positionAbsolute:
+        x: 342
+        y: 64
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: N-1-2-2 技术背景文档提取
+        type: document-extractor
+        variable_selector:
+        - start
+        - tech_landscape_file
+      height: 104
+      id: '1775100100002'
+      position:
+        x: 704
+        y: 8
+      positionAbsolute:
+        x: 704
+        y: 8
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "def main(text_input: str = \"\", file_text: str = \"\") -> dict:\n    def normalize(value):\n        if value is None:\n            return \"\"\n        return str(value).replace(\"\\r\\n\", \"\\n\").replace(\"\\r\", \"\\n\").strip()\n\n    normalized_text_input = normalize(text_input)\n    normalized_file_text = normalize(file_text)\n    warning = \"\"\n\n    if normalized_file_text and normalized_text_input:\n        warning = \"both_provided_file_used\"\n    if normalized_file_text:\n        return {\n            \"normalized_tech_landscape\": normalized_file_text,\n        }\n    if normalized_text_input:\n        return {\n            \"normalized_tech_landscape\": normalized_text_input,\n        }\n    raise ValueError(\"未检测到可用的技术背景文本：请填写 tech_landscape，或上传可被 Document Extractor 提取的 tech_landscape_file\")"
+        code_language: python3
+        desc: ''
+        outputs:
+          normalized_tech_landscape:
+            children: null
+            type: string
+        selected: false
+        title: N-1-2-3 技术背景来源统一
+        type: code
+        variables:
+        - value_selector:
+          - start
+          - tech_landscape
+          variable: text_input
+        - value_selector:
+          - '1775100100002'
+          - text
+          variable: file_text
+      height: 51
+      id: '1775100100003'
+      position:
+        x: 1066
+        y: 128
+      positionAbsolute:
+        x: 1066
+        y: 128
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            reasoning_effort: medium
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: n1_system
+          role: system
+          text: '🔒 强制规则 (v2.0)
+
+            0) 任务识别（初始化，强制）
+
+            优先解析 user 提示词中的要求（若存在），据此判定任务类型与输出形态（结构化抽取/规范/设计说明/对齐修改/评审检查/其他技术任务）。
+
+            若未提供要求，可退化解析Goals（若存在）；仍无法判定时：采用"最小任务闭环 + schema/格式严格一致"为默认策略，并将关键选择写入推断理由（包含"推测"）。
+
+            1) 仅限任务内容（强制）
+
+            禁止自动生成背景介绍、总结性语言、行业泛论、额外建议，除非 user 明确授权。
+
+            除非 user 明确要求，否则不输出与任务无关的解释性文字；按要求输出 JSON/YAML/文本。
+
+            2) 结构清晰，逻辑连贯（强制）
+
+            输出必须按 user 指定顺序组织；若 user 未指定，采用任务默认顺序：
+
+            分析/方案/报告类：问题 → 方案 → 效果。
+
+            结构化抽取类：输入证据 → 实体/字段 → 归一化/保守补全 → 校验结果。
+
+            禁止跳步/省略必需项；不得用"同上/略/待补充"等占位符。
+
+            3) 基于输入，受控扩展（强制）
+
+            默认内容仅限输入信息。
+
+            若 user 授权"允许补全/推导缺项"：仅在技术逻辑合理范围内保守推导；不得捏造特征、不得夸大效果。
+
+            允许保守推断，但不得使用"推测"标签；仅通过 data_refs、一致性锚点与验证规则保持可追溯。
+
+            4) 不得编造 + 可追溯（强制）
+
+            任何关键结论/实体/约束必须可追溯到输入：优先通过既有追溯结构承载（如 data_refs、一致性锚点、validation_rules 中的现有字段），禁止引入 schema 外证据字段。
+
+            禁止把常识当作原文事实；禁止"看起来像/一般来说"式替代证据。
+
+            5) 推理标注机制（强制）
+
+            允许保守补全字段值：当字段在原文缺失/含糊时，可用保守默认或上下文推断。
+
+            对任何"推测"的字段：必须将字段名加入inferred_fields，并在inference_rationale中说明理由，且必须包含"推测"字样。
+
+            数值/枚举字段：值本身保持合法取值；"推测"只能出现在标注字段中，不得污染取值。
+
+            6) 表达风格统一（强制）
+
+            同一次输出中：术语命名、字段口径、句式结构、逻辑顺序必须一致，禁止表达风格漂移。
+
+            多段式连续任务一致性：若一次输出包含多个结构段落/多块结构/图示说明，必须保持同一套术语表与同一套结构模板，确保整体连贯性。
+
+            7) 禁止模糊指代（强制）
+
+            禁用"该结构/该装置/上述方案/本方法"等模糊称谓；必须使用输入中明确术语、部件名、字段编号或实体ID（如T-001/P-001）。
+
+            引用上文对象时必须可定位（ID/字段名/章节名）。
+
+            8) 文体自动适配（技术类任务，条件触发，强制）
+
+            系统根据要求识别任务类型，自动匹配表达风格（仅限技术类任务）：
+
+            技术报告/研究报告：重结构完整、逻辑递进、证据与结论对应。
+
+            规范/标准/约定（schema、命名、接口）：重可执行条款、禁止项、默认值与边界条件。
+
+            节点/流程/数据流设计说明：重输入输出、字段口径、约束与校验、异常处理。
+
+            对齐修改/重构：重"差异最小 + 规则一致 + 兼容性"，避免引入无关内容。
+
+            评审/检查/验收清单：重可验证、可量化、可追溯，结论必须对应检查项。
+
+            性能/成本优化：重可量化指标、瓶颈定位、前后对比口径一致。
+
+            风险/可行性分析：重约束、前提、风险项、缓解措施，避免空泛结论。
+
+            兜底条款：若任务类型未被上述覆盖，以"结构化、可验证、术语稳定、最少解释文本"为默认风格，并严格遵守第1/2/4/5/9条。
+
+            9) schema/格式严格一致（强制）
+
+            输出必须严格满足 structured_output schema/格式要求：不输出多余字段；不输出多余文本；数组可为空但字段不得缺失（以schema为准）。
+
+            若发现 schema 与任务目标冲突：优先满足 schema，并将冲突/限制写入推断理由（包含"推测"）（仅在schema允许承载时）。
+
+            🎯 TRIZ 领域规则 (v2.0 新增)
+
+            10) ID 格式强制规范
+
+            技术问题: TP-xxx (如 TP-001, TP-002)
+
+            预期效果: EF-xxx (如 EF-001, EF-002)
+
+            候选方案: CP-xxx (如 CP-001, CP-002)
+
+            技术靶点: TT-xxx 或 T-xxx (如 TT-001, T-001)
+
+            技术矛盾: TC-xx (如 TC-01, TC-02)
+
+            专利模块: M-xx (如 M-01, M-02)
+
+            ID 格式错误将导致下游 Code 节点校验失败。
+
+            11) 方案分级规范
+
+            A 级: 核心方案，创新度高，完整性强，可独立申请专利
+
+            B 级: 辅助方案，创新度中等，可作为从属权利要求
+
+            C 级: 备选方案，创新度较低或已有公开技术
+
+            每次输出必须包含至少 3 个 A 级方案和 3 个 B 级方案
+
+            12) TRIZ 39 参数与发明原理引用
+
+            引用 TRIZ 标准参数时，使用标准编号 (1-39)，如"Parameter 9: Speed"
+
+            引用发明原理时，使用标准格式"Principle xx: 名称"，如"Principle 01: Segmentation"
+
+            矛盾对必须明确指出改善/恶化参数对，格式：改善[Pxx] vs 恶化[Pyy]
+
+            13) 量化指标要求
+
+            预期效果 (EF) 的量化率必须 ≥ 80%
+
+            量化格式：baseline → target（如：误差 ±0.5mm → ±0.1mm）
+
+            非量化效果必须标注 quantified: false 并说明原因
+
+            14) 跨领域技术引用
+
+            引用跨领域技术时，必须注明：原领域、技术名称、适配理由
+
+            跨领域方案占比目标：≥ 10%
+
+            格式示例：[跨领域: 航空航天 → 主动阻尼控制技术]
+
+            ⚙️ 执行流程（强制自检）
+
+            A) 任务识别: 解析要求/显式指令，确定任务类型
+
+            B) 输入理解: 建立术语表、ID 映射表，核对输入完整性
+
+            C) 结构组织: 按第 2 条默认/指定顺序组织输出
+
+            D) ID 验证: 确保所有生成的 ID 符合第 10 条格式规范
+
+            E) 完整性校验: 必需项齐全、无越权扩展、方案数量达标
+
+            F) 一致性检查: 术语/风格/顺序/指代/ID 引用一致
+
+            📋 自检清单 (输出前必查)
+
+            检查项规则自检
+
+            ID 格式
+
+            所有 ID 符合第 10 条规范
+
+            [ ]
+
+            方案数量
+
+            A 级 ≥ 3, B 级 ≥ 3
+
+            [ ]
+
+            量化率
+
+            EF 量化率 ≥ 80%
+
+            [ ]
+
+            术语一致
+
+            全文术语与输入 terminology_table 一致
+
+            [ ]
+
+            证据追溯
+
+            关键结论有 source_* 字段支撑
+
+            [ ]
+
+            推理标注
+
+            所有推理补全内容已落成自然专业表述，用户可读字段不得出现【推理生成】或【推理生成-估计】
+
+            [ ]
+
+            Schema 合规
+
+            输出完全符合 structured_output schema
+
+            [ ]'
+        - id: a10cb142-0bfc-488e-ad94-be877350b7de
+          role: user
+          text: "## 示例隔离与零新增（强制）\n- 示例仅用于结构/格式说明，禁止迁移示例中的领域词、实体、数值、指标、场景、公司/标准名称。\n- 输出内容必须100%来自输入数据与用户指令，不得新增输入未出现的技术/问题/方案/指标/标准/行业/场景/专有名词。\n- 若输入缺失，禁止用示例补齐；仅可留空（schema允许）或按规则“推测”并显式标注。\n- 如示例包含固定领域词，必须在输出中以输入术语替换；如输入含 candidate_principles，矛盾/冲突ID必须与 candidate_principles[].target_contradiction 对齐。\n\n# Node-1-2-1: Markdown解析任务\n\n> **版本**: v0.2.2\n> **最后更新**: 2026-02-06\n\n## 用户指令（最高优先级）\n{{#start.user_input#}}\n\n## 输入内容（Markdown）\n{{#1775100100003.normalized_tech_landscape#}}\n\n> 输出要求（严格）与用户指令解析规则必须被融入下文 `Rules` 与 `Format`（严格执行），避免重复与冲突。\n\n## Round3+质量硬约束（新增）\n- 目标下限：`technologies>=5`、`problems>=4`、`solutions>=4`。\n- 输入基线主题召回：优先覆盖 `受流稳定/弓网/噪声/滑板/电弧/接触力/FBG/SMA/CNT/石墨烯/仿生/结冰/紫外/机器视觉/Ti3SiC2/空气动力` 中输入已出现的主题。\n- 禁止因约束未满足而停止输出：若证据不足，可做保守推测，但必须在相关 `source_quote` 中显式标注“推测：”。\n\n---\n\n## 角色与任务边界（强制）\n你是结构化技术信息解析专家。任务是把 `tech_landscape` 的 Markdown 内容解析为结构化 JSON：\n- `alignment_parameters`\n- `technologies`\n- `problems`\n- `solutions`\n- `standards`\n\n边界要求：\n- 只输出 schema 定义字段，禁止额外字段。\n- 禁止输出解释文本、注释、Markdown 代码块。\n- 对证据不足的实体，优先不输出该实体；不得使用占位符（如 `[待补充]`）。\n- `user_input` 与 `alignment_parameters` 互不影响：`user_input` 仅定义用户关注重点；`alignment_parameters` 仅由本节点生成技术方向边界。\n\n---\n\n## Goals\n- 识别并提取技术/问题/方案/标准四类实体。\n- 生成可追溯的实体字段，所有实体必须包含 `source_quote`。\n- 输出与 schema 完全一致且可解析的 JSON。\n- 在输入不足且无法抽取实体时，返回结构完整的最小合格输出（仅此时允许空数组）。\n\n---\n\n## 术语定义\n\n### 枚举值定义\n- `tech_category`: 控制系统 / 机械结构 / 材料科学 / 传感器技术 / 通信技术 / 其他\n- `problem_category`: 技术矛盾 / 物理矛盾 / 管理矛盾\n- `severity`: 高 / 中 / 低\n- `solution_type`: 技术创新 / 流程优化 / 管理改进\n- `implementation_difficulty`: 高 / 中 / 低\n- `standard_type`: 国际标准 / 国家标准 / 行业标准 / 企业标准\n\n---\n\n## Rules\n\n### R0. 用户指令优先规则\n\n**R0.1 用户指令解析（条件执行）**\n- 若提供 `{{#start.user_input#}}`：提取筛选边界与优先级，仅用于排序和保留策略，不可替代原文证据。\n- 若未提供 `{{#start.user_input#}}`：按输入全文均衡抽取，不做优先级偏置。\n\n**R0.2 冲突处理**\n- 当用户指令与 schema 冲突时，以 schema 为准。\n- 若用户要求输出额外字段、解释文本、非 JSON 内容：忽略该要求。\n\n### R-process.1 目标分解与输出映射\n- 目标1：提取技术实体 -> `technologies[]`\n- 目标2：提取问题实体 -> `problems[]`\n- 目标3：提取方案实体 -> `solutions[]`\n- 目标4：提取标准实体 -> `standards[]`\n- 目标5：提取技术方向一句话 -> `alignment_parameters.technical_direction`\n\n每类实体必达项：\n- 必填字段必须完整；缺少关键证据时不生成该实体。\n- 每个实体必须包含 `source_quote`。\n- `source_section` 为可选字段，建议提供。\n\n### R-process.2 输入解析与清洗\n- 解析 Markdown 标题层级（H1/H2/H3）与段落，保留章节定位用于 `source_section`。\n- 清洗规则：去重、术语归一、单位归一；删除与任务无关内容。\n- ID 生成：\n- `tech_id`: `T-001` 起连续递增\n- `problem_id`: `P-001` 起连续递增\n- `solution_id`: `S-001` 起连续递增\n- `standard_id`: `STD-001` 起连续递增\n\n### R-process.3 字段填充规则\n- 文本类必填字段缺失：不输出该实体。\n- 枚举/数值类字段缺失：允许保守推测，并在该实体内输出：\n- `inferred_fields`\n- `inference_rationale`（必须包含“推测”）\n- 关联字段规则：\n- `problems[].related_tech` 必须引用已存在 `technologies[].tech_id`\n- `solutions[].target_problems` 必须引用已存在 `problems[].problem_id`\n\n### R-process.4 空输入与异常处理\n- 若 `tech_landscape` 为空或无法解析出实体：\n- `alignment_parameters.technical_direction` 输出固定字符串：`输入文本未提供明确技术方向`\n- `technologies` / `problems` / `solutions` / `standards` 输出空数组 `[]`\n- 顶层字段必须完整存在，不得缺失。\n\n### R-format. 输出格式契约（严格）\n- 输出必须是一个 JSON 对象，且仅包含以下 5 个顶层字段：\n- `alignment_parameters`\n- `technologies`\n- `problems`\n- `solutions`\n- `standards`\n- 顶层四个实体字段类型必须为数组；仅在无法抽取实体时允许为空数组。\n- 所有实体对象禁止额外字段（仅使用 schema 定义字段）。\n- 禁止输出 `null`、占位符、解释文本。\n\n---\n\n## Format\n\n### 输出模板（字段名必须一致）\n```json\n{\n  \"alignment_parameters\": {\n    \"technical_direction\": \"输入文本未提供明确技术方向\"\n  },\n  \"technologies\": [],\n  \"problems\": [],\n  \"solutions\": [],\n  \"standards\": []\n}\n```\n\n### 实体示例（字段对齐 schema）\n```json\n{\n  \"alignment_parameters\": {\n    \"technical_direction\": \"围绕关键部件稳定性与控制精度优化\"\n  },\n  \"technologies\": [\n    {\n      \"tech_id\": \"T-001\",\n      \"tech_name\": \"多传感器融合控制\",\n      \"tech_category\": \"控制系统\",\n      \"tech_description\": \"融合多源信号用于实时状态估计与反馈控制。\",\n      \"trl_level\": 6,\n      \"application_scenarios\": [\"复杂工况实时控制\"],\n      \"source_quote\": \"采用多传感器数据融合实现动态调节\",\n      \"source_section\": \"2.1 控制系统\"\n    }\n  ],\n  \"problems\": [\n    {\n      \"problem_id\": \"P-001\",\n      \"problem_description\": \"动态工况下控制精度不足导致性能波动。\",\n      \"problem_category\": \"技术矛盾\",\n      \"severity\": \"高\",\n      \"related_tech\": [\"T-001\"],\n      \"source_quote\": \"在高速工况下响应滞后明显\",\n      \"source_section\": \"3.2 关键问题\"\n    }\n  ],\n  \"solutions\": [\n    {\n      \"solution_id\": \"S-001\",\n      \"solution_description\": \"引入自适应参数调节机制提升稳定性。\",\n      \"solution_type\": \"技术创新\",\n      \"target_problems\": [\"P-001\"],\n      \"implementation_difficulty\": \"中\",\n      \"expected_effect\": \"缩短响应时间并降低波动幅度。\",\n      \"source_quote\": \"通过在线参数调整实现稳态精度提升\",\n      \"source_section\": \"4.1 改进方案\"\n    }\n  ],\n  \"standards\": [\n    {\n      \"standard_id\": \"STD-001\",\n      \"standard_name\": \"系统性能测试规范\",\n      \"standard_number\": \"GB/T 0000-0000\",\n      \"standard_type\": \"国家标准\",\n      \"scope\": \"适用于相关控制系统性能测试。\",\n      \"key_requirements\": [\"响应时间\", \"稳定性指标\"],\n      \"source_quote\": \"测试流程需满足国家标准要求\",\n      \"source_section\": \"5.3 标准约束\"\n    }\n  ]\n}\n```\n\n---\n\n## Workflow\n\n1. **Step 1: 读取与分段**\n- 输入：`tech_landscape`、`user_input`\n- 处理：按标题与段落切分，建立证据片段索引\n- 输出映射：候选片段池\n\n2. **Step 2: 抽取技术与问题**\n- 输入：候选片段池\n- 处理：抽取 `technologies[]` 与 `problems[]`，建立 `related_tech` 引用\n- 输出映射：`technologies`、`problems`\n\n3. **Step 3: 抽取方案与标准**\n- 输入：候选片段池、已生成问题列表\n- 处理：抽取 `solutions[]` 与 `standards[]`，建立 `target_problems` 引用\n- 输出映射：`solutions`、`standards`\n\n4. **Step 4: 方向句生成**\n- 输入：全局文本与高频技术线索\n- 处理：生成一句技术方向描述\n- 输出映射：`alignment_parameters.technical_direction`\n\n5. **Step 5: 自检与修复**\n- 检查顶层字段完整性、字段类型、枚举合法性、ID 格式、引用一致性\n- 检查所有实体是否包含 `source_quote`\n- 若不满足则修复；无法修复则删除不合规实体，保持输出可解析\n\n6. **Step 6: 输出**\n- 输出单一 JSON 对象，不附加任何说明文本\n"
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            $id: https://example.com/schemas/node-1-2-1/normalized_landscape/v0.2.1.schema.json
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: false
+            properties:
+              alignment_parameters:
+                properties:
+                  technical_direction:
+                    type: string
+                required:
+                - technical_direction
+                type: object
+              problems:
+                items:
+                  properties:
+                    current_solution:
+                      type: string
+                    inference_rationale:
+                      type: string
+                    inferred_fields:
+                      items:
+                        type: string
+                      type: array
+                    problem_category:
+                      enum:
+                      - 技术矛盾
+                      - 物理矛盾
+                      - 管理矛盾
+                      type: string
+                    problem_description:
+                      type: string
+                    problem_id:
+                      type: string
+                    related_tech:
+                      items:
+                        type: string
+                      type: array
+                    severity:
+                      enum:
+                      - 高
+                      - 中
+                      - 低
+                      type: string
+                    source_quote:
+                      type: string
+                    source_section:
+                      type: string
+                  required:
+                  - problem_id
+                  - problem_description
+                  - problem_category
+                  - severity
+                  - related_tech
+                  - source_quote
+                  type: object
+                type: array
+              solutions:
+                items:
+                  properties:
+                    expected_effect:
+                      type: string
+                    implementation_difficulty:
+                      enum:
+                      - 高
+                      - 中
+                      - 低
+                      type: string
+                    inference_rationale:
+                      type: string
+                    inferred_fields:
+                      items:
+                        type: string
+                      type: array
+                    solution_description:
+                      type: string
+                    solution_id:
+                      type: string
+                    solution_type:
+                      enum:
+                      - 技术创新
+                      - 流程优化
+                      - 管理改进
+                      type: string
+                    source_quote:
+                      type: string
+                    source_section:
+                      type: string
+                    target_problems:
+                      items:
+                        type: string
+                      type: array
+                  required:
+                  - solution_id
+                  - solution_description
+                  - solution_type
+                  - target_problems
+                  - implementation_difficulty
+                  - expected_effect
+                  - source_quote
+                  type: object
+                type: array
+              standards:
+                items:
+                  properties:
+                    inference_rationale:
+                      type: string
+                    inferred_fields:
+                      items:
+                        type: string
+                      type: array
+                    key_requirements:
+                      items:
+                        type: string
+                      type: array
+                    scope:
+                      type: string
+                    source_quote:
+                      type: string
+                    source_section:
+                      type: string
+                    standard_id:
+                      type: string
+                    standard_name:
+                      type: string
+                    standard_number:
+                      type: string
+                    standard_type:
+                      enum:
+                      - 国际标准
+                      - 国家标准
+                      - 行业标准
+                      - 企业标准
+                      type: string
+                  required:
+                  - standard_id
+                  - standard_name
+                  - standard_number
+                  - standard_type
+                  - scope
+                  - key_requirements
+                  - source_quote
+                  type: object
+                type: array
+              technologies:
+                items:
+                  properties:
+                    application_scenarios:
+                      items:
+                        type: string
+                      type: array
+                    inference_rationale:
+                      type: string
+                    inferred_fields:
+                      items:
+                        type: string
+                      type: array
+                    source_quote:
+                      type: string
+                    source_section:
+                      type: string
+                    tech_category:
+                      enum:
+                      - 控制系统
+                      - 机械结构
+                      - 材料科学
+                      - 传感器技术
+                      - 通信技术
+                      - 其他
+                      type: string
+                    tech_description:
+                      type: string
+                    tech_id:
+                      type: string
+                    tech_name:
+                      type: string
+                    trl_level:
+                      type: integer
+                  required:
+                  - tech_id
+                  - tech_name
+                  - tech_category
+                  - tech_description
+                  - trl_level
+                  - application_scenarios
+                  - source_quote
+                  type: object
+                type: array
+            required:
+            - alignment_parameters
+            - technologies
+            - problems
+            - solutions
+            - standards
+            title: Node-1-2-1::normalized_landscape::v0.2.1
+            type: object
+        structured_output_enabled: true
+        title: N-1-2-4 Markdown解析
+        type: llm
+        vision:
+          enabled: false
+      height: 117
+      id: node_1_2_1
+      position:
+        x: 1408
+        y: 95
+      positionAbsolute:
+        x: 1408
+        y: 95
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            reasoning_effort: medium
+            temperature: 0.7
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: n2_system_refined
+          role: system
+          text: '你是 TRIZ Round1 的“广度覆盖生成器”。
+
+            只输出符合 structured_output schema 的 JSON，不输出解释、Markdown 代码块或 schema 外字段。
+
+            目标：基于输入中的问题、方案、标准与技术，生成可追溯、覆盖面足够、但不夸大的候选原理包。
+
+
+            规则：
+
+            1. 只能使用输入中已出现的技术目标、问题、术语与约束，不新增外部机构、标准、行业案例或专有名词。
+
+            2. 没有直接证据时，禁止输出新的百分比、寿命、效率、噪声值、距离值等量化数字。
+
+            3. candidate_principles 要覆盖不同矛盾路径，避免近重复；证据弱时用保守技术表述，并降低 preliminary_grade。
+
+            4. parameter_prefiltering 重点保证 selected_parameters 的质量；统计字段仅在可由当前结果直接推出时填写。
+
+            5. contradiction_matrix 中的 contradiction_id 必须与 candidate_principles.target_contradiction 对齐。
+
+            6. 禁止输出推理标签、内部注释、阶段检查清单或示例内容。'
+        - id: n2_user_refined
+          role: user
+          text: '请生成 Round1 广度覆盖结果。
+
+
+            【用户要求】
+
+            {{#start.user_input#}}
+
+
+            【landscape_problems】
+
+            {{#node_1_2_1.structured_output.problems#}}
+
+
+            【landscape_solutions】
+
+            {{#node_1_2_1.structured_output.solutions#}}
+
+
+            【landscape_standards】
+
+            {{#node_1_2_1.structured_output.standards#}}
+
+
+            【landscape_technologies】
+
+            {{#node_1_2_1.structured_output.technologies#}}
+
+
+            输出要求：
+
+            1. 顶层只输出 `candidate_principles`、`parameter_prefiltering`、`contradiction_matrix`。
+
+            2. `candidate_principles` 至少 10 条，`contradiction_matrix` 至少 4 条，且两者中的矛盾 ID 要一致可追溯。
+
+            3. `technical_description` 只写当前输入可支撑的技术动作与效果，不补造新数字。
+
+            4. `parameter_prefiltering.selected_parameters` 输出 8-12 条高相关参数，并给出最短理由。
+
+            5. 只有 `source=跨领域借鉴` 时才输出 `cross_domain_source`；其他情况不要输出该字段。
+
+            6. 若证据不足，保持保守定性表达，不要输出泛化行业论述。'
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            properties:
+              candidate_principles:
+                items:
+                  properties:
+                    cross_domain_source:
+                      type: string
+                    preliminary_grade:
+                      enum:
+                      - A
+                      - B
+                      - C
+                      type: string
+                    principle_id:
+                      type: string
+                    principle_name:
+                      type: string
+                    source:
+                      enum:
+                      - 矛盾矩阵推荐
+                      - 发明原理
+                      - 跨领域借鉴
+                      type: string
+                    target_contradiction:
+                      type: string
+                    technical_description:
+                      type: string
+                    triz_principle:
+                      type: string
+                  required:
+                  - principle_id
+                  - principle_name
+                  - triz_principle
+                  - technical_description
+                  - target_contradiction
+                  - source
+                  - preliminary_grade
+                  type: object
+                type: array
+              contradiction_matrix:
+                items:
+                  properties:
+                    contradiction_id:
+                      type: string
+                    improving_parameter:
+                      type: string
+                    recommended_principles:
+                      items:
+                        properties:
+                          principle_name:
+                            type: string
+                          principle_number:
+                            type: integer
+                          relevance_score:
+                            type: integer
+                        required:
+                        - principle_number
+                        - principle_name
+                        type: object
+                      type: array
+                    worsening_parameter:
+                      type: string
+                  required:
+                  - contradiction_id
+                  - improving_parameter
+                  - worsening_parameter
+                  - recommended_principles
+                  type: object
+                type: array
+              parameter_prefiltering:
+                properties:
+                  filter_rate:
+                    type: string
+                  filtered_out_count:
+                    type: integer
+                  retention_count:
+                    type: integer
+                  selected_parameters:
+                    items:
+                      properties:
+                        parameter_id:
+                          type: integer
+                        parameter_name:
+                          type: string
+                        reason:
+                          type: string
+                        relevance_score:
+                          type: integer
+                      required:
+                      - parameter_id
+                      - parameter_name
+                      - relevance_score
+                      - reason
+                      type: object
+                    type: array
+                  selection_criteria:
+                    type: string
+                required:
+                - selection_criteria
+                - selected_parameters
+                type: object
+            required:
+            - candidate_principles
+            - parameter_prefiltering
+            - contradiction_matrix
+            type: object
+        structured_output_enabled: true
+        title: N-1-2-5 广度覆盖
+        type: llm
+        vision:
+          enabled: false
+      height: 117
+      id: node_1_2_2
+      position:
+        x: 1750
+        y: 95
+      positionAbsolute:
+        x: 1750
+        y: 95
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            reasoning_effort: medium
+            temperature: 0.5
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: n3_system_refined
+          role: system
+          text: '你是 TRIZ Round1 的“技术靶点分解器”。
+
+            只输出符合 structured_output schema 的 JSON，不输出解释、Markdown 代码块或 schema 外字段。
+
+            目标：把 Round1 的候选原理、矛盾和参数，分解成可追溯、可执行、可供下游继续深挖的技术靶点包。
+
+
+            规则：
+
+            1. 只使用输入中已有的矛盾、参数、问题与技术，不新增外部案例或数字。
+
+            2. `technical_targets` 强调可执行靶点，不输出 `inferred_fields`、`inference_rationale`、内部注释或过程说明。
+
+            3. `source_quote` 只保留最短可追溯短句；不拼接多段来源。
+
+            4. `dimension_distribution` 必须真实反映四维分布，不为凑数硬补。
+
+            5. `scamper_enhancement` 只保留真正有变化的衍生靶点，不输出重复改写。'
+        - id: n3_user_refined
+          role: user
+          text: '请生成四维技术靶点分解结果。
+
+
+            【用户要求】
+
+            {{#start.user_input#}}
+
+
+            【round1_candidate_principles】
+
+            {{#node_1_2_2.structured_output.candidate_principles#}}
+
+
+            【round1_contradiction_matrix】
+
+            {{#node_1_2_2.structured_output.contradiction_matrix#}}
+
+
+            【round1_parameter_prefiltering】
+
+            {{#node_1_2_2.structured_output.parameter_prefiltering#}}
+
+
+            【landscape_problems】
+
+            {{#node_1_2_1.structured_output.problems#}}
+
+
+            【landscape_solutions】
+
+            {{#node_1_2_1.structured_output.solutions#}}
+
+
+            【landscape_standards】
+
+            {{#node_1_2_1.structured_output.standards#}}
+
+
+            【landscape_technologies】
+
+            {{#node_1_2_1.structured_output.technologies#}}
+
+
+            输出要求：
+
+            1. 顶层只输出 `technical_targets`、`dimension_distribution`、`scamper_enhancement`。
+
+            2. `technical_targets` 保持 24-32 条，优先保证可追溯与语义区分度，而不是堆数量。
+
+            3. `dimension_distribution` 必须覆盖系统/时间/空间/应用四维。
+
+            4. `scamper_enhancement` 保持 6-10 组，每组只写真实派生结果。
+
+            5. 禁止输出内部推理痕迹、元数据标签、示例语言或 schema 外字段。'
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            properties:
+              dimension_distribution:
+                properties:
+                  application_dimension:
+                    type: integer
+                  space_dimension:
+                    type: integer
+                  system_dimension:
+                    type: integer
+                  time_dimension:
+                    type: integer
+                required:
+                - system_dimension
+                - time_dimension
+                - space_dimension
+                - application_dimension
+                type: object
+              scamper_enhancement:
+                items:
+                  properties:
+                    base_target_id:
+                      type: string
+                    derived_targets:
+                      items:
+                        type: string
+                      type: array
+                    scamper_technique:
+                      enum:
+                      - Substitute
+                      - Combine
+                      - Adapt
+                      - Modify
+                      - PutToOtherUse
+                      - Eliminate
+                      - ReverseRearrange
+                      type: string
+                    source_quote:
+                      type: string
+                  required:
+                  - base_target_id
+                  - scamper_technique
+                  - derived_targets
+                  - source_quote
+                  type: object
+                type: array
+              technical_targets:
+                items:
+                  properties:
+                    dimension:
+                      enum:
+                      - 系统维度
+                      - 时间维度
+                      - 空间维度
+                      - 应用维度
+                      type: string
+                    priority:
+                      enum:
+                      - 高
+                      - 中
+                      - 低
+                      type: string
+                    related_contradiction:
+                      type: string
+                    related_parameter:
+                      properties:
+                        parameter_id:
+                          type: integer
+                        parameter_name:
+                          type: string
+                      required:
+                      - parameter_id
+                      - parameter_name
+                      type: object
+                    scamper_source:
+                      type: string
+                    source_quote:
+                      type: string
+                    sub_dimension:
+                      type: string
+                    target_description:
+                      type: string
+                    target_id:
+                      type: string
+                  required:
+                  - target_id
+                  - target_description
+                  - dimension
+                  - sub_dimension
+                  - related_contradiction
+                  - related_parameter
+                  - priority
+                  - source_quote
+                  type: object
+                type: array
+            required:
+            - technical_targets
+            - dimension_distribution
+            - scamper_enhancement
+            type: object
+        structured_output_enabled: true
+        title: N-1-2-6 四维度靶点分解
+        type: llm
+        vision:
+          enabled: false
+      height: 117
+      id: node_1_2_3
+      position:
+        x: 2092
+        y: 95
+      positionAbsolute:
+        x: 2092
+        y: 95
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            reasoning_effort: medium
+            temperature: 0.5
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: n4_system
+          role: system
+          text: '🔒 强制规则 (v2.0)
+
+            0) 任务识别（初始化，强制）
+
+            优先解析 user 提示词中的要求（若存在），据此判定任务类型与输出形态（结构化抽取/规范/设计说明/对齐修改/评审检查/其他技术任务）。
+
+            若未提供要求，可退化解析Goals（若存在）；仍无法判定时：采用"最小任务闭环 + schema/格式严格一致"为默认策略，并将关键选择写入推断理由（包含"推测"）。
+
+            1) 仅限任务内容（强制）
+
+            禁止自动生成背景介绍、总结性语言、行业泛论、额外建议，除非 user 明确授权。
+
+            除非 user 明确要求，否则不输出与任务无关的解释性文字；按要求输出 JSON/YAML/文本。
+
+            2) 结构清晰，逻辑连贯（强制）
+
+            输出必须按 user 指定顺序组织；若 user 未指定，采用任务默认顺序：
+
+            分析/方案/报告类：问题 → 方案 → 效果。
+
+            结构化抽取类：输入证据 → 实体/字段 → 归一化/默认/推测 → 校验结果。
+
+            禁止跳步/省略必需项；不得用"同上/略/待补充"等占位符。
+
+            3) 基于输入，受控扩展（强制）
+
+            默认内容仅限输入信息。
+
+            若 user 授权"允许补全/推导缺项"：仅在技术逻辑合理范围内保守推导；不得捏造特征、不得夸大效果。
+
+            允许保守推断，但不得使用"推测"标签；仅通过 data_refs、一致性锚点与验证规则保持可追溯。
+
+            4) 不得编造 + 可追溯（强制）
+
+            任何关键结论/实体/约束必须可追溯到输入：优先通过既有追溯结构承载（如 data_refs、一致性锚点、validation_rules 中的现有字段），禁止引入 schema 外证据字段。
+
+            禁止把常识当作原文事实；禁止"看起来像/一般来说"式替代证据。
+
+            5) 推理标注机制（强制）
+
+            允许保守补全字段值：当字段在原文缺失/含糊时，可用保守默认或上下文推断。
+
+            对任何"推测"的字段：必须将字段名加入inferred_fields，并在inference_rationale中说明理由，且必须包含"推测"字样。
+
+            数值/枚举字段：值本身保持合法取值；"推测"只能出现在标注字段中，不得污染取值。
+
+            6) 表达风格统一（强制）
+
+            同一次输出中：术语命名、字段口径、句式结构、逻辑顺序必须一致，禁止表达风格漂移。
+
+            多段式连续任务一致性：若一次输出包含多个结构段落/多块结构/图示说明，必须保持同一套术语表与同一套结构模板，确保整体连贯性。
+
+            7) 禁止模糊指代（强制）
+
+            禁用"该结构/该装置/上述方案/本方法"等模糊称谓；必须使用输入中明确术语、部件名、字段编号或实体ID（如T-001/P-001）。
+
+            引用上文对象时必须可定位（ID/字段名/章节名）。
+
+            8) 文体自动适配（技术类任务，条件触发，强制）
+
+            系统根据要求识别任务类型，自动匹配表达风格（仅限技术类任务）：
+
+            技术报告/研究报告：重结构完整、逻辑递进、证据与结论对应。
+
+            规范/标准/约定（schema、命名、接口）：重可执行条款、禁止项、默认值与边界条件。
+
+            节点/流程/数据流设计说明：重输入输出、字段口径、约束与校验、异常处理。
+
+            对齐修改/重构：重"差异最小 + 规则一致 + 兼容性"，避免引入无关内容。
+
+            评审/检查/验收清单：重可验证、可量化、可追溯，结论必须对应检查项。
+
+            性能/成本优化：重可量化指标、瓶颈定位、前后对比口径一致。
+
+            风险/可行性分析：重约束、前提、风险项、缓解措施，避免空泛结论。
+
+            兜底条款：若任务类型未被上述覆盖，以"结构化、可验证、术语稳定、最少解释文本"为默认风格，并严格遵守第1/2/4/5/9条。
+
+            9) schema/格式严格一致（强制）
+
+            输出必须严格满足 structured_output schema/格式要求：不输出多余字段；不输出多余文本；数组可为空但字段不得缺失（以schema为准）。
+
+            若发现 schema 与任务目标冲突：优先满足 schema，并将冲突/限制写入推断理由（包含"推测"）（仅在schema允许承载时）。
+
+            🎯 TRIZ 领域规则 (v2.0 新增)
+
+            10) ID 格式强制规范
+
+            技术问题: TP-xxx (如 TP-001, TP-002)
+
+            预期效果: EF-xxx (如 EF-001, EF-002)
+
+            候选方案: CP-xxx (如 CP-001, CP-002)
+
+            技术靶点: TT-xxx 或 T-xxx (如 TT-001, T-001)
+
+            技术矛盾: TC-xx (如 TC-01, TC-02)
+
+            专利模块: M-xx (如 M-01, M-02)
+
+            ID 格式错误将导致下游 Code 节点校验失败。
+
+            11) 方案分级规范
+
+            A 级: 核心方案，创新度高，完整性强，可独立申请专利
+
+            B 级: 辅助方案，创新度中等，可作为从属权利要求
+
+            C 级: 备选方案，创新度较低或已有公开技术
+
+            每次输出必须包含至少 3 个 A 级方案和 3 个 B 级方案
+
+            12) TRIZ 39 参数与发明原理引用
+
+            引用 TRIZ 标准参数时，使用标准编号 (1-39)，如"Parameter 9: Speed"
+
+            引用发明原理时，使用标准格式"Principle xx: 名称"，如"Principle 01: Segmentation"
+
+            矛盾对必须明确指出改善/恶化参数对，格式：改善[Pxx] vs 恶化[Pyy]
+
+            13) 量化指标要求
+
+            预期效果 (EF) 的量化率必须 ≥ 80%
+
+            量化格式：baseline → target（如：误差 ±0.5mm → ±0.1mm）
+
+            非量化效果必须标注 quantified: false 并说明原因
+
+            14) 跨领域技术引用
+
+            引用跨领域技术时，必须注明：原领域、技术名称、适配理由
+
+            跨领域方案占比目标：≥ 10%
+
+            格式示例：[跨领域: 航空航天 → 主动阻尼控制技术]
+
+            ⚙️ 执行流程（强制自检）
+
+            A) 任务识别: 解析要求/显式指令，确定任务类型
+
+            B) 输入理解: 建立术语表、ID 映射表，核对输入完整性
+
+            C) 结构组织: 按第 2 条默认/指定顺序组织输出
+
+            D) ID 验证: 确保所有生成的 ID 符合第 10 条格式规范
+
+            E) 完整性校验: 必需项齐全、无越权扩展、方案数量达标
+
+            F) 一致性检查: 术语/风格/顺序/指代/ID 引用一致
+
+            📋 自检清单 (输出前必查)
+
+            检查项规则自检
+
+            ID 格式
+
+            所有 ID 符合第 10 条规范
+
+            [ ]
+
+            方案数量
+
+            A 级 ≥ 3, B 级 ≥ 3
+
+            [ ]
+
+            量化率
+
+            EF 量化率 ≥ 80%
+
+            [ ]
+
+            术语一致
+
+            全文术语与输入 terminology_table 一致
+
+            [ ]
+
+            证据追溯
+
+            关键结论有 source_* 字段支撑
+
+            [ ]
+
+            推理标注
+
+            所有推理补全内容已落成自然专业表述，用户可读字段不得出现【推理生成】或【推理生成-估计】
+
+            [ ]
+
+            Schema 合规
+
+            输出完全符合 structured_output schema
+
+            [ ]'
+        - id: 8e0c5f40-9bb1-4799-94bc-19868bb7e8ad
+          role: user
+          text: "## 1.1.6 优先覆盖规则（高于下文所有旧规则）\n- `deep_analysis[].performance_metrics[].baseline_value`：有直接证据才填写；无直接证据输出空字符串 `\"\"`。\n- `target_value`：仅当输入已有目标表达或可由直接证据推导时填写，否则输出空字符串 `\"\"`。\n- `improvement_percentage`：仅当 baseline 与 target 都有直接证据时填写，否则输出空字符串 `\"\"`。\n- 严禁输出 `推测：75dB`、`推测：5000h`、`推测：50ms` 等猜测型 baseline。\n- `scamper_derivatives` 直接输出 `24-30` 个保留集，不再要求先生成超大候选池再筛选。\n- 若量化信息不足，允许空字符串保留 schema 字段，不得补写伪量化值。\n\n# Node-1-2-4: 深度挖掘 - User Prompt\n\n> **版本**: v0.1.1\n> **最后更新**: 2026-02-06\n\n## 示例隔离与零新增（强制）\n- 示例仅用于结构/格式说明，禁止迁移示例中的领域词、实体、数值、指标、场景、公司/标准名称。\n- 输出内容必须100%来自输入数据与用户指令，不得新增输入未出现的技术/问题/方案/指标/标准/行业/场景/专有名词。\n- 若输入缺失，禁止用示例补齐；仅可留空（schema允许）或按规则“推测”并显式标注。\n- 如示例包含固定领域词，必须在输出中以输入术语替换；如输入含 candidate_principles，矛盾/冲突ID必须与 candidate_principles[].target_contradiction 对齐。\n\n---\n\nRound 2深度挖掘分析\n\n## 用户指令（最高优先级）\n\n请基于Round 1的候选方案和技术靶点分解结果，执行Round 2深度挖掘分析，完成核心参数确定(8-12→3-5)、Top方案深度分析(3-5个)、SCAMPER衍生方案生成(≥24个保留)。\n\n## 输入内容（JSON）\n\n**round1_candidate_principles**: {{#node_1_2_2.structured_output.candidate_principles#}}\n- 包含10-15个候选方案(candidate_principles)\n\n**round1_contradiction_matrix**: {{#node_1_2_2.structured_output.contradiction_matrix#}}\n- 包含Round1技术矛盾与推荐原理\n\n**round1_parameter_prefiltering**: {{#node_1_2_2.structured_output.parameter_prefiltering#}}\n- 包含8-12个预筛选参数\n\n**targets_technical_targets**: {{#node_1_2_3.structured_output.technical_targets#}}\n- 包含结构化技术靶点\n\n**targets_dimension_distribution**: {{#node_1_2_3.structured_output.dimension_distribution#}}\n- 包含四维度分布\n\n**targets_scamper_enhancement**: {{#node_1_2_3.structured_output.scamper_enhancement#}}\n- 包含SCAMPER衍生靶点映射\n\n**alignment_parameters**: {{#node_1_2_1.structured_output.alignment_parameters#}}\n\n**user_input**:\n{{#start.user_input#}}\n\n> 输出要求与质量标准必须融入下文Rules、Format与Workflow严格执行。\n\n## Round3+质量硬约束（新增）\n- 输出规模下限：`scamper_derivatives >= 24`。\n- `deep_analysis` 保持 `3-5` 条，且每条 `performance_metrics` 至少包含一个量化值（数字/百分比/单位）。\n- `core_parameters` 保持 `3-5` 条，不得空。\n- 禁止因约束未满足而停止输出：证据不足可保守推测，但必须在相关文本字段明确标注“推测：”。\n\n---\n\n## 角色与任务边界\n\n### 角色定义\n你是一位拥有15年以上经验的**资深TRIZ专家和技术创新顾问**，具备以下专业资质：\n- TRIZ协会认证专家(四级以上)，精通TRIZ理论体系完整内容\n- 拥有机械工程、电气工程、材料科学、控制工程等多领域技术背景\n- 熟悉技术成熟度评估(TRL 1-9)标准，具备跨行业技术迁移和创新设计经验\n\n### 核心能力\n1. **深度分析**: 对候选方案进行深入的技术可行性分析\n2. **参数聚焦**: 从预筛选参数中确定核心参数\n3. **方案创新**: 应用SCAMPER等创新工具生成衍生方案\n4. **量化评估**: 建立可量化的性能指标和改进预期\n5. **风险评估**: 评估技术可行性和实施风险\n\n### 任务边界\n- **要做**: 完成第2层参数收敛(8-12→3-5)、对Top 3-5方案进行深度分析、生成≥24个SCAMPER衍生方案\n- **不做**: 不得进行专利检索(其他节点负责)、不得生成最终专利交底书、不得超出输入范围编造方案\n- **输出去向**: 输出将传递给Node-1-2-5进行跨维度验证\n- **推测策略**: 允许保守推测，但仅限写入文本字段\n\n### Step1与Flow上下文\n- **Step1核心任务**: 从技术背景研究到技术交底书生成，完成专利撰写的前期准备工作\n- **Flow-1-2任务**: Round 2深度挖掘+核心参数确定，对Top 3-5候选方案进行深度技术分析\n- **质量标准**: 核心参数3-5个、Top方案3-5个、SCAMPER衍生≥24个、量化指标≥70%\n\n---\n\n## R-alignment. 技术方向对齐（强制）\n- 参考 `alignment_parameters.technical_direction` 作为技术方向边界与优先级提示。\n- 仅用于筛选/排序与一致性校验，不得据此新增输入中不存在的实体或指标。\n- `user_input` 与 `alignment_parameters` 必须独立处理：`user_input` 仅定义用户关注优先级；`alignment_parameters` 仅定义方向一致性边界，两者不得相互覆盖。\n\n## R-source. 来源优先级与证据优先级（强制）\n- 来源优先级（高到低）：\n1. `round1_candidate_principles`\n2. `targets_technical_targets`\n3. TRIZ 方法知识（仅用于分析方法，不得引入输入外实体）\n- 证据优先级（高到低）：\n1. 输入中的 ID 可追溯关系（`CP-xxx`、`TT-xxx`、参数ID）\n2. 输入中的原文术语与描述\n3. 保守推测（仅可落在已有文本字段，且显式标注“推测”）\n\n## Goals (\U0001F534 P0 / \U0001F7E1 P1 / \U0001F7E2 P2)\n\n- \U0001F534 **P0: 核心参数聚焦**: 完成第2层参数筛选，从8-12个预筛选参数中确定3-5个核心参数。\n- \U0001F534 **P0: 深度方案分析**: 深度分析3-5个Top方案，TRL等级评估必须严谨，性能量化指标≥70%。\n- \U0001F7E1 **P1: SCAMPER 发散密度**: 生成每个Top方案≥20个变体，总计≥60个。\n- \U0001F7E2 **P2: 创新熵过滤**: 通过 0-10 分评分筛选保留≥7分的高质量衍生方案(≥24个)，确保 Parent-Child ID 链条 100% 可追溯。\n\n## 强制禁止\n\n- **禁止通用词汇**: 在 `technical_path` 和 `quantified_benefits` 中严禁使用\"显著提高\"、\"大幅降低\"、\"优化性能\"等模糊词汇。必须使用具体的物理量或百分比。\n- **禁止 TRL 逻辑断层**: 严禁在未经工程化解释的情况下将 TRL 1 的想法直接标为 TRL 6。TRL 4 以上方案必须说明实验环境（如：风洞、挂网）。\n- **禁止平庸衍生**: 在 SCAMPER 环节，严禁生成\"更换一种类似的螺丝\"、\"涂抹红色油漆\"等不具备技术深度的微小变动。每个衍生方案必须对应一个明确的技术原理。\n- **禁止 ID 孤儿**: 所有 `parent_principle_id` 必须严格引用输入中的 `CP-xxx`。\n\n---\n\n## Rules\n\n- R0: **邻近算子意识**: 在 SCAMPER 生成时，优先考虑部件间的物理邻近度变化。\n- R1: **量化强制**: 每一个 A 级方案必须包含至少 3 个具体的性能量化对。\n- R2: **跨领域映射**: 至少一个深度分析方案必须体现跨领域技术迁移逻辑。\n\n---\n\n### R-process.1 目标分解与输出映射\n\n目标1: 第2层参数筛选(8-12→3-5)\n- 输入: `round1_parameter_prefiltering.selected_parameters[]`\n- 处理: 矛盾打分(改善+3/恶化+2) → 矩阵验证(推荐原理≥4个→+2分) → 靶点关联(高优先级≥3个→+2分)\n- 输出映射: `core_parameters[]`(3-5个)、`parameter_refinement{input_count, output_count, refinement_rate}`\n- 质量检查: output_count==len(core_parameters)、refinement_rate=(input-output)/input、评分分布合理\n\n目标2: Top方案选择(3-5个)\n- 输入: `round1_candidate_principles[]`(10-15个)\n- 处理: 按preliminary_grade(A优先) → 跨领域标记 → 矛盾覆盖度 → 创新性评分，综合排序选Top 3-5\n- 输出映射: `deep_analysis[].principle_id`(必须来自输入CP-xxx)\n- 质量检查: A级方案≥50%、跨领域方案≥1个、principle_id可追溯\n\n目标3: 深度分析\n- 输入: Top 3-5方案\n- 处理: 技术可行性(TRL/路径/技术/资源) → 性能量化(3-5个指标) → 实施难度(技术/资源/时间/风险) → 创新等级(⭐⭐⭐~⭐⭐⭐⭐⭐)\n- 输出映射: `deep_analysis[].technical_feasibility{}、performance_metrics[]、implementation_difficulty{}、innovation_level、overall_grade`\n- 质量检查: TRL等级明确、量化指标≥70%、技术路径可执行\n\n目标4: SCAMPER衍生(≥24个保留)\n- 输入: deep_analysis中的Top 3-5方案\n- 处理: 每个方案应用SCAMPER(S3/C3/A3/M3/P3/E2/R3) → 生成≥20个变体 → 0-10分评分 → 筛选≥7分\n- 输出映射: `scamper_derivatives[]{derivative_id, parent_principle_id, scamper_technique, relevance_score, analysis_depth, quantified_benefits[]}`\n- 质量检查: 每个方案≥20个变体、保留≥24个、relevance_score≥7、quantified_benefits含%符号\n\n目标5: 第3层筛选(相关性评分)\n- 输入: ≥60个SCAMPER衍生方案\n- 处理: 相关性评分(9-10高度相关/7-8相关/5-6中等/0-4不相关) → 筛选≥7分 → 按分析深度分级\n- 输出映射: `scamper_derivatives[](仅保留≥7分)`\n- 质量检查: 保留≥24个、relevance_score∈[7,10]、分布合理(9-10分占15-25%)\n\n**R-process.2 输入解析与清洗**\n\n输入参数角色:\n- `round1_candidate_principles / round1_contradiction_matrix / round1_parameter_prefiltering`: 提供候选方案和预筛选参数(主要数据源)\n- `targets_technical_targets / targets_dimension_distribution / targets_scamper_enhancement`: 提供技术靶点用于参数关联\n\n解析方法:\n- 按JSON结构解析: `candidate_principles[]`(候选方案)、`parameter_prefiltering.selected_parameters[]`(预筛选参数)、`technical_targets[]`(技术靶点)\n- 保留可追溯性: principle_id(CP-xxx)、parameter_id(1-39)、target_id(TT-xxx)\n\n清洗规则:\n- 统一术语: 使用输入中一致的术语和命名\n- 去除无效: 过滤掉数据不完整或明显异常的实体\n- 归一化单位: 统一量化指标的单位和格式(如百分比、kg、N等)\n\n异常处理:\n- 输入异常: 本节点依赖上游合格输出(8-12个预筛选参数、10-15个候选方案)。若存在缺失,必须基于可追溯输入保守补全并满足schema最小数量约束。\n- 字段缺失: 使用保守默认值或推测(标注在文本字段中)\n- 格式异常: 尝试修正或降级处理，确保输出可解析\n\n**R-process.3 输出组装与排序**\n\n输出骨架(按schema顺序):\n{\n  \"core_parameters\": [],      // 第2层筛选结果\n  \"parameter_refinement\": {}, // 筛选统计\n  \"deep_analysis\": [],        // Top方案深度分析\n  \"scamper_derivatives\": []   // SCAMPER衍生方案(≥7分)\n}\n\n排序口径:\n- `core_parameters`: 按total_score降序排列\n- `deep_analysis`: 按overall_grade(A→B→C)和创新等级降序\n- `scamper_derivatives`: 按relevance_score降序，同分按analysis_depth(深度→中等)\n\n去重与合并:\n- 同principle_id的方案仅保留一个\n- 相似度高的SCAMPER衍生方案合并或保留更优者\n- 冲突时以relevance_score更高者优先\n\n映射约束:\n- 只输出schema定义的顶层字段(4个)\n- 不输出额外字段、null值或占位符\n- 所有引用字段必须存在于输入中\n\n**R-process.4 质量自检与失败策略**\n\n自检项目:\n1. 字段完整性: core_parameters(3-5)、deep_analysis(3-5)、scamper_derivatives(≥24)\n2. 类型合法性: integer字段为整数、string字段非空、enum字段符合枚举值\n3. 范围检查: relevance_score∈[7,10]、TRL∈[1,9]、difficulty∈[1,10]\n4. 引用一致性: principle_id来自输入、target_id来自输入、parent_principle_id来自deep_analysis或候选方案\n5. 格式合规: refinement_rate为\"XX%\"格式、estimated_timeline为\"N个月\"/\"N-N个月\"等、quantified_benefits含%\n6. 数量核算: parameter_refinement.input_count==输入参数数、output_count==len\n7. 术语一致: 同一输出中术语命名、字段口径、句式结构保持一致\n\n修复优先级:\n1. 保证可解析: schema合规、JSON格式正确、必需字段存在\n2. 保证一致性: 引用可追溯、ID格式正确、数量核算正确\n3. 保证质量: 量化指标≥70%、评分分布合理、分析深度适当\n\n失败策略:\n- 若无法生成3-5个核心参数: 使用所有可用参数(至少1个)\n- 若无法生成≥24个衍生方案: 回溯Step 5增加原始变体池并重筛，保持 `relevance_score>=7`\n- 若输入数据严重缺失: 返回最小合格输出并标注推测\n\n---\n\n### R-format. 输出格式契约\n\n**格式约束**:\n- 输出必须是一个JSON对象，仅包含4个顶层字段\n- 所有数组必须符合minItems/maxItems约束: core_parameters[3,5]、deep_analysis[3,5]、scamper_derivatives[24,]\n- 所有枚举字段必须符合允许值: innovation_level∈{⭐⭐⭐,⭐⭐⭐⭐,⭐⭐⭐⭐⭐}、risk_level∈{高,中,低}、analysis_depth∈{深度,中等}、scamper_technique∈{Substitute,Combine,Adapt,Modify,PutToOtherUse,Eliminate,ReverseRearrange}\n- 所有string字段必须满足minLength/maxLength: parameter_name[2,50]、derivative_name[5,100]、technical_description[20,1000]\n- 所有pattern字段必须匹配正则: refinement_rate=\"^\\d+%$\"、improvement_percentage=\"^[+-]?\\d+%$\"\n\n**禁止项**:\n- 不要输出任何额外字段(如inferred_fields/inference_rationale，schema未定义)\n- 不要输出null值(可选字段不需要时省略)\n- 不要输出解释文本或注释(仅纯JSON)\n- 不要输出Markdown代码块包裹(直接JSON对象)\n\n**格式示例**:\n{\n  \"core_parameters\": [\n    {\n      \"parameter_id\": 10,\n      \"parameter_name\": \"力\",\n      \"total_score\": 9,\n      \"improvement_weight\": 3,\n      \"worsening_weight\": 2,\n      \"matrix_verification_score\": 2,\n      \"target_relevance_score\": 2,\n      \"related_targets\": [\"TT-001\", \"TT-005\", \"TT-012\"]\n    }\n  ],\n  \"parameter_refinement\": {\n    \"input_count\": 12,\n    \"output_count\": 5,\n    \"refinement_rate\": \"58%\",\n    \"selection_criteria\": \"基于矛盾打分+矩阵验证+靶点关联\"\n  },\n  \"deep_analysis\": [\n    {\n      \"principle_id\": \"CP-001\",\n      \"principle_name\": \"轻量化材料替代\",\n      \"technical_feasibility\": {\n        \"trl_level\": 6,\n        \"technical_path\": \"材料选择→结构设计→工艺验证→性能测试\",\n        \"key_technologies\": [\"碳纤维复合材料\", \"结构优化设计\", \"连接技术\"],\n        \"resource_requirements\": \"需要材料供应商、结构分析工具、测试设备\"\n      },\n      \"performance_metrics\": [\n        {\n          \"metric_name\": \"受电弓重量\",\n          \"baseline_value\": \"25 kg\",\n          \"target_value\": \"18 kg\",\n          \"improvement_percentage\": \"28%\"\n        }\n      ],\n      \"implementation_difficulty\": {\n        \"technical_difficulty\": 7,\n        \"resource_difficulty\": 6,\n        \"estimated_timeline\": \"18-24个月\",\n        \"risk_level\": \"中\"\n      },\n      \"innovation_level\": \"⭐⭐⭐⭐\",\n      \"overall_grade\": \"A\"\n    }\n  ],\n  \"scamper_derivatives\": [\n    {\n      \"derivative_id\": \"SD-001\",\n      \"derivative_name\": \"碳纤维-铝合金混合材料\",\n      \"parent_principle_id\": \"CP-001\",\n      \"scamper_technique\": \"Substitute\",\n      \"technical_description\": \"使用碳纤维-铝合金混合材料,兼顾重量和成本\",\n      \"relevance_score\": 8,\n      \"analysis_depth\": \"中等\",\n      \"quantified_benefits\": [\"重量降低15%\", \"成本降低20%\"]\n    }\n  ]\n}\n\n---\n\n## Format\n\n### 输出模板(字段名必须严格匹配schema)\n\n{\n  \"core_parameters\": [],\n  \"parameter_refinement\": {\n    \"input_count\": 0,\n    \"output_count\": 0,\n    \"refinement_rate\": \"0%\",\n    \"selection_criteria\": \"\"\n  },\n  \"deep_analysis\": [],\n  \"scamper_derivatives\": []\n}\n\n---\n\n## Workflow\n\n### 核心处理步骤(可复现)\n\n**Step 1: 输入解析与验证**\n- 输入: 读取`round1_candidate_principles / round1_contradiction_matrix / round1_parameter_prefiltering`和`targets_technical_targets / targets_dimension_distribution / targets_scamper_enhancement`\n- 处理: 验证JSON结构、提取candidate_principles[]、parameter_prefiltering.selected_parameters[]、technical_targets[]\n- 输出映射: 建立输入数据索引，准备后续处理\n\n**Step 2: 第2层参数筛选(8-12→3-5核心参数)**\n- 输入: `parameter_prefiltering.selected_parameters[]`(8-12个)\n- 处理:\n  1. 矛盾打分: improvement_weight(改善参数+3分)、worsening_weight(恶化参数+2分)\n  2. 矩阵验证: 查询TRIZ矛盾矩阵，推荐原理≥4个→+2分、≥2个高度相关→+1分\n  3. 靶点关联: 关联technical_targets[]，高优先级≥3个→+2分、中优先级≥5个→+1分\n  4. 总得分计算: total_score = improvement + worsening + matrix + target\n  5. 选择Top 3-5: 按total_score降序选择前3-5个\n- 输出映射: `core_parameters[]`(包含parameter_id/total_score/weights/related_targets)、`parameter_refinement{input_count, output_count, refinement_rate, selection_criteria}`\n- 质量检查: 核心参数数量3-5个、refinement_rate=(input-output)/input、related_targets引用有效TT-xxx\n\n**Step 3: Top方案选择(3-5个)**\n- 输入: `candidate_principles[]`(10-15个)\n- 处理:\n  1. preliminary_grade筛选: A级方案优先\n  2. 跨领域标记: 跨领域方案加分\n  3. **靶点支撑加权** (Smart Boost): 若方案关联了 ≥2 个高优先级技术靶点(TT-XXX)，强制提升优先级（即使原评级为 B）。\n  4. 矛盾覆盖度: 覆盖核心矛盾的方案优先\n  5. 创新性评分: 高创新性方案优先\n  6. 综合排序: 选择Top 3-5\n- 输出映射: 准备`deep_analysis`候选列表(仅记录principle_id，待深度分析)\n- 质量检查: A级方案≥50%、跨领域方案≥1个、principle_id可追溯\n\n**Step 4: Top方案深度分析(3-5个)**\n- 输入: Top 3-5方案列表\n- 处理(逐个方案):\n  1. 技术可行性分析: TRL等级评估(1-9)、技术路径规划(3-5步骤)、关键技术识别(3-5个)、资源需求评估\n  2. 性能指标量化: 3-5个指标、基准值→目标值→改进幅度(百分比)\n  3. 实施难度评估: 技术难度(1-10)、资源难度(1-10)、时间周期(N-N个月/N年)、风险等级(高/中/低)\n  4. 创新等级评估: ⭐⭐⭐(渐进式)/⭐⭐⭐⭐(突破性)/⭐⭐⭐⭐⭐(颠覆性)\n  5. 综合评级: overall_grade\n- 输出映射: `deep_analysis[].{principle_id, principle_name, technical_feasibility{}, performance_metrics[], implementation_difficulty{}, innovation_level, overall_grade}`\n- 质量检查: TRL等级明确、量化指标≥70%(至少3-5个含%)、技术路径可执行、innovation_level符合枚举\n\n**Step 5: SCAMPER衍生方案生成(超量生成策略)**\n\n**⚠️ V0.3 新增：强制超量生成预计算 (CRITICAL)**\n\n**在生成任何衍生方案前，必须完成以下规划**:\n1. \U0001F512 **计算原始变体目标数**:\n   - Top方案数量: `N_top` (3-5个)\n   - 每方案变体数: `20-25个`\n   - **原始池目标**: `N_raw = N_top × 25` (目标 75-125个)\n2. \U0001F512 **验证缓冲区**: 假设 40-50% 通过预期评分，`N_raw × 0.4` 必须 >= 24\n3. \U0001F512 **若不满足**: 增加 `N_variants_per_principle` 直至满足\n\n- 输入: `deep_analysis[]`\n- 处理(逐个方案):\n  对每个方案应用SCAMPER技巧，**必须采用\"超量生成\"策略**:\n  1. Substitute(替代): 生成4-5个\n  2. Combine(组合): 生成4-5个\n  3. Adapt(调整): 生成4-5个\n  4. Modify(修改): 生成4-5个\n  5. PutToOtherUse(其他用途): 生成3-4个\n  6. Eliminate(去除): 生成2-3个\n  7. ReverseRearrange(重排/反转): 生成3-4个\n  → **强制目标**: 每个方案初始生成 **≥25个** 原始变体，总池 **≥75个** (3方案) 或 **≥125个** (5方案)\n- 输出映射: 建立`scamper_derivatives`候选池(待筛选)\n- 质量检查:\n  - \U0001F512 统计原始变体总数，必须达到预设缓冲区目标\n  - \U0001F512 若不满足，回溯补充生成直至达标\n\n**Step 6: 相关性评分与第3层筛选(≥24个保留)**\n- 输入: ≥60个SCAMPER衍生方案\n- 处理:\n  1. 逐个方案评分(0-10分):\n     - 9-10分: 高度相关，直接解决核心矛盾，高可行性，高创新性\n     - 7-8分: 相关，有效解决技术矛盾，良好可行性\n     - 5-6分: 中等相关，间接解决矛盾\n     - 0-4分: 不相关\n  2. 筛选≥7分方案: 保留relevance_score≥7的方案\n  3. 按分析深度分级:\n     - 深度(9-10分): 3-5个，详细分析\n     - 中等(7-8分): 其余保留方案，中等分析\n     - <7分: 淘汰，不输出(不生成analysis_depth值)\n- 输出映射: `scamper_derivatives[]`(仅保留≥7分，含derivative_id/relevance_score/analysis_depth/quantified_benefits[])\n- 质量检查: 保留≥24个、relevance_score∈[7,10]、评分分布合理(9-10分占15-25%)、quantified_benefits含%\n\n**Step 7: 输出组装与格式化**\n- 输入: core_parameters[]、parameter_refinement{}、deep_analysis[]、scamper_derivatives[]\n- 处理:\n  1. 按schema顺序组装: core_parameters → parameter_refinement → deep_analysis → scamper_derivatives\n  2. 排序: core_parameters按total_score降序、deep_analysis按overall_grade、scamper_derivatives按relevance_score\n  3. 格式验证: 检查字段类型、枚举值、pattern约束、数量约束\n  4. 最终校验: 字段完整性、引用一致性、数量核算\n- 输出映射: 单个JSON对象(仅包含4个顶层字段，无额外文本、无Markdown代码块)\n- 质量检查: JSON可解析、schema合规、质量标准达标\n\n**Step 8: 失败回退策略**\n- 触发条件: 核心参数<3个、衍生方案<21个、输入数据严重缺失\n- 回退策略:\n  1. 核心参数不足: 回溯Step 2重新打分与补充映射，直至满足3-5个；不得降低schema下限\n  2. 衍生方案不足: 回溯Step 5提高原始变体生成量并重筛，直至保留≥24个；不得降低relevance_score下限\n  3. 输入数据缺失: 在文本字段中使用保守推测并显式标注\"推测\"，不得新增schema未定义字段\n- 最小合格输出: 仅允许输出满足schema的JSON对象；若未达约束则必须继续回溯修复\n"
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            $id: https://example.com/schemas/node-1-2-4/round2_analysis_result/v0.1.0.schema.json
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: false
+            properties:
+              core_parameters:
+                items:
+                  properties:
+                    improvement_weight:
+                      type: integer
+                    matrix_verification_score:
+                      type: integer
+                    parameter_id:
+                      type: integer
+                    parameter_name:
+                      type: string
+                    related_targets:
+                      items:
+                        type: string
+                      type: array
+                    target_relevance_score:
+                      type: integer
+                    total_score:
+                      type: number
+                    worsening_weight:
+                      type: integer
+                  required:
+                  - parameter_id
+                  - parameter_name
+                  - total_score
+                  - improvement_weight
+                  - worsening_weight
+                  - matrix_verification_score
+                  - target_relevance_score
+                  - related_targets
+                  type: object
+                type: array
+              deep_analysis:
+                items:
+                  properties:
+                    implementation_difficulty:
+                      properties:
+                        estimated_timeline:
+                          type: string
+                        resource_difficulty:
+                          type: integer
+                        risk_level:
+                          enum:
+                          - 高
+                          - 中
+                          - 低
+                          type: string
+                        technical_difficulty:
+                          type: integer
+                      required:
+                      - technical_difficulty
+                      - resource_difficulty
+                      - estimated_timeline
+                      - risk_level
+                      type: object
+                    innovation_level:
+                      enum:
+                      - ⭐⭐⭐
+                      - ⭐⭐⭐⭐
+                      - ⭐⭐⭐⭐⭐
+                      type: string
+                    overall_grade:
+                      enum:
+                      - A
+                      - B
+                      - C
+                      type: string
+                    performance_metrics:
+                      items:
+                        properties:
+                          baseline_value:
+                            type: string
+                          improvement_percentage:
+                            type: string
+                          metric_name:
+                            type: string
+                          target_value:
+                            type: string
+                        required:
+                        - metric_name
+                        - baseline_value
+                        - target_value
+                        - improvement_percentage
+                        type: object
+                      type: array
+                    principle_id:
+                      type: string
+                    principle_name:
+                      type: string
+                    technical_feasibility:
+                      properties:
+                        key_technologies:
+                          items:
+                            type: string
+                          type: array
+                        resource_requirements:
+                          type: string
+                        technical_path:
+                          type: string
+                        trl_level:
+                          type: integer
+                      required:
+                      - trl_level
+                      - technical_path
+                      - key_technologies
+                      type: object
+                  required:
+                  - principle_id
+                  - principle_name
+                  - technical_feasibility
+                  - performance_metrics
+                  - implementation_difficulty
+                  - innovation_level
+                  - overall_grade
+                  type: object
+                type: array
+              parameter_refinement:
+                properties:
+                  input_count:
+                    type: integer
+                  output_count:
+                    type: integer
+                  refinement_rate:
+                    type: string
+                  selection_criteria:
+                    type: string
+                required:
+                - input_count
+                - output_count
+                - refinement_rate
+                - selection_criteria
+                type: object
+              scamper_derivatives:
+                items:
+                  properties:
+                    analysis_depth:
+                      enum:
+                      - 深度
+                      - 中等
+                      type: string
+                    derivative_id:
+                      type: string
+                    derivative_name:
+                      type: string
+                    parent_principle_id:
+                      type: string
+                    quantified_benefits:
+                      items:
+                        type: string
+                      type: array
+                    relevance_score:
+                      type: integer
+                    scamper_technique:
+                      enum:
+                      - Substitute
+                      - Combine
+                      - Adapt
+                      - Modify
+                      - PutToOtherUse
+                      - Eliminate
+                      - ReverseRearrange
+                      type: string
+                    technical_description:
+                      type: string
+                  required:
+                  - derivative_id
+                  - derivative_name
+                  - parent_principle_id
+                  - scamper_technique
+                  - technical_description
+                  - relevance_score
+                  - analysis_depth
+                  - quantified_benefits
+                  type: object
+                type: array
+            required:
+            - core_parameters
+            - parameter_refinement
+            - deep_analysis
+            - scamper_derivatives
+            title: Node-1-2-4::round2_analysis_result::v0.1.0
+            type: object
+        structured_output_enabled: true
+        title: N-1-2-7 深度挖掘
+        type: llm
+        vision:
+          enabled: false
+      height: 117
+      id: node_1_2_4
+      position:
+        x: 2434
+        y: 95
+      positionAbsolute:
+        x: 2434
+        y: 95
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            reasoning_effort: medium
+            temperature: 0.3
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: n5_system_refined
+          role: system
+          text: '你是 TRIZ Round3 的“跨维度验证压缩器”。
+
+            输出必须是一个可被 json.loads 解析的 JSON 对象文本，不输出解释、Markdown 代码块或前后缀。
+
+            目标：给下游提供紧凑、保守、可追溯的验证包，而不是长篇评论。
+
+
+            规则：
+
+            1. 顶层固定 5 个键：`cross_domain_validation`、`standard_compliance`、`national_policy_alignment`、`expert_feedback`、`comprehensive_assessment`。
+
+            2. 只能基于输入做验证性判断，禁止新增具体数值、百分比、寿命、效率或外部案例。
+
+            3. 若证据不足，只能输出“待补证/需进一步验证”这类保守判断，禁止写成确定推荐。
+
+            4. 每个部分只保留最短结论、主要依据和保守建议，不输出推理过程、内部标签或元数据。 '
+        - id: n5_user_refined
+          role: user
+          text: '请生成跨维度验证 JSON 文本。
+
+
+            【用户要求】
+
+            {{#start.user_input#}}
+
+
+            【round2_core_parameters】
+
+            {{#node_1_2_4.structured_output.core_parameters#}}
+
+
+            【round2_parameter_refinement】
+
+            {{#node_1_2_4.structured_output.parameter_refinement#}}
+
+
+            【round2_deep_analysis】
+
+            {{#node_1_2_4.structured_output.deep_analysis#}}
+
+
+            【round2_scamper_derivatives】
+
+            {{#node_1_2_4.structured_output.scamper_derivatives#}}
+
+
+            【landscape_problems】
+
+            {{#node_1_2_1.structured_output.problems#}}
+
+
+            【landscape_solutions】
+
+            {{#node_1_2_1.structured_output.solutions#}}
+
+
+            【landscape_standards】
+
+            {{#node_1_2_1.structured_output.standards#}}
+
+
+            【landscape_technologies】
+
+            {{#node_1_2_1.structured_output.technologies#}}
+
+
+            输出要求：
+
+            1. 返回一个 JSON 对象文本，且只能包含上述 5 个顶层键。
+
+            2. 每个顶层键内部使用紧凑结构，优先保留：`结论`、`主要依据`、`保守建议`。
+
+            3. 不得输出无依据量化收益、推测性确定表述或内部说明。'
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output_enabled: false
+        title: N-1-2-8 跨维度验证
+        type: llm
+        vision:
+          enabled: false
+      height: 117
+      id: node_1_2_5
+      position:
+        x: 2776
+        y: 95
+      positionAbsolute:
+        x: 2776
+        y: 95
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            reasoning_effort: medium
+            temperature: 0.4
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: n6_system
+          role: system
+          text: '🔒 强制规则 (v2.0)
+
+            0) 任务识别（初始化，强制）
+
+            优先解析 user 提示词中的要求（若存在），据此判定任务类型与输出形态（结构化抽取/规范/设计说明/对齐修改/评审检查/其他技术任务）。
+
+            若未提供要求，可退化解析Goals（若存在）；仍无法判定时：采用"最小任务闭环 + schema/格式严格一致"为默认策略，并将关键选择写入推断理由（包含"推测"）。
+
+            1) 仅限任务内容（强制）
+
+            禁止自动生成背景介绍、总结性语言、行业泛论、额外建议，除非 user 明确授权。
+
+            除非 user 明确要求，否则不输出与任务无关的解释性文字；按要求输出 JSON/YAML/文本。
+
+            2) 结构清晰，逻辑连贯（强制）
+
+            输出必须按 user 指定顺序组织；若 user 未指定，采用任务默认顺序：
+
+            分析/方案/报告类：问题 → 方案 → 效果。
+
+            结构化抽取类：输入证据 → 实体/字段 → 归一化/默认/推测 → 校验结果。
+
+            禁止跳步/省略必需项；不得用"同上/略/待补充"等占位符。
+
+            3) 基于输入，受控扩展（强制）
+
+            默认内容仅限输入信息。
+
+            若 user 授权"允许补全/推导缺项"：仅在技术逻辑合理范围内保守推导；不得捏造特征、不得夸大效果。
+
+            允许保守推断，但不得使用"推测"标签；仅通过 data_refs、一致性锚点与验证规则保持可追溯。
+
+            4) 不得编造 + 可追溯（强制）
+
+            任何关键结论/实体/约束必须可追溯到输入：用证据字段承载（如source_quote/source_section）。
+
+            禁止把常识当作原文事实；禁止"看起来像/一般来说"式替代证据。
+
+            5) 推理标注机制（强制）
+
+            允许推测字段值：当字段在原文缺失/含糊时，可用保守默认或上下文推断。
+
+            对任何"推测"的字段：必须将字段名加入inferred_fields，并在inference_rationale中说明理由，且必须包含"推测"字样。
+
+            数值/枚举字段：值本身保持合法取值；"推测"只能出现在标注字段中，不得污染取值。
+
+            6) 表达风格统一（强制）
+
+            同一次输出中：术语命名、字段口径、句式结构、逻辑顺序必须一致，禁止表达风格漂移。
+
+            多段式连续任务一致性：若一次输出包含多个结构段落/多块结构/图示说明，必须保持同一套术语表与同一套结构模板，确保整体连贯性。
+
+            7) 禁止模糊指代（强制）
+
+            禁用"该结构/该装置/上述方案/本方法"等模糊称谓；必须使用输入中明确术语、部件名、字段编号或实体ID（如T-001/P-001）。
+
+            引用上文对象时必须可定位（ID/字段名/章节名）。
+
+            8) 文体自动适配（技术类任务，条件触发，强制）
+
+            系统根据要求识别任务类型，自动匹配表达风格（仅限技术类任务）：
+
+            技术报告/研究报告：重结构完整、逻辑递进、证据与结论对应。
+
+            规范/标准/约定（schema、命名、接口）：重可执行条款、禁止项、默认值与边界条件。
+
+            节点/流程/数据流设计说明：重输入输出、字段口径、约束与校验、异常处理。
+
+            对齐修改/重构：重"差异最小 + 规则一致 + 兼容性"，避免引入无关内容。
+
+            评审/检查/验收清单：重可验证、可量化、可追溯，结论必须对应检查项。
+
+            性能/成本优化：重可量化指标、瓶颈定位、前后对比口径一致。
+
+            风险/可行性分析：重约束、前提、风险项、缓解措施，避免空泛结论。
+
+            兜底条款：若任务类型未被上述覆盖，以"结构化、可验证、术语稳定、最少解释文本"为默认风格，并严格遵守第1/2/4/5/9条。
+
+            9) schema/格式严格一致（强制）
+
+            输出必须严格满足 structured_output schema/格式要求：不输出多余字段；不输出多余文本；数组可为空但字段不得缺失（以schema为准）。
+
+            若发现 schema 与任务目标冲突：优先满足 schema，并将冲突/限制写入推断理由（包含"推测"）（仅在schema允许承载时）。
+
+            🎯 TRIZ 领域规则 (v2.0 新增)
+
+            10) ID 格式强制规范
+
+            技术问题: TP-xxx (如 TP-001, TP-002)
+
+            预期效果: EF-xxx (如 EF-001, EF-002)
+
+            候选方案: CP-xxx (如 CP-001, CP-002)
+
+            技术靶点: TT-xxx 或 T-xxx (如 TT-001, T-001)
+
+            技术矛盾: TC-xx (如 TC-01, TC-02)
+
+            专利模块: M-xx (如 M-01, M-02)
+
+            ID 格式错误将导致下游 Code 节点校验失败。
+
+            11) 方案分级规范
+
+            A 级: 核心方案，创新度高，完整性强，可独立申请专利
+
+            B 级: 辅助方案，创新度中等，可作为从属权利要求
+
+            C 级: 备选方案，创新度较低或已有公开技术
+
+            每次输出必须包含至少 3 个 A 级方案和 3 个 B 级方案
+
+            12) TRIZ 39 参数与发明原理引用
+
+            引用 TRIZ 标准参数时，使用标准编号 (1-39)，如"Parameter 9: Speed"
+
+            引用发明原理时，使用标准格式"Principle xx: 名称"，如"Principle 01: Segmentation"
+
+            矛盾对必须明确指出改善/恶化参数对，格式：改善[Pxx] vs 恶化[Pyy]
+
+            13) 量化指标要求
+
+            预期效果 (EF) 的量化率必须 ≥ 80%
+
+            量化格式：baseline → target（如：误差 ±0.5mm → ±0.1mm）
+
+            非量化效果必须标注 quantified: false 并说明原因
+
+            14) 跨领域技术引用
+
+            引用跨领域技术时，必须注明：原领域、技术名称、适配理由
+
+            跨领域方案占比目标：≥ 10%
+
+            格式示例：[跨领域: 航空航天 → 主动阻尼控制技术]
+
+            ⚙️ 执行流程（强制自检）
+
+            A) 任务识别: 解析要求/显式指令，确定任务类型
+
+            B) 输入理解: 建立术语表、ID 映射表，核对输入完整性
+
+            C) 结构组织: 按第 2 条默认/指定顺序组织输出
+
+            D) ID 验证: 确保所有生成的 ID 符合第 10 条格式规范
+
+            E) 完整性校验: 必需项齐全、无越权扩展、方案数量达标
+
+            F) 一致性检查: 术语/风格/顺序/指代/ID 引用一致
+
+            📋 自检清单 (输出前必查)
+
+            检查项规则自检
+
+            ID 格式
+
+            所有 ID 符合第 10 条规范
+
+            [ ]
+
+            方案数量
+
+            A 级 ≥ 3, B 级 ≥ 3
+
+            [ ]
+
+            量化率
+
+            EF 量化率 ≥ 80%
+
+            [ ]
+
+            术语一致
+
+            全文术语与输入 terminology_table 一致
+
+            [ ]
+
+            证据追溯
+
+            关键结论有 source_* 字段支撑
+
+            [ ]
+
+            推理标注
+
+            所有推理补全内容已落成自然专业表述，用户可读字段不得出现【推理生成】或【推理生成-估计】
+
+            [ ]
+
+            Schema 合规
+
+            输出完全符合 structured_output schema
+
+            [ ]'
+        - id: f9ae0dfd-a89e-4f6c-8903-c38e43f9b0d2
+          role: user
+          text: "## 1.1.6 优先覆盖规则（高于下文所有旧规则）\n- 保留全部 `principle_id`，但仅依赖推测信息的方案，`grade` 上限设为 `C`。\n- `technical_description` 优先保留 Round1 的原始可追溯描述；若 Round2 版本含推测数值，不得覆盖 Round1 描述。\n- `decision_summary` 必须区分：`优先推进` / `待补证` / `不建议当前推进`。\n\n# Node-1-2-6: 收敛整合 - User Prompt\n\n> **版本**: v1.0.0\n> **最后更新**: 2026-03-13\n\n## 节点目标\n把 Round1-4 的候选方案整合成一个“可决策的最终方案层”，同时完成 A/B/C 分级、TP-EF 结构化和投资决策支持，确保下游报告节点拿到的是清晰、稳定、可追溯的结果，而不是冗长方案描述。\n\n## 用户指令（最高优先级）\n{{#start.user_input#}}\n\n## 输入内容（JSON）\nvalidation_bundle_json:\n{{#node_1_2_5.text#}}\nround2_core_parameters:\n{{#node_1_2_4.structured_output.core_parameters#}}\nround2_parameter_refinement:\n{{#node_1_2_4.structured_output.parameter_refinement#}}\nround1_candidate_principles:\n{{#node_1_2_2.structured_output.candidate_principles#}}\nalignment_parameters:\n{{#node_1_2_1.structured_output.alignment_parameters#}}\n\n---\n\n## 示例隔离与零新增（强制）\n- 示例仅用于结构说明，禁止迁移其中的领域词、实体、数值、指标、场景、公司或标准名称。\n- 输出内容必须 100% 来自输入数据与用户指令，不得新增输入未出现的方案、指标、标准、行业或场景。\n- 若输入缺失，只允许在 schema 已有字段中做最保守的推测，并显式标注 `推测`。\n\n## Core Rules\n\n### R1. 主任务优先级\n1. 第一优先：保留全部输入 `principle_id`，不删条、不改 ID。\n2. 第二优先：完成稳定分级，让 `graded_principles` 真正可用于后续报告和检索。\n3. 第三优先：用最短结构化文本完成 TP-EF 和决策支持，禁止写成长篇方案介绍。\n\n### R2. 方案保留与分级\n1. `graded_principles` 必须覆盖输入 `round1_candidate_principles` 的全部 `principle_id`。\n2. 若信息不足，不得删除方案；只能降级为 `C`，并在已有文本字段中保守说明。\n3. `grade_a_count` 必须在 `3-5`，`grade_b_count` 在 `5-15`，`grade_c_count` 在 `10-25`。\n4. `top_principles` 固定输出 `3` 条。\n\n### R3. 血缘互斥与排序纯度\n1. 若两个方案属于明显父子变体、且技术目标高度重合，优先保留证据更完整者进入 `A`；另一项最高只能到 `B`，除非其 `tp_structure` 明显不同。\n2. `A` 级方案必须体现互补性，禁止出现多个只是同一路径微调的近重复方案。\n3. 同分时按证据完整度排序：量化证据多者优先。\n\n### R4. TP-EF 结构化\n1. 每个方案至少 `1` 个 `TP`。\n2. 每个 `TP` 优先输出 `2` 个 `EF`；只有存在直接量化证据时才扩展到第 `3` 个。\n3. `tp_description` 必须是正向、可验证的目标表达，禁止使用“降低问题、避免失败、减少缺陷”这类负向措辞。\n4. `ef_description`、`verification_method` 保持最短可执行表达，禁止展开背景故事。\n\n### R5. 决策支持\n1. `priority_score` 必须是 `0-100` 整数。\n2. `risk_assessment` 仅允许 `高/中/低`。\n3. `next_steps` 固定 `2` 条；`critical_success_factors` 最多 `2` 条；`potential_barriers` 最多 `2` 条；`risk_mitigation_strategies` 固定 `2` 条。\n4. `decision_summary` 必须能直接支撑下游的执行摘要、技术报告和专利布局，不得写空泛业务口号。\n\n### R6. 输出长度预算与保底顺序\n1. `technical_description` 最多 `1` 句，优先控制在 `45` 字以内。\n2. `tp_structure`、`decision_support`、`grading_summary`、`decision_summary` 是保底结构，禁止因篇幅原因省略。\n3. 若输出接近上限，裁剪顺序固定为：`technical_description` 修饰语 -> `verification_method` 修饰语 -> `roi_estimate.expected_return` 修饰语。\n\n### R7. 输出前自检\n1. 校验 `graded_principles` 数量是否与输入方案总数完全一致。\n2. 校验 `A/B/C` 数量区间是否满足约束。\n3. 校验每个方案是否至少有 `1 TP + 2 EF`。\n4. 校验所有 `principle_id / TP-xxx / EF-xxx` 是否合法且可追溯。\n5. 校验最终 JSON 无 `null`、无 schema 外字段、无解释性包装文本。\n\n---\n\n## Format\n\n```json\n{\n  \"graded_principles\": [\n    {\n      \"principle_id\": \"CP-001\",\n      \"principle_name\": \"方案名称\",\n      \"grade\": \"A\",\n      \"overall_score\": 8.8,\n      \"source_round\": \"Round 2\",\n      \"triz_principle\": \"Principle 35: Parameter Changes\",\n      \"technical_description\": \"最短技术说明\",\n      \"tp_structure\": {\n        \"tp_list\": [\n          {\n            \"tp_id\": \"TP-001\",\n            \"tp_description\": \"提高关键性能\",\n            \"ef_list\": [\n              {\n                \"ef_id\": \"EF-001\",\n                \"ef_description\": \"关键效果1\",\n                \"is_quantified\": true,\n                \"baseline_value\": \"当前值\",\n                \"target_value\": \"目标值\",\n                \"verification_method\": \"验证方法\",\n                \"is_primary\": true\n              },\n              {\n                \"ef_id\": \"EF-002\",\n                \"ef_description\": \"关键效果2\",\n                \"is_quantified\": false,\n                \"baseline_value\": \"当前状态\",\n                \"target_value\": \"目标状态\",\n                \"verification_method\": \"验证方法\",\n                \"is_primary\": false\n              }\n            ]\n          }\n        ]\n      },\n      \"decision_support\": {\n        \"priority_score\": 88,\n        \"roi_estimate\": {\n          \"development_cost\": \"范围值\",\n          \"time_to_market\": \"范围值\",\n          \"expected_return\": \"最短收益描述\",\n          \"payback_period\": \"范围值\"\n        },\n        \"risk_assessment\": {\n          \"technical_risk\": \"中\",\n          \"market_risk\": \"低\",\n          \"standard_risk\": \"中\",\n          \"overall_risk\": \"中\"\n        },\n        \"implementation_suggestions\": {\n          \"next_steps\": [\"动作1\", \"动作2\"],\n          \"resource_requirements\": \"最短资源说明\",\n          \"critical_success_factors\": [\"要点1\", \"要点2\"],\n          \"potential_barriers\": [\"障碍1\", \"障碍2\"]\n        }\n      }\n    }\n  ],\n  \"grading_summary\": {\n    \"grade_a_count\": 3,\n    \"grade_b_count\": 10,\n    \"grade_c_count\": 13,\n    \"total_count\": 26,\n    \"quantification_ratio\": \"80%\",\n    \"grading_criteria\": {\n      \"grade_a\": \"高分且高可行性\",\n      \"grade_b\": \"推荐推进\",\n      \"grade_c\": \"备选与储备\"\n    },\n    \"top_principles\": [\"CP-001: 方案A\", \"SD-002: 方案B\", \"CP-003: 方案C\"]\n  },\n  \"tp_ef_mapping\": [\n    {\n      \"tp_id\": \"TP-001\",\n      \"tp_description\": \"提高关键性能\",\n      \"related_principles\": [\"CP-001\"],\n      \"ef_count\": 2,\n      \"primary_ef_count\": 1\n    }\n  ],\n  \"decision_summary\": {\n    \"recommendations\": {\n      \"immediate_implementation\": [\"CP-001\"],\n      \"medium_term_development\": [\"SD-002\"],\n      \"long_term_research\": [],\n      \"not_recommended\": []\n    },\n    \"investment_priority\": [\n      {\n        \"priority\": 1,\n        \"principle_id\": \"CP-001\",\n        \"reason\": \"最短排序原因\"\n      }\n    ],\n    \"risk_mitigation_strategies\": [\"策略1\", \"策略2\"]\n  }\n}\n```\n\n---\n\n## Workflow\n1. 汇总全部方案并锁定原始 `principle_id`。\n2. 计算综合得分并执行 `A/B/C` 分级，同时处理父子变体的血缘互斥。\n3. 为每个方案生成最短但完整的 `TP-EF` 结构。\n4. 生成投资优先级、风险和实施建议。\n5. 汇总 `grading_summary / tp_ef_mapping / decision_summary`。\n6. 完成自检后输出最终 JSON。\n"
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            $id: https://example.com/schemas/node-1-2-6/round4_final_result/v0.1.schema.json
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: false
+            properties:
+              decision_summary:
+                type: object
+              graded_principles:
+                items:
+                  properties:
+                    decision_support:
+                      type: object
+                    grade:
+                      enum:
+                      - A
+                      - B
+                      - C
+                      type: string
+                    overall_score:
+                      type: number
+                    principle_id:
+                      type: string
+                    principle_name:
+                      type: string
+                    source_round:
+                      type: string
+                    technical_description:
+                      type: string
+                    tp_structure:
+                      type: object
+                    triz_principle:
+                      type: string
+                  required:
+                  - principle_id
+                  - principle_name
+                  - grade
+                  - overall_score
+                  - source_round
+                  - triz_principle
+                  - technical_description
+                  - tp_structure
+                  - decision_support
+                  type: object
+                type: array
+              grading_summary:
+                type: object
+              tp_ef_mapping:
+                items:
+                  properties:
+                    ef_count:
+                      type: integer
+                    primary_ef_count:
+                      type: integer
+                    related_principles:
+                      items:
+                        type: string
+                      type: array
+                    tp_description:
+                      type: string
+                    tp_id:
+                      type: string
+                  required:
+                  - tp_id
+                  - tp_description
+                  - related_principles
+                  - ef_count
+                  - primary_ef_count
+                  type: object
+                type: array
+            required:
+            - graded_principles
+            - grading_summary
+            - tp_ef_mapping
+            - decision_summary
+            title: Node-1-2-6::round4_final_result::v0.1
+            type: object
+        structured_output_enabled: true
+        title: N-1-2-9 收敛整合
+        type: llm
+        vision:
+          enabled: false
+      height: 117
+      id: node_1_2_6
+      position:
+        x: 3118
+        y: 95
+      positionAbsolute:
+        x: 3118
+        y: 95
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            reasoning_effort: medium
+            temperature: 0.4
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: n7_system
+          role: system
+          text: '🔒 强制规则 (v2.0)
+
+            0) 任务识别（初始化，强制）
+
+            优先解析 user 提示词中的要求（若存在），据此判定任务类型与输出形态（结构化抽取/规范/设计说明/对齐修改/评审检查/其他技术任务）。
+
+            若未提供要求，可退化解析Goals（若存在）；仍无法判定时：采用"最小任务闭环 + schema/格式严格一致"为默认策略，并将关键选择写入推断理由（包含"推测"）。
+
+            1) 仅限任务内容（强制）
+
+            禁止自动生成背景介绍、总结性语言、行业泛论、额外建议，除非 user 明确授权。
+
+            除非 user 明确要求，否则不输出与任务无关的解释性文字；按要求输出 JSON/YAML/文本。
+
+            2) 结构清晰，逻辑连贯（强制）
+
+            输出必须按 user 指定顺序组织；若 user 未指定，采用任务默认顺序：
+
+            分析/方案/报告类：问题 → 方案 → 效果。
+
+            结构化抽取类：输入证据 → 实体/字段 → 归一化/默认/推测 → 校验结果。
+
+            禁止跳步/省略必需项；不得用"同上/略/待补充"等占位符。
+
+            3) 基于输入，受控扩展（强制）
+
+            默认内容仅限输入信息。
+
+            若 user 授权"允许补全/推导缺项"：仅在技术逻辑合理范围内保守推导；不得捏造特征、不得夸大效果。
+
+            允许保守推断，但不得使用"推测"标签；仅通过 data_refs、一致性锚点与验证规则保持可追溯。
+
+            4) 不得编造 + 可追溯（强制）
+
+            任何关键结论/实体/约束必须可追溯到输入：用证据字段承载（如source_quote/source_section）。
+
+            禁止把常识当作原文事实；禁止"看起来像/一般来说"式替代证据。
+
+            5) 推理标注机制（强制）
+
+            允许推测字段值：当字段在原文缺失/含糊时，可用保守默认或上下文推断。
+
+            对任何"推测"的字段：必须将字段名加入inferred_fields，并在inference_rationale中说明理由，且必须包含"推测"字样。
+
+            数值/枚举字段：值本身保持合法取值；"推测"只能出现在标注字段中，不得污染取值。
+
+            6) 表达风格统一（强制）
+
+            同一次输出中：术语命名、字段口径、句式结构、逻辑顺序必须一致，禁止表达风格漂移。
+
+            多段式连续任务一致性：若一次输出包含多个结构段落/多块结构/图示说明，必须保持同一套术语表与同一套结构模板，确保整体连贯性。
+
+            7) 禁止模糊指代（强制）
+
+            禁用"该结构/该装置/上述方案/本方法"等模糊称谓；必须使用输入中明确术语、部件名、字段编号或实体ID（如T-001/P-001）。
+
+            引用上文对象时必须可定位（ID/字段名/章节名）。
+
+            8) 文体自动适配（技术类任务，条件触发，强制）
+
+            系统根据要求识别任务类型，自动匹配表达风格（仅限技术类任务）：
+
+            技术报告/研究报告：重结构完整、逻辑递进、证据与结论对应。
+
+            规范/标准/约定（schema、命名、接口）：重可执行条款、禁止项、默认值与边界条件。
+
+            节点/流程/数据流设计说明：重输入输出、字段口径、约束与校验、异常处理。
+
+            对齐修改/重构：重"差异最小 + 规则一致 + 兼容性"，避免引入无关内容。
+
+            评审/检查/验收清单：重可验证、可量化、可追溯，结论必须对应检查项。
+
+            性能/成本优化：重可量化指标、瓶颈定位、前后对比口径一致。
+
+            风险/可行性分析：重约束、前提、风险项、缓解措施，避免空泛结论。
+
+            兜底条款：若任务类型未被上述覆盖，以"结构化、可验证、术语稳定、最少解释文本"为默认风格，并严格遵守第1/2/4/5/9条。
+
+            9) schema/格式严格一致（强制）
+
+            输出必须严格满足 structured_output schema/格式要求：不输出多余字段；不输出多余文本；数组可为空但字段不得缺失（以schema为准）。
+
+            若发现 schema 与任务目标冲突：优先满足 schema，并将冲突/限制写入推断理由（包含"推测"）（仅在schema允许承载时）。
+
+            🎯 TRIZ 领域规则 (v2.0 新增)
+
+            10) ID 格式强制规范
+
+            技术问题: TP-xxx (如 TP-001, TP-002)
+
+            预期效果: EF-xxx (如 EF-001, EF-002)
+
+            候选方案: CP-xxx (如 CP-001, CP-002)
+
+            技术靶点: TT-xxx 或 T-xxx (如 TT-001, T-001)
+
+            技术矛盾: TC-xx (如 TC-01, TC-02)
+
+            专利模块: M-xx (如 M-01, M-02)
+
+            ID 格式错误将导致下游 Code 节点校验失败。
+
+            11) 方案分级规范
+
+            A 级: 核心方案，创新度高，完整性强，可独立申请专利
+
+            B 级: 辅助方案，创新度中等，可作为从属权利要求
+
+            C 级: 备选方案，创新度较低或已有公开技术
+
+            每次输出必须包含至少 3 个 A 级方案和 3 个 B 级方案
+
+            12) TRIZ 39 参数与发明原理引用
+
+            引用 TRIZ 标准参数时，使用标准编号 (1-39)，如"Parameter 9: Speed"
+
+            引用发明原理时，使用标准格式"Principle xx: 名称"，如"Principle 01: Segmentation"
+
+            矛盾对必须明确指出改善/恶化参数对，格式：改善[Pxx] vs 恶化[Pyy]
+
+            13) 量化指标要求
+
+            预期效果 (EF) 的量化率必须 ≥ 80%
+
+            量化格式：baseline → target（如：误差 ±0.5mm → ±0.1mm）
+
+            非量化效果必须标注 quantified: false 并说明原因
+
+            14) 跨领域技术引用
+
+            引用跨领域技术时，必须注明：原领域、技术名称、适配理由
+
+            跨领域方案占比目标：≥ 10%
+
+            格式示例：[跨领域: 航空航天 → 主动阻尼控制技术]
+
+            ⚙️ 执行流程（强制自检）
+
+            A) 任务识别: 解析要求/显式指令，确定任务类型
+
+            B) 输入理解: 建立术语表、ID 映射表，核对输入完整性
+
+            C) 结构组织: 按第 2 条默认/指定顺序组织输出
+
+            D) ID 验证: 确保所有生成的 ID 符合第 10 条格式规范
+
+            E) 完整性校验: 必需项齐全、无越权扩展、方案数量达标
+
+            F) 一致性检查: 术语/风格/顺序/指代/ID 引用一致
+
+            📋 自检清单 (输出前必查)
+
+            检查项规则自检
+
+            ID 格式
+
+            所有 ID 符合第 10 条规范
+
+            [ ]
+
+            方案数量
+
+            A 级 ≥ 3, B 级 ≥ 3
+
+            [ ]
+
+            量化率
+
+            EF 量化率 ≥ 80%
+
+            [ ]
+
+            术语一致
+
+            全文术语与输入 terminology_table 一致
+
+            [ ]
+
+            证据追溯
+
+            关键结论有 source_* 字段支撑
+
+            [ ]
+
+            推理标注
+
+            所有推理补全内容已落成自然专业表述，用户可读字段不得出现【推理生成】或【推理生成-估计】
+
+            [ ]
+
+            Schema 合规
+
+            输出完全符合 structured_output schema
+
+            [ ]'
+        - id: 0da4af59-0554-479e-815c-c90d29368087
+          role: user
+          text: "# Node-1-2-7: 技术靶点清单生成 - User Prompt\n\n> **版本**: v1.0.0\n> **最后更新**: 2026-04-19\n\n## 节点目标\n把 Node-1-2-3 的四维度靶点池和 Node-1-2-6 的最终方案层，压缩成“可执行、可追溯、可下游分字段消费”的技术靶点包。\n\n本节点不再输出冗长的 `technical_targets_manifesto` 大对象，而是拆成 4 个顶层字段：\n- `recommended_targets`\n- `target_list`\n- `summary_statistics`\n- `traceability_verification`\n\n## 用户指令（最高优先级）\n请基于 `round2_core_parameters / round2_parameter_refinement / round2_scamper_derivatives`、\n`targets_technical_targets / targets_dimension_distribution`、\n`round4_decision_summary / round4_graded_principles / round4_grading_summary / round4_tp_ef_mapping`\n生成轻量技术靶点包，并确保靶点与方案、参数建立最小充分的可追溯映射。\n\n## 输入内容（JSON）\n- `round2_core_parameters`: {{#node_1_2_4.structured_output.core_parameters#}}\n- `round2_parameter_refinement`: {{#node_1_2_4.structured_output.parameter_refinement#}}\n- `round2_scamper_derivatives`: {{#node_1_2_4.structured_output.scamper_derivatives#}}\n- `targets_technical_targets`: {{#node_1_2_3.structured_output.technical_targets#}}\n- `targets_dimension_distribution`: {{#node_1_2_3.structured_output.dimension_distribution#}}\n- `round4_decision_summary`: {{#node_1_2_6.structured_output.decision_summary#}}\n- `round4_graded_principles`: {{#node_1_2_6.structured_output.graded_principles#}}\n- `round4_grading_summary`: {{#node_1_2_6.structured_output.grading_summary#}}\n- `round4_tp_ef_mapping`: {{#node_1_2_6.structured_output.tp_ef_mapping#}}\n- `user_input`: {{#start.user_input#}}\n\n---\n\n## Core Rules\n\n### R1. 输出结构\n1. 只允许输出 4 个顶层键：`recommended_targets`、`target_list`、`summary_statistics`、`traceability_verification`。\n2. 不得输出旧的 `technical_targets_manifesto` 包装层。\n3. 不得输出 schema 外字段，不得输出 Markdown 解释文字。\n\n### R2. target_list 规则\n1. `target_list` 是完整靶点表，优先控制在 `36-42` 条，仅当输入存在明确高区分度靶点时才扩展到 `43-60`。\n2. 每条只保留轻量必要字段：\n   - `target_id`\n   - `target_description`\n   - `dimension`\n   - `sub_dimension`\n   - `priority`\n   - `overall_ranking`\n   - `is_recommended`\n   - `solution_ids`\n   - `parameter_ids`\n3. 不再输出冗长 `solution_mapping` / `parameter_mapping` 嵌套对象。\n4. `solution_ids` 只能来自 `round4_graded_principles[].principle_id`。\n5. `parameter_ids` 只能来自 `round2_core_parameters / round2_parameter_refinement / round2_scamper_derivatives` 的参数集合。\n\n### R3. recommended_targets 规则\n1. `recommended_targets` 必须是 `target_list` 的子集。\n2. 仅保留最值得下游 LLM 使用的核心靶点，优先控制在 `8-12` 条。\n3. 推荐优先级：\n   - 高优先级\n   - 高参数相关性\n   - 多方案覆盖\n   - 更强专利/技术推进价值\n4. `recommended_targets` 中每条字段结构必须与 `target_list` 完全一致。\n\n### R4. summary_statistics 规则\n1. 必须输出：\n   - `total_targets`\n   - `high_priority_targets`\n   - `recommended_targets`\n   - `high_correlation_targets`\n   - `dimension_distribution`\n2. `dimension_distribution` 四项求和必须等于 `total_targets`。\n\n### R5. traceability_verification 规则\n1. 必须输出：\n   - `source_consistency_check`\n   - `parameter_coverage_ratio`\n   - `solution_coverage_ratio`\n2. 该字段只保留最短必要追溯结论，不写成长段说明。\n\n### R6. 压缩与 token 控制\n1. `target_description` 最多 1 句，优先控制在 24 字以内。\n2. `solution_ids` 仅保留 ID，不带名称。\n3. `parameter_ids` 仅保留 ID，不带名称。\n4. 禁止为了美观扩写说明文字。\n\n### R7. 输出前自检\n1. 校验 `recommended_targets` 是否真的是 `target_list` 的子集。\n2. 校验 `overall_ranking` 连续且唯一。\n3. 校验 `summary_statistics.dimension_distribution` 求和正确。\n4. 校验最终 JSON 无 `null`、无 schema 外字段。\n\n---\n\n## Format\n\n```json\n{\n  \"recommended_targets\": [\n    {\n      \"target_id\": \"TT-001\",\n      \"target_description\": \"提高接触稳定性\",\n      \"dimension\": \"系统维度\",\n      \"sub_dimension\": \"控制靶点\",\n      \"priority\": \"高\",\n      \"overall_ranking\": 1,\n      \"is_recommended\": true,\n      \"solution_ids\": [\"CP-001\", \"SD-002\"],\n      \"parameter_ids\": [1, 12]\n    }\n  ],\n  \"target_list\": [\n    {\n      \"target_id\": \"TT-001\",\n      \"target_description\": \"提高接触稳定性\",\n      \"dimension\": \"系统维度\",\n      \"sub_dimension\": \"控制靶点\",\n      \"priority\": \"高\",\n      \"overall_ranking\": 1,\n      \"is_recommended\": true,\n      \"solution_ids\": [\"CP-001\", \"SD-002\"],\n      \"parameter_ids\": [1, 12]\n    }\n  ],\n  \"summary_statistics\": {\n    \"total_targets\": 36,\n    \"high_priority_targets\": 12,\n    \"recommended_targets\": 10,\n    \"high_correlation_targets\": 15,\n    \"dimension_distribution\": {\n      \"system_dimension\": 10,\n      \"time_dimension\": 8,\n      \"space_dimension\": 8,\n      \"application_dimension\": 10\n    }\n  },\n  \"traceability_verification\": {\n    \"source_consistency_check\": \"靶点、方案、参数均可追溯到输入数据。\",\n    \"parameter_coverage_ratio\": 1.0,\n    \"solution_coverage_ratio\": 1.0\n  }\n}\n```\n\n---\n\n## Workflow\n1. 从 `targets_technical_targets / targets_dimension_distribution` 提取基础靶点，并按维度与优先级标准化。\n2. 从 `round4_decision_summary / round4_graded_principles / round4_grading_summary / round4_tp_ef_mapping` 建立靶点到 `solution_ids` 的映射。\n3. 从 `round2_core_parameters / round2_parameter_refinement / round2_scamper_derivatives` 建立 `parameter_ids` 的最小充分映射。\n4. 先生成完整 `target_list`，再从中筛选 `recommended_targets`。\n5. 最后生成 `summary_statistics` 与 `traceability_verification`，输出最终 JSON。\n"
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              recommended_targets:
+                items:
+                  properties:
+                    dimension:
+                      type: string
+                    is_recommended:
+                      type: boolean
+                    overall_ranking:
+                      type: integer
+                    parameter_ids:
+                      items:
+                        type: integer
+                      type: array
+                    priority:
+                      type: string
+                    solution_ids:
+                      items:
+                        type: string
+                      type: array
+                    sub_dimension:
+                      type: string
+                    target_description:
+                      type: string
+                    target_id:
+                      type: string
+                  required:
+                  - target_id
+                  - target_description
+                  - dimension
+                  - sub_dimension
+                  - priority
+                  - overall_ranking
+                  - is_recommended
+                  - solution_ids
+                  - parameter_ids
+                  type: object
+                type: array
+              summary_statistics:
+                properties:
+                  dimension_distribution:
+                    properties:
+                      application_dimension:
+                        type: integer
+                      space_dimension:
+                        type: integer
+                      system_dimension:
+                        type: integer
+                      time_dimension:
+                        type: integer
+                    required:
+                    - system_dimension
+                    - time_dimension
+                    - space_dimension
+                    - application_dimension
+                    type: object
+                  high_correlation_targets:
+                    type: integer
+                  high_priority_targets:
+                    type: integer
+                  recommended_targets:
+                    type: integer
+                  total_targets:
+                    type: integer
+                required:
+                - total_targets
+                - high_priority_targets
+                - recommended_targets
+                - high_correlation_targets
+                - dimension_distribution
+                type: object
+              target_list:
+                items:
+                  properties:
+                    dimension:
+                      type: string
+                    is_recommended:
+                      type: boolean
+                    overall_ranking:
+                      type: integer
+                    parameter_ids:
+                      items:
+                        type: integer
+                      type: array
+                    priority:
+                      type: string
+                    solution_ids:
+                      items:
+                        type: string
+                      type: array
+                    sub_dimension:
+                      type: string
+                    target_description:
+                      type: string
+                    target_id:
+                      type: string
+                  required:
+                  - target_id
+                  - target_description
+                  - dimension
+                  - sub_dimension
+                  - priority
+                  - overall_ranking
+                  - is_recommended
+                  - solution_ids
+                  - parameter_ids
+                  type: object
+                type: array
+              traceability_verification:
+                properties:
+                  parameter_coverage_ratio:
+                    type: number
+                  solution_coverage_ratio:
+                    type: number
+                  source_consistency_check:
+                    type: string
+                required:
+                - source_consistency_check
+                - parameter_coverage_ratio
+                - solution_coverage_ratio
+                type: object
+            required:
+            - recommended_targets
+            - target_list
+            - summary_statistics
+            - traceability_verification
+            type: object
+        structured_output_enabled: true
+        title: N-1-2-10 技术靶点清单生成
+        type: llm
+        vision:
+          enabled: false
+      height: 117
+      id: node_1_2_7
+      position:
+        x: 3480
+        y: 75
+      positionAbsolute:
+        x: 3480
+        y: 75
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            reasoning_effort: medium
+            temperature: 0.4
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: n9_system
+          role: system
+          text: '🔒 强制规则 (v2.0)
+
+            0) 任务识别（初始化，强制）
+
+            优先解析 user 提示词中的要求（若存在），据此判定任务类型与输出形态（结构化抽取/规范/设计说明/对齐修改/评审检查/其他技术任务）。
+
+            若未提供要求，可退化解析Goals（若存在）；仍无法判定时：采用"最小任务闭环 + schema/格式严格一致"为默认策略，并将关键选择写入推断理由（包含"推测"）。
+
+            1) 仅限任务内容（强制）
+
+            禁止自动生成背景介绍、总结性语言、行业泛论、额外建议，除非 user 明确授权。
+
+            除非 user 明确要求，否则不输出与任务无关的解释性文字；按要求输出 JSON/YAML/文本。
+
+            2) 结构清晰，逻辑连贯（强制）
+
+            输出必须按 user 指定顺序组织；若 user 未指定，采用任务默认顺序：
+
+            分析/方案/报告类：问题 → 方案 → 效果。
+
+            结构化抽取类：输入证据 → 实体/字段 → 归一化/默认/推测 → 校验结果。
+
+            禁止跳步/省略必需项；不得用"同上/略/待补充"等占位符。
+
+            3) 基于输入，受控扩展（强制）
+
+            默认内容仅限输入信息。
+
+            若 user 授权"允许补全/推导缺项"：仅在技术逻辑合理范围内保守推导；不得捏造特征、不得夸大效果。
+
+            允许保守推断，但不得使用"推测"标签；仅通过 data_refs、一致性锚点与验证规则保持可追溯。
+
+            4) 不得编造 + 可追溯（强制）
+
+            任何关键结论/实体/约束必须可追溯到输入：用证据字段承载（如source_quote/source_section）。
+
+            禁止把常识当作原文事实；禁止"看起来像/一般来说"式替代证据。
+
+            5) 推理标注机制（强制）
+
+            允许推测字段值：当字段在原文缺失/含糊时，可用保守默认或上下文推断。
+
+            对任何"推测"的字段：必须将字段名加入inferred_fields，并在inference_rationale中说明理由，且必须包含"推测"字样。
+
+            数值/枚举字段：值本身保持合法取值；"推测"只能出现在标注字段中，不得污染取值。
+
+            6) 表达风格统一（强制）
+
+            同一次输出中：术语命名、字段口径、句式结构、逻辑顺序必须一致，禁止表达风格漂移。
+
+            多段式连续任务一致性：若一次输出包含多个结构段落/多块结构/图示说明，必须保持同一套术语表与同一套结构模板，确保整体连贯性。
+
+            7) 禁止模糊指代（强制）
+
+            禁用"该结构/该装置/上述方案/本方法"等模糊称谓；必须使用输入中明确术语、部件名、字段编号或实体ID（如T-001/P-001）。
+
+            引用上文对象时必须可定位（ID/字段名/章节名）。
+
+            8) 文体自动适配（技术类任务，条件触发，强制）
+
+            系统根据要求识别任务类型，自动匹配表达风格（仅限技术类任务）：
+
+            技术报告/研究报告：重结构完整、逻辑递进、证据与结论对应。
+
+            规范/标准/约定（schema、命名、接口）：重可执行条款、禁止项、默认值与边界条件。
+
+            节点/流程/数据流设计说明：重输入输出、字段口径、约束与校验、异常处理。
+
+            对齐修改/重构：重"差异最小 + 规则一致 + 兼容性"，避免引入无关内容。
+
+            评审/检查/验收清单：重可验证、可量化、可追溯，结论必须对应检查项。
+
+            性能/成本优化：重可量化指标、瓶颈定位、前后对比口径一致。
+
+            风险/可行性分析：重约束、前提、风险项、缓解措施，避免空泛结论。
+
+            兜底条款：若任务类型未被上述覆盖，以"结构化、可验证、术语稳定、最少解释文本"为默认风格，并严格遵守第1/2/4/5/9条。
+
+            9) schema/格式严格一致（强制）
+
+            输出必须严格满足 structured_output schema/格式要求：不输出多余字段；不输出多余文本；数组可为空但字段不得缺失（以schema为准）。
+
+            若发现 schema 与任务目标冲突：优先满足 schema，并将冲突/限制写入推断理由（包含"推测"）（仅在schema允许承载时）。
+
+            🎯 TRIZ 领域规则 (v2.0 新增)
+
+            10) ID 格式强制规范
+
+            技术问题: TP-xxx (如 TP-001, TP-002)
+
+            预期效果: EF-xxx (如 EF-001, EF-002)
+
+            候选方案: CP-xxx (如 CP-001, CP-002)
+
+            技术靶点: TT-xxx 或 T-xxx (如 TT-001, T-001)
+
+            技术矛盾: TC-xx (如 TC-01, TC-02)
+
+            专利模块: M-xx (如 M-01, M-02)
+
+            ID 格式错误将导致下游 Code 节点校验失败。
+
+            11) 方案分级规范
+
+            A 级: 核心方案，创新度高，完整性强，可独立申请专利
+
+            B 级: 辅助方案，创新度中等，可作为从属权利要求
+
+            C 级: 备选方案，创新度较低或已有公开技术
+
+            每次输出必须包含至少 3 个 A 级方案和 3 个 B 级方案
+
+            12) TRIZ 39 参数与发明原理引用
+
+            引用 TRIZ 标准参数时，使用标准编号 (1-39)，如"Parameter 9: Speed"
+
+            引用发明原理时，使用标准格式"Principle xx: 名称"，如"Principle 01: Segmentation"
+
+            矛盾对必须明确指出改善/恶化参数对，格式：改善[Pxx] vs 恶化[Pyy]
+
+            13) 量化指标要求
+
+            预期效果 (EF) 的量化率必须 ≥ 80%
+
+            量化格式：baseline → target（如：误差 ±0.5mm → ±0.1mm）
+
+            非量化效果必须标注 quantified: false 并说明原因
+
+            14) 跨领域技术引用
+
+            引用跨领域技术时，必须注明：原领域、技术名称、适配理由
+
+            跨领域方案占比目标：≥ 10%
+
+            格式示例：[跨领域: 航空航天 → 主动阻尼控制技术]
+
+            ⚙️ 执行流程（强制自检）
+
+            A) 任务识别: 解析要求/显式指令，确定任务类型
+
+            B) 输入理解: 建立术语表、ID 映射表，核对输入完整性
+
+            C) 结构组织: 按第 2 条默认/指定顺序组织输出
+
+            D) ID 验证: 确保所有生成的 ID 符合第 10 条格式规范
+
+            E) 完整性校验: 必需项齐全、无越权扩展、方案数量达标
+
+            F) 一致性检查: 术语/风格/顺序/指代/ID 引用一致
+
+            📋 自检清单 (输出前必查)
+
+            检查项规则自检
+
+            ID 格式
+
+            所有 ID 符合第 10 条规范
+
+            [ ]
+
+            方案数量
+
+            A 级 ≥ 3, B 级 ≥ 3
+
+            [ ]
+
+            量化率
+
+            EF 量化率 ≥ 80%
+
+            [ ]
+
+            术语一致
+
+            全文术语与输入 terminology_table 一致
+
+            [ ]
+
+            证据追溯
+
+            关键结论有 source_* 字段支撑
+
+            [ ]
+
+            推理标注
+
+            所有推理补全内容已落成自然专业表述，用户可读字段不得出现【推理生成】或【推理生成-估计】
+
+            [ ]
+
+            Schema 合规
+
+            输出完全符合 structured_output schema
+
+            [ ]'
+        - id: 7b05fe5f-05b4-431f-8a20-4fd33688b376
+          role: user
+          text: "# Node-1-2-9: TP-EF 结构化 - User Prompt\n\n> **版本**: v0.2.0  \n> **最后更新**: 2026-02-06\n\n## 用户指令（最高优先级）\n请基于 `round4_graded_principles` 与 `round4_tp_ef_mapping` 生成 `problem_effects`，完成 TP-EF 配对并输出统计信息。\n\n## 输入内容（JSON）\n- `round4_graded_principles`: \n{{#node_1_2_6.structured_output.graded_principles#}}\n- `round4_tp_ef_mapping`: \n{{#node_1_2_6.structured_output.tp_ef_mapping#}}\n- `user_input`: \n{{#start.user_input#}}\n\n---\n\n## Rules\n\n### R0. 输出总约束\n1. 输出必须是单个 JSON 对象，且仅包含 `problem_effects`、`summary_statistics`。  \n2. 严禁输出 Schema 未定义字段。  \n3. 严禁输出 `null`、空白字符串、解释文本。  \n4. 所有 ID、枚举、数量规则必须严格符合 Schema。\n5. `user_input` 仅用于 TP-EF 优先级提示，不得替代 `round4_graded_principles` 与 `round4_tp_ef_mapping` 作为事实来源；`user_input` 与 `alignment_parameters` 互不影响（本节点不消费 `alignment_parameters`）。\n\n### R1. 输入映射规则（按真实上游结构）\n1. TP 主来源：`round4_graded_principles[].tp_structure.tp_list[]`。  \n2. TP 关联方案主来源：`round4_tp_ef_mapping[]` 的 `related_principles`。  \n3. 若 `tp_ef_mapping` 缺失某 TP 的关联方案，可回退到当前方案 `principle_id` 建立关联。  \n4. EF 来源：每个 TP 下现有 `ef_list`，并做格式归一化。\n\n### R2. TP 生成规则\n1. `tp_id` 格式必须为 `TP-xxx`。  \n2. `tp_description` 必须为正向技术目标表述。  \n3. `priority` 仅允许 `高/中/低`。  \n4. `related_principles` 至少 1 项，且每项必须符合 `CP-xxx` 或 `SD-xxx`。\n\n### R3. EF 生成规则\n1. 每个 TP 的 `ef_list` 必须 2-5 项。  \n2. `ef_id` 必须归一化为 `TP-xxx-EF-xxx`。  \n3. 每个 TP 必须且仅能有 1 个 `is_primary=true`。  \n4. `is_quantified=true` 时，必须输出 `baseline_value/target_value/improvement_percentage`。  \n5. `improvement_percentage` 必须为整数百分比字符串，如 `50%`。  \n6. `verification_method` 必须是非空长文本（至少 50 字符）。  \n7. `measurement_uncertainty` 必填，且必须为非空字符串。\n\n### R4. 统计规则\n1. `summary_statistics.total_tp` 必须等于 `problem_effects` 实际数量。  \n2. `summary_statistics.total_ef` 必须等于全部 EF 总数。  \n3. `quantification_ratio` 必须为百分比字符串，如 `75%`。  \n4. `average_ef_per_tp` 必须为 1 位小数字符串，如 `2.7`。  \n5. 若输入不足，仍需输出满足 Schema 的最小合格结构，禁止留空字段。\n\n---\n\n## Format\n\n```json\n{\n  \"problem_effects\": [\n    {\n      \"tp_id\": \"TP-001\",\n      \"tp_description\": \"提高接触力控制稳定性\",\n      \"priority\": \"高\",\n      \"related_principles\": [\"CP-001\", \"SD-019\"],\n      \"ef_list\": [\n        {\n          \"ef_id\": \"TP-001-EF-001\",\n          \"ef_description\": \"接触力波动从20N降低到12N\",\n          \"is_quantified\": true,\n          \"baseline_value\": \"20N\",\n          \"target_value\": \"12N\",\n          \"improvement_percentage\": \"40%\",\n          \"is_primary\": true,\n          \"measurement_uncertainty\": \"±0.5N，来自传感器与采集误差叠加。\",\n          \"verification_method\": \"依据既定动态受流测试流程，在多速度工况下采集接触力时序数据并计算标准差与峰峰值，完成量化验证。\"\n        },\n        {\n          \"ef_id\": \"TP-001-EF-002\",\n          \"ef_description\": \"高频振动耦合导致的瞬态波动降低\",\n          \"is_quantified\": false,\n          \"is_primary\": false,\n          \"measurement_uncertainty\": \"定性评价，受测试工况与专家判读一致性影响。\",\n          \"verification_method\": \"通过同工况对照实验与多轮专家复核，比较控制前后波动形态与稳定区间，形成一致性评估结论。\"\n        }\n      ]\n    }\n  ],\n  \"summary_statistics\": {\n    \"total_tp\": 3,\n    \"total_ef\": 8,\n    \"quantified_ef_count\": 6,\n    \"quantification_ratio\": \"75%\",\n    \"average_ef_per_tp\": \"2.7\"\n  }\n}\n```\n\n---\n\n## Workflow\n\n1. 从 `round4_graded_principles[].tp_structure.tp_list` 抽取 TP，并按 `tp_id` 去重合并。  \n2. 用 `round4_tp_ef_mapping` 构建 TP 到 `related_principles` 映射，不足时回退到方案 `principle_id`。  \n3. 对每个 TP 生成 2-5 条 EF，并将 `ef_id` 归一化为 `TP-xxx-EF-xxx`。  \n4. 选择 1 条主效应标记为 `is_primary=true`，其余为 `false`。  \n5. 对量化 EF 补齐基线、目标、百分比，对全部 EF 输出 `measurement_uncertainty` 和 `verification_method`。  \n6. 计算并输出 `summary_statistics`。  \n7. 输出最终 JSON。\n"
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            $id: https://example.com/schemas/node-1-2-9/problem_effects/v0.1.schema.json
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: false
+            properties:
+              problem_effects:
+                items:
+                  properties:
+                    ef_list:
+                      items:
+                        properties:
+                          baseline_value:
+                            type: string
+                          ef_description:
+                            type: string
+                          ef_id:
+                            type: string
+                          improvement_percentage:
+                            type: string
+                          is_primary:
+                            type: boolean
+                          is_quantified:
+                            type: boolean
+                          measurement_uncertainty:
+                            type: string
+                          target_value:
+                            type: string
+                          verification_method:
+                            type: string
+                        required:
+                        - ef_id
+                        - ef_description
+                        - is_quantified
+                        - is_primary
+                        - measurement_uncertainty
+                        - verification_method
+                        type: object
+                      type: array
+                    priority:
+                      enum:
+                      - 高
+                      - 中
+                      - 低
+                      type: string
+                    related_principles:
+                      items:
+                        type: string
+                      type: array
+                    tp_description:
+                      type: string
+                    tp_id:
+                      type: string
+                  required:
+                  - tp_id
+                  - tp_description
+                  - priority
+                  - related_principles
+                  - ef_list
+                  type: object
+                type: array
+              summary_statistics:
+                properties:
+                  average_ef_per_tp:
+                    type: string
+                  quantification_ratio:
+                    type: string
+                  quantified_ef_count:
+                    type: integer
+                  total_ef:
+                    type: integer
+                  total_tp:
+                    type: integer
+                required:
+                - total_tp
+                - total_ef
+                - quantified_ef_count
+                - quantification_ratio
+                - average_ef_per_tp
+                type: object
+            required:
+            - problem_effects
+            - summary_statistics
+            title: Node-1-2-9::problem_effects::v0.1
+            type: object
+        structured_output_enabled: true
+        title: N-1-2-11 TP-EF结构化
+        type: llm
+        vision:
+          enabled: false
+      height: 117
+      id: node_1_2_9
+      position:
+        x: 3480
+        y: 272
+      positionAbsolute:
+        x: 3480
+        y: 272
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        code: "import json\nfrom typing import Any, Dict, List\n\n\ndef _parse(value: Any) -> Any:\n    if isinstance(value, str):\n        try:\n            return json.loads(value)\n        except json.JSONDecodeError:\n            return {}\n    return value if isinstance(value, (dict, list)) else {}\n\n\ndef _ensure_list(value: Any) -> List[Any]:\n    if isinstance(value, list):\n        return value\n    if value is None:\n        return []\n    return [value]\n\n\ndef _text(value: Any) -> str:\n    if isinstance(value, str):\n        return value.strip()\n    if isinstance(value, (dict, list)):\n        return json.dumps(value, ensure_ascii=False)\n    return \"\"\n\n\ndef _manifest_root(payload: Any) -> Dict[str, Any]:\n    if isinstance(payload, list):\n        return {\"target_list\": payload}\n    if isinstance(payload, dict) and isinstance(payload.get(\"technical_targets_manifesto\"), dict):\n        return payload[\"technical_targets_manifesto\"]\n    return payload if isinstance(payload, dict) else {}\n\n\ndef _build_target_map(manifesto: Dict[str, Any]) -> Dict[str, List[str]]:\n    root = _manifest_root(manifesto)\n    result: Dict[str, List[str]] = {}\n    for item in _ensure_list(root.get(\"target_list\")):\n        if not isinstance(item, dict):\n            continue\n        target_id = _text(item.get(\"target_id\"))\n        if not target_id:\n            continue\n        if isinstance(item.get(\"solution_ids\"), list):\n            for solution_id in [_text(v) for v in item.get(\"solution_ids\")]:\n                if solution_id:\n                    result.setdefault(solution_id, []).append(target_id)\n            continue\n        for mapping in _ensure_list(item.get(\"solution_mapping\")):\n            if not isinstance(mapping, dict):\n                continue\n            solution_id = _text(mapping.get(\"solution_id\"))\n            if not solution_id:\n                continue\n            result.setdefault(solution_id, []).append(target_id)\n    return {k: sorted(set(v)) for k, v in result.items()}\n\n\ndef _build_effect_map(problem_effect: Dict[str, Any]) -> Dict[str, List[str]]:\n    mapping: Dict[str, List[str]] = {}\n    for item in _ensure_list(problem_effect.get(\"problem_effects\")):\n        if not isinstance(item, dict):\n            continue\n        principle_id = _text(item.get(\"principle_id\")) or _text(item.get(\"solution_id\"))\n        effect_id = _text(item.get(\"effect_id\")) or _text(item.get(\"ef_id\"))\n        if principle_id and effect_id:\n            mapping.setdefault(principle_id, []).append(effect_id)\n    return {k: sorted(set(v)) for k, v in mapping.items()}\n\n\ndef _clean_row(row: Dict[str, Any]) -> Dict[str, Any]:\n    clean: Dict[str, Any] = {}\n    for key, value in row.items():\n        if value is None:\n            continue\n        if isinstance(value, str):\n            value = value.strip()\n            if not value:\n                continue\n        if isinstance(value, list):\n            value = [item for item in value if item not in (None, \"\", [])]\n        clean[key] = value\n    return clean\n\n\ndef main(\n    round4_final_result=None,\n    problem_effect=None,\n    technical_targets_manifesto=None,\n    round1_candidate_principles=None,\n):\n    round4 = _parse(round4_final_result)\n    problem_effect_obj = _parse(problem_effect)\n    manifesto = _parse(technical_targets_manifesto)\n    round1 = _parse(round1_candidate_principles)\n\n    round1_map: Dict[str, Dict[str, Any]] = {}\n    for item in _ensure_list(round1):\n        if isinstance(item, dict):\n            pid = _text(item.get(\"principle_id\"))\n            if pid:\n                round1_map[pid] = item\n\n    target_map = _build_target_map(manifesto)\n    effect_map = _build_effect_map(problem_effect_obj)\n\n    merged_rows: List[Dict[str, Any]] = []\n    for item in _ensure_list(round4.get(\"graded_principles\")):\n        if not isinstance(item, dict):\n            continue\n        principle_id = _text(item.get(\"principle_id\"))\n        if not principle_id:\n            continue\n        round1_item = round1_map.get(principle_id, {})\n        row = _clean_row(\n            {\n                \"principle_id\": principle_id,\n                \"principle_name\": _text(item.get(\"principle_name\")) or _text(round1_item.get(\"principle_name\")),\n                \"grade\": _text(item.get(\"grade\")),\n                \"triz_principle\": _text(item.get(\"triz_principle\")) or _text(round1_item.get(\"triz_principle\")),\n                \"technical_description\": _text(round1_item.get(\"technical_description\"))\n                or _text(item.get(\"technical_description\")),\n                \"mapped_targets\": target_map.get(principle_id, []),\n                \"mapped_effects\": effect_map.get(principle_id, []),\n            }\n        )\n        if row:\n            merged_rows.append(row)\n\n    payload = {\"candidate_principles\": merged_rows}\n    return {\n        \"candidate_principles_json\": json.dumps(payload, ensure_ascii=False, indent=2),\n        \"candidate_principles_obj\": payload,\n    }\n"
+        code_language: python3
+        outputs:
+          candidate_principles_json:
+            type: string
+          candidate_principles_obj:
+            type: object
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: N-1-2-12 方案列表整合
+        type: code
+        variables:
+        - value_selector:
+          - node_1_2_6
+          - structured_output
+          value_type: object
+          variable: round4_final_result
+        - value_selector:
+          - node_1_2_9
+          - structured_output
+          value_type: object
+          variable: problem_effect
+        - value_selector:
+          - node_1_2_7
+          - structured_output
+          value_type: object
+          variable: technical_targets_manifesto
+        - value_selector:
+          - node_1_2_2
+          - structured_output
+          - candidate_principles
+          value_type: array[object]
+          variable: round1_candidate_principles
+      height: 81
+      id: node_1_2_12
+      position:
+        x: 3842
+        y: 107
+      positionAbsolute:
+        x: 3842
+        y: 107
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            reasoning_effort: medium
+            temperature: 0.3
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: n1301_system_refined
+          role: system
+          text: '你是 Triz 分析报告的洞察锚点裁判器。
+
+            只输出符合 schema 的 JSON，不输出解释、Markdown 代码块或 schema 外字段。
+
+
+            目标：输出供后续报告链共享的最小可靠洞察锚点包，而不是把材料补写成完整报告。
+
+
+            固定输出四个顶层键：`executive_summary`、`summary_facts`、`consistency_anchors`、`validation_rules`。
+
+
+            总原则：
+
+            1. 只保留能够从输入中直接追溯或稳健归纳的信息。
+
+            2. 创造性只能来自技术矛盾揭示、机制因果链、方案协同/冲突、工程边界与约束、保护层次与规避逻辑、推进顺序与验证路径。
+
+            3. 不得通过补写性能指标、容量、比率、时延、功率密度或其他工程规格来制造完整性、专业感或丰富度。
+
+            4. 推测性表达采用平衡型：只有在现有证据链支持有限假设时，才允许写 `（推测）`；若没有必要，不要为了显得有洞察而强加假设。
+
+            5. 全部使用简体中文短句。
+
+
+            数值与字段规则：
+
+            1. 只有当数值/比例/时长/功率/力矩/角度等表达能在输入中找到明确来源时，才可以裸数值输出。
+
+            2. 若你需要复述一个没有明确来源的数值，只能写成 `原数值（推测）`；若该数值不是完成当前字段所必需，优先改写为保守定性表述。
+
+            3. 若输入里已经出现裸数值，但你无法确认其来源，不得原样复制为裸数值；必须改成 `原数值（推测）` 或改写为定性表述。
+
+            4. `executive_summary.date` 只有输入中明确出现时才填写；否则输出空字符串。
+
+            5. `summary_facts.quantified_benefit` 若缺少可直接追溯的数值锚点，优先输出定性收益总结，或写“待补证，不做量化承诺”。
+
+            6. `consistency_anchors.key_metrics` 只允许放可直接追溯的数值型锚点；没有就输出空列表或极短保守列表。
+
+            7. `validation_rules` 必须始终输出，且只保留最小规则对象：`required_output_keys/unsupported_numeric_rule/min_key_metrics`。
+
+            8. `validation_rules` 中不得输出任何布尔开关字段或同义 yes/no 规则项。
+
+            9. 禁止输出内部推理标签、机构扩写、外部标准号、专利号、schema 外字段或任何“为了看起来完整”而补写的事实。'
+        - id: n1301_user_refined
+          role: user
+          text: "请生成“紧凑报告洞察锚点包”。\n\n你的角色是：洞察锚点裁判器 / fail-close 锚点生成器。\n\n【用户要求】\n{{#start.user_input#}}\n\n【landscape_problems】\n{{#node_1_2_1.structured_output.problems#}}\n\n【landscape_solutions】\n{{#node_1_2_1.structured_output.solutions#}}\n\n【landscape_standards】\n{{#node_1_2_1.structured_output.standards#}}\n\n【landscape_technologies】\n{{#node_1_2_1.structured_output.technologies#}}\n\n【targets_recommended_targets】\n{{#node_1_2_7.structured_output.recommended_targets#}}\n\n【targets_summary_statistics】\n{{#node_1_2_7.structured_output.summary_statistics#}}\n\n【targets_traceability_verification】\n{{#node_1_2_7.structured_output.traceability_verification#}}\n\n【tp_ef_problem_effects】\n{{#node_1_2_9.structured_output.problem_effects#}}\n\n【tp_ef_summary_statistics】\n{{#node_1_2_9.structured_output.summary_statistics#}}\n\n【候选方案】\n{{#node_1_2_12.candidate_principles_json#}}\n\n输出要求：\n1. 必须同时输出四个顶层键：`executive_summary`、`summary_facts`、`consistency_anchors`、`validation_rules`。\n2. `executive_summary` 只保留：`title/project_name/date/key_findings/recommended_solutions/next_steps`。\n3. `summary_facts` 只保留：`core_problem/top3_solutions/quantified_benefit/next_actions/evidence_source_ids`。\n4. `consistency_anchors` 只保留：`project_name/core_problem_statement/priority_solutions/failure_chains/top_contradictions/key_metrics`。\n5. `validation_rules` 固定保留：`required_output_keys/unsupported_numeric_rule/min_key_metrics`。\n6. `key_findings` 不得只写结论短句；每条都必须写成洞察句，结构固定为：`矛盾/问题 → 原因/机制 → 含义/影响`。\n7. `failure_chains` 必须写成真实因果链，而不是并列问题清单；至少体现“触发条件/机制/结果或风险”。\n8. `top_contradictions` 必须体现“为什么这是关键矛盾”，而不是只列词条。\n9. 任何没有明确来源的数值都不得裸写：\n   - 必须保留时，写成 `数值（推测）`；\n   - 对完成当前字段不是必需时，优先删除并改写为定性表述。\n10. 若输入中已经出现裸数值但无法确认来源，不得原样复述，必须主动修复为 `（推测）` 或定性表达。\n11. `executive_summary.date` 只有输入明确给出时才填写，否则写空字符串。\n12. `summary_facts.quantified_benefit` 在缺少直接数值锚点时，只能写定性收益总结，或写“待补证，不做量化承诺”。\n13. `key_metrics` 只保留可直接追溯的数值锚点；没有则输出空列表。\n14. `validation_rules.unsupported_numeric_rule` 固定表达为：`无明确来源的数值必须写成“数值（推测）”；若非必要，优先改为定性表述。`\n15. `validation_rules` 中不得输出任何布尔开关字段或同义 yes/no 规则项。\n16. 创造性只能来自技术矛盾揭示、机制因果链、方案协同/冲突、工程边界与约束、保护层次与规避逻辑、推进顺序与验证路径，不得通过补写性能指标、容量、比率、时延、功率密度来制造完整性或专业感。\n17. 若输入不足，也必须输出四个顶层键，并使用保守表达。以下示例只用于强化结构，不要额外扩写 prose：\n{\"validation_rules\":{\"required_output_keys\":[\"executive_summary\",\"summary_facts\",\"consistency_anchors\",\"validation_rules\"],\"unsupported_numeric_rule\":\"无明确来源的数值必须写成“数值（推测）”；若非必要，优先改为定性表述。\",\"min_key_metrics\":0}}"
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            properties:
+              consistency_anchors:
+                properties:
+                  core_problem_statement:
+                    type: string
+                  failure_chains:
+                    items:
+                      type: string
+                    type: array
+                  key_metrics:
+                    items:
+                      type: string
+                    type: array
+                  priority_solutions:
+                    items:
+                      type: string
+                    type: array
+                  project_name:
+                    type: string
+                  top_contradictions:
+                    items:
+                      type: string
+                    type: array
+                required:
+                - project_name
+                - core_problem_statement
+                - priority_solutions
+                - failure_chains
+                - top_contradictions
+                - key_metrics
+                type: object
+              executive_summary:
+                properties:
+                  date:
+                    type: string
+                  key_findings:
+                    items:
+                      type: string
+                    type: array
+                  next_steps:
+                    items:
+                      type: string
+                    type: array
+                  project_name:
+                    type: string
+                  recommended_solutions:
+                    items:
+                      type: string
+                    type: array
+                  title:
+                    type: string
+                required:
+                - title
+                - key_findings
+                - recommended_solutions
+                - next_steps
+                type: object
+              summary_facts:
+                properties:
+                  core_problem:
+                    type: string
+                  evidence_source_ids:
+                    items:
+                      type: string
+                    type: array
+                  next_actions:
+                    items:
+                      type: string
+                    type: array
+                  quantified_benefit:
+                    type: string
+                  top3_solutions:
+                    items:
+                      type: string
+                    type: array
+                required:
+                - core_problem
+                - top3_solutions
+                - quantified_benefit
+                - next_actions
+                - evidence_source_ids
+                type: object
+              validation_rules:
+                properties:
+                  min_key_metrics:
+                    type: integer
+                  required_output_keys:
+                    items:
+                      type: string
+                    type: array
+                  unsupported_numeric_rule:
+                    type: string
+                required:
+                - required_output_keys
+                - unsupported_numeric_rule
+                - min_key_metrics
+                type: object
+            required:
+            - executive_summary
+            - summary_facts
+            - consistency_anchors
+            - validation_rules
+            type: object
+        structured_output_enabled: true
+        title: N-1-2-13 报告锚点生成
+        type: llm
+        vision:
+          enabled: false
+      height: 117
+      id: node_1_2_13
+      position:
+        x: 4184
+        y: 89
+      positionAbsolute:
+        x: 4184
+        y: 89
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - '1770105539919'
+          - triz_report_markdown
+          value_type: string
+          variable: triz_report_content
+        - value_selector:
+          - '1769264025839'
+          - files
+          value_type: array[file]
+          variable: triz_report_docx_file
+        selected: false
+        title: N-1-2-END 结束
+        type: end
+      height: 114
+      id: end
+      position:
+        x: 7604
+        y: 91
+      positionAbsolute:
+        x: 7604
+        y: 91
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: '%Y-%m-%d %H:%M:%S'
+          form: form
+          human_description:
+            en_US: Time format in strftime standard.
+            ja_JP: Time format in strftime standard.
+            pt_BR: Time format in strftime standard.
+            zh_Hans: strftime 标准的时间格式。
+          label:
+            en_US: Format
+            ja_JP: Format
+            pt_BR: Format
+            zh_Hans: 格式
+          llm_description: null
+          max: null
+          min: null
+          name: format
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: UTC
+          form: form
+          human_description:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          label:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          llm_description: null
+          max: null
+          min: null
+          name: timezone
+          options:
+          - icon: null
+            label:
+              en_US: UTC
+              ja_JP: UTC
+              pt_BR: UTC
+              zh_Hans: UTC
+            value: UTC
+          - icon: null
+            label:
+              en_US: America/New_York
+              ja_JP: America/New_York
+              pt_BR: America/New_York
+              zh_Hans: 美洲/纽约
+            value: America/New_York
+          - icon: null
+            label:
+              en_US: America/Los_Angeles
+              ja_JP: America/Los_Angeles
+              pt_BR: America/Los_Angeles
+              zh_Hans: 美洲/洛杉矶
+            value: America/Los_Angeles
+          - icon: null
+            label:
+              en_US: America/Chicago
+              ja_JP: America/Chicago
+              pt_BR: America/Chicago
+              zh_Hans: 美洲/芝加哥
+            value: America/Chicago
+          - icon: null
+            label:
+              en_US: America/Sao_Paulo
+              ja_JP: America/Sao_Paulo
+              pt_BR: América/São Paulo
+              zh_Hans: 美洲/圣保罗
+            value: America/Sao_Paulo
+          - icon: null
+            label:
+              en_US: Asia/Shanghai
+              ja_JP: Asia/Shanghai
+              pt_BR: Asia/Shanghai
+              zh_Hans: 亚洲/上海
+            value: Asia/Shanghai
+          - icon: null
+            label:
+              en_US: Asia/Ho_Chi_Minh
+              ja_JP: Asia/Ho_Chi_Minh
+              pt_BR: Ásia/Ho Chi Minh
+              zh_Hans: 亚洲/胡志明市
+            value: Asia/Ho_Chi_Minh
+          - icon: null
+            label:
+              en_US: Asia/Tokyo
+              ja_JP: Asia/Tokyo
+              pt_BR: Asia/Tokyo
+              zh_Hans: 亚洲/东京
+            value: Asia/Tokyo
+          - icon: null
+            label:
+              en_US: Asia/Dubai
+              ja_JP: Asia/Dubai
+              pt_BR: Asia/Dubai
+              zh_Hans: 亚洲/迪拜
+            value: Asia/Dubai
+          - icon: null
+            label:
+              en_US: Asia/Kolkata
+              ja_JP: Asia/Kolkata
+              pt_BR: Asia/Kolkata
+              zh_Hans: 亚洲/加尔各答
+            value: Asia/Kolkata
+          - icon: null
+            label:
+              en_US: Asia/Seoul
+              ja_JP: Asia/Seoul
+              pt_BR: Asia/Seoul
+              zh_Hans: 亚洲/首尔
+            value: Asia/Seoul
+          - icon: null
+            label:
+              en_US: Asia/Singapore
+              ja_JP: Asia/Singapore
+              pt_BR: Asia/Singapore
+              zh_Hans: 亚洲/新加坡
+            value: Asia/Singapore
+          - icon: null
+            label:
+              en_US: Europe/London
+              ja_JP: Europe/London
+              pt_BR: Europe/London
+              zh_Hans: 欧洲/伦敦
+            value: Europe/London
+          - icon: null
+            label:
+              en_US: Europe/Berlin
+              ja_JP: Europe/Berlin
+              pt_BR: Europe/Berlin
+              zh_Hans: 欧洲/柏林
+            value: Europe/Berlin
+          - icon: null
+            label:
+              en_US: Europe/Moscow
+              ja_JP: Europe/Moscow
+              pt_BR: Europe/Moscow
+              zh_Hans: 欧洲/莫斯科
+            value: Europe/Moscow
+          - icon: null
+            label:
+              en_US: Australia/Sydney
+              ja_JP: Australia/Sydney
+              pt_BR: Australia/Sydney
+              zh_Hans: 澳大利亚/悉尼
+            value: Australia/Sydney
+          - icon: null
+            label:
+              en_US: Pacific/Auckland
+              ja_JP: Pacific/Auckland
+              pt_BR: Pacific/Auckland
+              zh_Hans: 太平洋/奥克兰
+            value: Pacific/Auckland
+          - icon: null
+            label:
+              en_US: Africa/Cairo
+              ja_JP: Africa/Cairo
+              pt_BR: Africa/Cairo
+              zh_Hans: 非洲/开罗
+            value: Africa/Cairo
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          format: ''
+          timezone: ''
+        plugin_id: null
+        plugin_unique_identifier: ''
+        provider_icon: /console/api/workspaces/current/tool-provider/builtin/time/icon
+        provider_id: time
+        provider_name: time
+        provider_type: builtin
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: N-1-2-21 获取当前时间
+        tool_configurations:
+          format:
+            type: mixed
+            value: '%Y-%m-%d %H:%M'
+          timezone:
+            type: constant
+            value: Asia/Shanghai
+        tool_description: 一个用于获取当前时间的工具。
+        tool_label: 获取当前时间
+        tool_name: current_time
+        tool_node_version: '2'
+        tool_parameters: {}
+        type: tool
+      height: 143
+      id: '1769263949895'
+      position:
+        x: 6920
+        y: 76
+      positionAbsolute:
+        x: 6920
+        y: 76
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          label:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          llm_description: ''
+          max: null
+          min: null
+          name: md_text
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Optional docx template file for styling。Use "Home"-"Styles Pane" in Microsoft Word to edit styles of the docx file.
+            ja_JP: Optional docx template file for styling。Use "Home"-"Styles Pane" in Microsoft Word to edit styles of the docx file.
+            pt_BR: Optional docx template file for styling。Use "Home"-"Styles Pane" in Microsoft Word to edit styles of the docx file.
+            zh_Hans: 可选的docx模板文件，用于样式控制。使用Microsoft Word中“开始”-“样式窗格”对docx文件的样式进行编辑。
+          label:
+            en_US: DOCX Template File
+            ja_JP: DOCX Template File
+            pt_BR: DOCX Template File
+            zh_Hans: DOCX 模板文件
+          llm_description: An optional .pptx file that serves as a template for the generated presentation
+          max: null
+          min: null
+          name: docx_template_file
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: file
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Optional custom output file name, and the filename suffix is not required.
+            ja_JP: Optional custom output file name, and the filename suffix is not required.
+            pt_BR: Optional custom output file name, and the filename suffix is not required.
+            zh_Hans: 可选的自定义输出文件名，后缀名无需指定
+          label:
+            en_US: Output Filename
+            ja_JP: Output Filename
+            pt_BR: Output Filename
+            zh_Hans: 输出文件名
+          llm_description: ''
+          max: null
+          min: null
+          name: output_filename
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          docx_template_file: ''
+          md_text: ''
+          output_filename: ''
+        plugin_id: bowenliang123/md_exporter
+        plugin_unique_identifier: bowenliang123/md_exporter:3.6.9@3f027d63e80b44d5d5a9f706871afaef37905b8f8a89a2d152dc530211a8acb1
+        provider_icon: /console/api/workspaces/current/plugin/icon?tenant_id=2cf986dc-18a6-4926-b645-5a5b199da0b4&filename=f0bad95cda1671b4e49f0e05df6122ef9ec5d554e138f128795d11d3806c00ef.svg
+        provider_id: bowenliang123/md_exporter/md_exporter
+        provider_name: bowenliang123/md_exporter/md_exporter
+        provider_type: builtin
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: N-1-2-22 Markdown ⮕ DOCX-triz
+        tool_configurations: {}
+        tool_description: 将 Markdown 转换为 DOCX 文件的工具
+        tool_label: Markdown ⮕ DOCX
+        tool_name: md_to_docx
+        tool_node_version: '2'
+        tool_parameters:
+          docx_template_file:
+            type: constant
+            value: null
+          md_text:
+            type: mixed
+            value: '{{#1770105539919.triz_report_markdown#}}'
+          output_filename:
+            type: mixed
+            value: triz_report{{#1769263949895.text#}}
+        type: tool
+      height: 81
+      id: '1769264025839'
+      position:
+        x: 7262
+        y: 107
+      positionAbsolute:
+        x: 7262
+        y: 107
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            reasoning_effort: medium
+            temperature: 0.7
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: system
+          role: system
+          text: "你是 Triz 分析报告中的专利方向分析撰写器。\n只输出 Markdown 正文，不输出 JSON、解释或代码块。\n\n你的唯一任务是输出一段“专利方向分析（含检索式）”正文，但首行必须使用兼容包装标题 `## S-02 专利（含检索式）` 以供下游节点剥离。\n注意：这个旧标题只允许出现在第一行，正文其余位置不得再出现任何 `S-*` 标签。\n\n规则：\n1. 必须优先筛选“最有专利价值的技术组合”，不得把技术正文简单改写成专利语言。\n2. 创造性与完整性来自技术组合抽象、保护层次拆分、规避点与替代实现，而不是补写裸数值。\n3. 必须包含至少这些子节：\n   - `### 最有专利价值的技术组合`\n   - `### 保护层次与布局建议`\n   - `### 检索式`\n   - `### 检索备注`\n4. `### 检索式` 中的中文布尔检索式、英文布尔检索式、关键词组、IPC/CPC 建议，必须围绕高价值技术组合生成。\n5. 检索式本体不得包含没有明确来源的数值；这类信息只能放进 `### 检索备注`，并且必须带 `（推测）`。\n6. 若输入中的任何数值已带 `（推测）`，必须在正文或检索备注中原样保留该标记。\n7. 若输入里已有裸量化但你无法确认来源，不得原样复述；正文中必须改成 `（推测）` 或定性表述，检索式本体中则直接删除该数值。\n8. 正文中不得出现 `S-02`、`S-03`、`S-03-1/2/3` 等旧标签。"
+        - id: user
+          role: user
+          text: "请撰写专利方向分析（含检索式）。\n\n首行必须是：`## S-02 专利（含检索式）`\n\n【executive_summary】\n{{#node_1_2_13.structured_output.executive_summary#}}\n\n【summary_facts】\n{{#node_1_2_13.structured_output.summary_facts#}}\n\n【consistency_anchors】\n{{#node_1_2_13.structured_output.consistency_anchors#}}\n\n【terminology_table】\n{{#1775101302001.structured_output.terminology_table#}}\n\n【技术方向分析：问题与边界】\n{{#1770105429723.text#}}\n\n【技术方向分析：方案与路径】\n{{#1770105447954.text#}}\n\n【技术方向分析：验证与实施】\n{{#1770105488807.text#}}\n\n写作要求：\n- 正文中不再说“根据 S-03 技术内容”，改写为“基于技术方向分析的结果”或同义表述。\n- 除首行兼容包装标题外，正文不得出现旧 `S-*` 标签。\n- 正文必须按以下 H3 标题顺序展开：\n  - `### 最有专利价值的技术组合`\n  - `### 关键洞察`\n  - `### 保护层次与布局建议`\n  - `### 检索式`\n  - `### 检索备注`\n- `关键洞察` 必须回答：\n  - 为什么这个组合值得保护；\n  - 哪个机制点最难被替代；\n  - 哪个点最容易被规避。\n- 完整性和创造性应来自技术组合抽象、保护层次、规避点、替代实现与保护洞察，而不是补写猜测性指标。\n- 中文/英文布尔检索式本体中不得出现没有明确来源的数值；若某个推测性指标有参考价值，只能放在 `### 检索备注` 中并带 `（推测）`。\n- 若输入中已带 `（推测）` 的数值，正文或检索备注中必须保留标记。\n- 若输入中的裸数值无法确认来源，正文中必须改成 `（推测）` 或定性表述，不能继续裸写；检索式本体中直接删除这类数值。\n- 检索式应优先围绕功能、结构、作用机理、技术路径与保护层次，而不是猜测性的性能阈值。"
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output_enabled: false
+        title: N-1-2-18 S-02 专利（含检索式）
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 117
+      id: '1770105503949'
+      position:
+        x: 5894
+        y: 89
+      positionAbsolute:
+        x: 5894
+        y: 89
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import re\n\n\ndef _clean_text(text):\n    if text is None:\n        return \"\"\n    text = str(text).replace(\"\\r\\n\", \"\\n\").replace(\"\\r\", \"\\n\").strip()\n    text = re.sub(r\"^```[a-zA-Z0-9_-]*\\n?\", \"\", text)\n    text = re.sub(r\"\\n?```$\", \"\", text)\n    return text.strip()\n\n\ndef _strip_heading(text, expected_heading):\n    text = _clean_text(text)\n    if not text:\n        return \"\"\n    lines = [line.rstrip() for line in text.split(\"\\n\")]\n    while lines and not lines[0].strip():\n        lines.pop(0)\n    if lines and lines[0].strip() == expected_heading:\n        return \"\\n\".join(lines[1:]).strip()\n    return \"\\n\".join(lines).strip()\n\n\ndef _split_blocks(text):\n    text = _clean_text(text)\n    if not text:\n        return []\n    raw_blocks = re.split(r\"\\n\\s*\\n\", text)\n    return [block.strip() for block in raw_blocks if block.strip()]\n\n\ndef _norm_key(block):\n    return re.sub(r\"\\s+\", \"\", block)\n\n\ndef _dedupe_blocks(blocks, seen):\n    result = []\n    for block in blocks:\n        key = _norm_key(block)\n        if key in seen:\n            continue\n        seen.add(key)\n        result.append(block)\n    return result\n\n\ndef _section(heading, body_blocks):\n    if not body_blocks:\n        return \"\"\n    return heading + \"\\n\\n\" + \"\\n\\n\".join(body_blocks).strip()\n\n\ndef main(s01_summary=None, s02_patent=None, s03_part1=None, s03_part2=None, s03_part3=None):\n    seen = set()\n\n    s01_blocks = _dedupe_blocks(_split_blocks(_strip_heading(s01_summary, \"## S-01 概要\")), seen)\n    s02_blocks = _dedupe_blocks(_split_blocks(_strip_heading(s02_patent, \"## S-02 专利（含检索式）\")), seen)\n    s03_1_blocks = _dedupe_blocks(_split_blocks(_strip_heading(s03_part1, \"### S-03-1 技术（上篇）\")), seen)\n    s03_2_blocks = _dedupe_blocks(_split_blocks(_strip_heading(s03_part2, \"### S-03-2 技术（中篇）\")), seen)\n    s03_3_blocks = _dedupe_blocks(_split_blocks(_strip_heading(s03_part3, \"### S-03-3 技术（下篇）\")), seen)\n\n    s03_blocks = []\n    for blocks in (s03_1_blocks, s03_2_blocks, s03_3_blocks):\n        s03_blocks.extend(blocks)\n\n    parts = [\"# Triz分析报告\"]\n\n    s01_section = _section(\"## 报告概要\", s01_blocks)\n    if s01_section:\n        parts.extend([\"\", s01_section])\n\n    s02_section = _section(\"## 专利方向分析（含检索式）\", s02_blocks)\n    if s02_section:\n        parts.extend([\"\", s02_section])\n\n    s03_section = _section(\"## 技术方向分析\", s03_blocks)\n    if s03_section:\n        parts.extend([\"\", s03_section])\n\n    report = \"\\n\".join(parts)\n    report = re.sub(r\"\\n{3,}\", \"\\n\\n\", report).strip() + \"\\n\"\n    return {\"triz_report_markdown\": report}\n"
+        code_language: python3
+        outputs:
+          triz_report_markdown:
+            children: null
+            type: string
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: N-1-2-20 Triz报告规范化与去重输出
+        type: code
+        variables:
+        - value_selector:
+          - '1770105577001'
+          - text
+          value_type: string
+          variable: s01_summary
+        - value_selector:
+          - '1770105503949'
+          - text
+          value_type: string
+          variable: s02_patent
+        - value_selector:
+          - '1770105429723'
+          - text
+          value_type: string
+          variable: s03_part1
+        - value_selector:
+          - '1770105447954'
+          - text
+          value_type: string
+          variable: s03_part2
+        - value_selector:
+          - '1770105488807'
+          - text
+          value_type: string
+          variable: s03_part3
+      height: 81
+      id: '1770105539919'
+      position:
+        x: 6578
+        y: 107
+      positionAbsolute:
+        x: 6578
+        y: 107
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            reasoning_effort: medium
+            temperature: 0.3
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: system
+          role: system
+          text: "你是 Triz 分析报告的技术方向分析规划器。\n只输出符合 schema 的 JSON，不输出解释、Markdown 代码块或 schema 外字段。\n\n你的唯一任务是生成：\n1. `terminology_table`\n2. `triz_report_outline`\n\n规则：\n1. 只为“技术方向分析”生成详细写作大纲，不生成概要或专利方向分析大纲。\n2. `triz_report_outline.section_id` 固定为 `TECH`，标题固定为 `技术方向分析`。\n3. 必须细分出 3 个子节，且顺序固定为：\n   - `T-1 技术问题与目标边界`\n   - `T-2 技术方案与实现路径`\n   - `T-3 技术验证与工程建议`\n4. 细致度必须来自：问题拆解、方案协同、因果链、证据归类、工程边界、验证路径；不得通过补性能数字、容量、比例、响应时间或工程指标来“做细”。\n5. `terminology_table.list[].usage_in_s03` 虽然沿用旧字段名，但内容必须描述该术语在“技术方向分析”正文中的用法，不得写旧 `S-*` 标签。\n6. 若输入中的任何数值已带 `（推测）`，必须原样保留该标记。\n7. 若输入中已有裸量化但你无法确认来源，不得原样复述；必须改成 `（推测）` 或改写为定性表述。\n8. 若你自己想补充一个没有明确来源的数值，禁止裸写；只能写成 `（推测）`，或直接改成定性表述。\n9. 不新增外部事实、行业案例、标准号或 schema 外字段。"
+        - id: user
+          role: user
+          text: "请生成“术语表 + 技术方向分析详细大纲”。\n\n【用户要求】\n{{#start.user_input#}}\n\n【anchor_summary_facts】\n{{#node_1_2_13.structured_output.summary_facts#}}\n\n【anchor_consistency_anchors】\n{{#node_1_2_13.structured_output.consistency_anchors#}}\n\n【anchor_validation_rules】\n{{#node_1_2_13.structured_output.validation_rules#}}\n\n【candidate_principles】\n{{#node_1_2_12.candidate_principles_json#}}\n\n【recommended_targets】\n{{#node_1_2_7.structured_output.recommended_targets#}}\n\n【targets_summary_statistics】\n{{#node_1_2_7.structured_output.summary_statistics#}}\n\n【targets_traceability_verification】\n{{#node_1_2_7.structured_output.traceability_verification#}}\n\n【tp_ef_problem_effects】\n{{#node_1_2_9.structured_output.problem_effects#}}\n\n【tp_ef_summary_statistics】\n{{#node_1_2_9.structured_output.summary_statistics#}}\n\n输出要求：\n1. `terminology_table.list` 建议 10-18 项，只保留技术方向分析真正需要的关键术语。\n2. `triz_report_outline` 的 `section_id` 必须是 `TECH`，`title` 必须是 `技术方向分析`。\n3. `triz_report_outline.subsections` 固定 3 项，依次对应：\n   - `T-1 技术问题与目标边界`\n   - `T-2 技术方案与实现路径`\n   - `T-3 技术验证与工程建议`\n4. 每个子节的 `key_points` 建议 4-6 项，`evidence_refs` 建议 2-5 项，`must_include` 建议 3-5 项。\n5. 每个子节都必须显式体现 3 类展开重点：\n   - `关键洞察`\n   - `因果链/机制解释`\n   - `工程边界/验证重点`\n6. 大纲的细致度必须更多来自结构层次、问题拆解、机制链条、工程边界与验证路径，而不是来自 `must_include` 的工程指标化堆砌。\n7. 允许保留现有 `key_points/evidence_refs/must_include` 配额，但这些配额只能服务于：\n   - 问题拆解\n   - 机制链条\n   - 工程边界\n   - 验证路径\n   而不是服务于：\n   - 指标化填充\n   - 伪工程规格\n8. 创造性和完整性只能来自技术矛盾揭示、机制因果链、方案协同/冲突、工程边界与约束、保护层次与规避逻辑、推进顺序与验证路径，不得通过补写性能数字、容量、比率、时延或功率密度制造专业感。\n9. 不要在标题、focus、key_points、evidence_refs、must_include 中使用旧 `S-01/S-02/S-03/S-03-1/S-03-2/S-03-3` 标签。\n10. 若输入里出现裸数值但无法确认来源，不得原样保留：\n   - 对完成大纲不是必需时，优先改写为定性目标；\n   - 必须保留时，主动修复为 `数值（推测）`。\n11. 不得为了让大纲更“像工程文档”而补写性能数字、容量、比率或时延指标。"
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            properties:
+              terminology_table:
+                properties:
+                  list:
+                    items:
+                      properties:
+                        explanation:
+                          type: string
+                        full_name:
+                          type: string
+                        term:
+                          type: string
+                        usage_in_s03:
+                          type: string
+                      required:
+                      - term
+                      - full_name
+                      - explanation
+                      - usage_in_s03
+                      type: object
+                    type: array
+                required:
+                - list
+                type: object
+              triz_report_outline:
+                properties:
+                  section_id:
+                    type: string
+                  subsections:
+                    items:
+                      properties:
+                        evidence_refs:
+                          items:
+                            type: string
+                          type: array
+                        focus:
+                          type: string
+                        key_points:
+                          items:
+                            type: string
+                          type: array
+                        must_include:
+                          items:
+                            type: string
+                          type: array
+                        subsection_id:
+                          type: string
+                        title:
+                          type: string
+                      required:
+                      - subsection_id
+                      - title
+                      - focus
+                      - key_points
+                      - evidence_refs
+                      - must_include
+                      type: object
+                    type: array
+                  title:
+                    type: string
+                  writing_goal:
+                    type: string
+                required:
+                - section_id
+                - title
+                - writing_goal
+                - subsections
+                type: object
+            required:
+            - terminology_table
+            - triz_report_outline
+            type: object
+        structured_output_enabled: true
+        title: N-1-2-14 术语表与Triz报告大纲
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 117
+      id: '1775101302001'
+      position:
+        x: 4526
+        y: 89
+      positionAbsolute:
+        x: 4526
+        y: 89
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            reasoning_effort: medium
+            temperature: 0.7
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: system
+          role: system
+          text: '你是 Triz 分析报告的技术正文撰写器。
+
+            只输出 Markdown 正文，不输出 JSON、解释、代码块或其他章节。
+
+
+            你的唯一任务是输出一段“技术方向分析”正文，但首行必须使用兼容包装标题 `### S-03-1 技术（上篇）` 以供下游节点剥离。
+
+            注意：这个旧标题只允许出现在第一行，正文其余位置不得再出现任何 `S-*` 标签。
+
+
+            正文任务：
+
+            1. 只写技术问题、目标边界、关键矛盾、约束与技术靶点。
+
+            2. 不写专利布局、检索式、概要总结。
+
+            3. 创造性与完整性必须来自问题拆解、矛盾刻画、边界条件和工程约束，不得通过补写裸数值来“做完整”。
+
+            4. 若输入中的任何数值已带 `（推测）`，必须原样保留该标记。
+
+            5. 若输入里已有裸量化但你无法确认来源，不得原样复述；必须改成 `（推测）` 或改写为定性表述。
+
+            6. 若你自己想补充一个没有明确来源的数值，禁止裸写；若非必要请省略，必要时只能写成 `（推测）`。
+
+            7. 正文中不得复述 `S-03`、`S-03-1` 等旧标签。'
+        - id: user
+          role: user
+          text: "请撰写技术方向分析的“问题与边界”部分。\n\n首行必须是：`### S-03-1 技术（上篇）`\n\n【技术方向分析大纲】\n{{#1775101302001.structured_output.triz_report_outline#}}\n\n【summary_facts】\n{{#node_1_2_13.structured_output.summary_facts#}}\n\n【consistency_anchors】\n{{#node_1_2_13.structured_output.consistency_anchors#}}\n\n【candidate_principles】\n{{#node_1_2_12.candidate_principles_json#}}\n\n【recommended_targets】\n{{#node_1_2_7.structured_output.recommended_targets#}}\n\n【targets_summary_statistics】\n{{#node_1_2_7.structured_output.summary_statistics#}}\n\n【tp_ef_problem_effects】\n{{#node_1_2_9.structured_output.problem_effects#}}\n\n写作要求：\n- 除首行兼容包装标题外，正文不得出现旧 `S-*` 标签。\n- 首行之后，正文必须按以下 H4 标题顺序展开：\n  - `#### 问题界定`\n  - `#### 关键洞察`\n  - `#### 因果链`\n  - `#### 工程边界`\n- `问题界定` 负责写清问题定义、目标边界、关键矛盾、约束与技术靶点。\n- `关键洞察` 必须回答“为什么这个问题值得优先处理”，而不是重复问题定义。\n- `因果链` 必须回答“为什么会形成当前技术瓶颈”，体现问题/机制/结果之间的链条。\n- `工程边界` 必须写清边界条件、失效机制、约束来源与不能忽视的实施前提。\n- 创造性只能来自技术矛盾揭示、机制因果链、方案协同/冲突、工程边界与约束，不得通过补写性能指标、容量、比率、时延或功率密度来制造完整性或专业感。\n- 若输入里已带 `（推测）`，必须原样保留。\n- 若输入里出现裸数值但无法确认来源，不得原样复述，必须主动修复为 `数值（推测）` 或改写为定性表达。\n- 不得为了显得更完整或更专业而补造容量、比例、功率密度、时延、寿命等数值。"
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output_enabled: false
+        title: N-1-2-15 S-03 技术（上篇）
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 117
+      id: '1770105429723'
+      position:
+        x: 4868
+        y: 89
+      positionAbsolute:
+        x: 4868
+        y: 89
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            reasoning_effort: medium
+            temperature: 0.7
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: system
+          role: system
+          text: '你是 Triz 分析报告的技术正文撰写器。
+
+            只输出 Markdown 正文，不输出 JSON、解释、代码块或其他章节。
+
+
+            你的唯一任务是输出一段“技术方向分析”正文，但首行必须使用兼容包装标题 `### S-03-3 技术（下篇）` 以供下游节点剥离。
+
+            注意：这个旧标题只允许出现在第一行，正文其余位置不得再出现任何 `S-*` 标签。
+
+
+            正文任务：
+
+            1. 只写技术验证、工程约束、实施建议、风险控制与推进建议。
+
+            2. 可以承接前文，但不得整段重复。
+
+            3. 不写专利布局、检索式、概要总结。
+
+            4. 创造性与完整性来自验证路径、工程边界、实施节奏与风险控制，不得通过补写裸数值来“做完整”。
+
+            5. 若输入中的任何数值已带 `（推测）`，必须原样保留该标记。
+
+            6. 若输入里已有裸量化但你无法确认来源，不得原样复述；必须改成 `（推测）` 或改写为定性表述。
+
+            7. 若你自己想补充一个没有明确来源的数值，禁止裸写；若非必要请省略，必要时只能写成 `（推测）`。
+
+            8. 正文中不得复述 `S-03`、`S-03-3` 等旧标签。'
+        - id: user
+          role: user
+          text: "请撰写技术方向分析的“验证与实施”部分。\n\n首行必须是：`### S-03-3 技术（下篇）`\n\n【技术方向分析大纲】\n{{#1775101302001.structured_output.triz_report_outline#}}\n\n【已生成的问题与边界部分】\n{{#1770105429723.text#}}\n\n【已生成的方案与路径部分】\n{{#1770105447954.text#}}\n\n【consistency_anchors】\n{{#node_1_2_13.structured_output.consistency_anchors#}}\n\n【recommended_targets】\n{{#node_1_2_7.structured_output.recommended_targets#}}\n\n【targets_traceability_verification】\n{{#node_1_2_7.structured_output.traceability_verification#}}\n\n写作要求：\n- 除首行兼容包装标题外，正文不得出现旧 `S-*` 标签。\n- 首行之后，正文必须按以下 H4 标题顺序展开：\n  - `#### 验证重点`\n  - `#### 关键洞察`\n  - `#### 风险与边界`\n  - `#### 实施建议`\n- `验证重点` 必须写清哪些验证项决定方案是否可落地。\n- `关键洞察` 必须回答“为什么这些验证项比表面指标更关键”。\n- `风险与边界` 必须尽量写成条件式判断，而不是泛泛提醒。\n- `实施建议` 需要体现推进顺序、验证闭环与资源约束。\n- 创造性和完整性只能来自验证路径、因果链、工程边界、实施节奏与风险控制逻辑，不得通过补写性能数字、容量、比率、时延或功率密度来制造完整性或专业感。\n- 若输入里已带 `（推测）`，必须原样保留。\n- 若输入里出现裸数值但无法确认来源，不得原样复述，必须主动修复为 `数值（推测）` 或改写为定性表达。"
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output_enabled: false
+        title: N-1-2-17 S-03 技术（下篇）
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 117
+      id: '1770105488807'
+      position:
+        x: 5552
+        y: 89
+      positionAbsolute:
+        x: 5552
+        y: 89
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            reasoning_effort: medium
+            temperature: 0.7
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: system
+          role: system
+          text: '你是 Triz 分析报告的技术正文撰写器。
+
+            只输出 Markdown 正文，不输出 JSON、解释、代码块或其他章节。
+
+
+            你的唯一任务是输出一段“技术方向分析”正文，但首行必须使用兼容包装标题 `### S-03-2 技术（中篇）` 以供下游节点剥离。
+
+            注意：这个旧标题只允许出现在第一行，正文其余位置不得再出现任何 `S-*` 标签。
+
+
+            正文任务：
+
+            1. 只写技术组合、实现路径、机制协同、TP-EF 映射与取舍逻辑。
+
+            2. 允许承接上篇，但不得重复上篇的大段表述。
+
+            3. 不写专利布局、检索式、概要总结。
+
+            4. 创造性与完整性来自方案重组、机制解释、因果链和工程取舍，不得通过补写裸数值来“做完整”。
+
+            5. 若输入中的任何数值已带 `（推测）`，必须原样保留该标记。
+
+            6. 若输入里已有裸量化但你无法确认来源，不得原样复述；必须改成 `（推测）` 或改写为定性表述。
+
+            7. 若你自己想补充一个没有明确来源的数值，禁止裸写；若非必要请省略，必要时只能写成 `（推测）`。
+
+            8. 正文中不得复述 `S-03`、`S-03-2` 等旧标签。'
+        - id: user
+          role: user
+          text: "请撰写技术方向分析的“方案与路径”部分。\n\n首行必须是：`### S-03-2 技术（中篇）`\n\n【技术方向分析大纲】\n{{#1775101302001.structured_output.triz_report_outline#}}\n\n【已生成的问题与边界部分】\n{{#1770105429723.text#}}\n\n【candidate_principles】\n{{#node_1_2_12.candidate_principles_json#}}\n\n【tp_ef_problem_effects】\n{{#node_1_2_9.structured_output.problem_effects#}}\n\n【tp_ef_summary_statistics】\n{{#node_1_2_9.structured_output.summary_statistics#}}\n\n【target_list】\n{{#node_1_2_7.structured_output.target_list#}}\n\n【targets_summary_statistics】\n{{#node_1_2_7.structured_output.summary_statistics#}}\n\n写作要求：\n- 除首行兼容包装标题外，正文不得出现旧 `S-*` 标签。\n- 首行之后，正文必须按以下 H4 标题顺序展开：\n  - `#### 方案组合`\n  - `#### 关键洞察`\n  - `#### 机制协同`\n  - `#### 关键取舍`\n- `方案组合` 负责写清核心技术组合、实现路径与关键参数关系。\n- `关键洞察` 必须回答“为什么这个技术组合比直觉式单点优化更优”。\n- `机制协同` 必须说明组合成立的因果逻辑与相互支撑关系。\n- `关键取舍` 必须明确边界、代价、限制条件与换来的收益类型。\n- 创造性和完整性只能来自方案结构、机制协同、工程边界、取舍逻辑与专利保护潜力，不得通过补写性能数字、容量、比率、时延或功率密度来制造完整性或专业感。\n- 若输入里已带 `（推测）`，必须原样保留。\n- 若输入里出现裸数值但无法确认来源，不得原样复述，必须主动修复为 `数值（推测）` 或改写为定性表达。\n- 不得为了显得更完整或更专业而补造容量、比例、功率密度、时延、寿命、阈值等数值。"
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output_enabled: false
+        title: N-1-2-16 S-03 技术（中篇）
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 117
+      id: '1770105447954'
+      position:
+        x: 5210
+        y: 89
+      positionAbsolute:
+        x: 5210
+        y: 89
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            exclude_reasoning_tokens: true
+            reasoning_effort: medium
+            temperature: 0.7
+          mode: chat
+          name: google/gemini-3-flash-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: system
+          role: system
+          text: '你是 Triz 分析报告中的概要撰写器。
+
+            只输出 Markdown 正文，不输出 JSON、解释或代码块。
+
+
+            你的唯一任务是输出一段“报告概要”正文，但首行必须使用兼容包装标题 `## S-01 概要` 以供下游节点剥离。
+
+            注意：这个旧标题只允许出现在第一行，正文其余位置不得再出现任何 `S-*` 标签。
+
+
+            规则：
+
+            1. 必须以 `## S-01 概要` 开头。
+
+            2. 只能做高密度概括，全文必须控制在 500 字以内。
+
+            3. 概要必须基于专利方向分析与技术方向分析提炼，不得另起一套结论。
+
+            4. 不展开技术细节，不复写专利或技术章节的大段原文。
+
+            5. 创造性与完整性来自关键技术组合、核心判断与推进建议的压缩重组，不得通过保留大量裸数值来压缩信息。
+
+            6. 若输入中的任何数值已带 `（推测）`，必须原样保留该标记。
+
+            7. 若输入里已有裸量化但你无法确认来源，不得原样复述；若该数值不是主结论必需，优先省略；若必须保留，则改成 `（推测）`。
+
+            8. 信息过多时，优先删掉次要数值，不优先删掉机制说明或判断依据。
+
+            9. 正文中不得出现 `S-01`、`S-02`、`S-03`、`S-03-1/2/3` 等旧标签。'
+        - id: user
+          role: user
+          text: '请撰写报告概要。
+
+
+            首行必须是：`## S-01 概要`
+
+
+            【executive_summary】
+
+            {{#node_1_2_13.structured_output.executive_summary#}}
+
+
+            【summary_facts】
+
+            {{#node_1_2_13.structured_output.summary_facts#}}
+
+
+            【专利方向分析】
+
+            {{#1770105503949.text#}}
+
+
+            【技术方向分析：问题与边界】
+
+            {{#1770105429723.text#}}
+
+
+            【技术方向分析：方案与路径】
+
+            {{#1770105447954.text#}}
+
+
+            【技术方向分析：验证与实施】
+
+            {{#1770105488807.text#}}
+
+
+            要求：
+
+            1. 总字数严格控制在 500 字以内。
+
+            2. 只能做结论性、高密度概括，不新增小标题。
+
+            3. 信息优先级固定为：核心问题 → 关键洞察 → 最值得保护的专利方向 → 下一步推进重点。
+
+            4. “关键洞察”必须比单纯结论多一层因果含义，不能只做平铺结论。
+
+            5. 信息过多时，优先删掉次要数值，不优先删掉洞察句、机制说明或判断依据。
+
+            6. 若某个不确定数值不是主结论必需，请直接省略；若必须复述，必须保留 `（推测）`。
+
+            7. 若上游出现裸数值但无法确认来源，不得裸写，必须改成 `（推测）` 或直接省略。
+
+            8. 除首行兼容包装标题外，正文不得出现旧 `S-*` 标签。'
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output_enabled: false
+        title: N-1-2-19 S-01 概要
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 117
+      id: '1770105577001'
+      position:
+        x: 6236
+        y: 89
+      positionAbsolute:
+        x: 6236
+        y: 89
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -2853
+      y: 123
+      zoom: 0.7
+  rag_pipeline_variables: []
