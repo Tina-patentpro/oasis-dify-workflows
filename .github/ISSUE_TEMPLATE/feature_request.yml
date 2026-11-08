@@ -1,0 +1,69 @@
+name: 需求与改进建议
+description: "提出新的使用场景、文档改进或规则建议。请把需求与场景分开写。"
+title: "[建议] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        提交前请确认：**不要在公开 Issue 提交**案件全文、客户交底、未公开发明、
+        凭据／Token／Cookie、本机绝对路径、内部服务器地址、评价专用答案与评分材料、个人信息、
+        可直接利用的安全细节。报错原文、日志、截图与证据路径同样须脱敏。
+
+        安全漏洞**不要**在公开 Issue 贴可利用细节；先看 `docs/FAQ.md` 的 Q13（私密举报渠道尚未核准，
+        不要在公开 Issue 提交可利用细节）。
+
+  - type: input
+    id: need
+    attributes:
+      label: "需求（一句话）"
+      description: "你希望新增或改变什么。写结果，不写实现方案也可以。"
+      placeholder: "例：希望在 M05 输出里单列「材料缺口清单」"
+    validations:
+      required: true
+
+  - type: textarea
+    id: scenario
+    attributes:
+      label: "使用场景与角色"
+      description: "谁在什么环节遇到什么问题。**不要**贴真实案件或客户材料，用脱敏后的最小描述。"
+      placeholder: |
+        角色：专利代理师／企业 IP／Dify 开发者 …
+        环节：交底整理／检索比对／撰写 …
+        现状：…
+    validations:
+      required: true
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: "当前替代做法与不足"
+      description: "你现在怎么绕过这个问题，绕不过去的地方在哪。"
+    validations:
+      required: false
+
+  - type: input
+    id: related-asset
+    attributes:
+      label: "涉及资产 ID（可选）"
+      description: "若与具体 资产 ID 相关，写上；跨资产或全局建议可留空。"
+      placeholder: "Flow-1-1"
+    validations:
+      required: false
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: "你如何判断这件事做成了"
+      description: "可检查的验收方式，例如某个字段出现、某类缺件被列出、文档写清某个限制。"
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: boundary
+    attributes:
+      label: "边界确认"
+      options:
+        - label: 本建议不含真实案件、客户交底、凭据或内部地址
+          required: true
+        - label: 我理解本仓库是实验性候选／本地设计源，不承诺效果指标或服务等级
+          required: true
