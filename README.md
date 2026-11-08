@@ -1,17 +1,46 @@
 # oasis-dify-workflows · 专利撰写 Dify 工作流设计源
 
-> **请先读这一段，避免误解资产身份。**
-> 本仓库公开的是 **12 份本地维护的 Dify 工作流设计源 YML**（`kind: app` 的 DSL 草稿），
-> **不是 Dify 实例上已发布应用的导出包**，也**没有**在任何新环境中完成导入或运行验证。
-> 源项目中央登记册把 14 个流程的 `current_candidate_yml` 全部登记为 `undesignated`、
-> `contract_state` 为 `gap_confirmed`、`evidence_status` 为 `STATIC_ONLY`；
-> 登记册明文写着："它不证明任何 YML 已经成功导入、运行或发布。"
->
-> 本次发布只是把**有明确选取依据的具名历史版本快照**整理成可下载、可解析、可审阅的资源，
-> **没有**把它们升格为"当前候选"，**没有**宣称导入成功、运行成功或专业接受。
-> 详见 [验证范围与限制](docs/verification-and-limits.md)。
+把中文专利业务环节的编排方法，写成可阅读、可 diff 的 Dify DSL 设计源。
+面向 Dify 自托管开发者、专利业务 Agent 研究与教学者，以及需要判断成熟度的企业 IP 团队；
+辅助的是读懂「模型调用、提示词、变量、Schema 与检查位置如何组织」，不是提供可直接运行的服务。
 
-配套 Skills 见姊妹仓库 `oasis-patent-skills`。
+## 先看哪个问题：一个技术背景研究环节怎样编成图
+
+从 `workflows/flow-1-1-background-research/flow-1-1-技术背景研究-V1.0.2.yml`（V1.0.2）开始。
+对这份固定版本的设计源做静态解析，可见 `workflow.graph.nodes` **9 个节点**、
+`workflow.graph.edges` **10 条边**，文件 **945 行**，DSL schema `0.6.0`、`kind: app`。
+这反映文件图结构，**不代表 Dify 导入、图渲染或运行验证**。可只读看节点类型序列、
+提示词与变量，再对照同目录 `NOTES.md` 的依赖与已知问题。本仓库提供的是**设计方法与静态结构**，
+不提供实测运行样例，也不把模型生成文稿写成成功案例。
+
+## 最短研读路线（不导入也能开始）
+
+1. 取准确版本：从 [`2026.11.07-rc1`](https://github.com/Tina-patentpro/oasis-dify-workflows/releases/tag/2026.11.07-rc1) 或仓库取 YML；若用 `git clone`，请 checkout 同一 tag／固定 commit，不要默认 `main` 与 rc1 相同。用 `catalog.json` 核对文件名、`sha256` 与 `selection_basis`。不同流程的 DSL schema 跨 `0.1.2`–`0.6.0`，**别按最高版本挑文件**。
+2. 只读看结构：用文本编辑器看 `nodes`／`edges`、提示词与变量，读同目录 `NOTES.md`；先不要往任何实例导入。
+3. 若要验证导入：只在你能完全控制的独立 Dify 实例里做，先按 `docs/import-guide.md` 与 `docs/dependencies.md` 补齐模型、插件与环境变量。`Flow-1-1` 第 330 行是脱敏后的认证占位值，不是有效凭据；**使用该 HTTP 服务前需按服务要求配置自己的有效认证及其他依赖，本轮未验证导入或请求结果**。缺件如实列为缺件，**不要删除必需节点换「看起来能导入」**。
+
+## 试读 / 反馈 · 团队咨询
+
+- **试读／反馈**：按上面三步开始；问题请到 [Issues](https://github.com/Tina-patentpro/oasis-dify-workflows/issues)，附流程编号、YML 文件名与版本、YML SHA-256、Dify 版本、复现层级、依赖缺件、最小非敏感步骤、预期与实际与脱敏证据。
+- **团队咨询／私有部署交流**：范围与价格另行确认；暂通过 [GitHub 主页](https://github.com/Tina-patentpro) 所列公开渠道说明非敏感的组织类型、业务环节与部署约束；不设固定服务价格、不承诺服务等级或效果指标。
+
+## 请先读这一段边界
+
+本仓库公开的是 **12 份本地维护的 Dify 工作流设计源 YML**（`kind: app` 的 DSL 草稿），
+**不是 Dify 实例上已发布应用的导出包**；JTTI 上曾有已发布应用（历史基线）≠ 本仓库文件是那些应用的导出；
+发布时图摘要 ≠ 本文件身份。12/12 通过 YAML 语法解析属于静态／发布检查记录，**未验证任何具体 Dify 版本的
+导入结果**。上游有限记录保留两次图像调用及有限模式观察，尚未取得全 15 包的真实运行验收；
+对本公开集合的准确版本，新环境安装／导入验证、专业具名审阅与用户接受未取得，
+有限观察不证明所有包、Host 或工具模式通过。对准确源／公开字节对的**静态差异结论已返回
+（`STATIC_ONLY`）**：945 行中只有第 330 行文本变化，解析对象唯一差异路径为
+`/workflow/graph/nodes[3]/data/headers`，节点数／边数／图结构未变；
+**这不代表导入必定成功或接口必定返回某种错误**。输出一律需人工专业复核，
+模型、插件与外部服务由使用方自备并自行结算费用；仓库公开或本地部署本身不能证明模型请求不外发。
+详见 `docs/verification-and-limits.md`、`docs/dependencies.md` 与本仓 `CONTRIBUTING.md`。
+
+配套 Skills 见姊妹仓库 `oasis-patent-skills`。实例发布导出的准确开源交付是另一条尚未完成的技术线，
+本仓库**不代它交付**。许可：本仓按 LICENSE／NOTICE 声明采用 Apache-2.0，权利主体 OasisIntWrite；
+第三方组件按各自许可核对。
 
 ---
 
