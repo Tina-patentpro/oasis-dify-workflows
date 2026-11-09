@@ -22,7 +22,7 @@
 ## 试读 / 反馈 · 团队咨询
 
 - **试读／反馈**：按上面三步开始；问题请到 [Issues](https://github.com/Tina-patentpro/oasis-dify-workflows/issues)，附流程编号、YML 文件名与版本、YML SHA-256、Dify 版本、复现层级、依赖缺件、最小非敏感步骤、预期与实际与脱敏证据。
-- **团队咨询／私有部署交流**：范围与价格另行确认；暂通过 [GitHub 主页](https://github.com/Tina-patentpro) 所列公开渠道说明非敏感的组织类型、业务环节与部署约束；不设固定服务价格、不承诺服务等级或效果指标。
+- **团队咨询／私有部署交流**：范围与价格另行确认；请通过[官网联系页](https://oasisintwrite.com/contact/)说明非敏感的组织类型、业务环节与部署约束；不设固定服务价格、不承诺服务等级或效果指标。
 
 ## 请先读这一段边界
 
@@ -257,8 +257,8 @@ Schema 决定，导入后由你在实例中配置。逐流程的输入输出约�
 - **贡献**：见 [CONTRIBUTING.md](CONTRIBUTING.md)。DSL 或提示词的改动需要新的具名版本与差异记录，
   请勿覆盖历史版本。
 - **咨询与私有部署**：本仓库只公开源码与资源。云端服务、模型费用、专利撰写咨询与面向专利所／
-  大型企业的私有部署是**分离的商业事项**，暂通过 [GitHub 主页](https://github.com/Tina-patentpro)
-  所列公开渠道联系；不设固定价格、不承诺服务等级或效果指标。
+  大型企业的私有部署是**分离的商业事项**，请通过[官网联系页](https://oasisintwrite.com/contact/)
+  说明非敏感的组织类型、业务环节与部署约束；不设固定价格、不承诺服务等级或效果指标。
 - **账号**：仓库归属 [Tina-patentpro](https://github.com/Tina-patentpro)。
 
 ---
