@@ -1,17 +1,12 @@
-# oasis-dify-workflows · 专利撰写 Dify 工作流设计源
+# oasis-dify-workflows · 绿洲慧写专利工作流设计资料
 
-把中文专利业务环节的编排方法，写成可阅读、可 diff 的 Dify DSL 设计源。
-面向 Dify 自托管开发者、专利业务 Agent 研究与教学者，以及需要判断成熟度的企业 IP 团队；
-辅助的是读懂「模型调用、提示词、变量、Schema 与检查位置如何组织」，不是提供可直接运行的服务。
+如果你想了解一项专利工作如何拆成输入、处理步骤和复核，可以从这里读 12 份维护中的 Dify 工作流设计源。先按任务查目录，再核材料入口、关键依赖、结果去向与人工复核位置。
 
-## 先看哪个问题：一个技术背景研究环节怎样编成图
+公开文件是维护中的**设计源**，不是实例上已发布应用的导出包。导入、运行和部署按自己的环境独立验证；业务同事读输入与复核位置，技术同事读依赖与导入条件。
 
-从 `workflows/flow-1-1-background-research/flow-1-1-技术背景研究-V1.0.2.yml`（V1.0.2）开始。
-对这份固定版本的设计源做静态解析，可见 `workflow.graph.nodes` **9 个节点**、
-`workflow.graph.edges` **10 条边**，文件 **945 行**，DSL schema `0.6.0`、`kind: app`。
-这反映文件图结构，**不代表 Dify 导入、图渲染或运行验证**。可只读看节点类型序列、
-提示词与变量，再对照同目录 `NOTES.md` 的依赖与已知问题。本仓库提供的是**设计方法与静态结构**，
-不提供实测运行样例，也不把模型生成文稿写成成功案例。
+[查看固定预发布](https://github.com/Tina-patentpro/oasis-dify-workflows/releases/tag/2026.11.07-rc1) · [按任务查目录](https://github.com/Tina-patentpro/oasis-dify-workflows/blob/e1c170acc829ea4ae748ea81daa9b51eaf13e17a/catalog.json) · [返回专利 Skills](https://github.com/Tina-patentpro/oasis-patent-skills)
+
+想从发明人沟通场景开始，可先读 Skills 仓的[技术沟通与确认规则](https://github.com/Tina-patentpro/oasis-patent-skills/blob/ff5caabbdc3c29a2c703bacb193450d495ee6c4a/skills/patent-technical-confirmation/SKILL.md)，再读固定版本的[发明人沟通确认设计说明](https://github.com/Tina-patentpro/oasis-dify-workflows/blob/e1c170acc829ea4ae748ea81daa9b51eaf13e17a/workflows/flow-3-10-inventor-confirmation/NOTES.md)，对照设计源里材料从哪里进、哪一步调用模型、结果交给谁复核。两仓是不同资产：规则与设计源各自按自己的固定提交和验证说明核对，不互相推定。
 
 ## 最短研读路线（不导入也能开始）
 
